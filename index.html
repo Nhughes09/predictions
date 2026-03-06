@@ -98,16 +98,30 @@
 
         <!-- Verification -->
         <section id="verify" class="view-section">
-            <h2 class="section-title">CRYPTOGRAPHIC VERIFICATION</h2>
+            <h2 class="section-title">🔐 CRYPTOGRAPHIC PROOF OF PREDICTION PRIORITY</h2>
             <div class="text-block">
-                <p>Every prediction card carries a SHA-256 string representing an exact static snapshot of its numerical parameters at the moment of registration. When the test window clears, the result is appended via a separate node string. The original hash cannot be altered without failing the signature check.</p>
+                <h3>METHOD 1: Bitcoin-Anchored Timestamps</h3>
+                <p>All predictions were bundled into a master manifest and anchored to Bitcoin on March 6, 2026.</p>
                 <p><strong>Master V49.1 Tree Hash:</strong> <br><code>fb42b676fb9a5d71f6c97a40efebfb6ba028b3523a70c616e4b112e2b874e731</code></p>
+                <p><a href="proofs/predictions_manifest.json.ots" target="_blank" style="color:var(--acc-gold); text-decoration: underline;">[DOWNLOAD OPENTIMESTAMPS PROOF FILE]</a></p>
                 
-                <h3>METHOD 1: GIT COMMIT HISTORY</h3>
-                <p>Check the repository log for `predictions.js`. GitHub timestamps serve as third-party evidence of registration.</p>
-                
-                <h3>METHOD 2: SHA-256 HASHES</h3>
-                <p>Copy any JSON object out of `predictions.js` and run it through a standard SHA-256 protocol. It will match the footnote badge.</p>
+                <h3>METHOD 2: Internet Archive</h3>
+                <p>Snapshot saved at archive.org on March 6, 2026:</p>
+                <p><a href="https://web.archive.org/" target="_blank" style="color:var(--acc-gold); text-decoration: underline;">[View Snapshot (Pending Index)]</a></p>
+
+                <h3>METHOD 3: GitHub Commit History</h3>
+                <p>Repository: github.com/Nhughes09/predictions</p>
+                <p>Commit: 123a365 (March 6, 2026)</p>
+                <p><a href="https://github.com/Nhughes09/predictions/commit/123a365" target="_blank" style="color:var(--acc-gold); text-decoration: underline;">[View Commit]</a></p>
+
+                <h3>How to Verify Bitcoin Anchors</h3>
+                <ol style="margin-top:0.5rem; margin-left:1.5rem; color:var(--text-muted); font-size: 0.9rem;">
+                    <li>Download the .ots proof file</li>
+                    <li>Install OpenTimestamps client: <code>pip install opentimestamps-client</code></li>
+                    <li>Run: <code>ots verify predictions_manifest.json.ots</code></li>
+                    <li>The output will show the exact Bitcoin block and timestamp</li>
+                </ol>
+                <p style="margin-top:1rem; color:#fff;"><strong>Anyone can verify this independently, without trusting this website.</strong></p>
             </div>
         </section>
 
