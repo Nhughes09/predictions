@@ -42,11 +42,13 @@ function initScorecard() {
 function createCardHTML(p, isWeekly = false) {
     let resultLine = '';
     if (p.status !== 'pending') {
+        const isConfirmed = p.status === 'confirmed';
+        const colorClass = isConfirmed ? 'color:#34d399;' : 'color:#ef4444;';
         resultLine = `
-        <div style="margin-top:1rem; padding-top:1rem; border-top:1px dashed var(--border);">
-            <div class="data-col">
-                <span class="data-label" style="color:var(--status-${p.status})">RESULT:</span>
-                <span class="data-val">${p.result_value !== null ? p.result_value : ''} (${p.result_date ? p.result_date.split('T')[0] : ''})</span>
+        <div class="data-matrix" style="border-top:none; padding-top:0; margin-top:-0.5rem;">
+            <div class="data-row">
+                <span class="data-label" style="${colorClass}">OBSERVED RESULT</span>
+                <span class="data-value" style="${colorClass}">${p.result_value !== null ? p.result_value : ''} <span style="font-size:0.7rem; opacity:0.7">(${p.result_date ? p.result_date.split('T')[0] : ''})</span></span>
             </div>
         </div>`;
     }
@@ -54,35 +56,41 @@ function createCardHTML(p, isWeekly = false) {
     const testDateDisplay = isWeekly ? 'Live This Week' : (p.test_date ? p.test_date.split('T')[0] : 'Ongoing');
 
     return `
-    <div class="pred-card">
-        <div class="card-header">
-            <span class="id-badge">${p.id}</span>
-            <span class="status-badge ${p.status}">${p.status}</span>
+    <div class="glass-card">
+        <div class="card-topbar">
+            <span class="id-tag">${p.id}</span>
+            <div class="status-indicator status-${p.status}">
+                <div class="status-dot"></div>
+                ${p.status}
+            </div>
         </div>
         <h3 class="card-title">${p.title}</h3>
         <p class="card-desc">${p.description}</p>
         
-        <div class="data-grid">
-            <div class="data-col">
-                <span class="data-label">TARGET</span>
-                <span class="data-val" style="color:var(--accent-gold); font-size:1rem;">${testDateDisplay}</span>
+        <div class="data-matrix">
+            <div class="data-row">
+                <span class="data-label">TARGET WINDOW</span>
+                <span class="data-value accent">${testDateDisplay}</span>
             </div>
-            <div class="data-col">
-                <span class="data-label">PREDICTION</span>
-                <span class="data-val">${p.prediction.value !== null ? p.prediction.value : ''} <span style="font-size:0.8rem">${p.prediction.unit || ''}</span></span>
+            <div class="data-row">
+                <span class="data-label">MODEL PREDICTION</span>
+                <span class="data-value">${p.prediction.value !== null ? p.prediction.value : ''} <span style="font-size:0.8rem; color:var(--text-muted)">${p.prediction.unit || ''}</span></span>
             </div>
         </div>
         
         ${resultLine}
         
-        <div class="card-actions">
-            <div class="mech-text"><strong>Mechanism:</strong> ${p.mechanism}</div>
-            <div class="mech-text" style="margin-bottom:0.75rem;"><strong>Source:</strong> ${p.data_source || 'INTERMAGNET'}</div>
-            
-            ${isWeekly ? `<a href="#" class="verify-btn" onclick="alert('Verification protocol will connect to: ${p.data_source}\\n\\nWaiting for Claude API implementation to pull live data.'); return false;">VERIFY LIVE DATA</a>` : ''}
-            
-            <div class="hash-foot">SHA256: ${p.sha256}</div>
+        <div class="card-mechanism">
+            <div style="margin-bottom:0.25rem;"><strong style="color:var(--text-primary)">Mechanism:</strong> ${p.mechanism}</div>
+            <div><strong style="color:var(--text-primary)">Verification Anchor:</strong> ${p.data_source || 'INTERMAGNET'}</div>
         </div>
+            
+        ${isWeekly ? `<button class="btn-verify btn-primary" style="margin-top:auto;" onclick="alert('Verification protocol connecting to: ${p.data_source}')">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Verify Live Data
+        </button>` : ''}
+            
+        <div class="sha-fingerprint">SHA-256: ${p.sha256}</div>
     </div>
     `;
 }
@@ -115,7 +123,7 @@ function renderGrids() {
 }
 
 function initNav() {
-    const btns = document.querySelectorAll('.nav-btn');
+    const btns = document.querySelectorAll('.nav-pill');
     const sections = document.querySelectorAll('.view-section');
 
     btns.forEach(btn => {
