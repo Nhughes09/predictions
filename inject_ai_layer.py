@@ -138,3 +138,13 @@ if comment not in html:
 
 with open(html_file, "w") as f:
     f.write(html)
+
+import os
+api_dir = "api"
+if not os.path.exists(api_dir):
+    os.makedirs(api_dir)
+
+with open(f"{api_dir}/predictions.json", "w") as f:
+    json.dump(payload, f, indent=2)
+
+print("Injected JSON into HTML and created static api/predictions.json endpoint.")
