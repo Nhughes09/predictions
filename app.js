@@ -85,10 +85,10 @@ function createCardHTML(p, isWeekly = false) {
             <div><strong style="color:var(--text-primary)">Verification Anchor:</strong> ${p.data_source || 'INTERMAGNET'}</div>
         </div>
             
-        ${isWeekly ? `<button class="btn-verify btn-primary" style="margin-top:auto;" onclick="alert('Verification protocol connecting to: ${p.data_source}')">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Verify Live Data
-        </button>` : ''}
+        ${isWeekly ? `<a href="proofs/weekly_predictions_${typeof WEEKLY_DATA !== 'undefined' ? WEEKLY_DATA.week_start : ''}.json.ots" download class="btn-verify btn-primary" style="margin-top:auto;" data-proof-type="opentimestamps" data-sha256="${p.sha256}" title="Download Bitcoin blockchain anchor proof">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            GET CRYPTOGRAPHIC PROOF (.OTS)
+        </a>` : ''}
             
         <div class="sha-fingerprint">SHA-256: ${p.sha256}</div>
     </div>
