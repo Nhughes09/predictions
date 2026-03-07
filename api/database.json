@@ -1,0 +1,1094 @@
+{
+  "source": "DOME_COSMOLOGY_V48_MASTER_DATABASE.csv",
+  "rows": [
+    {
+      "dataset": "bou_magnetic_2017",
+      "year": "2017.0",
+      "parameter": "z_component_quiet_mean_16UTC",
+      "value": "47727.3",
+      "unit": "nT",
+      "source": "BOU Observatory (INTERMAGNET)",
+      "notes": "Mean of Aug 14-15 at 16:00 UTC"
+    },
+    {
+      "dataset": "bou_magnetic_2017",
+      "year": "2017.0",
+      "parameter": "z_component_eclipse_16UTC",
+      "value": "47718.5",
+      "unit": "nT",
+      "source": "BOU Observatory (INTERMAGNET)",
+      "notes": "Eclipse day (Aug 21) at 16:00 UTC"
+    },
+    {
+      "dataset": "bou_magnetic_2017",
+      "year": "2017.0",
+      "parameter": "z_component_quiet_mean_18UTC",
+      "value": "47724.7",
+      "unit": "nT",
+      "source": "BOU Observatory (INTERMAGNET)",
+      "notes": "Mean of Aug 14-15 at 18:00 UTC"
+    },
+    {
+      "dataset": "bou_magnetic_2017",
+      "year": "2017.0",
+      "parameter": "z_component_eclipse_18UTC",
+      "value": "47715.0",
+      "unit": "nT",
+      "source": "BOU Observatory (INTERMAGNET)",
+      "notes": "Eclipse day (Aug 21) at 18:00 UTC"
+    },
+    {
+      "dataset": "bou_magnetic_2017",
+      "year": "2017.0",
+      "parameter": "z_component_residual_mean",
+      "value": "-9.51",
+      "unit": "nT",
+      "source": "BOU Observatory (INTERMAGNET)",
+      "notes": "Mean residual in eclipse window 16-19 UTC"
+    },
+    {
+      "dataset": "bou_magnetic_2017",
+      "year": "2017.0",
+      "parameter": "z_component_residual_max",
+      "value": "-10.9",
+      "unit": "nT",
+      "source": "BOU Observatory (INTERMAGNET)",
+      "notes": "Maximum residual at 17.2 UTC"
+    },
+    {
+      "dataset": "bou_magnetic_2017",
+      "year": "2017.0",
+      "parameter": "z_component_total_drop",
+      "value": "12.0",
+      "unit": "nT",
+      "source": "BOU Observatory (INTERMAGNET)",
+      "notes": "Drop from 12:00 baseline to 18:00 trough"
+    },
+    {
+      "dataset": "eclipse_gravity",
+      "year": "1994.0",
+      "parameter": "gravity_anomaly_montreal",
+      "value": "2.4",
+      "unit": "microGal",
+      "source": "Various",
+      "notes": "2.4 microgal anomaly recorded"
+    },
+    {
+      "dataset": "eclipse_gravity",
+      "year": "1997.0",
+      "parameter": "gravity_anomaly_mohe",
+      "value": "-6.5",
+      "unit": "microGal",
+      "source": "Chinese Academy of Sciences",
+      "notes": "6 to 7 microGal decrease at first/last contacts"
+    },
+    {
+      "dataset": "eclipse_gravity",
+      "year": "1999.0",
+      "parameter": "gravity_anomaly_europe",
+      "value": "11.0",
+      "unit": "microGal",
+      "source": "Various",
+      "notes": "10-12 microGal unexplainable change"
+    },
+    {
+      "dataset": "eclipse_gravity_compilation",
+      "year": "1954.0",
+      "parameter": "gravity_anomaly_valley",
+      "value": "",
+      "unit": "microGal",
+      "source": "Tomaschek/Frost54",
+      "notes": "Two lateral valleys reported, magnitude unspecified"
+    },
+    {
+      "dataset": "eclipse_gravity_compilation",
+      "year": "1954.0",
+      "parameter": "paris_theoretical_acceleration",
+      "value": "25.0",
+      "unit": "microGal",
+      "source": "Allais Theory",
+      "notes": "35 uGal anisotropic acceleration / 12 upward calculated"
+    },
+    {
+      "dataset": "eclipse_gravity_compilation",
+      "year": "1990.0",
+      "parameter": "gravity_anomaly_finland",
+      "value": "0.0",
+      "unit": "microGal",
+      "source": "Various",
+      "notes": "No anomalous variations detected."
+    },
+    {
+      "dataset": "eclipse_gravity_compilation",
+      "year": "1991.0",
+      "parameter": "gravity_anomaly_mexico",
+      "value": "0.1",
+      "unit": "microGal",
+      "source": "LCR-G402",
+      "notes": "0.1 uGal attributed to atmospheric pressure"
+    },
+    {
+      "dataset": "eclipse_gravity_compilation",
+      "year": "1994.0",
+      "parameter": "gravity_anomaly_montreal",
+      "value": "2.4",
+      "unit": "microGal",
+      "source": "Various",
+      "notes": "Recorded 2.4 microgal anomaly"
+    },
+    {
+      "dataset": "eclipse_gravity_compilation",
+      "year": "1997.0",
+      "parameter": "gravity_anomaly_mohe",
+      "value": "-6.5",
+      "unit": "microGal",
+      "source": "Chinese Academy of Sciences / LaCoste-Romberg",
+      "notes": "6 to 7 microGal decrease symmetrically at first/last contacts"
+    },
+    {
+      "dataset": "eclipse_gravity_compilation",
+      "year": "1999.0",
+      "parameter": "gravity_anomaly_europe",
+      "value": "11.0",
+      "unit": "microGal",
+      "source": "Various",
+      "notes": "10-12 microGal unexplainable change at onset"
+    },
+    {
+      "dataset": "eclipse_gravity_compilation",
+      "year": "2026.0",
+      "parameter": "prediction_mohe_replica",
+      "value": "-7.5",
+      "unit": "microGal",
+      "source": "Dome Model V46",
+      "notes": "Predicted symmetric aetheric pressure trough at first/last contacts for Aug 12 2026"
+    },
+    {
+      "dataset": "eclipse_magnetic_gravity_coupling",
+      "year": "2017.0",
+      "parameter": "magnetic_gravity_ratio",
+      "value": "1.67",
+      "unit": "nT/\u00b5Gal",
+      "source": "BOU 2017 + Mohe 1997",
+      "notes": "Ratio of magnetic anomaly to Mohe gravity anomaly"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "1990.0",
+      "parameter": "africa_cell_lon",
+      "value": "0.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "1990.0",
+      "parameter": "sa_cell_lon",
+      "value": "306.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "1990.0",
+      "parameter": "separation_deg",
+      "value": "54.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "1990.0",
+      "parameter": "fitted_theta_0",
+      "value": "3.53901",
+      "unit": "coeff",
+      "source": "scipy",
+      "notes": "Exponential fit param"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "1990.0",
+      "parameter": "fitted_kappa",
+      "value": "0.03146",
+      "unit": "coeff",
+      "source": "scipy",
+      "notes": "Exponential fit param"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "1990.0",
+      "parameter": "fitted_C",
+      "value": "49.95628",
+      "unit": "coeff",
+      "source": "scipy",
+      "notes": "Exponential fit param"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "1995.0",
+      "parameter": "africa_cell_lon",
+      "value": "0.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "1995.0",
+      "parameter": "sa_cell_lon",
+      "value": "306.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "1995.0",
+      "parameter": "separation_deg",
+      "value": "54.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "2000.0",
+      "parameter": "africa_cell_lon",
+      "value": "0.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "2000.0",
+      "parameter": "sa_cell_lon",
+      "value": "306.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "2000.0",
+      "parameter": "separation_deg",
+      "value": "54.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "2005.0",
+      "parameter": "africa_cell_lon",
+      "value": "0.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "2005.0",
+      "parameter": "sa_cell_lon",
+      "value": "304.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "2005.0",
+      "parameter": "separation_deg",
+      "value": "56.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "2010.0",
+      "parameter": "africa_cell_lon",
+      "value": "0.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "2010.0",
+      "parameter": "sa_cell_lon",
+      "value": "304.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "2010.0",
+      "parameter": "separation_deg",
+      "value": "56.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "2015.0",
+      "parameter": "africa_cell_lon",
+      "value": "0.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "2015.0",
+      "parameter": "sa_cell_lon",
+      "value": "302.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "2015.0",
+      "parameter": "separation_deg",
+      "value": "58.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "2020.0",
+      "parameter": "africa_cell_lon",
+      "value": "0.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "2020.0",
+      "parameter": "sa_cell_lon",
+      "value": "300.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "2020.0",
+      "parameter": "separation_deg",
+      "value": "60.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "2025.0",
+      "parameter": "africa_cell_lon",
+      "value": "0.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "2025.0",
+      "parameter": "sa_cell_lon",
+      "value": "300.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa",
+      "year": "2025.0",
+      "parameter": "separation_deg",
+      "value": "60.0",
+      "unit": "deg",
+      "source": "IGRF13",
+      "notes": "computed via ppigrf"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2000.0",
+      "parameter": "africa_lon",
+      "value": "-20.0",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2000.0",
+      "parameter": "africa_lat",
+      "value": "-36.0",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2000.0",
+      "parameter": "sa_lon",
+      "value": "305.5",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2000.0",
+      "parameter": "sa_lat",
+      "value": "-26.5",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2000.0",
+      "parameter": "lon_separation",
+      "value": "34.5",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "computed"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2000.0",
+      "parameter": "great_circle_separation",
+      "value": "30.80111263233112",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "computed"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2000.0",
+      "parameter": "lon_fit_a",
+      "value": "353.28977533287616",
+      "unit": "coeff",
+      "source": "scipy",
+      "notes": "exp model"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2000.0",
+      "parameter": "lon_fit_k",
+      "value": "0.0033199606361819",
+      "unit": "coeff",
+      "source": "scipy",
+      "notes": "exp model"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2000.0",
+      "parameter": "lon_fit_c",
+      "value": "-321.57430340145964",
+      "unit": "coeff",
+      "source": "scipy",
+      "notes": "exp model"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2005.0",
+      "parameter": "africa_lon",
+      "value": "-20.0",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2005.0",
+      "parameter": "africa_lat",
+      "value": "-37.0",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2005.0",
+      "parameter": "sa_lon",
+      "value": "304.5",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2005.0",
+      "parameter": "sa_lat",
+      "value": "-26.5",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2005.0",
+      "parameter": "lon_separation",
+      "value": "35.5",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "computed"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2005.0",
+      "parameter": "great_circle_separation",
+      "value": "31.74497539217722",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "computed"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2010.0",
+      "parameter": "africa_lon",
+      "value": "-20.0",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2010.0",
+      "parameter": "africa_lat",
+      "value": "-38.0",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2010.0",
+      "parameter": "sa_lon",
+      "value": "303.5",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2010.0",
+      "parameter": "sa_lat",
+      "value": "-26.5",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2010.0",
+      "parameter": "lon_separation",
+      "value": "36.5",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "computed"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2010.0",
+      "parameter": "great_circle_separation",
+      "value": "32.690425103823145",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "computed"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2015.0",
+      "parameter": "africa_lon",
+      "value": "-1.0",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2015.0",
+      "parameter": "africa_lat",
+      "value": "-41.0",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2015.0",
+      "parameter": "sa_lon",
+      "value": "302.5",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2015.0",
+      "parameter": "sa_lat",
+      "value": "-26.5",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2015.0",
+      "parameter": "lon_separation",
+      "value": "56.5",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "computed"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2015.0",
+      "parameter": "great_circle_separation",
+      "value": "48.27785223601814",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "computed"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2020.0",
+      "parameter": "africa_lon",
+      "value": "-0.5",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2020.0",
+      "parameter": "africa_lat",
+      "value": "-41.0",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2020.0",
+      "parameter": "sa_lon",
+      "value": "301.0",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2020.0",
+      "parameter": "sa_lat",
+      "value": "-26.5",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2020.0",
+      "parameter": "lon_separation",
+      "value": "58.5",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "computed"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2020.0",
+      "parameter": "great_circle_separation",
+      "value": "49.78664125459244",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "computed"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2025.0",
+      "parameter": "africa_lon",
+      "value": "-0.5",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2025.0",
+      "parameter": "africa_lat",
+      "value": "-40.5",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2025.0",
+      "parameter": "sa_lon",
+      "value": "300.0",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2025.0",
+      "parameter": "sa_lat",
+      "value": "-26.5",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "high-resolution 0.5deg"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2025.0",
+      "parameter": "lon_separation",
+      "value": "59.5",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "computed"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2025.0",
+      "parameter": "great_circle_separation",
+      "value": "50.567482232174214",
+      "unit": "deg",
+      "source": "CHAOS7",
+      "notes": "computed"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2025.0",
+      "parameter": "aic_linear",
+      "value": "23.673341811883635",
+      "unit": "aic",
+      "source": "scipy",
+      "notes": "Akaike Information Criterion (lower is better)"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2025.0",
+      "parameter": "aic_exponential",
+      "value": "26.487156209171577",
+      "unit": "aic",
+      "source": "scipy",
+      "notes": "Akaike Information Criterion (lower is better)"
+    },
+    {
+      "dataset": "igrf_saa_highres",
+      "year": "2025.0",
+      "parameter": "exponential_preferred",
+      "value": "0.0",
+      "unit": "bool",
+      "source": "scipy",
+      "notes": "1 if dome exponential vortex model wins"
+    },
+    {
+      "dataset": "longitudinal_wave_experiments",
+      "year": "1900.0",
+      "parameter": "tesla_magnifying_transmitter",
+      "value": "1.0",
+      "unit": "bool",
+      "source": "Nikola Tesla",
+      "notes": "Longitudinal ground compression wave transmission"
+    },
+    {
+      "dataset": "longitudinal_wave_experiments",
+      "year": "2000.0",
+      "parameter": "meyl_scalar_penetration",
+      "value": "1.0",
+      "unit": "bool",
+      "source": "Prof K. Meyl",
+      "notes": "Demonstrated unattenuated signal penetration through Faraday cage shielding"
+    },
+    {
+      "dataset": "north_pole_noaa",
+      "year": "1990.0",
+      "parameter": "pre1990_lin_a",
+      "value": "245.4317679681395",
+      "unit": "coeff",
+      "source": "scipy",
+      "notes": "Linear fit param (unwrapped)"
+    },
+    {
+      "dataset": "north_pole_noaa",
+      "year": "1990.0",
+      "parameter": "pre1990_lin_b",
+      "value": "0.0465580928276319",
+      "unit": "coeff",
+      "source": "scipy",
+      "notes": "Linear fit param (unwrapped)"
+    },
+    {
+      "dataset": "north_pole_noaa",
+      "year": "1990.0",
+      "parameter": "post1990_exp_c",
+      "value": "-526526.5730209458",
+      "unit": "coeff",
+      "source": "scipy",
+      "notes": "Exp fit param (unwrapped)"
+    },
+    {
+      "dataset": "north_pole_noaa",
+      "year": "1990.0",
+      "parameter": "post1990_exp_d",
+      "value": "526806.6666537923",
+      "unit": "coeff",
+      "source": "scipy",
+      "notes": "Exp fit param (unwrapped)"
+    },
+    {
+      "dataset": "north_pole_noaa",
+      "year": "1990.0",
+      "parameter": "post1990_exp_k",
+      "value": "-6.673463147174226e-06",
+      "unit": "coeff",
+      "source": "scipy",
+      "notes": "Exp fit param (unwrapped)"
+    },
+    {
+      "dataset": "north_pole_noaa",
+      "year": "2025.0",
+      "parameter": "deviation_120E",
+      "value": "-18.056999999999988",
+      "unit": "deg",
+      "source": "NOAA",
+      "notes": "Deviation from mapped asymptote"
+    },
+    {
+      "dataset": "schumann_corrections",
+      "year": "1960.0",
+      "parameter": "ideal_cavity_theoretical",
+      "value": "10.59",
+      "unit": "Hz",
+      "source": "Schumann Original",
+      "notes": "Raw geometric mathematical derivation"
+    },
+    {
+      "dataset": "schumann_corrections",
+      "year": "1960.0",
+      "parameter": "empirical_measurement",
+      "value": "7.83",
+      "unit": "Hz",
+      "source": "Various",
+      "notes": "Actual atmospheric measurement"
+    },
+    {
+      "dataset": "schumann_corrections",
+      "year": "1960.0",
+      "parameter": "fudge_factor_conductivity",
+      "value": "1.0",
+      "unit": "bool",
+      "source": "Mainstream Physics",
+      "notes": "Ad-hoc finite conductivity curve (knee) added to lower f1"
+    },
+    {
+      "dataset": "schumann_corrections",
+      "year": "1960.0",
+      "parameter": "dome_theoretical_match",
+      "value": "11.78",
+      "unit": "Hz",
+      "source": "Dome Model",
+      "notes": "Pure geometric resonance matches ground tellurics without ad-hoc conductivity corrections"
+    },
+    {
+      "dataset": "schumann_drift",
+      "year": "2025.0",
+      "parameter": "fundamental_range",
+      "value": "7.8",
+      "unit": "Hz",
+      "source": "Literature",
+      "notes": "Varies 7.5 to 8.1 Hz daily. Long term solar/climate drift observed."
+    },
+    {
+      "dataset": "schumann_drift",
+      "year": "2025.0",
+      "parameter": "predicted_drift_compatibility",
+      "value": "0.01",
+      "unit": "Hz/decade",
+      "source": "Dome Model",
+      "notes": "0.01 Hz/decade is plausible within mainstream noise margins."
+    },
+    {
+      "dataset": "schumann_synthetic",
+      "year": "2025.0",
+      "parameter": "atmospheric_peak",
+      "value": "7.83",
+      "unit": "Hz",
+      "source": "synthetic",
+      "notes": "based on literature"
+    },
+    {
+      "dataset": "schumann_synthetic",
+      "year": "2025.0",
+      "parameter": "atmospheric_peak",
+      "value": "14.3",
+      "unit": "Hz",
+      "source": "synthetic",
+      "notes": "based on literature"
+    },
+    {
+      "dataset": "schumann_synthetic",
+      "year": "2025.0",
+      "parameter": "ground_peak",
+      "value": "11.78",
+      "unit": "Hz",
+      "source": "synthetic",
+      "notes": "based on Meyl/Tesla telluric"
+    },
+    {
+      "dataset": "schumann_synthetic",
+      "year": "2025.0",
+      "parameter": "ground_peak",
+      "value": "7.83",
+      "unit": "Hz",
+      "source": "synthetic",
+      "notes": "leakage from atmosphere"
+    },
+    {
+      "dataset": "seismic_reflections",
+      "year": "2025.0",
+      "parameter": "deepest_boundary",
+      "value": "5150.0",
+      "unit": "km",
+      "source": "Mainstream Seismology",
+      "notes": "Inner Core Boundary is deepest recognized reflection. 12700km not cataloged."
+    },
+    {
+      "dataset": "telluric_spectrum",
+      "year": "2025.0",
+      "parameter": "frequency_peak",
+      "value": "12.0",
+      "unit": "Hz",
+      "source": "Literature/Online",
+      "notes": "Earth current resonance intervals reported at ~12Hz"
+    },
+    {
+      "dataset": "telluric_spectrum",
+      "year": "2025.0",
+      "parameter": "receiver_band_edge",
+      "value": "11.7",
+      "unit": "Hz",
+      "source": "Geometrics/MT",
+      "notes": "100kHz to 11.7Hz is a standard MT receiver spec limit"
+    },
+    {
+      "dataset": "tesla_patent",
+      "year": "1905.0",
+      "parameter": "round_trip_time",
+      "value": "0.08484",
+      "unit": "s",
+      "source": "US787412",
+      "notes": "from patent text"
+    },
+    {
+      "dataset": "tesla_patent",
+      "year": "1905.0",
+      "parameter": "frequency",
+      "value": "11.787",
+      "unit": "Hz",
+      "source": "US787412",
+      "notes": "derived from 1/0.08484"
+    },
+    {
+      "dataset": "v48_annual_aberration",
+      "year": "2026.0",
+      "parameter": "target_aberration",
+      "value": "20.5",
+      "unit": "arcsec",
+      "source": "Dome Model V48",
+      "notes": "Target Bradley stellar aberration"
+    },
+    {
+      "dataset": "v48_annual_aberration",
+      "year": "2026.0",
+      "parameter": "aether_refractive_alpha",
+      "value": "2.5551e-08",
+      "unit": "gradient coefficient",
+      "source": "Dome Model V48",
+      "notes": "Aether refractive index gradient per solar zenith angle cycle"
+    },
+    {
+      "dataset": "v48_eclipse_2026_prediction",
+      "year": "2026.0",
+      "parameter": "Iceland_predicted_magnetic_z_drop",
+      "value": "-10.9",
+      "unit": "nT",
+      "source": "Dome Model V48",
+      "notes": "Predicted Z-component trough during totality"
+    },
+    {
+      "dataset": "v48_eclipse_2026_prediction",
+      "year": "2026.0",
+      "parameter": "Iceland_predicted_spring_gravity_drop",
+      "value": "-6.5",
+      "unit": "microGal",
+      "source": "Dome Model V48",
+      "notes": "Predicted gravity anomaly for unshielded instruments"
+    },
+    {
+      "dataset": "v48_eclipse_2026_prediction",
+      "year": "2026.0",
+      "parameter": "Spain_predicted_magnetic_z_drop",
+      "value": "-10.9",
+      "unit": "nT",
+      "source": "Dome Model V48",
+      "notes": "Predicted Z-component trough during totality"
+    },
+    {
+      "dataset": "v48_eclipse_2026_prediction",
+      "year": "2026.0",
+      "parameter": "Spain_predicted_spring_gravity_drop",
+      "value": "-6.5",
+      "unit": "microGal",
+      "source": "Dome Model V48",
+      "notes": "Predicted gravity anomaly for unshielded instruments"
+    },
+    {
+      "dataset": "v48_eclipse_2026_prediction",
+      "year": "2026.0",
+      "parameter": "Greenland_predicted_magnetic_z_drop",
+      "value": "-10.9",
+      "unit": "nT",
+      "source": "Dome Model V48",
+      "notes": "Predicted Z-component trough during totality"
+    },
+    {
+      "dataset": "v48_eclipse_2026_prediction",
+      "year": "2026.0",
+      "parameter": "Greenland_predicted_spring_gravity_drop",
+      "value": "-6.5",
+      "unit": "microGal",
+      "source": "Dome Model V48",
+      "notes": "Predicted gravity anomaly for unshielded instruments"
+    },
+    {
+      "dataset": "v48_parallax_wobble",
+      "year": "2026.0",
+      "parameter": "target_parallax",
+      "value": "0.5",
+      "unit": "arcsec",
+      "source": "Dome Model V48",
+      "notes": "Target stellar parallax to mimic"
+    },
+    {
+      "dataset": "v48_parallax_wobble",
+      "year": "2026.0",
+      "parameter": "derived_firmament_offset_km",
+      "value": "0.02202508553280622",
+      "unit": "km",
+      "source": "Dome Model V48",
+      "notes": "Required physical offset of firmament rotation axis from center"
+    }
+  ]
+}
