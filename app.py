@@ -5,12 +5,12 @@ import json, os, uvicorn
 
 app = FastAPI()
 
-@app.get("/api/master.json")
+@app.api_route("/api/master.json", methods=["GET", "HEAD"])
 def master():
     with open("api/master.json") as f:
         return JSONResponse(json.load(f), headers={"Cache-Control": "no-store"})
 
-@app.get("/api/current/{filename}")
+@app.api_route("/api/current/{filename}", methods=["GET", "HEAD"])
 def current(filename: str):
     path = f"api/current/{filename}"
     if os.path.exists(path):
