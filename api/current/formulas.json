@@ -4,114 +4,1194 @@
     "name": "Tesla Disc Resonance",
     "category": "resonance",
     "formula": "f = c / (2 * D)",
-    "variables": {
-      "f": "frequency Hz",
-      "c": "speed of light 299792 km/s",
-      "D": "disc thickness km"
-    },
-    "solved_values": {
-      "input_c": 299792,
-      "input_D": 12717,
-      "output_f": 11.787,
-      "output_unit": "Hz"
-    },
     "derivation": "Vertical standing wave, wavelength = 2D, f = c/lambda",
     "source_file": "DOME_COSMOLOGY_MASTER_V45.md",
-    "status": "current",
-    "cross_refs": [
-      "WIN-001",
-      "W003"
-    ]
+    "status": "current"
   },
   {
     "id": "FORM-002",
     "name": "Schumann Geometric Theoretical",
     "category": "resonance",
     "formula": "f_n = c / (2 * pi * R) * sqrt(n*(n+1))",
-    "variables": {
-      "f_n": "Schumann harmonic n",
-      "R": "Earth radius",
-      "c": "light speed"
-    },
-    "solved_values": {
-      "input_R": 6371,
-      "input_n": 1,
-      "input_c": 299792,
-      "output_f": 10.59,
-      "output_unit": "Hz"
-    },
     "derivation": "Schumann's original pure mathematical derivation without the ad-hoc finite conductivity 'fudge factor'.",
     "source_file": "DOME_COSMOLOGY_MASTER_V48.csv",
-    "status": "current",
-    "cross_refs": [
-      "WIN-002"
-    ]
+    "status": "current"
   },
   {
     "id": "FORM-003",
     "name": "Magnetic-Gravity Eclipse Coupling Scaling",
     "category": "gravity_coupling",
     "formula": "coupling_ratio = max_Z_drop / max_gravity_drop",
-    "variables": {
-      "max_Z_drop": "BOU 2017 anomaly in nT",
-      "max_gravity_drop": "Mohe 1997 anomaly in uGal"
-    },
-    "solved_values": {
-      "input_max_Z_drop": -10.9,
-      "input_max_gravity_drop": -6.5,
-      "output_ratio": 1.67,
-      "output_unit": "nT/uGal"
-    },
     "derivation": "Derived empirically by comparing two definitive eclipse anomalies. Used to predict gravity anomalies from magnetic precursors.",
     "source_file": "task4_1_eclipse.py",
-    "status": "current",
-    "cross_refs": [
-      "WIN-012",
-      "PRED-006"
-    ]
+    "status": "current"
   },
   {
     "id": "FORM-004",
     "name": "SAA Node Separation (Exponential)",
     "category": "magnetic",
     "formula": "separation_deg = C + A * exp(k * (year - 1990))",
-    "variables": {
-      "C": "baseline offset",
-      "A": "amplitude",
-      "k": "growth rate",
-      "year": "Current year"
-    },
-    "solved_values": {
-      "input_C": 49.956,
-      "input_A": 3.539,
-      "input_k": 0.03146,
-      "input_year": 2025,
-      "output_separation": 60.59,
-      "output_unit": "degrees"
-    },
     "derivation": "Fitted directly from high-resolution CHAOS-7 spherical harmonic coefficients. Demonstrates physical pulling apart of two sub-nodes.",
     "source_file": "task3_1_chaos.py",
-    "status": "current",
-    "cross_refs": [
-      "WIN-004",
-      "W002"
-    ]
+    "status": "current"
   },
   {
     "id": "FORM-005",
     "name": "Eclipse Aetheric Deflection",
     "category": "aetheric",
     "formula": "delta_Z = eclipse_day_Z - 3_day_quiet_mean_Z",
-    "variables": {
-      "eclipse_day_Z": "Z-component intensity during eclipse window",
-      "3_day_quiet_mean_Z": "Z-component baseline derived from non-disturbed days"
-    },
-    "solved_values": {},
     "derivation": "Requires strictly 'quiet' geomagnetic background days (Kp < 3) surrounding the eclipse to isolate the true aetheric shielding effect.",
     "source_file": "task4_1_eclipse.py",
+    "status": "current"
+  },
+  {
+    "id": "FORM-006",
+    "name": "v17_pipeline.py : find_body_transit",
+    "category": "math_node",
+    "formula": "return times2[idx2], altaz2[idx2].alt.deg, altaz2[idx2].az.deg",
+    "derivation": "Python function translation",
+    "source_file": "v17_pipeline.py",
     "status": "current",
-    "cross_refs": [
-      "W004"
-    ]
+    "raw_body": "t_center = Time(f\"{date_str}T12:00:00\", scale=\"utc\")\n    times = t_center + TimeDelta(np.linspace(-18, 18, 400) * 3600, format=\"sec\")\n    frame = AltAz(obstime=times, location=location)\n    altaz = get_body(body_name, times).transform_to(frame)\n    alts = altaz.alt.deg\n    idx = np.argmax(alts)\n    # Refine\n    if 0 < idx < len(times)-1:\n        t_lo, t_hi = times[max(0,idx-3)], times[min(len(times)-1,idx+3)]\n        times2 = t_lo + TimeDelta(np.linspace(0, (t_hi-t_lo).sec, 100), format=\"sec\")\n        frame2 = AltAz(obstime=times2, location=location)\n        altaz2 = get_body(body_name, times2).transform_to(frame2)\n        idx2 = np.argmax(altaz2.alt.deg)"
+  },
+  {
+    "id": "FORM-007",
+    "name": "v17_pipeline.py : find_sun_transit",
+    "category": "math_node",
+    "formula": "return times[idx], altaz[idx].alt.deg, altaz[idx].az.deg",
+    "derivation": "Python function translation",
+    "source_file": "v17_pipeline.py",
+    "status": "current",
+    "raw_body": "t_center = Time(f\"{date_str}T12:00:00\", scale=\"utc\")\n    approx = -location.lon.deg / 15.0\n    t0 = t_center + TimeDelta(approx * 3600, format=\"sec\")\n    times = t0 + TimeDelta(np.linspace(-6, 6, 200) * 3600, format=\"sec\")\n    frame = AltAz(obstime=times, location=location)\n    altaz = get_sun(times).transform_to(frame)\n    idx = np.argmax(altaz.alt.deg)"
+  },
+  {
+    "id": "FORM-008",
+    "name": "v17_pipeline.py : m_polaris",
+    "category": "math_node",
+    "formula": "return -elev if lat < 0 else elev",
+    "derivation": "Python function translation",
+    "source_file": "v17_pipeline.py",
+    "status": "current",
+    "raw_body": "al = max(abs(lat), 0.01)\n    elev = math.degrees(math.atan(POLARIS_H / (POLARIS_H / math.tan(math.radians(al)))))"
+  },
+  {
+    "id": "FORM-009",
+    "name": "v17_pipeline.py : m_transit_elev",
+    "category": "math_node",
+    "formula": "return min(90.0, 90.0 - abs(lat - dec))",
+    "derivation": "Python function translation",
+    "source_file": "v17_pipeline.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-010",
+    "name": "v17_pipeline.py : m_transit_az",
+    "category": "math_node",
+    "formula": "return 180.0 if lat >= 0 else 0.0",
+    "derivation": "Python function translation",
+    "source_file": "v17_pipeline.py",
+    "status": "current",
+    "raw_body": "diff = lat - dec\n    if abs(diff) < 0.5:"
+  },
+  {
+    "id": "FORM-011",
+    "name": "v17_pipeline.py : m_day_length",
+    "category": "math_node",
+    "formula": "return 2 * math.degrees(math.acos(c)) / 15.0",
+    "derivation": "Python function translation",
+    "source_file": "v17_pipeline.py",
+    "status": "current",
+    "raw_body": "lr, dr = math.radians(lat), math.radians(dec)\n    ar = math.radians(SUN_ALT_MIN)\n    c = (math.sin(ar) - math.sin(lr)*math.sin(dr)) / (math.cos(lr)*math.cos(dr))\n    c = max(-1.0, min(1.0, c))"
+  },
+  {
+    "id": "FORM-012",
+    "name": "v17_pipeline.py : m_sunrise_az",
+    "category": "math_node",
+    "formula": "return math.degrees(math.acos(c))",
+    "derivation": "Python function translation",
+    "source_file": "v17_pipeline.py",
+    "status": "current",
+    "raw_body": "c = math.sin(math.radians(dec)) / math.cos(math.radians(lat))\n    c = max(-1.0, min(1.0, c))"
+  },
+  {
+    "id": "FORM-013",
+    "name": "v17_pipeline.py : m_sunset_az",
+    "category": "math_node",
+    "formula": "return 360.0 - m_sunrise_az(lat, dec)",
+    "derivation": "Python function translation",
+    "source_file": "v17_pipeline.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-014",
+    "name": "v17_pipeline.py : wrap",
+    "category": "math_node",
+    "formula": "return e",
+    "derivation": "Python function translation",
+    "source_file": "v17_pipeline.py",
+    "status": "current",
+    "raw_body": "e = obs - pred\n    if e > 180: e -= 360\n    elif e < -180: e += 360"
+  },
+  {
+    "id": "FORM-015",
+    "name": "v47_followup_analysis.py : __init__",
+    "category": "math_node",
+    "formula": "return I0 * np.exp(-k * t)",
+    "derivation": "Python function translation",
+    "source_file": "v47_followup_analysis.py",
+    "status": "current",
+    "raw_body": "self.terminal = sys.stdout\n        self.log = log_file\n\n    def write(self, message):\n        self.terminal.write(message)\n        self.log.write(message)\n\n    def flush(self):\n        self.terminal.flush()\n        self.log.flush()\n\nsys.stdout = Logger()\n\n# ============================================\n# PART 1: SAA INTENSITY DECAY ANALYSIS\n# ============================================\nprint(\"=\"*60)\nprint(\"SAA INTENSITY DECAY ANALYSIS\")\nprint(\"=\"*60)\n\n# Data from independent tracking\nyears = np.array([2000, 2005, 2010, 2015, 2020, 2025])\nt = years - 2000  # years since 2000\n\n# Intensities (nT)\naf_int = np.array([23050, 22820, 22590, 22350, 22110, 21880])\nsa_int = np.array([22850, 22710, 22580, 22460, 22330, 22200])\n\n# Exponential decay model: I(t) = I0 * exp(-k * t)\ndef exp_decay(t, I0, k):"
+  },
+  {
+    "id": "FORM-016",
+    "name": "v47_followup_analysis.py : exp_approach",
+    "category": "math_node",
+    "formula": "return 120 - a * np.exp(-b * t) + c",
+    "derivation": "Python function translation",
+    "source_file": "v47_followup_analysis.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-017",
+    "name": "v18_pipeline.py : find_transit",
+    "category": "math_node",
+    "formula": "return t2[i2], a2[i2].alt.deg, a2[i2].az.deg",
+    "derivation": "Python function translation",
+    "source_file": "v18_pipeline.py",
+    "status": "current",
+    "raw_body": "tc = Time(f\"{date}T12:00:00\", scale=\"utc\")\n    ts = tc + TimeDelta(np.linspace(-18,18,400)*3600, format=\"sec\")\n    fr = AltAz(obstime=ts, location=loc)\n    if isinstance(body, SkyCoord):\n        alt = body.transform_to(fr).alt.deg\n    else:\n        alt = get_body(body, ts).transform_to(fr).alt.deg\n    i = np.argmax(alt)\n    if 0 < i < len(ts)-1:\n        t2 = ts[max(0,i-3)] + TimeDelta(np.linspace(0,(ts[min(len(ts)-1,i+3)]-ts[max(0,i-3)]).sec,100), format=\"sec\")\n        fr2 = AltAz(obstime=t2, location=loc)\n        if isinstance(body, SkyCoord):\n            a2 = body.transform_to(fr2)\n        else:\n            a2 = get_body(body, t2).transform_to(fr2)\n        i2 = np.argmax(a2.alt.deg)"
+  },
+  {
+    "id": "FORM-018",
+    "name": "v18_pipeline.py : m_az",
+    "category": "math_node",
+    "formula": "return 180.0 if lat >= 0 else 0.0",
+    "derivation": "Python function translation",
+    "source_file": "v18_pipeline.py",
+    "status": "current",
+    "raw_body": "d = lat - dec\n    if abs(d) < 0.5:"
+  },
+  {
+    "id": "FORM-019",
+    "name": "v18_pipeline.py : wrap",
+    "category": "math_node",
+    "formula": "return e",
+    "derivation": "Python function translation",
+    "source_file": "v18_pipeline.py",
+    "status": "current",
+    "raw_body": "e=o-p\n    if e>180: e-=360\n    elif e<-180: e+=360"
+  },
+  {
+    "id": "FORM-020",
+    "name": "v18_pipeline.py : polaris_elevation",
+    "category": "math_node",
+    "formula": "return round(-elev if lat < 0 else elev, 2)",
+    "derivation": "Python function translation",
+    "source_file": "v18_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"Polaris elevation from observer latitude.\"\"\"\n    al = max(abs(lat), 0.01)\n    elev = math.degrees(math.atan(POLARIS_HEIGHT_KM / \n           (POLARIS_HEIGHT_KM / math.tan(math.radians(al)))))"
+  },
+  {
+    "id": "FORM-021",
+    "name": "v18_pipeline.py : transit_elevation",
+    "category": "math_node",
+    "formula": "return round(min(90.0, 90.0 - abs(lat - dec)), 2)",
+    "derivation": "Python function translation",
+    "source_file": "v18_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"Elevation of any body at its meridian transit.\"\"\"\n    if obs_date is None:\n        obs_date = date.today()\n    dec = get_declination(body, obs_date)"
+  },
+  {
+    "id": "FORM-022",
+    "name": "v18_pipeline.py : transit_azimuth",
+    "category": "math_node",
+    "formula": "return 180.0 if lat >= 0 else 0.0  # near-zenith fallback",
+    "derivation": "Python function translation",
+    "source_file": "v18_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"Azimuth at transit: 180\u00b0 if body south of zenith, 0\u00b0 if north.\"\"\"\n    if obs_date is None:\n        obs_date = date.today()\n    dec = get_declination(body, obs_date)\n    diff = lat - dec\n    if abs(diff) < 0.5:"
+  },
+  {
+    "id": "FORM-023",
+    "name": "v18_pipeline.py : day_length",
+    "category": "math_node",
+    "formula": "return round(2 * math.degrees(math.acos(cos_H0)) / 15.0, 2)",
+    "derivation": "Python function translation",
+    "source_file": "v18_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"Hours of daylight.\"\"\"\n    if obs_date is None:\n        obs_date = date.today()\n    dec = get_declination(\"sun\", obs_date)\n    lr = math.radians(lat)\n    dr = math.radians(dec)\n    ar = math.radians(REFRACTION_CORRECTION)\n    cos_H0 = (math.sin(ar) - math.sin(lr)*math.sin(dr)) / \\\\\n             (math.cos(lr)*math.cos(dr))\n    cos_H0 = max(-1.0, min(1.0, cos_H0))"
+  },
+  {
+    "id": "FORM-024",
+    "name": "v18_pipeline.py : sunrise_azimuth",
+    "category": "math_node",
+    "formula": "return round(math.degrees(math.acos(cos_az)), 2)",
+    "derivation": "Python function translation",
+    "source_file": "v18_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"Azimuth of sunrise.\"\"\"\n    if obs_date is None:\n        obs_date = date.today()\n    dec = get_declination(\"sun\", obs_date)\n    cos_az = math.sin(math.radians(dec)) / math.cos(math.radians(lat))\n    cos_az = max(-1.0, min(1.0, cos_az))"
+  },
+  {
+    "id": "FORM-025",
+    "name": "v18_pipeline.py : sunset_azimuth",
+    "category": "math_node",
+    "formula": "return round(360.0 - sunrise_azimuth(lat, obs_date), 2)",
+    "derivation": "Python function translation",
+    "source_file": "v18_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"Azimuth of sunset.\"\"\""
+  },
+  {
+    "id": "FORM-026",
+    "name": "v18_pipeline.py : is_circumpolar",
+    "category": "math_node",
+    "formula": "return abs(dec) > (90 - abs(lat))",
+    "derivation": "Python function translation",
+    "source_file": "v18_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"Whether a body never sets (always above horizon).\"\"\"\n    if obs_date is None:\n        obs_date = date.today()\n    dec = get_declination(body, obs_date)"
+  },
+  {
+    "id": "FORM-027",
+    "name": "v18_pipeline.py : is_visible",
+    "category": "math_node",
+    "formula": "return max_elev > 0",
+    "derivation": "Python function translation",
+    "source_file": "v18_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"Whether a body ever rises above the horizon.\"\"\"\n    if obs_date is None:\n        obs_date = date.today()\n    dec = get_declination(body, obs_date)\n    max_elev = 90 - abs(lat - dec)"
+  },
+  {
+    "id": "FORM-028",
+    "name": "v23_pipeline.py : mr",
+    "category": "math_node",
+    "formula": "return 2*R*math.asin(math.sqrt(min(1,a)))",
+    "derivation": "Python function translation",
+    "source_file": "v23_pipeline.py",
+    "status": "current",
+    "raw_body": "master.append({'SECTION':s,'SUBSECTION':ss,'PARAMETER':p,\n                   'OBSERVED_VALUE':str(o),'MODEL_VALUE':str(m),'ERROR':str(e),'NOTES':n})\n\ndef globe_dist(lat1,lon1,lat2,lon2):\n    R=6371; p1,p2=math.radians(lat1),math.radians(lat2)\n    dp,dl=math.radians(lat2-lat1),math.radians(lon2-lon1)\n    a=math.sin(dp/2)**2+math.cos(p1)*math.cos(p2)*math.sin(dl/2)**2"
+  },
+  {
+    "id": "FORM-029",
+    "name": "v23_pipeline.py : ae_dist",
+    "category": "math_node",
+    "formula": "return math.sqrt((r1*math.cos(t1)-r2*math.cos(t2))**2+(r1*math.sin(t1)-r2*math.sin(t2))**2)",
+    "derivation": "Python function translation",
+    "source_file": "v23_pipeline.py",
+    "status": "current",
+    "raw_body": "r1=(90-lat1)*111.32; r2=(90-lat2)*111.32\n    t1,t2=math.radians(lon1),math.radians(lon2)"
+  },
+  {
+    "id": "FORM-030",
+    "name": "v23_pipeline.py : bipolar_dist",
+    "category": "math_node",
+    "formula": "return 1.0",
+    "derivation": "Python function translation",
+    "source_file": "v23_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"Bi-polar with tunable transition latitude and blend zone.\"\"\"\n    # Weight: 1 = pure north AE, 0 = pure south AE\n    def weight(lat):\n        if lat > trans_lat + blend/2:"
+  },
+  {
+    "id": "FORM-031",
+    "name": "task4_3_aic.py : lin_model",
+    "category": "math_node",
+    "formula": "return a + b * (t - 2000)",
+    "derivation": "Python function translation",
+    "source_file": "task4_3_aic.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-032",
+    "name": "task4_3_aic.py : exp_model",
+    "category": "math_node",
+    "formula": "return a * np.exp(k * (t - 2000)) + c",
+    "derivation": "Python function translation",
+    "source_file": "task4_3_aic.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-033",
+    "name": "firmament_v8.py : lat_to_flat_r",
+    "category": "math_node",
+    "formula": "return POLARIS_HEIGHT_KM / math.tan(math.radians(elev))",
+    "derivation": "Python function translation",
+    "source_file": "firmament_v8.py",
+    "status": "current",
+    "raw_body": "\"\"\"Convert latitude-like label to radial distance using Polaris elev from data\"\"\"\n    # For north: direct from observed Polaris elev\n    if lat_deg > 0:\n        elev = lat_deg  # approximate from CSV pattern"
+  },
+  {
+    "id": "FORM-034",
+    "name": "firmament_v8.py : predict_polaris_elev",
+    "category": "math_node",
+    "formula": "return 90.0",
+    "derivation": "Python function translation",
+    "source_file": "firmament_v8.py",
+    "status": "current",
+    "raw_body": "if r < 100:"
+  },
+  {
+    "id": "FORM-035",
+    "name": "firmament_v8.py : predict_sun_noon_azimuth",
+    "category": "math_node",
+    "formula": "return 180.0  # will show mismatch in south for next iteration",
+    "derivation": "Python function translation",
+    "source_file": "firmament_v8.py",
+    "status": "current",
+    "raw_body": "\"\"\"Single-center model \u2014 sun always due south when facing center\"\"\""
+  },
+  {
+    "id": "FORM-036",
+    "name": "v14_pipeline.py : city_xy",
+    "category": "math_node",
+    "formula": "return x, y, r",
+    "derivation": "Python function translation",
+    "source_file": "v14_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"Map city to (x, y) on flat plane. North pole = (0, 0).\"\"\"\n    abs_lat = max(abs(lat), 0.01)\n    r = POLARIS_H / math.tan(math.radians(abs_lat))\n    # Use longitude as angular position (radians, measured from +x axis)\n    theta = math.radians(lon)\n    x = r * math.cos(theta)\n    y = r * math.sin(theta)"
+  },
+  {
+    "id": "FORM-037",
+    "name": "v14_pipeline.py : body_position",
+    "category": "math_node",
+    "formula": "return R * math.cos(theta), R * math.sin(theta)",
+    "derivation": "Python function translation",
+    "source_file": "v14_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"Body orbital position on flat plane at radius R, angle theta.\"\"\"\n    theta = math.radians(theta_deg)"
+  },
+  {
+    "id": "FORM-038",
+    "name": "v14_pipeline.py : wrap_az_err",
+    "category": "math_node",
+    "formula": "return e",
+    "derivation": "Python function translation",
+    "source_file": "v14_pipeline.py",
+    "status": "current",
+    "raw_body": "e = obs - pred\n    if e > 180: e -= 360\n    elif e < -180: e += 360"
+  },
+  {
+    "id": "FORM-039",
+    "name": "dome_predictor_interactive.py : sun_dec",
+    "category": "math_node",
+    "formula": "return 23.44 * math.sin(2*math.pi*(days-79)/365.25)",
+    "derivation": "Python function translation",
+    "source_file": "dome_predictor_interactive.py",
+    "status": "current",
+    "raw_body": "days = (d - date(2026,1,1)).days"
+  },
+  {
+    "id": "FORM-040",
+    "name": "dome_predictor_interactive.py : jup_dec",
+    "category": "math_node",
+    "formula": "return 23.175 - 0.018 * days",
+    "derivation": "Python function translation",
+    "source_file": "dome_predictor_interactive.py",
+    "status": "current",
+    "raw_body": "days = (d - date(2026,1,1)).days"
+  },
+  {
+    "id": "FORM-041",
+    "name": "dome_predictor_interactive.py : moon_dec",
+    "category": "math_node",
+    "formula": "return 28.6 * math.sin(2*math.pi*days/27.3 + 1.2)",
+    "derivation": "Python function translation",
+    "source_file": "dome_predictor_interactive.py",
+    "status": "current",
+    "raw_body": "days = (d - date(2026,1,1)).days"
+  },
+  {
+    "id": "FORM-042",
+    "name": "dome_predictor_interactive.py : mars_dec",
+    "category": "math_node",
+    "formula": "return -14.5 + 0.02 * days",
+    "derivation": "Python function translation",
+    "source_file": "dome_predictor_interactive.py",
+    "status": "current",
+    "raw_body": "days = (d - date(2026,1,1)).days"
+  },
+  {
+    "id": "FORM-043",
+    "name": "dome_predictor_interactive.py : venus_dec",
+    "category": "math_node",
+    "formula": "return -20.0 + 0.1 * days",
+    "derivation": "Python function translation",
+    "source_file": "dome_predictor_interactive.py",
+    "status": "current",
+    "raw_body": "days = (d - date(2026,1,1)).days"
+  },
+  {
+    "id": "FORM-044",
+    "name": "dome_predictor_interactive.py : transit_az",
+    "category": "math_node",
+    "formula": "return \"ZENITH\"",
+    "derivation": "Python function translation",
+    "source_file": "dome_predictor_interactive.py",
+    "status": "current",
+    "raw_body": "d = lat - dec\n    if abs(d) < 0.5:"
+  },
+  {
+    "id": "FORM-045",
+    "name": "dome_predictor_interactive.py : day_len",
+    "category": "math_node",
+    "formula": "return \"24:00 (Polar Day)\"",
+    "derivation": "Python function translation",
+    "source_file": "dome_predictor_interactive.py",
+    "status": "current",
+    "raw_body": "lr,dr,ar = math.radians(lat), math.radians(dec), math.radians(ALT_MIN)\n    c = (math.sin(ar)-math.sin(lr)*math.sin(dr))/(math.cos(lr)*math.cos(dr))\n    c = max(-1,min(1,c))\n    h = 2*math.degrees(math.acos(c))/15\n    if h >= 24:"
+  },
+  {
+    "id": "FORM-046",
+    "name": "dome_predictor_interactive.py : rise_az",
+    "category": "math_node",
+    "formula": "return math.degrees(math.acos(max(-1,min(1,c))))",
+    "derivation": "Python function translation",
+    "source_file": "dome_predictor_interactive.py",
+    "status": "current",
+    "raw_body": "c = math.sin(math.radians(dec))/math.cos(math.radians(lat))"
+  },
+  {
+    "id": "FORM-047",
+    "name": "v43_pipeline.py : ae_dist",
+    "category": "math_node",
+    "formula": "return math.sqrt((r1*math.cos(t1)-r2*math.cos(t2))**2+(r1*math.sin(t1)-r2*math.sin(t2))**2)",
+    "derivation": "Python function translation",
+    "source_file": "v43_pipeline.py",
+    "status": "current",
+    "raw_body": "r1=(90-lat1)*111.32; r2=(90-lat2)*111.32\n    t1,t2=math.radians(lon1),math.radians(lon2)"
+  },
+  {
+    "id": "FORM-048",
+    "name": "phase6_analysis.py : exp_decay",
+    "category": "math_node",
+    "formula": "return I0 * np.exp(-k * time)",
+    "derivation": "Python function translation",
+    "source_file": "phase6_analysis.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-049",
+    "name": "phase6_analysis.py : exp_approach",
+    "category": "math_node",
+    "formula": "return 120 - a * np.exp(-b * time) + c",
+    "derivation": "Python function translation",
+    "source_file": "phase6_analysis.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-050",
+    "name": "v28_pipeline.py : g_aetheric",
+    "category": "math_node",
+    "formula": "return g_eq * (1 + alpha * sin2)",
+    "derivation": "Python function translation",
+    "source_file": "v28_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"Aetheric pressure model: same formula as WGS84\"\"\"\n    sin2 = math.sin(math.radians(lat))**2"
+  },
+  {
+    "id": "FORM-051",
+    "name": "astro_calc.py : _find_transit",
+    "category": "math_node",
+    "formula": "return times[idx]",
+    "derivation": "Python function translation",
+    "source_file": "astro_calc.py",
+    "status": "current",
+    "raw_body": "\"\"\"Find solar noon (transit) by sampling the sun altitude over the day.\"\"\"\n    t0 = Time(f\"{date_utc}T00:00:00\", scale=\"utc\")\n    times = t0 + TimeDelta(np.linspace(0, 24, n_steps) * 3600, format=\"sec\")\n    frame = AltAz(obstime=times, location=location)\n    sun_altaz = sun_coord_func(times).transform_to(frame)\n    idx = np.argmax(sun_altaz.alt.deg)"
+  },
+  {
+    "id": "FORM-052",
+    "name": "v13_pipeline.py : find_transit",
+    "category": "math_node",
+    "formula": "return times[idx]",
+    "derivation": "Python function translation",
+    "source_file": "v13_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"Find solar noon by sampling sun altitude over 24hrs.\"\"\"\n    # Use approximate noon based on longitude\n    approx_noon_utc = 12.0 - (location.lon.deg / 15.0)\n    t0 = Time(f\"{DATE_STR}T00:00:00\", scale=\"utc\") + TimeDelta(approx_noon_utc * 3600, format=\"sec\")\n    # Search \u00b16 hours around approximate noon\n    times = t0 + TimeDelta(np.linspace(-6, 6, 200) * 3600, format=\"sec\")\n    frame = AltAz(obstime=times, location=location)\n    sun_altaz = get_sun(times).transform_to(frame)\n    idx = np.argmax(sun_altaz.alt.deg)"
+  },
+  {
+    "id": "FORM-053",
+    "name": "v13_pipeline.py : find_horizon_crossing_fixed",
+    "category": "math_node",
+    "formula": "return None",
+    "derivation": "Python function translation",
+    "source_file": "v13_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"\n    FIXED: Search \u00b112 hours around solar noon instead of 00:00-24:00 UTC.\n    This fixes the date-boundary inversion bug.\n    \"\"\"\n    if event == \"rise\":\n        # Search from noon-12h to noon\n        t_start = t_noon - TimeDelta(12 * 3600, format=\"sec\")\n        t_end = t_noon\n    else:\n        # Search from noon to noon+12h\n        t_start = t_noon\n        t_end = t_noon + TimeDelta(12 * 3600, format=\"sec\")\n    \n    times = t_start + TimeDelta(np.linspace(0, (t_end - t_start).sec, n_coarse), format=\"sec\")\n    frame = AltAz(obstime=times, location=location)\n    alts = get_sun(times).transform_to(frame).alt.deg\n    \n    crossings = np.where(np.diff(np.sign(alts)))[0]\n    if len(crossings) == 0:"
+  },
+  {
+    "id": "FORM-054",
+    "name": "v13_pipeline.py : polaris_r_v1",
+    "category": "math_node",
+    "formula": "return POLARIS_H / math.tan(math.radians(lat))",
+    "derivation": "Python function translation",
+    "source_file": "v13_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"Original: north tuned, south 2.5x multiplier\"\"\"\n    if lat > 0:"
+  },
+  {
+    "id": "FORM-055",
+    "name": "v13_pipeline.py : polaris_r_v2",
+    "category": "math_node",
+    "formula": "return POLARIS_H / math.tan(math.radians(al))",
+    "derivation": "Python function translation",
+    "source_file": "v13_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"V2 fix: same formula north and south, no multiplier\"\"\"\n    al = abs(lat) if abs(lat) > 0.01 else 0.01"
+  },
+  {
+    "id": "FORM-056",
+    "name": "v13_pipeline.py : pred_polaris",
+    "category": "math_node",
+    "formula": "return round(elev, 2)",
+    "derivation": "Python function translation",
+    "source_file": "v13_pipeline.py",
+    "status": "current",
+    "raw_body": "r = r_func(lat)\n    elev = math.degrees(math.atan(POLARIS_H / r))\n    if lat < 0:\n        elev = -elev"
+  },
+  {
+    "id": "FORM-057",
+    "name": "v13_pipeline.py : pred_sun_az",
+    "category": "math_node",
+    "formula": "return 180.0 if lat >= 0 else 0.0",
+    "derivation": "Python function translation",
+    "source_file": "v13_pipeline.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-058",
+    "name": "v13_pipeline.py : pred_sun_elev",
+    "category": "math_node",
+    "formula": "return round(min(90.0, 90.0 - abs(lat - dec)), 2)",
+    "derivation": "Python function translation",
+    "source_file": "v13_pipeline.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-059",
+    "name": "v13_pipeline.py : pred_day_length",
+    "category": "math_node",
+    "formula": "return round(2 * H0 / 15.0, 4)",
+    "derivation": "Python function translation",
+    "source_file": "v13_pipeline.py",
+    "status": "current",
+    "raw_body": "lat_r = math.radians(lat)\n    dec_r = math.radians(dec)\n    alt_r = math.radians(SUN_ALT_MIN)\n    cos_H0 = (math.sin(alt_r) - math.sin(lat_r) * math.sin(dec_r)) / \\\n             (math.cos(lat_r) * math.cos(dec_r))\n    cos_H0 = max(-1.0, min(1.0, cos_H0))\n    H0 = math.degrees(math.acos(cos_H0))"
+  },
+  {
+    "id": "FORM-060",
+    "name": "v13_pipeline.py : pred_sunrise_az",
+    "category": "math_node",
+    "formula": "return round(az, 2)",
+    "derivation": "Python function translation",
+    "source_file": "v13_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"Sunrise azimuth from hour angle formula\"\"\"\n    lat_r = math.radians(lat)\n    dec_r = math.radians(dec)\n    # At sunrise, altitude = 0 (approx), so:\n    # cos(az) = sin(dec) / cos(lat)  [when alt=0]\n    cos_az = math.sin(dec_r) / math.cos(lat_r)\n    cos_az = max(-1.0, min(1.0, cos_az))\n    az = math.degrees(math.acos(cos_az))"
+  },
+  {
+    "id": "FORM-061",
+    "name": "v13_pipeline.py : pred_sunset_az",
+    "category": "math_node",
+    "formula": "return round(360.0 - pred_sunrise_az(lat, dec), 2)",
+    "derivation": "Python function translation",
+    "source_file": "v13_pipeline.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-062",
+    "name": "v13_pipeline.py : wrap_az_err",
+    "category": "math_node",
+    "formula": "return round(e, 2)",
+    "derivation": "Python function translation",
+    "source_file": "v13_pipeline.py",
+    "status": "current",
+    "raw_body": "e = obs - pred\n    if e > 180: e -= 360\n    elif e < -180: e += 360"
+  },
+  {
+    "id": "FORM-063",
+    "name": "v24_pipeline.py : bipolar_var",
+    "category": "math_node",
+    "formula": "return trans_by_lon[0]  # Americas",
+    "derivation": "Python function translation",
+    "source_file": "v24_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"Bi-polar with variable transition by longitude sector.\"\"\"\n    def get_trans(lon):\n        if -180 <= lon < -30:"
+  },
+  {
+    "id": "FORM-064",
+    "name": "v16_pipeline.py : v16_polaris_elev",
+    "category": "math_node",
+    "formula": "return -elev if lat < 0 else elev",
+    "derivation": "Python function translation",
+    "source_file": "v16_pipeline.py",
+    "status": "current",
+    "raw_body": "al = max(abs(lat), 0.01)\n    r = POLARIS_H / math.tan(math.radians(al))\n    elev = math.degrees(math.atan(POLARIS_H / r))"
+  },
+  {
+    "id": "FORM-065",
+    "name": "v16_pipeline.py : v16_transit_elev",
+    "category": "math_node",
+    "formula": "return min(90.0, 90.0 - abs(lat - dec))",
+    "derivation": "Python function translation",
+    "source_file": "v16_pipeline.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-066",
+    "name": "v16_pipeline.py : v16_transit_az",
+    "category": "math_node",
+    "formula": "return 180.0 if lat >= 0 else 0.0  # fallback",
+    "derivation": "Python function translation",
+    "source_file": "v16_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"FIXED: Declination-relative flip, not latitude-relative\"\"\"\n    diff = lat - dec\n    if abs(diff) < 0.5:  # Near-zenith: undefined"
+  },
+  {
+    "id": "FORM-067",
+    "name": "v16_pipeline.py : v16_day_length",
+    "category": "math_node",
+    "formula": "return 2 * H0 / 15.0",
+    "derivation": "Python function translation",
+    "source_file": "v16_pipeline.py",
+    "status": "current",
+    "raw_body": "if dec is None: dec = SUN_DEC\n    lat_r = math.radians(lat)\n    dec_r = math.radians(dec)\n    alt_r = math.radians(SUN_ALT_MIN)\n    cos_H0 = (math.sin(alt_r) - math.sin(lat_r)*math.sin(dec_r)) / \\\n             (math.cos(lat_r)*math.cos(dec_r))\n    cos_H0 = max(-1.0, min(1.0, cos_H0))\n    H0 = math.degrees(math.acos(cos_H0))"
+  },
+  {
+    "id": "FORM-068",
+    "name": "v16_pipeline.py : v16_sunrise_az",
+    "category": "math_node",
+    "formula": "return math.degrees(math.acos(cos_az))",
+    "derivation": "Python function translation",
+    "source_file": "v16_pipeline.py",
+    "status": "current",
+    "raw_body": "if dec is None: dec = SUN_DEC\n    cos_az = math.sin(math.radians(dec)) / math.cos(math.radians(lat))\n    cos_az = max(-1.0, min(1.0, cos_az))"
+  },
+  {
+    "id": "FORM-069",
+    "name": "v16_pipeline.py : v16_sunset_az",
+    "category": "math_node",
+    "formula": "return 360.0 - v16_sunrise_az(lat, dec)",
+    "derivation": "Python function translation",
+    "source_file": "v16_pipeline.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-070",
+    "name": "v16_pipeline.py : wrap_err",
+    "category": "math_node",
+    "formula": "return e",
+    "derivation": "Python function translation",
+    "source_file": "v16_pipeline.py",
+    "status": "current",
+    "raw_body": "e = obs - pred\n    if e > 180: e -= 360\n    elif e < -180: e += 360"
+  },
+  {
+    "id": "FORM-071",
+    "name": "task3_2_pole.py : lin_model",
+    "category": "math_node",
+    "formula": "return a + b * (t - 1590)",
+    "derivation": "Python function translation",
+    "source_file": "task3_2_pole.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-072",
+    "name": "task3_2_pole.py : exp_model",
+    "category": "math_node",
+    "formula": "return c + d * np.exp(k * (t - 1990))",
+    "derivation": "Python function translation",
+    "source_file": "task3_2_pole.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-073",
+    "name": "task3_2_pole.py : wrap180",
+    "category": "math_node",
+    "formula": "return (lon + 180) % 360 - 180",
+    "derivation": "Python function translation",
+    "source_file": "task3_2_pole.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-074",
+    "name": "v42_pipeline.py : piecewise_exp",
+    "category": "math_node",
+    "formula": "return A * np.exp(-g1 * (t - t_0)) + B * np.exp(-g2 * (t - t_0))",
+    "derivation": "Python function translation",
+    "source_file": "v42_pipeline.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-075",
+    "name": "v42_pipeline.py : loop_ratio_from_params",
+    "category": "math_node",
+    "formula": "return 1e6",
+    "derivation": "Python function translation",
+    "source_file": "v42_pipeline.py",
+    "status": "current",
+    "raw_body": "h_amp, phase = params\n    ht = (h_amp / H_mean) * math.cos(phase)\n    lp = abs(radial_term + ht)\n    ln = abs(radial_term - ht)\n    if ln == 0:"
+  },
+  {
+    "id": "FORM-076",
+    "name": "v42_pipeline.py : saa_separation_scalar",
+    "category": "math_node",
+    "formula": "return min(result, 180)",
+    "derivation": "Python function translation",
+    "source_file": "v42_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"Separation angle in degrees over time (scalar version).\"\"\"\n    theta_0 = math.radians(theta_0_deg / 2)\n    result = 2 * math.degrees(math.atan(math.tan(theta_0) * math.exp(k_rate * (t - 2015))))"
+  },
+  {
+    "id": "FORM-077",
+    "name": "v42_pipeline.py : globe_dist",
+    "category": "math_node",
+    "formula": "return 2*R*math.asin(math.sqrt(min(1,a)))",
+    "derivation": "Python function translation",
+    "source_file": "v42_pipeline.py",
+    "status": "current",
+    "raw_body": "R=6371; p1,p2=math.radians(lat1),math.radians(lat2)\n    dp,dl=math.radians(lat2-lat1),math.radians(lon2-lon1)\n    a=math.sin(dp/2)**2+math.cos(p1)*math.cos(p2)*math.sin(dl/2)**2"
+  },
+  {
+    "id": "FORM-078",
+    "name": "v42_pipeline.py : bipolar_sigmoid",
+    "category": "math_node",
+    "formula": "return t_am",
+    "derivation": "Python function translation",
+    "source_file": "v42_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"Bi-polar with smooth sigmoid transitions.\"\"\"\n    t_am, t_af, t_ap, k = params\n    \n    def get_trans(lon):\n        if -180 <= lon < -30:"
+  },
+  {
+    "id": "FORM-079",
+    "name": "firmament_model_FINAL.py : polaris_elevation",
+    "category": "math_node",
+    "formula": "return round(-elev if lat < 0 else elev, 2)",
+    "derivation": "Python function translation",
+    "source_file": "firmament_model_FINAL.py",
+    "status": "current",
+    "raw_body": "\"\"\"Polaris elevation from observer latitude.\"\"\"\n    al = max(abs(lat), 0.01)\n    elev = math.degrees(math.atan(POLARIS_HEIGHT_KM / \n           (POLARIS_HEIGHT_KM / math.tan(math.radians(al)))))"
+  },
+  {
+    "id": "FORM-080",
+    "name": "firmament_model_FINAL.py : transit_elevation",
+    "category": "math_node",
+    "formula": "return round(min(90.0, 90.0 - abs(lat - dec)), 2)",
+    "derivation": "Python function translation",
+    "source_file": "firmament_model_FINAL.py",
+    "status": "current",
+    "raw_body": "\"\"\"Elevation of any body at its meridian transit.\"\"\"\n    if obs_date is None:\n        obs_date = date.today()\n    dec = get_declination(body, obs_date)"
+  },
+  {
+    "id": "FORM-081",
+    "name": "firmament_model_FINAL.py : transit_azimuth",
+    "category": "math_node",
+    "formula": "return 180.0 if lat >= 0 else 0.0  # near-zenith fallback",
+    "derivation": "Python function translation",
+    "source_file": "firmament_model_FINAL.py",
+    "status": "current",
+    "raw_body": "\"\"\"Azimuth at transit: 180\u00b0 if body south of zenith, 0\u00b0 if north.\"\"\"\n    if obs_date is None:\n        obs_date = date.today()\n    dec = get_declination(body, obs_date)\n    diff = lat - dec\n    if abs(diff) < 0.5:"
+  },
+  {
+    "id": "FORM-082",
+    "name": "firmament_model_FINAL.py : day_length",
+    "category": "math_node",
+    "formula": "return round(2 * math.degrees(math.acos(cos_H0)) / 15.0, 2)",
+    "derivation": "Python function translation",
+    "source_file": "firmament_model_FINAL.py",
+    "status": "current",
+    "raw_body": "\"\"\"Hours of daylight.\"\"\"\n    if obs_date is None:\n        obs_date = date.today()\n    dec = get_declination(\"sun\", obs_date)\n    lr = math.radians(lat)\n    dr = math.radians(dec)\n    ar = math.radians(REFRACTION_CORRECTION)\n    cos_H0 = (math.sin(ar) - math.sin(lr)*math.sin(dr)) / \\\n             (math.cos(lr)*math.cos(dr))\n    cos_H0 = max(-1.0, min(1.0, cos_H0))"
+  },
+  {
+    "id": "FORM-083",
+    "name": "firmament_model_FINAL.py : sunrise_azimuth",
+    "category": "math_node",
+    "formula": "return round(math.degrees(math.acos(cos_az)), 2)",
+    "derivation": "Python function translation",
+    "source_file": "firmament_model_FINAL.py",
+    "status": "current",
+    "raw_body": "\"\"\"Azimuth of sunrise.\"\"\"\n    if obs_date is None:\n        obs_date = date.today()\n    dec = get_declination(\"sun\", obs_date)\n    cos_az = math.sin(math.radians(dec)) / math.cos(math.radians(lat))\n    cos_az = max(-1.0, min(1.0, cos_az))"
+  },
+  {
+    "id": "FORM-084",
+    "name": "firmament_model_FINAL.py : sunset_azimuth",
+    "category": "math_node",
+    "formula": "return round(360.0 - sunrise_azimuth(lat, obs_date), 2)",
+    "derivation": "Python function translation",
+    "source_file": "firmament_model_FINAL.py",
+    "status": "current",
+    "raw_body": "\"\"\"Azimuth of sunset.\"\"\""
+  },
+  {
+    "id": "FORM-085",
+    "name": "firmament_model_FINAL.py : is_circumpolar",
+    "category": "math_node",
+    "formula": "return abs(dec) > (90 - abs(lat))",
+    "derivation": "Python function translation",
+    "source_file": "firmament_model_FINAL.py",
+    "status": "current",
+    "raw_body": "\"\"\"Whether a body never sets (always above horizon).\"\"\"\n    if obs_date is None:\n        obs_date = date.today()\n    dec = get_declination(body, obs_date)"
+  },
+  {
+    "id": "FORM-086",
+    "name": "firmament_model_FINAL.py : is_visible",
+    "category": "math_node",
+    "formula": "return max_elev > 0",
+    "derivation": "Python function translation",
+    "source_file": "firmament_model_FINAL.py",
+    "status": "current",
+    "raw_body": "\"\"\"Whether a body ever rises above the horizon.\"\"\"\n    if obs_date is None:\n        obs_date = date.today()\n    dec = get_declination(body, obs_date)\n    max_elev = 90 - abs(lat - dec)"
+  },
+  {
+    "id": "FORM-087",
+    "name": "task3_1_chaos.py : haversine",
+    "category": "math_node",
+    "formula": "return np.degrees(c)",
+    "derivation": "Python function translation",
+    "source_file": "task3_1_chaos.py",
+    "status": "current",
+    "raw_body": "R = 6371.0 # km\n    phi1 = np.radians(lat1)\n    phi2 = np.radians(lat2)\n    delta_phi = np.radians(lat2 - lat1)\n    delta_lambda = np.radians(lon2 - lon1)\n    a = np.sin(delta_phi/2.0)**2 + np.cos(phi1) * np.cos(phi2) * np.sin(delta_lambda/2.0)**2\n    c = 2 * np.arctan2(np.sqrt(a), np.sqrt(1-a))"
+  },
+  {
+    "id": "FORM-088",
+    "name": "task3_1_chaos.py : exp_model",
+    "category": "math_node",
+    "formula": "return a * np.exp(k * (t - 2000)) + c",
+    "derivation": "Python function translation",
+    "source_file": "task3_1_chaos.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-089",
+    "name": "v15_pipeline.py : find_body_transit",
+    "category": "math_node",
+    "formula": "return times2[idx2], altaz2[idx2].alt.deg, altaz2[idx2].az.deg",
+    "derivation": "Python function translation",
+    "source_file": "v15_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"\n    Find when a body reaches its highest altitude (transit/meridian crossing)\n    on the given date, searching the full 24-hour UTC window centered on\n    the location's approximate midnight.\n    \"\"\"\n    # Approximate local midnight in UTC\n    approx_midnight_utc = -location.lon.deg / 15.0  # hours offset\n    t_center = Time(f\"{date_str}T12:00:00\", scale=\"utc\") \n    \n    # Search full 36-hour window to be safe\n    times = t_center + TimeDelta(np.linspace(-18, 18, n_coarse) * 3600, format=\"sec\")\n    frame = AltAz(obstime=times, location=location)\n    \n    if body_name == \"polaris\":\n        coord = SkyCoord(ra=\"02h31m49.09s\", dec=\"+89d15m50.8s\", frame=\"icrs\")\n        altaz = coord.transform_to(frame)\n    else:\n        altaz = get_body(body_name, times).transform_to(frame)\n    \n    alts = altaz.alt.deg\n    idx = np.argmax(alts)\n    \n    # Refine around peak\n    if idx > 0 and idx < len(times) - 1:\n        t_lo = times[max(0, idx - 2)]\n        t_hi = times[min(len(times) - 1, idx + 2)]\n        times2 = t_lo + TimeDelta(np.linspace(0, (t_hi - t_lo).sec, n_fine), format=\"sec\")\n        frame2 = AltAz(obstime=times2, location=location)\n        if body_name == \"polaris\":\n            altaz2 = coord.transform_to(frame2)\n        else:\n            altaz2 = get_body(body_name, times2).transform_to(frame2)\n        idx2 = np.argmax(altaz2.alt.deg)"
+  },
+  {
+    "id": "FORM-090",
+    "name": "v15_pipeline.py : elev_formula",
+    "category": "math_node",
+    "formula": "return min(90.0, 90.0 - abs(lat - dec))",
+    "derivation": "Python function translation",
+    "source_file": "v15_pipeline.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-091",
+    "name": "v15_pipeline.py : pred_transit_az",
+    "category": "math_node",
+    "formula": "return 180.0 if lat >= 0 else 0.0",
+    "derivation": "Python function translation",
+    "source_file": "v15_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"At transit, body crosses meridian: due south (north hem) or due north (south hem)\"\"\""
+  },
+  {
+    "id": "FORM-092",
+    "name": "v15_pipeline.py : wrap_az_err",
+    "category": "math_node",
+    "formula": "return e",
+    "derivation": "Python function translation",
+    "source_file": "v15_pipeline.py",
+    "status": "current",
+    "raw_body": "e = obs - pred\n    if e > 180: e -= 360\n    elif e < -180: e += 360"
+  },
+  {
+    "id": "FORM-093",
+    "name": "v27_pipeline.py : mr",
+    "category": "math_node",
+    "formula": "return 90.0 - abs(obs_lat - star_dec)",
+    "derivation": "Python function translation",
+    "source_file": "v27_pipeline.py",
+    "status": "current",
+    "raw_body": "master.append({'SECTION':s,'SUBSECTION':ss,'PARAMETER':p,\n                   'OBSERVED_VALUE':str(o),'MODEL_VALUE':str(m),'ERROR':str(e),'NOTES':n})\n\ndef predict_transit_elev(obs_lat, star_dec):"
+  },
+  {
+    "id": "FORM-094",
+    "name": "v27_pipeline.py : solve_layer_height",
+    "category": "math_node",
+    "formula": "return None",
+    "derivation": "Python function translation",
+    "source_file": "v27_pipeline.py",
+    "status": "current",
+    "raw_body": "pred_elev = predict_transit_elev(obs_lat, star_dec)\n    if abs(pred_elev) < 1.0 or abs(observed_elev) < 1.0:"
+  },
+  {
+    "id": "FORM-095",
+    "name": "v27_pipeline.py : exp_decay",
+    "category": "math_node",
+    "formula": "return A * np.exp(-k * (x - 1900))",
+    "derivation": "Python function translation",
+    "source_file": "v27_pipeline.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-096",
+    "name": "v47_followup_analysis_clean.py : exp_decay",
+    "category": "math_node",
+    "formula": "return I0 * np.exp(-k * t)",
+    "derivation": "Python function translation",
+    "source_file": "v47_followup_analysis_clean.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-097",
+    "name": "v47_followup_analysis_clean.py : exp_approach",
+    "category": "math_node",
+    "formula": "return 120 - a * np.exp(-b * t) + c",
+    "derivation": "Python function translation",
+    "source_file": "v47_followup_analysis_clean.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-098",
+    "name": "independent_verification.py : find_saa_nodes",
+    "category": "math_node",
+    "formula": "return data[year]",
+    "derivation": "Python function translation",
+    "source_file": "independent_verification.py",
+    "status": "current",
+    "raw_body": "data = {\n        2000: {'sa_lat': -26.0, 'sa_lon': 305.0, 'sa_int': 22850, 'af_lat': -35.0, 'af_lon': 10.0, 'af_int': 23050, 'gc_dist': 65.2},\n        2005: {'sa_lat': -26.2, 'sa_lon': 303.5, 'sa_int': 22710, 'af_lat': -35.8, 'af_lon': 11.5, 'af_int': 22820, 'gc_dist': 67.1},\n        2010: {'sa_lat': -26.4, 'sa_lon': 302.0, 'sa_int': 22580, 'af_lat': -36.5, 'af_lon': 13.0, 'af_int': 22590, 'gc_dist': 68.9},\n        2015: {'sa_lat': -26.6, 'sa_lon': 300.5, 'sa_int': 22460, 'af_lat': -37.2, 'af_lon': 14.5, 'af_int': 22350, 'gc_dist': 70.8},\n        2020: {'sa_lat': -26.8, 'sa_lon': 299.0, 'sa_int': 22330, 'af_lat': -38.0, 'af_lon': 16.0, 'af_int': 22110, 'gc_dist': 72.7},\n        2025: {'sa_lat': -27.0, 'sa_lon': 297.5, 'sa_int': 22200, 'af_lat': -38.8, 'af_lon': 17.5, 'af_int': 21880, 'gc_dist': 74.5}\n    }"
+  },
+  {
+    "id": "FORM-099",
+    "name": "independent_verification.py : exp_approach",
+    "category": "math_node",
+    "formula": "return 120 - a * np.exp(-b*(t-1990)) + c",
+    "derivation": "Python function translation",
+    "source_file": "independent_verification.py",
+    "status": "current",
+    "raw_body": ""
+  },
+  {
+    "id": "FORM-100",
+    "name": "v22_pipeline.py : flat_ae_dist",
+    "category": "math_node",
+    "formula": "return math.sqrt((r1*math.cos(t1)-r2*math.cos(t2))**2 + (r1*math.sin(t1)-r2*math.sin(t2))**2)",
+    "derivation": "Python function translation",
+    "source_file": "v22_pipeline.py",
+    "status": "current",
+    "raw_body": "r1 = (90-lat1)*111.32; r2 = (90-lat2)*111.32\n    t1,t2 = math.radians(lon1), math.radians(lon2)"
+  },
+  {
+    "id": "FORM-101",
+    "name": "v22_pipeline.py : flat_ae_arc",
+    "category": "math_node",
+    "formula": "return math.sqrt(arc**2 + dr**2)",
+    "derivation": "Python function translation",
+    "source_file": "v22_pipeline.py",
+    "status": "current",
+    "raw_body": "r1 = (90-lat1)*111.32; r2 = (90-lat2)*111.32\n    r_avg = (r1+r2)/2\n    dlon = abs(lon2-lon1)\n    if dlon > 180: dlon = 360 - dlon\n    arc = r_avg * math.radians(dlon)\n    # Add radial component if at different latitudes\n    dr = abs(r1-r2)"
+  },
+  {
+    "id": "FORM-102",
+    "name": "v22_pipeline.py : bipolar_dist",
+    "category": "math_node",
+    "formula": "return flat_ae_dist(lat1,lon1,lat2,lon2)",
+    "derivation": "Python function translation",
+    "source_file": "v22_pipeline.py",
+    "status": "current",
+    "raw_body": "# Both in same hemisphere: use AE from that pole\n    if lat1 >= 0 and lat2 >= 0:"
+  },
+  {
+    "id": "FORM-103",
+    "name": "v22_pipeline.py : m_dl",
+    "category": "math_node",
+    "formula": "return min(24.0, max(0.0, h))",
+    "derivation": "Python function translation",
+    "source_file": "v22_pipeline.py",
+    "status": "current",
+    "raw_body": "lr,dr,ar = math.radians(lat), math.radians(dec), math.radians(-0.833)\n    c = (math.sin(ar)-math.sin(lr)*math.sin(dr))/(math.cos(lr)*math.cos(dr))\n    c = max(-1,min(1,c))\n    h = 2*math.degrees(math.acos(c))/15"
+  },
+  {
+    "id": "FORM-104",
+    "name": "v22_pipeline.py : find_sun_transit",
+    "category": "math_node",
+    "formula": "return sa[i].alt.deg",
+    "derivation": "Python function translation",
+    "source_file": "v22_pipeline.py",
+    "status": "current",
+    "raw_body": "tc = Time(f\"{date_str}T12:00:00\", scale=\"utc\")\n    off = -loc.lon.deg/15.0\n    t0 = tc + TimeDelta(off*3600, format=\"sec\")\n    ts = t0 + TimeDelta(np.linspace(-6,6,200)*3600, format=\"sec\")\n    fr = AltAz(obstime=ts, location=loc)\n    sa = get_sun(ts).transform_to(fr)\n    i = np.argmax(sa.alt.deg)"
+  },
+  {
+    "id": "FORM-105",
+    "name": "v19_pipeline.py : m_az",
+    "category": "math_node",
+    "formula": "return 180.0 if lat >= 0 else 0.0",
+    "derivation": "Python function translation",
+    "source_file": "v19_pipeline.py",
+    "status": "current",
+    "raw_body": "d = lat - dec\n    if abs(d) < 0.5:"
+  },
+  {
+    "id": "FORM-106",
+    "name": "v19_pipeline.py : m_dl",
+    "category": "math_node",
+    "formula": "return 2*math.degrees(math.acos(c))/15.0",
+    "derivation": "Python function translation",
+    "source_file": "v19_pipeline.py",
+    "status": "current",
+    "raw_body": "lr,dr,ar = math.radians(lat), math.radians(dec), math.radians(ALT_MIN)\n    c = (math.sin(ar)-math.sin(lr)*math.sin(dr))/(math.cos(lr)*math.cos(dr))\n    c = max(-1,min(1,c))"
+  },
+  {
+    "id": "FORM-107",
+    "name": "v19_pipeline.py : m_rise_az",
+    "category": "math_node",
+    "formula": "return math.degrees(math.acos(max(-1,min(1,c))))",
+    "derivation": "Python function translation",
+    "source_file": "v19_pipeline.py",
+    "status": "current",
+    "raw_body": "c = math.sin(math.radians(dec))/math.cos(math.radians(lat))"
+  },
+  {
+    "id": "FORM-108",
+    "name": "v19_pipeline.py : m_polaris",
+    "category": "math_node",
+    "formula": "return -e if lat < 0 else e",
+    "derivation": "Python function translation",
+    "source_file": "v19_pipeline.py",
+    "status": "current",
+    "raw_body": "al = max(abs(lat),0.01)\n    e = math.degrees(math.atan(6500/(6500/math.tan(math.radians(al)))))"
+  },
+  {
+    "id": "FORM-109",
+    "name": "v19_pipeline.py : find_sun_transit",
+    "category": "math_node",
+    "formula": "return ts[i], sa[i].alt.deg, sa[i].az.deg",
+    "derivation": "Python function translation",
+    "source_file": "v19_pipeline.py",
+    "status": "current",
+    "raw_body": "tc = Time(f\"{date_str}T12:00:00\", scale=\"utc\")\n    off = -loc.lon.deg/15.0\n    t0 = tc + TimeDelta(off*3600, format=\"sec\")\n    ts = t0 + TimeDelta(np.linspace(-6,6,200)*3600, format=\"sec\")\n    fr = AltAz(obstime=ts, location=loc)\n    sa = get_sun(ts).transform_to(fr)\n    i = np.argmax(sa.alt.deg)"
+  },
+  {
+    "id": "FORM-110",
+    "name": "v19_pipeline.py : sun_dec",
+    "category": "math_node",
+    "formula": "return 23.44 * math.sin(2*math.pi*(days-79)/365.25)",
+    "derivation": "Python function translation",
+    "source_file": "v19_pipeline.py",
+    "status": "current",
+    "raw_body": "days = (d - date(2026,1,1)).days"
+  },
+  {
+    "id": "FORM-111",
+    "name": "v19_pipeline.py : jup_dec",
+    "category": "math_node",
+    "formula": "return 23.175 - 0.018 * days",
+    "derivation": "Python function translation",
+    "source_file": "v19_pipeline.py",
+    "status": "current",
+    "raw_body": "days = (d - date(2026,1,1)).days"
+  },
+  {
+    "id": "FORM-112",
+    "name": "v19_pipeline.py : moon_dec",
+    "category": "math_node",
+    "formula": "return 28.6 * math.sin(2*math.pi*days/27.3 + 1.2)",
+    "derivation": "Python function translation",
+    "source_file": "v19_pipeline.py",
+    "status": "current",
+    "raw_body": "days = (d - date(2026,1,1)).days"
+  },
+  {
+    "id": "FORM-113",
+    "name": "v19_pipeline.py : mars_dec",
+    "category": "math_node",
+    "formula": "return -14.5 + 0.02 * days",
+    "derivation": "Python function translation",
+    "source_file": "v19_pipeline.py",
+    "status": "current",
+    "raw_body": "days = (d - date(2026,1,1)).days"
+  },
+  {
+    "id": "FORM-114",
+    "name": "v19_pipeline.py : venus_dec",
+    "category": "math_node",
+    "formula": "return -20.0 + 0.1 * days",
+    "derivation": "Python function translation",
+    "source_file": "v19_pipeline.py",
+    "status": "current",
+    "raw_body": "days = (d - date(2026,1,1)).days"
+  },
+  {
+    "id": "FORM-115",
+    "name": "v19_pipeline.py : transit_az",
+    "category": "math_node",
+    "formula": "return \"ZENITH\"",
+    "derivation": "Python function translation",
+    "source_file": "v19_pipeline.py",
+    "status": "current",
+    "raw_body": "d = lat - dec\n    if abs(d) < 0.5:"
+  },
+  {
+    "id": "FORM-116",
+    "name": "v19_pipeline.py : day_len",
+    "category": "math_node",
+    "formula": "return \"24:00 (Polar Day)\"",
+    "derivation": "Python function translation",
+    "source_file": "v19_pipeline.py",
+    "status": "current",
+    "raw_body": "lr,dr,ar = math.radians(lat), math.radians(dec), math.radians(ALT_MIN)\n    c = (math.sin(ar)-math.sin(lr)*math.sin(dr))/(math.cos(lr)*math.cos(dr))\n    c = max(-1,min(1,c))\n    h = 2*math.degrees(math.acos(c))/15\n    if h >= 24:"
+  },
+  {
+    "id": "FORM-117",
+    "name": "v19_pipeline.py : rise_az",
+    "category": "math_node",
+    "formula": "return math.degrees(math.acos(max(-1,min(1,c))))",
+    "derivation": "Python function translation",
+    "source_file": "v19_pipeline.py",
+    "status": "current",
+    "raw_body": "c = math.sin(math.radians(dec))/math.cos(math.radians(lat))"
+  },
+  {
+    "id": "FORM-118",
+    "name": "v37_pipeline.py : n_index",
+    "category": "math_node",
+    "formula": "return 1.0 + N0_aether * math.exp(-z_km / scale_height)",
+    "derivation": "Python function translation",
+    "source_file": "v37_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"Refractive index decreasing exponentially with height.\"\"\""
+  },
+  {
+    "id": "FORM-119",
+    "name": "v37_pipeline.py : dn_dz",
+    "category": "math_node",
+    "formula": "return -(N0_aether / scale_height) * math.exp(-z_km / scale_height)",
+    "derivation": "Python function translation",
+    "source_file": "v37_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"Gradient of refractive index with height.\"\"\""
+  },
+  {
+    "id": "FORM-120",
+    "name": "v37_pipeline.py : trace_ray",
+    "category": "math_node",
+    "formula": "return np.array(path_x), np.array(path_z)",
+    "derivation": "Python function translation",
+    "source_file": "v37_pipeline.py",
+    "status": "current",
+    "raw_body": "\"\"\"\n    Shoot a ray from z0 at a given elevation angle.\n    Returns the path (x, z) up to max_dist_km.\n    \"\"\"\n    s_step = 0.5  # km step size along ray path\n    ds = s_step\n    \n    x, z = 0.0, z0_km\n    theta = math.radians(initial_elevation_deg)\n    \n    path_x = [x]\n    path_z = [z]\n    \n    # initial ray direction unit vector\n    vx = math.cos(theta)\n    vz = math.sin(theta)\n    \n    s = 0\n    while s < max_dist_km:\n        n = n_index(z)\n        dn = dn_dz(z)\n        \n        # Ray equation bending: change in direction vector\n        # dvz/ds = (1/n) * (dn/dz - vz * (vz*dn_dz + vx*0))  approx: dvz/ds = (1/n)*dn/dz * (1 - vz^2)\n        # More simply, curvature vector is normal to ray\n        curvature = dn / n * math.cos(math.atan2(vz, vx))\n        \n        # Change angle\n        theta += curvature * ds\n        \n        vx = math.cos(theta)\n        vz = math.sin(theta)\n        \n        x += vx * ds\n        z += vz * ds\n        s += ds\n        \n        path_x.append(x)\n        path_z.append(z)\n        \n        if z < 0: # Hit the ground\n            break"
   }
 ]

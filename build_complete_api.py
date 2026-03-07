@@ -2,6 +2,8 @@ import os
 import json
 import glob
 import hashlib
+import pandas as pd
+import re
 
 API_DIR = "/Users/nicholashughes/.gemini/antigravity/scratch/astro_observations/predictions/api"
 CURRENT_DIR = f"{API_DIR}/current"
@@ -145,18 +147,18 @@ results = [
     "verdict": "inconclusive",
     "counts_against_model": False,
     "margin": {
-      "missed_by_nT": -7.6,
+      "missed_by_nT": -7.6, # Predicted -10.0, got -17.6
       "missed_by_percent": 76.0,
       "within_uncertainty": False,
       "within_2x_uncertainty": False
     },
     "mainstream_comparison": {
       "mainstream_expected": "0.0 to -5.0 nT",
-      "context": "Massively confirmed at CMO and NEW (~17nT with SNR>4). However, other stations failed the noise floor test (SNR<2) or lacked data."
+      "context": "Model predicted -10nT. At the best distinct stations (CMO, NEW) the signal strongly overshot predictions, measuring -17.6nT with a massive SNR of 4.0. However, 7 other stations were rejected due to data gaps or excessive baseline noise (SNR < 2)."
     },
-    "lesson": "Global averaging can erase localized strong hits. Analyze cleanly isolated stations individually.",
+    "lesson": "Global averaging erasing localized strong hits is a bad methodology. We successfully observed an anomaly stronger than predicted at clean stations, but variance at noisy stations prevents sweeping network confirmation.",
     "display_color": "grey",
-    "display_label": "MIXED RESULTS (Local Confirms)"
+    "display_label": "MIXED (Strong Local Overshoot)"
   },
   {
     "id": "TASK-3-1",
@@ -194,81 +196,90 @@ with open(f"{CURRENT_DIR}/results.json", "w") as f:
     json.dump(results, f, indent=2)
 
 # 5. api/current/formulas.json
+# Dynamically extract python formulas + load predefined historical
 formulas = [
   {
     "id": "FORM-001",
     "name": "Tesla Disc Resonance",
     "category": "resonance",
     "formula": "f = c / (2 * D)",
-    "variables": {
-      "f": "frequency Hz",
-      "c": "speed of light 299792 km/s",
-      "D": "disc thickness km"
-    },
-    "solved_values": {
-      "input_c": 299792,
-      "input_D": 12717,
-      "output_f": 11.787,
-      "output_unit": "Hz"
-    },
     "derivation": "Vertical standing wave, wavelength = 2D, f = c/lambda",
     "source_file": "DOME_COSMOLOGY_MASTER_V45.md",
     "status": "current",
-    "cross_refs": ["WIN-001", "W003"]
   },
   {
     "id": "FORM-002",
     "name": "Schumann Geometric Theoretical",
     "category": "resonance",
     "formula": "f_n = c / (2 * pi * R) * sqrt(n*(n+1))",
-    "variables": {"f_n": "Schumann harmonic n", "R": "Earth radius", "c": "light speed"},
-    "solved_values": {"input_R": 6371, "input_n": 1, "input_c": 299792, "output_f": 10.59, "output_unit": "Hz"},
     "derivation": "Schumann's original pure mathematical derivation without the ad-hoc finite conductivity 'fudge factor'.",
     "source_file": "DOME_COSMOLOGY_MASTER_V48.csv",
     "status": "current",
-    "cross_refs": ["WIN-002"]
   },
   {
     "id": "FORM-003",
     "name": "Magnetic-Gravity Eclipse Coupling Scaling",
     "category": "gravity_coupling",
     "formula": "coupling_ratio = max_Z_drop / max_gravity_drop",
-    "variables": {"max_Z_drop": "BOU 2017 anomaly in nT", "max_gravity_drop": "Mohe 1997 anomaly in uGal"},
-    "solved_values": {"input_max_Z_drop": -10.9, "input_max_gravity_drop": -6.5, "output_ratio": 1.67, "output_unit": "nT/uGal"},
     "derivation": "Derived empirically by comparing two definitive eclipse anomalies. Used to predict gravity anomalies from magnetic precursors.",
     "source_file": "task4_1_eclipse.py",
     "status": "current",
-    "cross_refs": ["WIN-012", "PRED-006"]
   },
   {
     "id": "FORM-004",
     "name": "SAA Node Separation (Exponential)",
     "category": "magnetic",
     "formula": "separation_deg = C + A * exp(k * (year - 1990))",
-    "variables": {"C": "baseline offset", "A": "amplitude", "k": "growth rate", "year": "Current year"},
-    "solved_values": {"input_C": 49.956, "input_A": 3.539, "input_k": 0.03146, "input_year": 2025, "output_separation": 60.59, "output_unit": "degrees"},
     "derivation": "Fitted directly from high-resolution CHAOS-7 spherical harmonic coefficients. Demonstrates physical pulling apart of two sub-nodes.",
     "source_file": "task3_1_chaos.py",
     "status": "current",
-    "cross_refs": ["WIN-004", "W002"]
   },
   {
     "id": "FORM-005",
     "name": "Eclipse Aetheric Deflection",
     "category": "aetheric",
     "formula": "delta_Z = eclipse_day_Z - 3_day_quiet_mean_Z",
-    "variables": {"eclipse_day_Z": "Z-component intensity during eclipse window", "3_day_quiet_mean_Z": "Z-component baseline derived from non-disturbed days"},
-    "solved_values": {},
     "derivation": "Requires strictly 'quiet' geomagnetic background days (Kp < 3) surrounding the eclipse to isolate the true aetheric shielding effect.",
     "source_file": "task4_1_eclipse.py",
     "status": "current",
-    "cross_refs": ["W004"]
   }
 ]
+
+# Extract all formulas defined in python functions
+py_files = glob.glob(f"{FE_DIR}/*.py")
+func_pattern = re.compile(r"def\s+([^:]+):\n(.*?)return\s+(.*?)\n", re.DOTALL)
+
+f_count = 6
+for py_file in py_files:
+    if "venv" in py_file: continue
+    
+    with open(py_file, "r", encoding="utf-8", errors="replace") as f:
+        content = f.read()
+        
+    for match in func_pattern.finditer(content):
+        func_sig = match.group(1).strip()
+        func_body = match.group(2)
+        func_ret = match.group(3).strip()
+        
+        # Only take compact mathematical functions (no large loops/logic blocks)
+        if "for " not in func_body and len(func_body.split("\\n")) < 15:
+            formulas.append({
+                "id": f"FORM-{f_count:03d}",
+                "name": f"{os.path.basename(py_file)} : {func_sig.split('(')[0]}",
+                "category": "math_node",
+                "formula": f"return {func_ret}",
+                "derivation": "Python function translation",
+                "source_file": os.path.basename(py_file),
+                "status": "current",
+                "raw_body": func_body.strip()
+            })
+            f_count += 1
+            
 with open(f"{CURRENT_DIR}/formulas.json", "w") as f:
     json.dump(formulas, f, indent=2)
 
 # 6. api/current/data.json
+# Dynamically extract all rows from UNIFIED_MASTER_V1_V31.csv + predefined data
 empirical_data = [
   {
     "id": "DATA-001",
@@ -278,8 +289,7 @@ empirical_data = [
     "timestamp": "2017-08-21T17:20:00Z",
     "source": "INTERMAGNET BOU Observatory",
     "caveats": "Geomagnetically disturbed day. Kp elevated to 4-5. Storm-time variation cannot be separated from eclipse signal. Flagged by Claude 2026-03-06. Needs quiet-day baseline comparison recalculation.",
-    "quality_flag": "CAVEAT",
-    "used_in": ["WIN-010", "PRED-001 to 008"]
+    "quality_flag": "CAVEAT"
   },
   {
     "id": "DATA-002",
@@ -289,8 +299,7 @@ empirical_data = [
     "timestamp": "1905-04-18T00:00:00Z",
     "source": "US Patent 787412",
     "caveats": "Claude flagged exact circular derivation (f to T and back to f). Reassigned as frequency-first confirmation rather than independent velocity derivation.",
-    "quality_flag": "CAVEAT - Circularity noted",
-    "used_in": ["WIN-001"]
+    "quality_flag": "CAVEAT - Circularity noted"
   },
   {
     "id": "DATA-003",
@@ -300,8 +309,7 @@ empirical_data = [
     "timestamp": "2026-03-06T00:00:00Z",
     "source": "INTERMAGNET HUA (Python Local Fetch)",
     "caveats": "Expected signal was -2.1 nT, but ambient noise floor of HUA was +/- 10.95 nT. The predicted signal is fundamentally undetectable at a single station with this methodology.",
-    "quality_flag": "CAVEAT - Noise limited, single station limitation recognized by Claude",
-    "used_in": ["W001"]
+    "quality_flag": "CAVEAT - Noise limited, single station limitation recognized by Claude"
   },
   {
     "id": "DATA-004",
@@ -311,10 +319,29 @@ empirical_data = [
     "timestamp": "1997-03-09T00:00:00Z",
     "source": "Chinese Academy of Sciences (Wang et al. 2000)",
     "caveats": "Recorded on unshielded LaCoste-Romberg spring gravimeters. Confirmed against Superconducting Gravimeters (SG) which show null results (Membach 1999).",
-    "quality_flag": "HIGH",
-    "used_in": ["WIN-011", "PRED-006"]
+    "quality_flag": "HIGH"
   }
 ]
+
+# Pull all rows from the UNIFIED MASTER CSV
+master_csv_path = f"{FE_DIR}/UNIFIED_MASTER_V1_V31.csv"
+if os.path.exists(master_csv_path):
+    df = pd.read_csv(master_csv_path)
+    d_count = 5
+    for _, row in df.iterrows():
+        empirical_data.append({
+            "id": f"DATA-{d_count:03d}",
+            "name": f"{row.get('SECTION','')} : {row.get('SUBSECTION','')}",
+            "value": str(row.get('OBSERVED', row.get('MODEL', ''))),
+            "unit": "mixed",
+            "timestamp": "Varies by parameter",
+            "source": f"UNIFIED_MASTER_V1_V31.csv Row {_}",
+            "caveats": str(row.get('NOTES', '')),
+            "quality_flag": "REGISTRY NODE",
+            "metadata_dump": row.to_dict()
+        })
+        d_count += 1
+
 with open(f"{CURRENT_DIR}/data.json", "w") as f:
     json.dump(empirical_data, f, indent=2)
 
@@ -333,7 +360,7 @@ for script_path in py_files:
         continue
         
     code_registry.append({
-      "id": f"CODE-{filename.split('.')[0]}",
+      "id": f"CODE-{hashlib.md5(filename.encode()).hexdigest()[:8]}", # Use deterministic hash or safe string, split('.') was failing on unexpected files
       "filename": filename,
       "purpose": f"Computational framework execution logic for {filename}",
       "status": "current",
@@ -404,4 +431,4 @@ history = {
 with open(f"{ARCHIVE_DIR}/model_history.json", "w") as f:
     json.dump(history, f, indent=2)
 
-print("COMPLETE API BUILD FINISHED.")
+print("COMPLETE EXHAUSTIVE API BUILD FINISHED.")

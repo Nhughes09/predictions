@@ -1,6 +1,6 @@
 [
   {
-    "id": "CODE-append_v47",
+    "id": "CODE-f879bcbc",
     "filename": "append_v47.py",
     "purpose": "Computational framework execution logic for append_v47.py",
     "status": "current",
@@ -16,7 +16,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v17_pipeline",
+    "id": "CODE-7dc0f5af",
     "filename": "v17_pipeline.py",
     "purpose": "Computational framework execution logic for v17_pipeline.py",
     "status": "current",
@@ -32,7 +32,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v47_followup_analysis",
+    "id": "CODE-513d6943",
     "filename": "v47_followup_analysis.py",
     "purpose": "Computational framework execution logic for v47_followup_analysis.py",
     "status": "current",
@@ -48,7 +48,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v25_pipeline",
+    "id": "CODE-5bd51504",
     "filename": "v25_pipeline.py",
     "purpose": "Computational framework execution logic for v25_pipeline.py",
     "status": "current",
@@ -64,7 +64,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v34b_pipeline",
+    "id": "CODE-9c0d5c91",
     "filename": "v34b_pipeline.py",
     "purpose": "Computational framework execution logic for v34b_pipeline.py",
     "status": "current",
@@ -80,7 +80,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-build_unified_master",
+    "id": "CODE-a9917c4a",
     "filename": "build_unified_master.py",
     "purpose": "Computational framework execution logic for build_unified_master.py",
     "status": "current",
@@ -96,7 +96,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v20_pipeline",
+    "id": "CODE-1c4f520b",
     "filename": "v20_pipeline.py",
     "purpose": "Computational framework execution logic for v20_pipeline.py",
     "status": "current",
@@ -112,7 +112,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v45_pipeline",
+    "id": "CODE-e4025801",
     "filename": "v45_pipeline.py",
     "purpose": "Computational framework execution logic for v45_pipeline.py",
     "status": "current",
@@ -128,7 +128,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v35_pipeline",
+    "id": "CODE-5da67181",
     "filename": "v35_pipeline.py",
     "purpose": "Computational framework execution logic for v35_pipeline.py",
     "status": "current",
@@ -144,7 +144,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-append_phase4",
+    "id": "CODE-1cd07ae4",
     "filename": "append_phase4.py",
     "purpose": "Computational framework execution logic for append_phase4.py",
     "status": "current",
@@ -160,7 +160,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v18_pipeline",
+    "id": "CODE-98d9aee5",
     "filename": "v18_pipeline.py",
     "purpose": "Computational framework execution logic for v18_pipeline.py",
     "status": "current",
@@ -176,7 +176,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v36_pipeline",
+    "id": "CODE-6b026ff9",
     "filename": "v36_pipeline.py",
     "purpose": "Computational framework execution logic for v36_pipeline.py",
     "status": "current",
@@ -192,7 +192,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v23_pipeline",
+    "id": "CODE-cef5bb4d",
     "filename": "v23_pipeline.py",
     "purpose": "Computational framework execution logic for v23_pipeline.py",
     "status": "current",
@@ -208,7 +208,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-task4_3_aic",
+    "id": "CODE-51530125",
     "filename": "task4_3_aic.py",
     "purpose": "Computational framework execution logic for task4_3_aic.py",
     "status": "current",
@@ -224,7 +224,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-analyze_resonance",
+    "id": "CODE-4160b03f",
     "filename": "analyze_resonance.py",
     "purpose": "Computational framework execution logic for analyze_resonance.py",
     "status": "current",
@@ -240,7 +240,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v34c_phase_objections",
+    "id": "CODE-4da9581c",
     "filename": "v34c_phase_objections.py",
     "purpose": "Computational framework execution logic for v34c_phase_objections.py",
     "status": "current",
@@ -256,7 +256,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-firmament_v8",
+    "id": "CODE-1f35e4a2",
     "filename": "firmament_v8.py",
     "purpose": "Computational framework execution logic for firmament_v8.py",
     "status": "current",
@@ -272,7 +272,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v26_pipeline",
+    "id": "CODE-5197641f",
     "filename": "v26_pipeline.py",
     "purpose": "Computational framework execution logic for v26_pipeline.py",
     "status": "current",
@@ -288,7 +288,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v14_pipeline",
+    "id": "CODE-971e7191",
     "filename": "v14_pipeline.py",
     "purpose": "Computational framework execution logic for v14_pipeline.py",
     "status": "current",
@@ -304,7 +304,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-dome_predictor_interactive",
+    "id": "CODE-36fc98b1",
     "filename": "dome_predictor_interactive.py",
     "purpose": "Computational framework execution logic for dome_predictor_interactive.py",
     "status": "current",
@@ -320,7 +320,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v33_pipeline",
+    "id": "CODE-dcabea99",
     "filename": "v33_pipeline.py",
     "purpose": "Computational framework execution logic for v33_pipeline.py",
     "status": "current",
@@ -336,7 +336,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v43_pipeline",
+    "id": "CODE-f15e1672",
     "filename": "v43_pipeline.py",
     "purpose": "Computational framework execution logic for v43_pipeline.py",
     "status": "current",
@@ -352,7 +352,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-phase6_analysis",
+    "id": "CODE-1df88e7c",
     "filename": "phase6_analysis.py",
     "purpose": "Computational framework execution logic for phase6_analysis.py",
     "status": "current",
@@ -368,7 +368,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v28_pipeline",
+    "id": "CODE-f87b0f02",
     "filename": "v28_pipeline.py",
     "purpose": "Computational framework execution logic for v28_pipeline.py",
     "status": "current",
@@ -384,7 +384,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-task4_1_eclipse",
+    "id": "CODE-78a95a20",
     "filename": "task4_1_eclipse.py",
     "purpose": "Computational framework execution logic for task4_1_eclipse.py",
     "status": "current",
@@ -400,7 +400,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v34_pipeline",
+    "id": "CODE-4d7e9592",
     "filename": "v34_pipeline.py",
     "purpose": "Computational framework execution logic for v34_pipeline.py",
     "status": "current",
@@ -416,7 +416,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v44_pipeline",
+    "id": "CODE-895a0887",
     "filename": "v44_pipeline.py",
     "purpose": "Computational framework execution logic for v44_pipeline.py",
     "status": "current",
@@ -432,7 +432,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-build_mega_prompt",
+    "id": "CODE-c91bcab7",
     "filename": "build_mega_prompt.py",
     "purpose": "Computational framework execution logic for build_mega_prompt.py",
     "status": "current",
@@ -448,7 +448,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v21_pipeline",
+    "id": "CODE-8e81174b",
     "filename": "v21_pipeline.py",
     "purpose": "Computational framework execution logic for v21_pipeline.py",
     "status": "current",
@@ -464,7 +464,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-astro_calc",
+    "id": "CODE-efe1892d",
     "filename": "astro_calc.py",
     "purpose": "Computational framework execution logic for astro_calc.py",
     "status": "current",
@@ -480,7 +480,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v13_pipeline",
+    "id": "CODE-32aa3cfb",
     "filename": "v13_pipeline.py",
     "purpose": "Computational framework execution logic for v13_pipeline.py",
     "status": "current",
@@ -496,7 +496,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v24_pipeline",
+    "id": "CODE-7e8fa6dd",
     "filename": "v24_pipeline.py",
     "purpose": "Computational framework execution logic for v24_pipeline.py",
     "status": "current",
@@ -512,7 +512,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v16_pipeline",
+    "id": "CODE-58a13ba8",
     "filename": "v16_pipeline.py",
     "purpose": "Computational framework execution logic for v16_pipeline.py",
     "status": "current",
@@ -528,7 +528,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-task3_2_pole",
+    "id": "CODE-98437357",
     "filename": "task3_2_pole.py",
     "purpose": "Computational framework execution logic for task3_2_pole.py",
     "status": "current",
@@ -544,7 +544,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-append_phase3",
+    "id": "CODE-48edb711",
     "filename": "append_phase3.py",
     "purpose": "Computational framework execution logic for append_phase3.py",
     "status": "current",
@@ -560,7 +560,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v31_pipeline",
+    "id": "CODE-87cb73a6",
     "filename": "v31_pipeline.py",
     "purpose": "Computational framework execution logic for v31_pipeline.py",
     "status": "current",
@@ -576,7 +576,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v42_pipeline",
+    "id": "CODE-b81c41cd",
     "filename": "v42_pipeline.py",
     "purpose": "Computational framework execution logic for v42_pipeline.py",
     "status": "current",
@@ -592,7 +592,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-analyze_geomagnetic",
+    "id": "CODE-56285821",
     "filename": "analyze_geomagnetic.py",
     "purpose": "Computational framework execution logic for analyze_geomagnetic.py",
     "status": "current",
@@ -608,7 +608,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v32_pipeline",
+    "id": "CODE-1c0e5a51",
     "filename": "v32_pipeline.py",
     "purpose": "Computational framework execution logic for v32_pipeline.py",
     "status": "current",
@@ -624,7 +624,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-firmament_model_FINAL",
+    "id": "CODE-60103a54",
     "filename": "firmament_model_FINAL.py",
     "purpose": "Computational framework execution logic for firmament_model_FINAL.py",
     "status": "current",
@@ -640,7 +640,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-task3_1_chaos",
+    "id": "CODE-d651246e",
     "filename": "task3_1_chaos.py",
     "purpose": "Computational framework execution logic for task3_1_chaos.py",
     "status": "current",
@@ -656,7 +656,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v15_pipeline",
+    "id": "CODE-594fbaed",
     "filename": "v15_pipeline.py",
     "purpose": "Computational framework execution logic for v15_pipeline.py",
     "status": "current",
@@ -672,7 +672,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-build_v48_master",
+    "id": "CODE-64db6e47",
     "filename": "build_v48_master.py",
     "purpose": "Computational framework execution logic for build_v48_master.py",
     "status": "current",
@@ -688,7 +688,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v27_pipeline",
+    "id": "CODE-f667dc41",
     "filename": "v27_pipeline.py",
     "purpose": "Computational framework execution logic for v27_pipeline.py",
     "status": "current",
@@ -704,7 +704,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v47_followup_analysis_clean",
+    "id": "CODE-6f2f76a4",
     "filename": "v47_followup_analysis_clean.py",
     "purpose": "Computational framework execution logic for v47_followup_analysis_clean.py",
     "status": "current",
@@ -720,7 +720,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-independent_verification",
+    "id": "CODE-f955e528",
     "filename": "independent_verification.py",
     "purpose": "Computational framework execution logic for independent_verification.py",
     "status": "current",
@@ -736,7 +736,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v22_pipeline",
+    "id": "CODE-682c6ff5",
     "filename": "v22_pipeline.py",
     "purpose": "Computational framework execution logic for v22_pipeline.py",
     "status": "current",
@@ -752,7 +752,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-test_igrf",
+    "id": "CODE-e904e8ad",
     "filename": "test_igrf.py",
     "purpose": "Computational framework execution logic for test_igrf.py",
     "status": "current",
@@ -768,7 +768,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v19_pipeline",
+    "id": "CODE-9a47a4ad",
     "filename": "v19_pipeline.py",
     "purpose": "Computational framework execution logic for v19_pipeline.py",
     "status": "current",
@@ -784,7 +784,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v37_pipeline",
+    "id": "CODE-67d7f062",
     "filename": "v37_pipeline.py",
     "purpose": "Computational framework execution logic for v37_pipeline.py",
     "status": "current",
@@ -800,7 +800,7 @@
     "verdict": "confirmed/inconclusive/pending dependent on script parameters"
   },
   {
-    "id": "CODE-v47_residual_analysis",
+    "id": "CODE-bec6e618",
     "filename": "v47_residual_analysis.py",
     "purpose": "Computational framework execution logic for v47_residual_analysis.py",
     "status": "current",

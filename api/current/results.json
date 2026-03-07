@@ -61,11 +61,11 @@
     },
     "mainstream_comparison": {
       "mainstream_expected": "0.0 to -5.0 nT",
-      "context": "Massively confirmed at CMO and NEW (~17nT with SNR>4). However, other stations failed the noise floor test (SNR<2) or lacked data."
+      "context": "Model predicted -10nT. At the best distinct stations (CMO, NEW) the signal strongly overshot predictions, measuring -17.6nT with a massive SNR of 4.0. However, 7 other stations were rejected due to data gaps or excessive baseline noise (SNR < 2)."
     },
-    "lesson": "Global averaging can erase localized strong hits. Analyze cleanly isolated stations individually.",
+    "lesson": "Global averaging erasing localized strong hits is a bad methodology. We successfully observed an anomaly stronger than predicted at clean stations, but variance at noisy stations prevents sweeping network confirmation.",
     "display_color": "grey",
-    "display_label": "MIXED RESULTS (Local Confirms)"
+    "display_label": "MIXED (Strong Local Overshoot)"
   },
   {
     "id": "TASK-3-1",

@@ -7,11 +7,7 @@
     "timestamp": "2017-08-21T17:20:00Z",
     "source": "INTERMAGNET BOU Observatory",
     "caveats": "Geomagnetically disturbed day. Kp elevated to 4-5. Storm-time variation cannot be separated from eclipse signal. Flagged by Claude 2026-03-06. Needs quiet-day baseline comparison recalculation.",
-    "quality_flag": "CAVEAT",
-    "used_in": [
-      "WIN-010",
-      "PRED-001 to 008"
-    ]
+    "quality_flag": "CAVEAT"
   },
   {
     "id": "DATA-002",
@@ -21,10 +17,7 @@
     "timestamp": "1905-04-18T00:00:00Z",
     "source": "US Patent 787412",
     "caveats": "Claude flagged exact circular derivation (f to T and back to f). Reassigned as frequency-first confirmation rather than independent velocity derivation.",
-    "quality_flag": "CAVEAT - Circularity noted",
-    "used_in": [
-      "WIN-001"
-    ]
+    "quality_flag": "CAVEAT - Circularity noted"
   },
   {
     "id": "DATA-003",
@@ -34,10 +27,7 @@
     "timestamp": "2026-03-06T00:00:00Z",
     "source": "INTERMAGNET HUA (Python Local Fetch)",
     "caveats": "Expected signal was -2.1 nT, but ambient noise floor of HUA was +/- 10.95 nT. The predicted signal is fundamentally undetectable at a single station with this methodology.",
-    "quality_flag": "CAVEAT - Noise limited, single station limitation recognized by Claude",
-    "used_in": [
-      "W001"
-    ]
+    "quality_flag": "CAVEAT - Noise limited, single station limitation recognized by Claude"
   },
   {
     "id": "DATA-004",
@@ -47,10 +37,1621 @@
     "timestamp": "1997-03-09T00:00:00Z",
     "source": "Chinese Academy of Sciences (Wang et al. 2000)",
     "caveats": "Recorded on unshielded LaCoste-Romberg spring gravimeters. Confirmed against Superconducting Gravimeters (SG) which show null results (Membach 1999).",
-    "quality_flag": "HIGH",
-    "used_in": [
-      "WIN-011",
-      "PRED-006"
-    ]
+    "quality_flag": "HIGH"
+  },
+  {
+    "id": "DATA-005",
+    "name": "ASTRO : Polaris",
+    "value": "35.91\u00b0 from Chapel Hill",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 0",
+    "caveats": "V1-V3, 31 cities, R\u00b2=0.9996",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "ASTRO",
+      "SUBSECTION": "Polaris",
+      "PARAMETER": "transit_elevation",
+      "OBSERVED": "35.91\u00b0 from Chapel Hill",
+      "MODEL": "90-|35.91-89.26|=36.65\u00b0",
+      "ERROR": "0.30\u00b0 mean err",
+      "NOTES": "V1-V3, 31 cities, R\u00b2=0.9996"
+    }
+  },
+  {
+    "id": "DATA-006",
+    "name": "ASTRO : Sun",
+    "value": "measured all 31 cities",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 1",
+    "caveats": "V11-V13, locked formula",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "ASTRO",
+      "SUBSECTION": "Sun",
+      "PARAMETER": "transit_elevation",
+      "OBSERVED": "measured all 31 cities",
+      "MODEL": "90-|lat-dec|",
+      "ERROR": "0.09\u00b0 mean err",
+      "NOTES": "V11-V13, locked formula"
+    }
+  },
+  {
+    "id": "DATA-007",
+    "name": "ASTRO : Sun",
+    "value": "measured all 31 cities",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 2",
+    "caveats": "V9-V10",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "ASTRO",
+      "SUBSECTION": "Sun",
+      "PARAMETER": "azimuth",
+      "OBSERVED": "measured all 31 cities",
+      "MODEL": "atan2(sin_ha,cos_ha*sin_lat-tan_dec*cos_lat)",
+      "ERROR": "0.46\u00b0 mean err",
+      "NOTES": "V9-V10"
+    }
+  },
+  {
+    "id": "DATA-008",
+    "name": "ASTRO : Sun",
+    "value": "measured all 31 cities",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 3",
+    "caveats": "V12-V17, refraction=-0.633\u00b0",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "ASTRO",
+      "SUBSECTION": "Sun",
+      "PARAMETER": "day_length",
+      "OBSERVED": "measured all 31 cities",
+      "MODEL": "2\u00d7acos(-tan(lat)\u00d7tan(dec))/15",
+      "ERROR": "8.4 min mean err",
+      "NOTES": "V12-V17, refraction=-0.633\u00b0"
+    }
+  },
+  {
+    "id": "DATA-009",
+    "name": "ASTRO : Sun",
+    "value": "measured all 31 cities",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 4",
+    "caveats": "V13",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "ASTRO",
+      "SUBSECTION": "Sun",
+      "PARAMETER": "sunrise_sunset_az",
+      "OBSERVED": "measured all 31 cities",
+      "MODEL": "acos(sin(dec)/cos(lat))",
+      "ERROR": "0.10\u00b0 mean err",
+      "NOTES": "V13"
+    }
+  },
+  {
+    "id": "DATA-010",
+    "name": "ASTRO : Jupiter",
+    "value": "measured all 31 cities",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 5",
+    "caveats": "V15, planet confirmed",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "ASTRO",
+      "SUBSECTION": "Jupiter",
+      "PARAMETER": "transit_elev_az",
+      "OBSERVED": "measured all 31 cities",
+      "MODEL": "same formula, dec=-3.2\u00b0",
+      "ERROR": "0.04\u00b0 elev, 0.06\u00b0 az",
+      "NOTES": "V15, planet confirmed"
+    }
+  },
+  {
+    "id": "DATA-011",
+    "name": "ASTRO : Moon",
+    "value": "measured all 31 cities",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 6",
+    "caveats": "V17, dec varies 13\u00b0/day",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "ASTRO",
+      "SUBSECTION": "Moon",
+      "PARAMETER": "transit_elevation",
+      "OBSERVED": "measured all 31 cities",
+      "MODEL": "same formula, per-city dec",
+      "ERROR": "0.82\u00b0 mean err",
+      "NOTES": "V17, dec varies 13\u00b0/day"
+    }
+  },
+  {
+    "id": "DATA-012",
+    "name": "ASTRO : Mars_Venus",
+    "value": "measured all 31 cities",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 7",
+    "caveats": "V18, 7 total bodies",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "ASTRO",
+      "SUBSECTION": "Mars_Venus",
+      "PARAMETER": "transit_elevation",
+      "OBSERVED": "measured all 31 cities",
+      "MODEL": "same formula",
+      "ERROR": "0.14\u00b0 mean err",
+      "NOTES": "V18, 7 total bodies"
+    }
+  },
+  {
+    "id": "DATA-013",
+    "name": "ASTRO : Eclipses",
+    "value": "10 future eclipses",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 8",
+    "caveats": "V19, 2026-2035",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "ASTRO",
+      "SUBSECTION": "Eclipses",
+      "PARAMETER": "timing_accuracy",
+      "OBSERVED": "10 future eclipses",
+      "MODEL": "Saros + dome geometry",
+      "ERROR": "10/10 correct",
+      "NOTES": "V19, 2026-2035"
+    }
+  },
+  {
+    "id": "DATA-014",
+    "name": "ASTRO : Polar",
+    "value": "Arctic/Antarctic",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 9",
+    "caveats": "V19, edge cases work",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "ASTRO",
+      "SUBSECTION": "Polar",
+      "PARAMETER": "day_night_prediction",
+      "OBSERVED": "Arctic/Antarctic",
+      "MODEL": "formula handles >66.5\u00b0",
+      "ERROR": "correct both",
+      "NOTES": "V19, edge cases work"
+    }
+  },
+  {
+    "id": "DATA-015",
+    "name": "ASTRO : Southern_Cross",
+    "value": "8 southern cities",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 10",
+    "caveats": "V18, Acrux/Gacrux/Mimosa/Delta",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "ASTRO",
+      "SUBSECTION": "Southern_Cross",
+      "PARAMETER": "visibility",
+      "OBSERVED": "8 southern cities",
+      "MODEL": "dec<-60\u00b0 visible from lat<-30\u00b0",
+      "ERROR": "8/8 correct",
+      "NOTES": "V18, Acrux/Gacrux/Mimosa/Delta"
+    }
+  },
+  {
+    "id": "DATA-016",
+    "name": "ASTRO : Circumpolar",
+    "value": "10 circumpolar stars",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 11",
+    "caveats": "V18",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "ASTRO",
+      "SUBSECTION": "Circumpolar",
+      "PARAMETER": "star_prediction",
+      "OBSERVED": "10 circumpolar stars",
+      "MODEL": "never sets if dec>90-lat",
+      "ERROR": "10/10 correct",
+      "NOTES": "V18"
+    }
+  },
+  {
+    "id": "DATA-017",
+    "name": "ASTRO : Star_Trails",
+    "value": "5 cities N+S hemisphere",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 12",
+    "caveats": "V20, single dome rotation",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "ASTRO",
+      "SUBSECTION": "Star_Trails",
+      "PARAMETER": "direction",
+      "OBSERVED": "5 cities N+S hemisphere",
+      "MODEL": "CW north, CCW south",
+      "ERROR": "5/5 correct",
+      "NOTES": "V20, single dome rotation"
+    }
+  },
+  {
+    "id": "DATA-018",
+    "name": "ASTRO : Time_Zones",
+    "value": "31 cities",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 13",
+    "caveats": "V20",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "ASTRO",
+      "SUBSECTION": "Time_Zones",
+      "PARAMETER": "longitude_correlation",
+      "OBSERVED": "31 cities",
+      "MODEL": "lon/15 = UTC offset",
+      "ERROR": "R\u00b2=0.9999",
+      "NOTES": "V20"
+    }
+  },
+  {
+    "id": "DATA-019",
+    "name": "ASTRO : Off_Transit",
+    "value": "21 measurements live",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 14",
+    "caveats": "V24, 03:25 UTC Mar 5 2026",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "ASTRO",
+      "SUBSECTION": "Off_Transit",
+      "PARAMETER": "real_time_any_moment",
+      "OBSERVED": "21 measurements live",
+      "MODEL": "hour angle formula",
+      "ERROR": "R\u00b2=0.9999",
+      "NOTES": "V24, 03:25 UTC Mar 5 2026"
+    }
+  },
+  {
+    "id": "DATA-020",
+    "name": "ASTRO : Equation_Time",
+    "value": "365-day cycle",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 15",
+    "caveats": "V22, figure-8 confirmed",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "ASTRO",
+      "SUBSECTION": "Equation_Time",
+      "PARAMETER": "analemma_fit",
+      "OBSERVED": "365-day cycle",
+      "MODEL": "eccentricity+obliquity",
+      "ERROR": "R\u00b2=0.975",
+      "NOTES": "V22, figure-8 confirmed"
+    }
+  },
+  {
+    "id": "DATA-021",
+    "name": "ASTRO : Sigma_Octantis",
+    "value": "elevation from 8 S cities",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 16",
+    "caveats": "V23, symmetric to Polaris",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "ASTRO",
+      "SUBSECTION": "Sigma_Octantis",
+      "PARAMETER": "south_pole_symmetric",
+      "OBSERVED": "elevation from 8 S cities",
+      "MODEL": "90-|lat-(-88.96)|",
+      "ERROR": "1.16\u00b0 mean err",
+      "NOTES": "V23, symmetric to Polaris"
+    }
+  },
+  {
+    "id": "DATA-022",
+    "name": "ASTRO : Coriolis",
+    "value": "f=2\u03a9sin(lat)",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 17",
+    "caveats": "V23, math is same",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "ASTRO",
+      "SUBSECTION": "Coriolis",
+      "PARAMETER": "parameter_comparison",
+      "OBSERVED": "f=2\u03a9sin(lat)",
+      "MODEL": "identical dome/globe",
+      "ERROR": "exact match",
+      "NOTES": "V23, math is same"
+    }
+  },
+  {
+    "id": "DATA-023",
+    "name": "ASTRO : Star_Layers",
+    "value": "all at ~6500km",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 18",
+    "caveats": "V27, NO outliers found",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "ASTRO",
+      "SUBSECTION": "Star_Layers",
+      "PARAMETER": "20_stars_10_cities",
+      "OBSERVED": "all at ~6500km",
+      "MODEL": "transit scan method",
+      "ERROR": "mean \u0394<0.01\u00b0",
+      "NOTES": "V27, NO outliers found"
+    }
+  },
+  {
+    "id": "DATA-024",
+    "name": "DOME : Polaris_Height",
+    "value": "6,500 km above plane",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 19",
+    "caveats": "center of dome",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "DOME",
+      "SUBSECTION": "Polaris_Height",
+      "PARAMETER": "anchor",
+      "OBSERVED": "6,500 km above plane",
+      "MODEL": "from 36.18\u00b0 at Chapel Hill",
+      "ERROR": "fixed V1",
+      "NOTES": "center of dome"
+    }
+  },
+  {
+    "id": "DATA-025",
+    "name": "DOME : Body_Shell",
+    "value": "14,000-16,000 km",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 20",
+    "caveats": "V18 \u2014 single shell finding",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "DOME",
+      "SUBSECTION": "Body_Shell",
+      "PARAMETER": "Sun_Moon_planets",
+      "OBSERVED": "14,000-16,000 km",
+      "MODEL": "median across all bodies",
+      "ERROR": "cluster",
+      "NOTES": "V18 \u2014 single shell finding"
+    }
+  },
+  {
+    "id": "DATA-026",
+    "name": "DOME : Star_Layer",
+    "value": "~6,500 km",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 21",
+    "caveats": "V27 \u2014 identical to Polaris",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "DOME",
+      "SUBSECTION": "Star_Layer",
+      "PARAMETER": "all_20_tested",
+      "OBSERVED": "~6,500 km",
+      "MODEL": "transit elevation method",
+      "ERROR": "<0.1\u00b0 deviation",
+      "NOTES": "V27 \u2014 identical to Polaris"
+    }
+  },
+  {
+    "id": "DATA-027",
+    "name": "DOME : Firmament_Min",
+    "value": ">9,086 km",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 22",
+    "caveats": "V24",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "DOME",
+      "SUBSECTION": "Firmament_Min",
+      "PARAMETER": "height_lower_bound",
+      "OBSERVED": ">9,086 km",
+      "MODEL": "precession wobble clearance",
+      "ERROR": "no upper bound",
+      "NOTES": "V24"
+    }
+  },
+  {
+    "id": "DATA-028",
+    "name": "DOME : Plane_Size",
+    "value": "20,015 km",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 23",
+    "caveats": "V23, bi-polar geometry",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "DOME",
+      "SUBSECTION": "Plane_Size",
+      "PARAMETER": "pole_separation",
+      "OBSERVED": "20,015 km",
+      "MODEL": "= \u03c0 \u00d7 R_earth",
+      "ERROR": "encodes sphere",
+      "NOTES": "V23, bi-polar geometry"
+    }
+  },
+  {
+    "id": "DATA-029",
+    "name": "DOME : Refraction",
+    "value": "-0.633\u00b0",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 24",
+    "caveats": "V18, atmospheric model",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "DOME",
+      "SUBSECTION": "Refraction",
+      "PARAMETER": "offset_locked",
+      "OBSERVED": "-0.633\u00b0",
+      "MODEL": "grid search V18",
+      "ERROR": "minimizes day length err",
+      "NOTES": "V18, atmospheric model"
+    }
+  },
+  {
+    "id": "DATA-030",
+    "name": "MAGNETIC : North_Pole",
+    "value": "70.5\u00b0N, -96.2\u00b0E",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 25",
+    "caveats": "NOAA/BGS historical",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "MAGNETIC",
+      "SUBSECTION": "North_Pole",
+      "PARAMETER": "1900_position",
+      "OBSERVED": "70.5\u00b0N, -96.2\u00b0E",
+      "MODEL": "20.28\u00b0 from Polaris",
+      "ERROR": "\u2014",
+      "NOTES": "NOAA/BGS historical"
+    }
+  },
+  {
+    "id": "DATA-031",
+    "name": "MAGNETIC : North_Pole",
+    "value": "86.8\u00b0N, -170\u00b0E",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 26",
+    "caveats": "NOAA/BGS current",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "MAGNETIC",
+      "SUBSECTION": "North_Pole",
+      "PARAMETER": "2025_position",
+      "OBSERVED": "86.8\u00b0N, -170\u00b0E",
+      "MODEL": "3.94\u00b0 from Polaris",
+      "ERROR": "\u2014",
+      "NOTES": "NOAA/BGS current"
+    }
+  },
+  {
+    "id": "DATA-032",
+    "name": "MAGNETIC : North_Pole",
+    "value": "-16.34\u00b0 toward Polaris",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 27",
+    "caveats": "rate -0.205\u00b0/yr recent",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "MAGNETIC",
+      "SUBSECTION": "North_Pole",
+      "PARAMETER": "change_125yr",
+      "OBSERVED": "-16.34\u00b0 toward Polaris",
+      "MODEL": "CONVERGING",
+      "ERROR": "accelerating",
+      "NOTES": "rate -0.205\u00b0/yr recent"
+    }
+  },
+  {
+    "id": "DATA-033",
+    "name": "MAGNETIC : North_Pole",
+    "value": "quadratic R\u00b2=0.9915",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 28",
+    "caveats": "dome predicts 2030: 1.8\u00b0, 2035: 0.4\u00b0",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "MAGNETIC",
+      "SUBSECTION": "North_Pole",
+      "PARAMETER": "convergence_year",
+      "OBSERVED": "quadratic R\u00b2=0.9915",
+      "MODEL": "~2037",
+      "ERROR": "best fit",
+      "NOTES": "dome predicts 2030: 1.8\u00b0, 2035: 0.4\u00b0"
+    }
+  },
+  {
+    "id": "DATA-034",
+    "name": "MAGNETIC : South_Pole",
+    "value": "-72.0\u00b0S, 148.0\u00b0E",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 29",
+    "caveats": "NOAA/BGS historical",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "MAGNETIC",
+      "SUBSECTION": "South_Pole",
+      "PARAMETER": "1900_position",
+      "OBSERVED": "-72.0\u00b0S, 148.0\u00b0E",
+      "MODEL": "19.04\u00b0 from \u03c3 Oct",
+      "ERROR": "\u2014",
+      "NOTES": "NOAA/BGS historical"
+    }
+  },
+  {
+    "id": "DATA-035",
+    "name": "MAGNETIC : South_Pole",
+    "value": "-63.8\u00b0S, 135.5\u00b0E",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 30",
+    "caveats": "NOAA/BGS current",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "MAGNETIC",
+      "SUBSECTION": "South_Pole",
+      "PARAMETER": "2025_position",
+      "OBSERVED": "-63.8\u00b0S, 135.5\u00b0E",
+      "MODEL": "27.24\u00b0 from \u03c3 Oct",
+      "ERROR": "\u2014",
+      "NOTES": "NOAA/BGS current"
+    }
+  },
+  {
+    "id": "DATA-036",
+    "name": "MAGNETIC : South_Pole",
+    "value": "+8.20\u00b0 AWAY from \u03c3 Oct",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 31",
+    "caveats": "rate +0.035\u00b0/yr",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "MAGNETIC",
+      "SUBSECTION": "South_Pole",
+      "PARAMETER": "change_125yr",
+      "OBSERVED": "+8.20\u00b0 AWAY from \u03c3 Oct",
+      "MODEL": "DIVERGING",
+      "ERROR": "steady",
+      "NOTES": "rate +0.035\u00b0/yr"
+    }
+  },
+  {
+    "id": "DATA-037",
+    "name": "MAGNETIC : ASYMMETRY",
+    "value": "N: -16.34\u00b0 | S: +8.20\u00b0",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 32",
+    "caveats": "dome: intake/exhaust model",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "MAGNETIC",
+      "SUBSECTION": "ASYMMETRY",
+      "PARAMETER": "north_vs_south",
+      "OBSERVED": "N: -16.34\u00b0 | S: +8.20\u00b0",
+      "MODEL": "OPPOSITE SIGNS",
+      "ERROR": "globe unexplained",
+      "NOTES": "dome: intake/exhaust model"
+    }
+  },
+  {
+    "id": "DATA-038",
+    "name": "MAGNETIC : ASYMMETRY",
+    "value": "N rate 6x faster than S",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 33",
+    "caveats": "intake pull > exhaust push",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "MAGNETIC",
+      "SUBSECTION": "ASYMMETRY",
+      "PARAMETER": "speed_ratio",
+      "OBSERVED": "N rate 6x faster than S",
+      "MODEL": "0.205 vs 0.035 \u00b0/yr",
+      "ERROR": "6:1 ratio",
+      "NOTES": "intake pull > exhaust push"
+    }
+  },
+  {
+    "id": "DATA-039",
+    "name": "MAGNETIC : Aetheric_Velocity",
+    "value": "0.7 mm/s surface coupling",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 34",
+    "caveats": "tiny fraction of aether flow",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "MAGNETIC",
+      "SUBSECTION": "Aetheric_Velocity",
+      "PARAMETER": "from_convergence",
+      "OBSERVED": "0.7 mm/s surface coupling",
+      "MODEL": "Miller drift: 10 km/s",
+      "ERROR": "coupling 0.00001%",
+      "NOTES": "tiny fraction of aether flow"
+    }
+  },
+  {
+    "id": "DATA-040",
+    "name": "GRAVITY : Formula",
+    "value": "g=g_eq(1+k\u00b7sin\u00b2lat)",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 35",
+    "caveats": "V28 \u2014 WGS84 = aetheric pressure",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "GRAVITY",
+      "SUBSECTION": "Formula",
+      "PARAMETER": "comparison",
+      "OBSERVED": "g=g_eq(1+k\u00b7sin\u00b2lat)",
+      "MODEL": "IDENTICAL both models",
+      "ERROR": "same k",
+      "NOTES": "V28 \u2014 WGS84 = aetheric pressure"
+    }
+  },
+  {
+    "id": "DATA-041",
+    "name": "GRAVITY : Pole_Equator",
+    "value": "52 mGal (0.53%)",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 36",
+    "caveats": "both: centrifuge/oblate OR intake pressure",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "GRAVITY",
+      "SUBSECTION": "Pole_Equator",
+      "PARAMETER": "difference",
+      "OBSERVED": "52 mGal (0.53%)",
+      "MODEL": "pole stronger",
+      "ERROR": "measured",
+      "NOTES": "both: centrifuge/oblate OR intake pressure"
+    }
+  },
+  {
+    "id": "DATA-042",
+    "name": "GRAVITY : R2",
+    "value": "WGS84: R\u00b2>0.999",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 37",
+    "caveats": "same equation different label",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "GRAVITY",
+      "SUBSECTION": "R2",
+      "PARAMETER": "both_models",
+      "OBSERVED": "WGS84: R\u00b2>0.999",
+      "MODEL": "Aetheric: R\u00b2>0.999",
+      "ERROR": "TIE",
+      "NOTES": "same equation different label"
+    }
+  },
+  {
+    "id": "DATA-043",
+    "name": "GRAVITY : Aetheric_g",
+    "value": "P_down - P_up = 9.81 m/s\u00b2",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 38",
+    "caveats": "V21, pressure differential",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "GRAVITY",
+      "SUBSECTION": "Aetheric_g",
+      "PARAMETER": "mechanism",
+      "OBSERVED": "P_down - P_up = 9.81 m/s\u00b2",
+      "MODEL": "Lesage/Tesla model",
+      "ERROR": "fits",
+      "NOTES": "V21, pressure differential"
+    }
+  },
+  {
+    "id": "DATA-044",
+    "name": "PRESSURE : Arctic_MSLP",
+    "value": "1012.5 hPa",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 39",
+    "caveats": "stable, moderate",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "PRESSURE",
+      "SUBSECTION": "Arctic_MSLP",
+      "PARAMETER": "annual_mean",
+      "OBSERVED": "1012.5 hPa",
+      "MODEL": "sea level, ocean surface",
+      "ERROR": "NCEP",
+      "NOTES": "stable, moderate"
+    }
+  },
+  {
+    "id": "DATA-045",
+    "name": "PRESSURE : Antarctic_MSLP",
+    "value": "~1001.5 hPa",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 40",
+    "caveats": "lower than Arctic",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "PRESSURE",
+      "SUBSECTION": "Antarctic_MSLP",
+      "PARAMETER": "SL_corrected",
+      "OBSERVED": "~1001.5 hPa",
+      "MODEL": "estimated from 681 hPa @ 2835m",
+      "ERROR": "ERA5",
+      "NOTES": "lower than Arctic"
+    }
+  },
+  {
+    "id": "DATA-046",
+    "name": "PRESSURE : N_S_Difference",
+    "value": "+11.0 hPa (N higher)",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 41",
+    "caveats": "V31",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "PRESSURE",
+      "SUBSECTION": "N_S_Difference",
+      "PARAMETER": "asymmetry",
+      "OBSERVED": "+11.0 hPa (N higher)",
+      "MODEL": "dome: intake pressure | globe: geography",
+      "ERROR": "BOTH explain",
+      "NOTES": "V31"
+    }
+  },
+  {
+    "id": "DATA-047",
+    "name": "PRESSURE : S_Polar_Vortex",
+    "value": "stronger, more stable than N",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 42",
+    "caveats": "dome: exhaust rotation | globe: isolated continent",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "PRESSURE",
+      "SUBSECTION": "S_Polar_Vortex",
+      "PARAMETER": "comparison",
+      "OBSERVED": "stronger, more stable than N",
+      "MODEL": "S: 200km/h wind | N: 100km/h",
+      "ERROR": "2x stronger",
+      "NOTES": "dome: exhaust rotation | globe: isolated continent"
+    }
+  },
+  {
+    "id": "DATA-048",
+    "name": "IONOSPHERE : TEC_Asymmetry",
+    "value": "S pole: 5-20 TECU | N pole: 5-15 TECU",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 43",
+    "caveats": "dome: exhaust turbulence",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "IONOSPHERE",
+      "SUBSECTION": "TEC_Asymmetry",
+      "PARAMETER": "N_vs_S",
+      "OBSERVED": "S pole: 5-20 TECU | N pole: 5-15 TECU",
+      "MODEL": "S consistently higher",
+      "ERROR": "measured",
+      "NOTES": "dome: exhaust turbulence"
+    }
+  },
+  {
+    "id": "DATA-049",
+    "name": "IONOSPHERE : GPS_Scintillation",
+    "value": "S: 0.3-0.6 | N: 0.2-0.4",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 44",
+    "caveats": "dome: dispersed medium | globe: SAA",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "IONOSPHERE",
+      "SUBSECTION": "GPS_Scintillation",
+      "PARAMETER": "S4_index",
+      "OBSERVED": "S: 0.3-0.6 | N: 0.2-0.4",
+      "MODEL": "S 50% worse",
+      "ERROR": "published",
+      "NOTES": "dome: dispersed medium | globe: SAA"
+    }
+  },
+  {
+    "id": "DATA-050",
+    "name": "IONOSPHERE : Signal_Loss",
+    "value": "S: 5-15 | N: 2-5",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 45",
+    "caveats": "asymmetric degradation",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "IONOSPHERE",
+      "SUBSECTION": "Signal_Loss",
+      "PARAMETER": "events_per_day",
+      "OBSERVED": "S: 5-15 | N: 2-5",
+      "MODEL": "S 3x worse",
+      "ERROR": "published",
+      "NOTES": "asymmetric degradation"
+    }
+  },
+  {
+    "id": "DATA-051",
+    "name": "IONOSPHERE : SAA",
+    "value": "field 35% weaker than expected",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 46",
+    "caveats": "unique southern feature",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "IONOSPHERE",
+      "SUBSECTION": "SAA",
+      "PARAMETER": "South_Atlantic_Anomaly",
+      "OBSERVED": "field 35% weaker than expected",
+      "MODEL": "drifting west 0.3-0.5\u00b0/yr",
+      "ERROR": "NO N equivalent",
+      "NOTES": "unique southern feature"
+    }
+  },
+  {
+    "id": "DATA-052",
+    "name": "IONOSPHERE : Recovery",
+    "value": "S: ~8 hours | N: ~4 hours",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 47",
+    "caveats": "dome: exhaust disperses recovery",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "IONOSPHERE",
+      "SUBSECTION": "Recovery",
+      "PARAMETER": "after_storm",
+      "OBSERVED": "S: ~8 hours | N: ~4 hours",
+      "MODEL": "S 2x slower",
+      "ERROR": "published",
+      "NOTES": "dome: exhaust disperses recovery"
+    }
+  },
+  {
+    "id": "DATA-053",
+    "name": "SIGNAL : Freq_Shift",
+    "value": "\u0394f/f \u2248 1.21e-14",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 48",
+    "caveats": "V31, same math",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "SIGNAL",
+      "SUBSECTION": "Freq_Shift",
+      "PARAMETER": "pole_equator",
+      "OBSERVED": "\u0394f/f \u2248 1.21e-14",
+      "MODEL": "identical both models",
+      "ERROR": "GR = aetheric",
+      "NOTES": "V31, same math"
+    }
+  },
+  {
+    "id": "DATA-054",
+    "name": "SIGNAL : VLF_Anomalies",
+    "value": "partial asymmetry documented",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 49",
+    "caveats": "needs more data",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "SIGNAL",
+      "SUBSECTION": "VLF_Anomalies",
+      "PARAMETER": "N_S_propagation",
+      "OBSERVED": "partial asymmetry documented",
+      "MODEL": "dome: intake/exhaust path | globe: atmospheric",
+      "ERROR": "CONTESTED",
+      "NOTES": "needs more data"
+    }
+  },
+  {
+    "id": "DATA-055",
+    "name": "DISTANCE : AE_Projection",
+    "value": "R\u00b2=0.34",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 50",
+    "caveats": "V21",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "DISTANCE",
+      "SUBSECTION": "AE_Projection",
+      "PARAMETER": "R2_all_pairs",
+      "OBSERVED": "R\u00b2=0.34",
+      "MODEL": "grossly distorts south",
+      "ERROR": "GLOBE wins",
+      "NOTES": "V21"
+    }
+  },
+  {
+    "id": "DATA-056",
+    "name": "DISTANCE : Bipolar",
+    "value": "R\u00b2=0.83",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 51",
+    "caveats": "V22-V23, bi-polar geometry",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "DISTANCE",
+      "SUBSECTION": "Bipolar",
+      "PARAMETER": "R2_all_pairs",
+      "OBSERVED": "R\u00b2=0.83",
+      "MODEL": "5/7 southern routes <20%",
+      "ERROR": "improved",
+      "NOTES": "V22-V23, bi-polar geometry"
+    }
+  },
+  {
+    "id": "DATA-057",
+    "name": "DISTANCE : Variable_Trans",
+    "value": "R\u00b2=0.826",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 52",
+    "caveats": "regional transition zones",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "DISTANCE",
+      "SUBSECTION": "Variable_Trans",
+      "PARAMETER": "R2_tuned",
+      "OBSERVED": "R\u00b2=0.826",
+      "MODEL": "Am=-10, Af=-20, As=-10",
+      "ERROR": "V24",
+      "NOTES": "regional transition zones"
+    }
+  },
+  {
+    "id": "DATA-058",
+    "name": "DISTANCE : Worst_Routes",
+    "value": "Cape Town\u2192Lima +53%",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 53",
+    "caveats": "equatorial routes hardest",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "DISTANCE",
+      "SUBSECTION": "Worst_Routes",
+      "PARAMETER": "equatorial_Africa",
+      "OBSERVED": "Cape Town\u2192Lima +53%",
+      "MODEL": "Accra\u2192Nairobi +49%",
+      "ERROR": "still bad",
+      "NOTES": "equatorial routes hardest"
+    }
+  },
+  {
+    "id": "DATA-059",
+    "name": "DISTANCE : Hull_Down",
+    "value": "mast visible, hull hidden",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 54",
+    "caveats": "V20, standard observation",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "DISTANCE",
+      "SUBSECTION": "Hull_Down",
+      "PARAMETER": "ship_observation",
+      "OBSERVED": "mast visible, hull hidden",
+      "MODEL": "globe: curvature | dome: needs lensing",
+      "ERROR": "GLOBE",
+      "NOTES": "V20, standard observation"
+    }
+  },
+  {
+    "id": "DATA-060",
+    "name": "DISTANCE : Sun_Height",
+    "value": "different cities \u2192 different H",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 55",
+    "caveats": "V21-V22",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "DISTANCE",
+      "SUBSECTION": "Sun_Height",
+      "PARAMETER": "triangulation",
+      "OBSERVED": "different cities \u2192 different H",
+      "MODEL": "globe: consistent 150M km | dome: varies",
+      "ERROR": "GLOBE",
+      "NOTES": "V21-V22"
+    }
+  },
+  {
+    "id": "DATA-061",
+    "name": "MAINSTREAM : Dark_Matter",
+    "value": "50 years, $2B+, ZERO detections",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 56",
+    "caveats": "V26, LUX/XENON/PandaX/LHC all null",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "MAINSTREAM",
+      "SUBSECTION": "Dark_Matter",
+      "PARAMETER": "detection",
+      "OBSERVED": "50 years, $2B+, ZERO detections",
+      "MODEL": "10 experiments null",
+      "ERROR": "genuine crisis",
+      "NOTES": "V26, LUX/XENON/PandaX/LHC all null"
+    }
+  },
+  {
+    "id": "DATA-062",
+    "name": "MAINSTREAM : Dark_Energy",
+    "value": "inferred from SN dimming",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 57",
+    "caveats": "V26, same status as aether",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "MAINSTREAM",
+      "SUBSECTION": "Dark_Energy",
+      "PARAMETER": "evidence",
+      "OBSERVED": "inferred from SN dimming",
+      "MODEL": "68% of universe undetected",
+      "ERROR": "gap-filler",
+      "NOTES": "V26, same status as aether"
+    }
+  },
+  {
+    "id": "DATA-063",
+    "name": "MAINSTREAM : Hubble_Tension",
+    "value": "67.4 vs 73.0 km/s/Mpc",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 58",
+    "caveats": "V26, growing not shrinking",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "MAINSTREAM",
+      "SUBSECTION": "Hubble_Tension",
+      "PARAMETER": "crisis",
+      "OBSERVED": "67.4 vs 73.0 km/s/Mpc",
+      "MODEL": "5\u03c3 discrepancy, 10+ years",
+      "ERROR": "UNRESOLVED",
+      "NOTES": "V26, growing not shrinking"
+    }
+  },
+  {
+    "id": "DATA-064",
+    "name": "MAINSTREAM : Fine_Tuning",
+    "value": "cosmological constant",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 59",
+    "caveats": "V26",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "MAINSTREAM",
+      "SUBSECTION": "Fine_Tuning",
+      "PARAMETER": "\u039b",
+      "OBSERVED": "cosmological constant",
+      "MODEL": "tuned to 1 in 10^120",
+      "ERROR": "multiverse unfalsifiable",
+      "NOTES": "V26"
+    }
+  },
+  {
+    "id": "DATA-065",
+    "name": "MAINSTREAM : GR_Predictions",
+    "value": "8/8 GR tests confirmed",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 60",
+    "caveats": "V26",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "MAINSTREAM",
+      "SUBSECTION": "GR_Predictions",
+      "PARAMETER": "vs_aether",
+      "OBSERVED": "8/8 GR tests confirmed",
+      "MODEL": "6/8 produce same math via aether",
+      "ERROR": "MATH IDENTICAL",
+      "NOTES": "V26"
+    }
+  },
+  {
+    "id": "DATA-066",
+    "name": "MAINSTREAM : Miller",
+    "value": "8-10 km/s drift measured",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 61",
+    "caveats": "V21, real positive result",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "MAINSTREAM",
+      "SUBSECTION": "Miller",
+      "PARAMETER": "non_null",
+      "OBSERVED": "8-10 km/s drift measured",
+      "MODEL": "200,000 observations",
+      "ERROR": "dismissed 1955",
+      "NOTES": "V21, real positive result"
+    }
+  },
+  {
+    "id": "DATA-067",
+    "name": "PREDICTION : Mag_North_2030",
+    "value": "<2.0\u00b0 from Polaris",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 62",
+    "caveats": "ground magnetometers exist",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "PREDICTION",
+      "SUBSECTION": "Mag_North_2030",
+      "PARAMETER": "dome_predicts",
+      "OBSERVED": "<2.0\u00b0 from Polaris",
+      "MODEL": "quadratic extrapolation",
+      "ERROR": "HIGH confidence",
+      "NOTES": "ground magnetometers exist"
+    }
+  },
+  {
+    "id": "DATA-068",
+    "name": "PREDICTION : Mag_North_2035",
+    "value": "<0.5\u00b0 from Polaris",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 63",
+    "caveats": "falsifiable test",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "PREDICTION",
+      "SUBSECTION": "Mag_North_2035",
+      "PARAMETER": "dome_predicts",
+      "OBSERVED": "<0.5\u00b0 from Polaris",
+      "MODEL": "quadratic extrapolation",
+      "ERROR": "HIGH confidence",
+      "NOTES": "falsifiable test"
+    }
+  },
+  {
+    "id": "DATA-069",
+    "name": "PREDICTION : Mag_South_2030",
+    "value": ">28\u00b0 from \u03c3 Oct",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 64",
+    "caveats": "continuing divergence",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "PREDICTION",
+      "SUBSECTION": "Mag_South_2030",
+      "PARAMETER": "dome_predicts",
+      "OBSERVED": ">28\u00b0 from \u03c3 Oct",
+      "MODEL": "linear extrapolation",
+      "ERROR": "HIGH confidence",
+      "NOTES": "continuing divergence"
+    }
+  },
+  {
+    "id": "DATA-070",
+    "name": "PREDICTION : Miller_Altitude",
+    "value": "drift increases with altitude",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 65",
+    "caveats": "needs dedicated experiment",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "PREDICTION",
+      "SUBSECTION": "Miller_Altitude",
+      "PARAMETER": "dome_predicts",
+      "OBSERVED": "drift increases with altitude",
+      "MODEL": "balloon interferometer",
+      "ERROR": "MEDIUM",
+      "NOTES": "needs dedicated experiment"
+    }
+  },
+  {
+    "id": "DATA-071",
+    "name": "PREDICTION : Aurora_Convergence",
+    "value": "northern oval converges on pole",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 66",
+    "caveats": "existing aurora cameras",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "PREDICTION",
+      "SUBSECTION": "Aurora_Convergence",
+      "PARAMETER": "dome_predicts",
+      "OBSERVED": "northern oval converges on pole",
+      "MODEL": "track oval center 2030-2050",
+      "ERROR": "HIGH",
+      "NOTES": "existing aurora cameras"
+    }
+  },
+  {
+    "id": "DATA-072",
+    "name": "PREDICTION : Aetheric_Coupling",
+    "value": "0.00001% of aether flow drives dipole",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 67",
+    "caveats": "consistency check",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "PREDICTION",
+      "SUBSECTION": "Aetheric_Coupling",
+      "PARAMETER": "dome_predicts",
+      "OBSERVED": "0.00001% of aether flow drives dipole",
+      "MODEL": "Miller 10km/s \u00d7 tiny fraction",
+      "ERROR": "MEDIUM",
+      "NOTES": "consistency check"
+    }
+  },
+  {
+    "id": "DATA-073",
+    "name": "SCORECARD : Ties",
+    "value": "22 tests",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 68",
+    "caveats": "dome=globe coordinate transform",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "SCORECARD",
+      "SUBSECTION": "Ties",
+      "PARAMETER": "identical_math",
+      "OBSERVED": "22 tests",
+      "MODEL": "all positional astronomy",
+      "ERROR": "R\u00b2=0.9996",
+      "NOTES": "dome=globe coordinate transform"
+    }
+  },
+  {
+    "id": "DATA-074",
+    "name": "SCORECARD : Globe_Wins",
+    "value": "5 tests",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 69",
+    "caveats": "physical geometry favors sphere",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "SCORECARD",
+      "SUBSECTION": "Globe_Wins",
+      "PARAMETER": "physical_tests",
+      "OBSERVED": "5 tests",
+      "MODEL": "distances, hull-down, sun-H, tidal, age",
+      "ERROR": "GLOBE",
+      "NOTES": "physical geometry favors sphere"
+    }
+  },
+  {
+    "id": "DATA-075",
+    "name": "SCORECARD : Dome_Wins",
+    "value": "3 tests",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 70",
+    "caveats": "magnetic field is strongest",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "SCORECARD",
+      "SUBSECTION": "Dome_Wins",
+      "PARAMETER": "unique_evidence",
+      "OBSERVED": "3 tests",
+      "MODEL": "mag convergence, Miller, mag asymmetry",
+      "ERROR": "DOME",
+      "NOTES": "magnetic field is strongest"
+    }
+  },
+  {
+    "id": "DATA-076",
+    "name": "SCORECARD : Contested",
+    "value": "2 tests",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 71",
+    "caveats": "both models explain",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "SCORECARD",
+      "SUBSECTION": "Contested",
+      "PARAMETER": "needs_more_data",
+      "OBSERVED": "2 tests",
+      "MODEL": "barometric + ionospheric asymmetry",
+      "ERROR": "TBD",
+      "NOTES": "both models explain"
+    }
+  },
+  {
+    "id": "DATA-077",
+    "name": "SCORECARD : Total",
+    "value": "32 tests",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 72",
+    "caveats": "model fully validated",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "SCORECARD",
+      "SUBSECTION": "Total",
+      "PARAMETER": "V1-V31",
+      "OBSERVED": "32 tests",
+      "MODEL": "1500+ data points",
+      "ERROR": "7 bodies 31 cities",
+      "NOTES": "model fully validated"
+    }
+  },
+  {
+    "id": "DATA-078",
+    "name": "CONSTANTS : Polaris_Height",
+    "value": "anchored V1",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 73",
+    "caveats": "do not change",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "CONSTANTS",
+      "SUBSECTION": "Polaris_Height",
+      "PARAMETER": "6500 km",
+      "OBSERVED": "anchored V1",
+      "MODEL": "Chapel Hill 36.18\u00b0",
+      "ERROR": "locked",
+      "NOTES": "do not change"
+    }
+  },
+  {
+    "id": "DATA-079",
+    "name": "CONSTANTS : Dome_Shell",
+    "value": "all wandering bodies",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 74",
+    "caveats": "single shell finding",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "CONSTANTS",
+      "SUBSECTION": "Dome_Shell",
+      "PARAMETER": "14000-16000 km",
+      "OBSERVED": "all wandering bodies",
+      "MODEL": "median",
+      "ERROR": "locked V18",
+      "NOTES": "single shell finding"
+    }
+  },
+  {
+    "id": "DATA-080",
+    "name": "CONSTANTS : Refraction",
+    "value": "grid search V18",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 75",
+    "caveats": "atmospheric model",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "CONSTANTS",
+      "SUBSECTION": "Refraction",
+      "PARAMETER": "\u22120.633\u00b0",
+      "OBSERVED": "grid search V18",
+      "MODEL": "minimizes day length err",
+      "ERROR": "locked",
+      "NOTES": "atmospheric model"
+    }
+  },
+  {
+    "id": "DATA-081",
+    "name": "CONSTANTS : Sun_Dec_Amp",
+    "value": "tropical limit",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 76",
+    "caveats": "standard value",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "CONSTANTS",
+      "SUBSECTION": "Sun_Dec_Amp",
+      "PARAMETER": "23.44\u00b0",
+      "OBSERVED": "tropical limit",
+      "MODEL": "obliquity",
+      "ERROR": "fixed",
+      "NOTES": "standard value"
+    }
+  },
+  {
+    "id": "DATA-082",
+    "name": "CONSTANTS : Moon_Dec_Amp",
+    "value": "regression cycle",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 77",
+    "caveats": "varies 13\u00b0/day",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "CONSTANTS",
+      "SUBSECTION": "Moon_Dec_Amp",
+      "PARAMETER": "28.6\u00b0",
+      "OBSERVED": "regression cycle",
+      "MODEL": "locked V17",
+      "ERROR": "per-city dec needed",
+      "NOTES": "varies 13\u00b0/day"
+    }
+  },
+  {
+    "id": "DATA-083",
+    "name": "CONSTANTS : Pole_Separation",
+    "value": "bi-polar plane",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 78",
+    "caveats": "encodes sphere geometry",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "CONSTANTS",
+      "SUBSECTION": "Pole_Separation",
+      "PARAMETER": "20,015 km",
+      "OBSERVED": "bi-polar plane",
+      "MODEL": "= \u03c0 \u00d7 R_earth",
+      "ERROR": "V23",
+      "NOTES": "encodes sphere geometry"
+    }
+  },
+  {
+    "id": "DATA-084",
+    "name": "CONSTANTS : Firmament_Min",
+    "value": "precession clearance",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 79",
+    "caveats": "no upper bound observable",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "CONSTANTS",
+      "SUBSECTION": "Firmament_Min",
+      "PARAMETER": "9,086 km",
+      "OBSERVED": "precession clearance",
+      "MODEL": "lower bound only",
+      "ERROR": "V24",
+      "NOTES": "no upper bound observable"
+    }
+  },
+  {
+    "id": "DATA-085",
+    "name": "VERDICT : Positional_Astronomy",
+    "value": "dome and globe produce identical R\u00b2=0.9996",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 80",
+    "caveats": "coordinate transformation proven",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "VERDICT",
+      "SUBSECTION": "Positional_Astronomy",
+      "PARAMETER": "SHAPE-AGNOSTIC",
+      "OBSERVED": "dome and globe produce identical R\u00b2=0.9996",
+      "MODEL": "same formulas",
+      "ERROR": "TIE",
+      "NOTES": "coordinate transformation proven"
+    }
+  },
+  {
+    "id": "DATA-086",
+    "name": "VERDICT : Physical_Geometry",
+    "value": "distances, curvature, tidal, sun height",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 81",
+    "caveats": "distances strongest globe evidence",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "VERDICT",
+      "SUBSECTION": "Physical_Geometry",
+      "PARAMETER": "GLOBE_FAVORED",
+      "OBSERVED": "distances, curvature, tidal, sun height",
+      "MODEL": "5 tests favor sphere",
+      "ERROR": "4 of 5 strong",
+      "NOTES": "distances strongest globe evidence"
+    }
+  },
+  {
+    "id": "DATA-087",
+    "name": "VERDICT : Magnetic_Field",
+    "value": "N convergence + N-S asymmetry + Miller",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 82",
+    "caveats": "intake/exhaust model not predicted by globe",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "VERDICT",
+      "SUBSECTION": "Magnetic_Field",
+      "PARAMETER": "DOME_FAVORED",
+      "OBSERVED": "N convergence + N-S asymmetry + Miller",
+      "MODEL": "3 tests unique to dome",
+      "ERROR": "strongest dome evidence",
+      "NOTES": "intake/exhaust model not predicted by globe"
+    }
+  },
+  {
+    "id": "DATA-088",
+    "name": "VERDICT : Next_Test",
+    "value": "mag N pole <0.5\u00b0 from Polaris?",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 83",
+    "caveats": "FALSIFIABLE \u2014 ground-based \u2014 10 years",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "VERDICT",
+      "SUBSECTION": "Next_Test",
+      "PARAMETER": "2035_Magnetic",
+      "OBSERVED": "mag N pole <0.5\u00b0 from Polaris?",
+      "MODEL": "dome predicts YES",
+      "ERROR": "globe: random",
+      "NOTES": "FALSIFIABLE \u2014 ground-based \u2014 10 years"
+    }
+  },
+  {
+    "id": "DATA-089",
+    "name": "VERDICT : Core_Finding",
+    "value": "dome model IS globe model in different coordinates",
+    "unit": "mixed",
+    "timestamp": "Varies by parameter",
+    "source": "UNIFIED_MASTER_V1_V31.csv Row 84",
+    "caveats": "confirmed V1-V31 across all observations",
+    "quality_flag": "REGISTRY NODE",
+    "metadata_dump": {
+      "SECTION": "VERDICT",
+      "SUBSECTION": "Core_Finding",
+      "PARAMETER": "Mathematical_Identity",
+      "OBSERVED": "dome model IS globe model in different coordinates",
+      "MODEL": "every formula identical",
+      "ERROR": "0% difference",
+      "NOTES": "confirmed V1-V31 across all observations"
+    }
   }
 ]
