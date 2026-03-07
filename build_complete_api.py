@@ -16,8 +16,8 @@ for d in [API_DIR, CURRENT_DIR, ARCHIVE_DIR]:
 # 1. api/index.json
 index = {
   "purpose": "AI onboarding endpoint - fetch this first",
-  "current_version": "49.2",
-  "last_updated": "2026-03-06",
+  "current_version": "49.3",
+  "last_updated": "2026-03-07",
   "fetch_sequence": [
     "/api/current/scorecard.json",
     "/api/current/predictions.json",
@@ -39,8 +39,8 @@ with open(f"{API_DIR}/index.json", "w") as f:
 
 # 2. api/current/scorecard.json
 scorecard = {
-  "version": "49.2",
-  "as_of": "2026-03-06",
+  "version": "49.3",
+  "as_of": "2026-03-07",
   "categories": {
     "geomagnetic": {
       "confirmed": 14,
@@ -466,7 +466,7 @@ for script_path in py_files:
       "filename": filename,
       "purpose": f"Computational framework execution logic for {filename}",
       "status": "current",
-      "model_version": "49.2",
+      "model_version": "49.3",
       "inputs": ["Varies exactly per script bounds"],
       "outputs": ["Terminal stdout prints, logs, and plots"],
       "full_source_code": script_col,
@@ -523,10 +523,18 @@ history = {
     {
       "version": "49.2",
       "date": "2026-03-06",
-      "status": "CURRENT",
+      "status": "SUPERSEDED",
       "scorecard_at_time": "Dome 26, Globe 0, Falsified 0",
       "key_improvements": "Instituted mathematically rigorous quiet baseline tests independent from eclipse windows. Voluntarily removed circular reasoning (Tesla f->T->f) and double-counted wins. Reclassified pure hardware limit falsifications as BELOW_DETECTION_THRESHOLD. Built complete machine-readable truth API.",
       "files": ["All current repository scripts and api structured blocks"]
+    },
+    {
+      "version": "49.3",
+      "date": "2026-03-07",
+      "status": "CURRENT",
+      "scorecard_at_time": "Dome 26, Globe 0, Falsified 0",
+      "key_improvements": "Added W009-W016 hypothesis battery. Implemented Option A single-fetch API for complete AI context loading via master.txt. Back-calculated empirical W004 True Baseline (-22.24 nT) and implemented dual-baseline comparative schema for PRED-001 through PRED-005.",
+      "files": ["All active api endpoints and master text blocks"]
     }
   ]
 }
