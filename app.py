@@ -1,9 +1,22 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
-import json, os, uvicorn
+import json, os, uvicorn, sys
 
 app = FastAPI()
+
+@app.on_event("startup")
+async def startup_event():
+    print("🚀 API Server has successfully booted up!", file=sys.stderr)
+    print("✅ New changes have fully reflected on Hugging Face!", file=sys.stderr)
+    print("📡 Active and listening for inbound traffic...", file=sys.stderr)
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    print(f"📥 REQUEST: {request.method} {request.url.path}", file=sys.stderr)
+    response = await call_next(request)
+    print(f"📤 RESPONSE: {response.status_code} for {request.url.path}", file=sys.stderr)
+    return response
 
 @app.api_route("/api/master.json", methods=["GET", "HEAD"])
 def master():
