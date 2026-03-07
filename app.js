@@ -57,8 +57,47 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     initScorecard(window.SCORED_RESULTS);
     renderGrids(window.SCORED_RESULTS);
+    initFormulas();
     initNav();
 });
+
+async function initFormulas() {
+    try {
+        const resArgs = await fetch('api/current/formulas.json?v=' + Date.now());
+        if (resArgs.ok) {
+            const rawForms = await resArgs.json();
+            const coreFormulas = rawForms.slice(0, 7);
+            const grid = document.getElementById('formulas-grid');
+            if (!grid) return;
+            
+            let html = '';
+            coreFormulas.forEach(f => {
+                html += `
+                <div class="glass-card" style="display:flex; flex-direction:column;">
+                    <div class="card-topbar">
+                        <span class="id-tag">${f.id}</span>
+                        <div class="status-indicator status-confirmed" style="color:#34d399;">
+                            <div class="status-dot" style="background:#34d399"></div>
+                            ${f.category ? f.category.toUpperCase().replace('_', ' ') : 'CORE'}
+                        </div>
+                    </div>
+                    <h3 class="card-title" style="margin-bottom:0.75rem; color:var(--text-heading);">${f.name}</h3>
+                    <div style="font-family:monospace; background:rgba(0,0,0,0.5); padding:1rem; border-radius:4px; border:1px dashed var(--border-subtle); color:var(--accent-purple); font-size:0.95rem; margin-bottom:1rem; overflow-x:auto;">
+                        ${f.formula}
+                    </div>
+                    ${f.derivation ? `<p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:1rem; flex-grow:1; line-height:1.5;">${f.derivation}</p>` : ''}
+                    <div style="font-size:0.8rem; letter-spacing:0.05em; color:var(--accent-sky); margin-top:auto;">
+                        SOURCE SCRIPT: ${f.source_file}
+                    </div>
+                </div>
+                `;
+            });
+            grid.innerHTML = html;
+        }
+    } catch (e) {
+        console.error("Failed to load formulas", e);
+    }
+}
 
 function computeScorecard(results) {
   return {
@@ -206,13 +245,18 @@ function createCardHTML(p, resultMap, isWeekly = false) {
     }
 
     const testDateDisplay = isWeekly ? 'Live This Week' : (p.test_date ? p.test_date.split('T')[0] : 'Ongoing');
-    const predVal = (p.point_prediction && p.point_prediction.value !== null) ? p.point_prediction.value : (p.prediction ? p.prediction.value : (p.prediction_nT || ''));
+    const predVal = (p.point_prediction && p.point_prediction.value !== null) ? p.point_prediction.value : (p.prediction ? p.prediction.value : (p.predicted_value !== undefined ? p.predicted_value : (p.prediction_nT || '')));
     const unitVal = p.point_prediction ? (p.point_prediction.unit || 'nT') : (p.prediction ? (p.prediction.unit || 'nT') : 'nT');
 
     let recalibratedHTML = '';
     if (p.point_prediction_recalibrated) {
         recalibratedHTML = `<div style="font-size:0.85rem; color:var(--accent-blue); margin-top:2px; font-weight:normal; letter-spacing:0.02em;">[W004 Empirical Baseline] ${p.point_prediction_recalibrated.value} <span style="font-size:0.7rem; color:var(--text-muted);">${p.point_prediction_recalibrated.unit || 'nT'}</span></div>`;
     }
+    
+    // Hardening string parsers for mixed JSON payload types
+    const mechStr = typeof p.mechanism === 'string' ? p.mechanism : (p.mechanism && p.mechanism.description ? p.mechanism.description : 'Empirical Validation');
+    const verifySource = p.verification_source || p.data_source || 'INTERMAGNET';
+    const formStr = p.formula || (p.derivation ? p.derivation.formula : null);
 
     return `
     <div class="glass-card">
@@ -244,14 +288,14 @@ function createCardHTML(p, resultMap, isWeekly = false) {
         ${claimsHTML}
         
         <div class="card-mechanism" style="margin-bottom: 0.5rem;">
-            <div style="margin-bottom:0.25rem;"><strong style="color:var(--text-primary)">Mechanism:</strong> ${p.mechanism && p.mechanism.description ? p.mechanism.description : 'Empirical Validation'}</div>
-            <div><strong style="color:var(--text-primary)">Verification Anchor:</strong> ${p.data_source || 'INTERMAGNET'}</div>
+            <div style="margin-bottom:0.25rem;"><strong style="color:var(--text-primary)">Mechanism:</strong> ${mechStr}</div>
+            <div><strong style="color:var(--text-primary)">Verification Anchor:</strong> ${verifySource}</div>
         </div>
 
-        ${p.derivation ? `
+        ${formStr ? `
         <div class="glass-card" style="background: rgba(0,0,0,0.1); padding: 1rem; border: 1px dashed var(--border-subtle); margin-bottom: 1rem;">
             <div style="font-size: 0.75rem; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.5rem; text-transform: uppercase;">DERIVATION MECHANISM</div>
-            <div style="font-size: 0.9rem; margin-bottom: 0.25rem; font-family:monospace; color:var(--accent-purple)"><strong style="color:var(--text-primary)">Formula:</strong> ${p.derivation.formula}</div>
+            <div style="font-size: 0.9rem; margin-bottom: 0.25rem; font-family:monospace; color:var(--accent-purple)"><strong style="color:var(--text-primary)">Formula:</strong> ${formStr}</div>
         </div>
         ` : ''}
             
