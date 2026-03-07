@@ -20,7 +20,7 @@
       },
       "status": "pending",
       "timestamp_sha256": "pending",
-      "sha256": "b8e87372bc137cb60f592f607d08716609e3594cc5e881de0242fd5338f3bd7d"
+      "sha256": "9fc7c5ba6704975ff3e13b17b9da84c3fb998b5cf37410bfadb93d6c719f68d1"
     },
     {
       "id": "PRED-002",
@@ -34,7 +34,7 @@
         "coverage_fraction": 0.94,
         "latitude_factor": 0.8
       },
-      "sha256": "f4487b14ce3c901f3012162f80eaf63517406e227a13cde839350c52100633fe"
+      "sha256": "bf5e58b034f02e9166411f78cb6b6d95850e39bd217e2d62972f8dabda7879af"
     },
     {
       "id": "PRED-003",
@@ -48,7 +48,7 @@
         "coverage_fraction": 0.98,
         "latitude_factor": 0.89
       },
-      "sha256": "ed5fdbb6c5ace684588a408d9b5279825830cdaeaaa2baac0502058e07095e0e"
+      "sha256": "303ef8fedf35777968c887c5abb28ea2b6202f7f58587bdc15baa2908d2e602c"
     },
     {
       "id": "PRED-004",
@@ -62,7 +62,7 @@
         "coverage_fraction": 0.92,
         "latitude_factor": 0.86
       },
-      "sha256": "b6bc6b7f77bed735c259ccd07848c31ae18c9c86f4de5cb18a44ff1d448465e1"
+      "sha256": "e7ffe6fc1a0ca462c79fbf558157f6da5fbd141f9e545aae5385c33cb235f152"
     },
     {
       "id": "PRED-005",
@@ -76,7 +76,7 @@
         "coverage_fraction": 0.7,
         "latitude_factor": 0.75
       },
-      "sha256": "b0801fd6dba835b06af8e70759cffa457cf6f6e369d477c5f5c507ae961b119c"
+      "sha256": "fd37416217d920b15386f4f7ac60d32c3b66aff34a0229ce01858e9734fb8d8f"
     },
     {
       "id": "PRED-006",
@@ -89,7 +89,7 @@
       "inputs": {
         "shielding": "Superconducting Gravimeter"
       },
-      "sha256": "5a3018ed20810b01e2d0b8adaa7a9d05ae1b2f9d2c15ca684310aeea4b9cef28"
+      "sha256": "6f8462daed2e755a20f57deac47bf6ff90e2ea071c618e3d6ac3a2d02d6fda78"
     },
     {
       "id": "PRED-007",
@@ -98,7 +98,7 @@
       "status": "pending",
       "formula": "correlation(anomaly, geometry) = 1.0",
       "inputs": {},
-      "sha256": "924c534e5e40402e271501662b11c33bdf8c2d8d4e2d4a98725e6d250ee0d493"
+      "sha256": "a79bc3556b6eed0bf4700fa32376fd53f9fd3b63f1084be13e3bde4811de8bc4"
     },
     {
       "id": "PRED-008",
@@ -109,7 +109,7 @@
       "inputs": {
         "coverage_fraction": "< 0.4"
       },
-      "sha256": "0f42d71afa7447b92338c1eab78bd116c9fcf1f566cd932c0dd959d6c2dac65e"
+      "sha256": "36047fa99a32c0206cc16a0d6a52fcd08b1be7225901d0a3ef5d44b493469004"
     }
   ],
   "confirmed_wins": [
