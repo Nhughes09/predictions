@@ -82,7 +82,7 @@
         },
         "status": "pending",
         "timestamp_sha256": "pending",
-        "sha256": "16bb603a2ce4ba3ac4bdbb3cb133fff174cfe0eb71117a94b46fd4db4b9e5d3a",
+        "sha256": "9490b4d272a3f90b958710df29557d83f54b9481b1b2a9bb1eaa69527a1a0467",
         "point_prediction": {
           "value": -8.4,
           "uncertainty": 1.7,
@@ -196,6 +196,18 @@
             "still_within_range": true
           },
           "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
+        },
+        "baseline_recalibration": {
+          "w004_observed_nT": -17.6,
+          "w004_coverage": 0.92,
+          "w004_latitude_factor": 0.86,
+          "derived_true_baseline_nT": -22.24,
+          "formula": "true_baseline = observed / (coverage * lat_factor)"
+        },
+        "point_prediction_recalibrated": {
+          "baseline_source": "W004 Empirical (2024 Eclipse)",
+          "value": -17.11,
+          "uncertainty": 3.5
         }
       },
       {
@@ -210,7 +222,7 @@
           "coverage_fraction": 0.94,
           "latitude_factor": 0.8
         },
-        "sha256": "59783c54c1234c75d350576a87b2604c36dfa7e8aedfc92b76f3ea033977925f",
+        "sha256": "8e6884ad83a37ba3294e086694ab708a6bf4b96a181e30eb203dd8076aba2540",
         "point_prediction": {
           "value": -8.3,
           "uncertainty": 1.7,
@@ -335,6 +347,18 @@
             "still_within_range": true
           },
           "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
+        },
+        "baseline_recalibration": {
+          "w004_observed_nT": -17.6,
+          "w004_coverage": 0.92,
+          "w004_latitude_factor": 0.86,
+          "derived_true_baseline_nT": -22.24,
+          "formula": "true_baseline = observed / (coverage * lat_factor)"
+        },
+        "point_prediction_recalibrated": {
+          "baseline_source": "W004 Empirical (2024 Eclipse)",
+          "value": -16.72,
+          "uncertainty": 3.5
         }
       },
       {
@@ -349,7 +373,7 @@
           "coverage_fraction": 0.98,
           "latitude_factor": 0.89
         },
-        "sha256": "8d02990e1a1c75bb46495d6c41a4b0221664d1db09242c3a7e781b2e923f4973",
+        "sha256": "837524b9604e8fedd72d8f46d6eb126c626f412fafab4fe6203d573fa7785cf5",
         "point_prediction": {
           "value": -9.5,
           "uncertainty": 1.9,
@@ -474,6 +498,18 @@
             "still_within_range": true
           },
           "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
+        },
+        "baseline_recalibration": {
+          "w004_observed_nT": -17.6,
+          "w004_coverage": 0.92,
+          "w004_latitude_factor": 0.86,
+          "derived_true_baseline_nT": -22.24,
+          "formula": "true_baseline = observed / (coverage * lat_factor)"
+        },
+        "point_prediction_recalibrated": {
+          "baseline_source": "W004 Empirical (2024 Eclipse)",
+          "value": -19.4,
+          "uncertainty": 3.9
         }
       },
       {
@@ -488,7 +524,7 @@
           "coverage_fraction": 0.92,
           "latitude_factor": 0.86
         },
-        "sha256": "8a2bcd0b3f27cfa3670645a615625434b8b9d82edb469fdfa6a58db61c0e7518",
+        "sha256": "79ea241439ed2a54478b17134b36ab33f073451ffae2ca72daa19fc4af08f5dd",
         "point_prediction": {
           "value": -8.6,
           "uncertainty": 1.7,
@@ -613,6 +649,18 @@
             "still_within_range": true
           },
           "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
+        },
+        "baseline_recalibration": {
+          "w004_observed_nT": -17.6,
+          "w004_coverage": 0.92,
+          "w004_latitude_factor": 0.86,
+          "derived_true_baseline_nT": -22.24,
+          "formula": "true_baseline = observed / (coverage * lat_factor)"
+        },
+        "point_prediction_recalibrated": {
+          "baseline_source": "W004 Empirical (2024 Eclipse)",
+          "value": -17.6,
+          "uncertainty": 3.5
         }
       },
       {
@@ -627,7 +675,7 @@
           "coverage_fraction": 0.7,
           "latitude_factor": 0.75
         },
-        "sha256": "5031615a9c4bf2c0e7d7dd34c5c25f6039b2defb53e39a3e0befa1354511b399",
+        "sha256": "1555bf1825c145bcdcdacc585f8d1a66167f374401e76d236c4f26219df43998",
         "point_prediction": {
           "value": -5.8,
           "uncertainty": 1.2,
@@ -752,6 +800,18 @@
             "still_within_range": true
           },
           "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
+        },
+        "baseline_recalibration": {
+          "w004_observed_nT": -17.6,
+          "w004_coverage": 0.92,
+          "w004_latitude_factor": 0.86,
+          "derived_true_baseline_nT": -22.24,
+          "formula": "true_baseline = observed / (coverage * lat_factor)"
+        },
+        "point_prediction_recalibrated": {
+          "baseline_source": "W004 Empirical (2024 Eclipse)",
+          "value": -11.68,
+          "uncertainty": 2.4
         }
       },
       {
@@ -775,7 +835,7 @@
         "inputs": {
           "shielding": "Superconducting Gravimeter"
         },
-        "sha256": "0a321591d34e1181c50b77a397c9179dad263194340a464273786769ca1cc0d8",
+        "sha256": "bd4db63ad515180b1042080e8625ae2c9c27a03b14dee4155f57a0173b7f1859",
         "point_prediction": {
           "value": null,
           "uncertainty": null,
@@ -898,7 +958,7 @@
         "status": "pending",
         "formula": "correlation(anomaly, geometry) = 1.0",
         "inputs": {},
-        "sha256": "27e2846e66cc85c50851df6f83554ed5e9b6bbe8854f40e382a4a4449d4bde5c",
+        "sha256": "f0dc6691c67c1e8009e1a8898180ba684a41900c7203834337de44a83e543066",
         "point_prediction": {
           "value": null,
           "uncertainty": null,
@@ -1034,7 +1094,7 @@
         "inputs": {
           "coverage_fraction": "< 0.4"
         },
-        "sha256": "348935b5b6db22ca7553ef66c51f940a5f502100c246fe701b7ff454762ac1a5",
+        "sha256": "c7e8762c8fe3d9a674eb8634298c9b6b0488724bfac0b1558c7c93fcc31691b8",
         "point_prediction": {
           "value": "<2",
           "uncertainty": null,

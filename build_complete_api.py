@@ -114,7 +114,31 @@ for pred in old_preds.get("active_predictions", []):
     if pid in formula_map:
         pred["formula"] = formula_map[pid]["formula"]
         pred["inputs"] = formula_map[pid]["inputs"]
+        
+    if "inputs" in pred and "coverage_fraction" in pred["inputs"] and "latitude_factor" in pred["inputs"] and isinstance(pred["inputs"]["coverage_fraction"], float):
+        true_baseline = round(-17.6 / (0.92 * 0.86), 2)
+        c = pred["inputs"]["coverage_fraction"]
+        l = pred["inputs"]["latitude_factor"]
+        
+        recal_val = round(true_baseline * c * l, 2)
+        unc = pred.get("point_prediction", {}).get("uncertainty", 2.0)
+        if unc is None: unc = 2.0
+        
+        pred["baseline_recalibration"] = {
+            "w004_observed_nT": -17.6,
+            "w004_coverage": 0.92,
+            "w004_latitude_factor": 0.86,
+            "derived_true_baseline_nT": true_baseline,
+            "formula": "true_baseline = observed / (coverage * lat_factor)"
+        }
+        
+        pred["point_prediction_recalibrated"] = {
+            "baseline_source": "W004 Empirical (2024 Eclipse)",
+            "value": recal_val,
+            "uncertainty": round(unc * (abs(true_baseline)/10.9), 1)
+        }
     
+
     # Add SHA256
     pred_str = json.dumps(pred, sort_keys=True)
     pred["sha256"] = hashlib.sha256(pred_str.encode()).hexdigest()

@@ -207,7 +207,12 @@ function createCardHTML(p, resultMap, isWeekly = false) {
 
     const testDateDisplay = isWeekly ? 'Live This Week' : (p.test_date ? p.test_date.split('T')[0] : 'Ongoing');
     const predVal = (p.point_prediction && p.point_prediction.value !== null) ? p.point_prediction.value : (p.prediction ? p.prediction.value : (p.prediction_nT || ''));
-    const unitVal = p.prediction ? (p.prediction.unit || '') : '';
+    const unitVal = p.point_prediction ? (p.point_prediction.unit || 'nT') : (p.prediction ? (p.prediction.unit || 'nT') : 'nT');
+
+    let recalibratedHTML = '';
+    if (p.point_prediction_recalibrated) {
+        recalibratedHTML = `<div style="font-size:0.85rem; color:var(--accent-blue); margin-top:2px; font-weight:normal; letter-spacing:0.02em;">[W004 Empirical Baseline] ${p.point_prediction_recalibrated.value} <span style="font-size:0.7rem; color:var(--text-muted);">${p.point_prediction_recalibrated.unit || 'nT'}</span></div>`;
+    }
 
     return `
     <div class="glass-card">
@@ -226,9 +231,12 @@ function createCardHTML(p, resultMap, isWeekly = false) {
                 <span class="data-label">TARGET WINDOW</span>
                 <span class="data-value accent">${testDateDisplay}</span>
             </div>
-            <div class="data-row">
-                <span class="data-label">MODEL PREDICTION</span>
-                <span class="data-value">${predVal !== null && predVal !== undefined ? predVal : ''} <span style="font-size:0.8rem; color:var(--text-muted)">${unitVal}</span></span>
+            <div class="data-row" style="align-items:flex-start;">
+                <span class="data-label" style="margin-top:0.25rem;">MODEL PREDICTION</span>
+                <div style="display:flex; flex-direction:column; align-items:flex-end; text-align:right;">
+                    <span class="data-value" style="margin-bottom:0px;">${predVal !== null && predVal !== undefined ? predVal : ''} <span style="font-size:0.8rem; color:var(--text-muted)">${unitVal}</span></span>
+                    ${recalibratedHTML}
+                </div>
             </div>
         </div>
         
