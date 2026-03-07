@@ -77,6 +77,14 @@ with open(f"{CURRENT_DIR}/scorecard.json", "w") as f:
 with open(f"{API_DIR}/predictions.json", "r") as f:
     old_preds = json.load(f)
 
+proof_files = glob.glob(f"/Users/nicholashughes/.gemini/antigravity/scratch/astro_observations/predictions/proofs/weekly_predictions_*.json")
+if proof_files:
+    latest_proof = sorted(proof_files)[-1]
+    with open(latest_proof, "r") as f:
+        weekly_proof_data = json.load(f)
+    if "predictions" in weekly_proof_data:
+        old_preds["weekly_tests"] = weekly_proof_data["predictions"]
+
 for w_test in old_preds.get("weekly_tests", []):
     if w_test["id"] == "W001":
         w_test["status"] = "below_detection_threshold"

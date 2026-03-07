@@ -35,7 +35,7 @@ def add_layered_schema(pred):
         "confidence": "1-sigma"
     }
 
-    if "PRED-0" in pid and int(pid.split("-")[1]) <= 8:
+    if ("PRED-0" in pid and int(pid.split("-")[1]) <= 8) or pid in ["W001", "W004"]:
         pred["mechanism"] = {
             "description": "Aetheric pressure trough caused by lunar/solar mass alignment blocking aetheric flow to surface",
             "key_claims": [
@@ -186,8 +186,8 @@ def add_layered_schema(pred):
         pred["win_threshold"] = 7
         pred["strong_win_threshold"] = 11
 
-    # Same logic for Weekly, let's just tag W001-W004 with a generic test matrix so the UI code doesn't crash
-    if "W00" in pid:
+    # Same logic for Weekly, let's just tag remaining W-tests with a generic test matrix so the UI code doesn't crash
+    if "W00" in pid and pid not in ["W001", "W004"]:
         pred["scoring_matrix"] = [
             {
                 "claim": "Signal is correct polarity",

@@ -206,7 +206,7 @@ function createCardHTML(p, resultMap, isWeekly = false) {
     }
 
     const testDateDisplay = isWeekly ? 'Live This Week' : (p.test_date ? p.test_date.split('T')[0] : 'Ongoing');
-    const predVal = p.point_prediction ? p.point_prediction.value : (p.prediction ? p.prediction.value : (p.prediction_nT || ''));
+    const predVal = (p.point_prediction && p.point_prediction.value !== null) ? p.point_prediction.value : (p.prediction ? p.prediction.value : (p.prediction_nT || ''));
     const unitVal = p.prediction ? (p.prediction.unit || '') : '';
 
     return `
@@ -296,16 +296,10 @@ function renderGrids(results) {
         WEEKLY_DATA.predictions.forEach(p => {
             const resNode = resultMap[p.id];
             
-            // Check if it has a confirmed verdit or if the test_date string is in the past
-            let isPast = false;
+            // The user explicitly requested to partition based ONLY on status
+            let isPast = (p.status && p.status !== 'pending');
             if (resNode && resNode.auto_verdict && resNode.auto_verdict !== 'pending') {
                 isPast = true;
-            } else if (p.test_date) {
-                let pTime = new Date(p.test_date).getTime();
-                if (pTime < now) isPast = true;
-            } else if (p.target_date) {
-                let pTime = new Date(p.target_date).getTime();
-                if (pTime < now) isPast = true;
             }
             
             const card = createCardHTML(p, resultMap, true);
