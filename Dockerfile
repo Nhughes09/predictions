@@ -1,9 +1,9 @@
 FROM python:3.9
 RUN useradd -m -u 1000 user
 USER user
-ENV HOME=/home/user \
-    PATH=/home/user/.local/bin:$PATH \
-    PYTHONUNBUFFERED=1
+ENV HOME="/home/user"
+ENV PATH="/home/user/.local/bin:${PATH}"
+ENV PYTHONUNBUFFERED=1
 WORKDIR $HOME/app
 COPY --chown=user ./requirements.txt requirements.txt
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
