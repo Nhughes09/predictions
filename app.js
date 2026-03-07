@@ -25,7 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initScorecard() {
     const retrospective = PREDICTIONS.filter(p => p.status === 'confirmed').length;
-    const falsified = PREDICTIONS.filter(p => p.status === 'falsified').length;
+    const falsified = PREDICTIONS.filter(p => p.status === 'falsified' || p.verdict === 'falsified').length;
+    let weeklyFalsified = 0;
+    if (typeof WEEKLY_DATA !== 'undefined' && WEEKLY_DATA.predictions) {
+        weeklyFalsified = WEEKLY_DATA.predictions.filter(p => p.status === 'falsified' || p.verdict === 'falsified').length;
+    }
+    const totalFalsified = falsified + weeklyFalsified;
     const advance   = PREDICTIONS.filter(p => p.status === 'pending').length;
     const weeklyCount = typeof WEEKLY_DATA !== 'undefined' ? WEEKLY_DATA.predictions.length : 0;
     
@@ -33,7 +38,7 @@ function initScorecard() {
         <div class="score-hud"><span>${retrospective}</span> WINS</div>
         <div class="score-hud" style="color:var(--accent-blue);"><span>${weeklyCount}</span> LIVE TESTS</div>
         <div class="score-hud"><span>${advance}</span> PENDING</div>
-        <div class="score-hud" style="color:var(--status-falsified)"><span>${falsified}</span> FALSIFIED</div>
+        <div class="score-hud" style="color:var(--status-falsified)"><span>${totalFalsified}</span> FALSIFIED</div>
     `;
     
     document.getElementById('scorecard').innerHTML = html;
