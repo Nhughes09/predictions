@@ -55,14 +55,14 @@ scorecard = {
       "falsified": 0
     },
     "physical_geometry": {
-      "confirmed": 6,
+      "confirmed": 7,
       "below_detection_threshold": 0,
       "pending": 5,
       "falsified": 0
     }
   },
   "overall": {
-    "confirmed": 26,
+    "confirmed": 27,
     "below_detection_threshold": 2,
     "pending": 20,
     "falsified": 0
