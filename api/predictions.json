@@ -11,7 +11,17 @@
       "uncertainty_nT": 1.7,
       "component": "Z",
       "event": "2026 Solar Eclipse Aug 12",
-      "mechanism": "Aetheric pressure trough",
+      "mechanism": {
+        "description": "Aetheric pressure trough caused by lunar/solar mass alignment blocking aetheric flow to surface",
+        "key_claims": [
+          "Signal will be NEGATIVE (pressure drop)",
+          "Signal will TRACK eclipse geometry not local solar noon",
+          "Signal magnitude scales with coverage fraction",
+          "Signal magnitude scales with geomagnetic latitude",
+          "Peak timing correlates with maximum obscuration not noon"
+        ],
+        "each_claim_is_independently_testable": true
+      },
       "formula": "delta_Z = baseline * coverage_fraction * latitude_factor",
       "inputs": {
         "baseline_nT": -10.9,
@@ -20,7 +30,121 @@
       },
       "status": "pending",
       "timestamp_sha256": "pending",
-      "sha256": "9fc7c5ba6704975ff3e13b17b9da84c3fb998b5cf37410bfadb93d6c719f68d1"
+      "sha256": "9fc7c5ba6704975ff3e13b17b9da84c3fb998b5cf37410bfadb93d6c719f68d1",
+      "point_prediction": {
+        "value": -8.4,
+        "uncertainty": 1.7,
+        "range": [
+          -10.1,
+          -6.7
+        ],
+        "confidence": "1-sigma"
+      },
+      "derivation": {
+        "formula": "delta_Z = B * C * L",
+        "variables": {
+          "B": "baseline_nT = -10.9 (BOU 2017)",
+          "C": "coverage_fraction (varies by station)",
+          "L": "latitude_factor (geomagnetic projection)"
+        },
+        "step_by_step": [
+          "1. BOU 2017 baseline = -10.9 nT at 99% coverage, lat 40.0N",
+          "2. Determine local station coverage fraction",
+          "3. Calculate relative latitude distortion factor",
+          "4. delta_Z = -10.9 * C * L"
+        ],
+        "caveat": "BOU 2017 baseline flagged as disturbed day. If quiet-day baseline differs, scale accordingly."
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal is negative",
+          "weight": "HIGH",
+          "auto_check": "observed.value < 0",
+          "points_if_correct": 3,
+          "points_if_wrong": -3
+        },
+        {
+          "claim": "Signal exceeds noise floor",
+          "weight": "HIGH",
+          "auto_check": "observed.snr >= 2.0",
+          "points_if_correct": 2,
+          "points_if_wrong": 0
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 2,
+          "points_if_wrong": -1
+        },
+        {
+          "claim": "Magnitude within 2-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 2.0",
+          "points_if_correct": 1,
+          "points_if_wrong": -1
+        },
+        {
+          "claim": "Peak timing tracks eclipse geometry not solar noon",
+          "weight": "VERY HIGH",
+          "auto_check": "evaluate_timing_correlation()",
+          "points_if_correct": 4,
+          "points_if_wrong": -4,
+          "note": "This is the strongest mechanistic test - globe model has no prediction here"
+        },
+        {
+          "claim": "Signal scales with coverage fraction across stations",
+          "weight": "VERY HIGH",
+          "auto_check": "evaluate_network_correlation()",
+          "points_if_correct": 4,
+          "points_if_wrong": -4,
+          "note": "Multi-station correlation is model-distinguishing - cannot be explained by random noise"
+        },
+        {
+          "claim": "Non-path stations show less than 2 nT",
+          "weight": "HIGH",
+          "auto_check": "evaluate_off_path_noise()",
+          "points_if_correct": 3,
+          "points_if_wrong": -3
+        }
+      ],
+      "max_possible_score": 19,
+      "win_threshold": 10,
+      "strong_win_threshold": 15,
+      "model_distinguishing": {
+        "description": "Tests where dome and globe models make DIFFERENT predictions",
+        "tests": [
+          {
+            "test": "Eclipse timing vs solar noon",
+            "dome_predicts": "Peak tracks umbra geometry",
+            "globe_predicts": "No prediction - globe has no eclipse magnetic mechanism",
+            "verdict_if_dome_correct": "STRONG model-distinguishing confirmation"
+          },
+          {
+            "test": "Coverage scaling across stations",
+            "dome_predicts": "Linear correlation between coverage % and signal nT",
+            "globe_predicts": "No systematic prediction",
+            "verdict_if_dome_correct": "Cannot be explained by coincidence across independent stations"
+          },
+          {
+            "test": "SG gravimeters show null",
+            "dome_predicts": "0.0 uGal on shielded superconducting gravimeters",
+            "globe_predicts": "Would expect tidal signal if mass-based",
+            "verdict_if_dome_correct": "Confirms aetheric not gravitational mechanism"
+          }
+        ]
+      },
+      "calibration": {
+        "baseline_source": "BOU 2017",
+        "baseline_quality": "CAVEAT - disturbed day",
+        "baseline_value_used": -10.9,
+        "alternative_baseline_if_quiet_day": "TBD - run W004 replication first",
+        "if_baseline_wrong_by_20pct": {
+          "adjusted_prediction": -6.72,
+          "still_within_range": true
+        },
+        "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
+      }
     },
     {
       "id": "PRED-002",
@@ -34,7 +158,132 @@
         "coverage_fraction": 0.94,
         "latitude_factor": 0.8
       },
-      "sha256": "bf5e58b034f02e9166411f78cb6b6d95850e39bd217e2d62972f8dabda7879af"
+      "sha256": "bf5e58b034f02e9166411f78cb6b6d95850e39bd217e2d62972f8dabda7879af",
+      "point_prediction": {
+        "value": -8.3,
+        "uncertainty": 1.7,
+        "range": [
+          -10.0,
+          -6.6
+        ],
+        "confidence": "1-sigma"
+      },
+      "mechanism": {
+        "description": "Aetheric pressure trough caused by lunar/solar mass alignment blocking aetheric flow to surface",
+        "key_claims": [
+          "Signal will be NEGATIVE (pressure drop)",
+          "Signal will TRACK eclipse geometry not local solar noon",
+          "Signal magnitude scales with coverage fraction",
+          "Signal magnitude scales with geomagnetic latitude",
+          "Peak timing correlates with maximum obscuration not noon"
+        ],
+        "each_claim_is_independently_testable": true
+      },
+      "derivation": {
+        "formula": "delta_Z = B * C * L",
+        "variables": {
+          "B": "baseline_nT = -10.9 (BOU 2017)",
+          "C": "coverage_fraction (varies by station)",
+          "L": "latitude_factor (geomagnetic projection)"
+        },
+        "step_by_step": [
+          "1. BOU 2017 baseline = -10.9 nT at 99% coverage, lat 40.0N",
+          "2. Determine local station coverage fraction",
+          "3. Calculate relative latitude distortion factor",
+          "4. delta_Z = -10.9 * C * L"
+        ],
+        "caveat": "BOU 2017 baseline flagged as disturbed day. If quiet-day baseline differs, scale accordingly."
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal is negative",
+          "weight": "HIGH",
+          "auto_check": "observed.value < 0",
+          "points_if_correct": 3,
+          "points_if_wrong": -3
+        },
+        {
+          "claim": "Signal exceeds noise floor",
+          "weight": "HIGH",
+          "auto_check": "observed.snr >= 2.0",
+          "points_if_correct": 2,
+          "points_if_wrong": 0
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 2,
+          "points_if_wrong": -1
+        },
+        {
+          "claim": "Magnitude within 2-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 2.0",
+          "points_if_correct": 1,
+          "points_if_wrong": -1
+        },
+        {
+          "claim": "Peak timing tracks eclipse geometry not solar noon",
+          "weight": "VERY HIGH",
+          "auto_check": "evaluate_timing_correlation()",
+          "points_if_correct": 4,
+          "points_if_wrong": -4,
+          "note": "This is the strongest mechanistic test - globe model has no prediction here"
+        },
+        {
+          "claim": "Signal scales with coverage fraction across stations",
+          "weight": "VERY HIGH",
+          "auto_check": "evaluate_network_correlation()",
+          "points_if_correct": 4,
+          "points_if_wrong": -4,
+          "note": "Multi-station correlation is model-distinguishing - cannot be explained by random noise"
+        },
+        {
+          "claim": "Non-path stations show less than 2 nT",
+          "weight": "HIGH",
+          "auto_check": "evaluate_off_path_noise()",
+          "points_if_correct": 3,
+          "points_if_wrong": -3
+        }
+      ],
+      "max_possible_score": 19,
+      "win_threshold": 10,
+      "strong_win_threshold": 15,
+      "model_distinguishing": {
+        "description": "Tests where dome and globe models make DIFFERENT predictions",
+        "tests": [
+          {
+            "test": "Eclipse timing vs solar noon",
+            "dome_predicts": "Peak tracks umbra geometry",
+            "globe_predicts": "No prediction - globe has no eclipse magnetic mechanism",
+            "verdict_if_dome_correct": "STRONG model-distinguishing confirmation"
+          },
+          {
+            "test": "Coverage scaling across stations",
+            "dome_predicts": "Linear correlation between coverage % and signal nT",
+            "globe_predicts": "No systematic prediction",
+            "verdict_if_dome_correct": "Cannot be explained by coincidence across independent stations"
+          },
+          {
+            "test": "SG gravimeters show null",
+            "dome_predicts": "0.0 uGal on shielded superconducting gravimeters",
+            "globe_predicts": "Would expect tidal signal if mass-based",
+            "verdict_if_dome_correct": "Confirms aetheric not gravitational mechanism"
+          }
+        ]
+      },
+      "calibration": {
+        "baseline_source": "BOU 2017",
+        "baseline_quality": "CAVEAT - disturbed day",
+        "baseline_value_used": -10.9,
+        "alternative_baseline_if_quiet_day": "TBD - run W004 replication first",
+        "if_baseline_wrong_by_20pct": {
+          "adjusted_prediction": -6.64,
+          "still_within_range": true
+        },
+        "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
+      }
     },
     {
       "id": "PRED-003",
@@ -48,7 +297,132 @@
         "coverage_fraction": 0.98,
         "latitude_factor": 0.89
       },
-      "sha256": "303ef8fedf35777968c887c5abb28ea2b6202f7f58587bdc15baa2908d2e602c"
+      "sha256": "303ef8fedf35777968c887c5abb28ea2b6202f7f58587bdc15baa2908d2e602c",
+      "point_prediction": {
+        "value": -9.5,
+        "uncertainty": 1.9,
+        "range": [
+          -11.4,
+          -7.6
+        ],
+        "confidence": "1-sigma"
+      },
+      "mechanism": {
+        "description": "Aetheric pressure trough caused by lunar/solar mass alignment blocking aetheric flow to surface",
+        "key_claims": [
+          "Signal will be NEGATIVE (pressure drop)",
+          "Signal will TRACK eclipse geometry not local solar noon",
+          "Signal magnitude scales with coverage fraction",
+          "Signal magnitude scales with geomagnetic latitude",
+          "Peak timing correlates with maximum obscuration not noon"
+        ],
+        "each_claim_is_independently_testable": true
+      },
+      "derivation": {
+        "formula": "delta_Z = B * C * L",
+        "variables": {
+          "B": "baseline_nT = -10.9 (BOU 2017)",
+          "C": "coverage_fraction (varies by station)",
+          "L": "latitude_factor (geomagnetic projection)"
+        },
+        "step_by_step": [
+          "1. BOU 2017 baseline = -10.9 nT at 99% coverage, lat 40.0N",
+          "2. Determine local station coverage fraction",
+          "3. Calculate relative latitude distortion factor",
+          "4. delta_Z = -10.9 * C * L"
+        ],
+        "caveat": "BOU 2017 baseline flagged as disturbed day. If quiet-day baseline differs, scale accordingly."
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal is negative",
+          "weight": "HIGH",
+          "auto_check": "observed.value < 0",
+          "points_if_correct": 3,
+          "points_if_wrong": -3
+        },
+        {
+          "claim": "Signal exceeds noise floor",
+          "weight": "HIGH",
+          "auto_check": "observed.snr >= 2.0",
+          "points_if_correct": 2,
+          "points_if_wrong": 0
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 2,
+          "points_if_wrong": -1
+        },
+        {
+          "claim": "Magnitude within 2-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 2.0",
+          "points_if_correct": 1,
+          "points_if_wrong": -1
+        },
+        {
+          "claim": "Peak timing tracks eclipse geometry not solar noon",
+          "weight": "VERY HIGH",
+          "auto_check": "evaluate_timing_correlation()",
+          "points_if_correct": 4,
+          "points_if_wrong": -4,
+          "note": "This is the strongest mechanistic test - globe model has no prediction here"
+        },
+        {
+          "claim": "Signal scales with coverage fraction across stations",
+          "weight": "VERY HIGH",
+          "auto_check": "evaluate_network_correlation()",
+          "points_if_correct": 4,
+          "points_if_wrong": -4,
+          "note": "Multi-station correlation is model-distinguishing - cannot be explained by random noise"
+        },
+        {
+          "claim": "Non-path stations show less than 2 nT",
+          "weight": "HIGH",
+          "auto_check": "evaluate_off_path_noise()",
+          "points_if_correct": 3,
+          "points_if_wrong": -3
+        }
+      ],
+      "max_possible_score": 19,
+      "win_threshold": 10,
+      "strong_win_threshold": 15,
+      "model_distinguishing": {
+        "description": "Tests where dome and globe models make DIFFERENT predictions",
+        "tests": [
+          {
+            "test": "Eclipse timing vs solar noon",
+            "dome_predicts": "Peak tracks umbra geometry",
+            "globe_predicts": "No prediction - globe has no eclipse magnetic mechanism",
+            "verdict_if_dome_correct": "STRONG model-distinguishing confirmation"
+          },
+          {
+            "test": "Coverage scaling across stations",
+            "dome_predicts": "Linear correlation between coverage % and signal nT",
+            "globe_predicts": "No systematic prediction",
+            "verdict_if_dome_correct": "Cannot be explained by coincidence across independent stations"
+          },
+          {
+            "test": "SG gravimeters show null",
+            "dome_predicts": "0.0 uGal on shielded superconducting gravimeters",
+            "globe_predicts": "Would expect tidal signal if mass-based",
+            "verdict_if_dome_correct": "Confirms aetheric not gravitational mechanism"
+          }
+        ]
+      },
+      "calibration": {
+        "baseline_source": "BOU 2017",
+        "baseline_quality": "CAVEAT - disturbed day",
+        "baseline_value_used": -10.9,
+        "alternative_baseline_if_quiet_day": "TBD - run W004 replication first",
+        "if_baseline_wrong_by_20pct": {
+          "adjusted_prediction": -7.6,
+          "still_within_range": true
+        },
+        "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
+      }
     },
     {
       "id": "PRED-004",
@@ -62,7 +436,132 @@
         "coverage_fraction": 0.92,
         "latitude_factor": 0.86
       },
-      "sha256": "e7ffe6fc1a0ca462c79fbf558157f6da5fbd141f9e545aae5385c33cb235f152"
+      "sha256": "e7ffe6fc1a0ca462c79fbf558157f6da5fbd141f9e545aae5385c33cb235f152",
+      "point_prediction": {
+        "value": -8.6,
+        "uncertainty": 1.7,
+        "range": [
+          -10.3,
+          -6.9
+        ],
+        "confidence": "1-sigma"
+      },
+      "mechanism": {
+        "description": "Aetheric pressure trough caused by lunar/solar mass alignment blocking aetheric flow to surface",
+        "key_claims": [
+          "Signal will be NEGATIVE (pressure drop)",
+          "Signal will TRACK eclipse geometry not local solar noon",
+          "Signal magnitude scales with coverage fraction",
+          "Signal magnitude scales with geomagnetic latitude",
+          "Peak timing correlates with maximum obscuration not noon"
+        ],
+        "each_claim_is_independently_testable": true
+      },
+      "derivation": {
+        "formula": "delta_Z = B * C * L",
+        "variables": {
+          "B": "baseline_nT = -10.9 (BOU 2017)",
+          "C": "coverage_fraction (varies by station)",
+          "L": "latitude_factor (geomagnetic projection)"
+        },
+        "step_by_step": [
+          "1. BOU 2017 baseline = -10.9 nT at 99% coverage, lat 40.0N",
+          "2. Determine local station coverage fraction",
+          "3. Calculate relative latitude distortion factor",
+          "4. delta_Z = -10.9 * C * L"
+        ],
+        "caveat": "BOU 2017 baseline flagged as disturbed day. If quiet-day baseline differs, scale accordingly."
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal is negative",
+          "weight": "HIGH",
+          "auto_check": "observed.value < 0",
+          "points_if_correct": 3,
+          "points_if_wrong": -3
+        },
+        {
+          "claim": "Signal exceeds noise floor",
+          "weight": "HIGH",
+          "auto_check": "observed.snr >= 2.0",
+          "points_if_correct": 2,
+          "points_if_wrong": 0
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 2,
+          "points_if_wrong": -1
+        },
+        {
+          "claim": "Magnitude within 2-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 2.0",
+          "points_if_correct": 1,
+          "points_if_wrong": -1
+        },
+        {
+          "claim": "Peak timing tracks eclipse geometry not solar noon",
+          "weight": "VERY HIGH",
+          "auto_check": "evaluate_timing_correlation()",
+          "points_if_correct": 4,
+          "points_if_wrong": -4,
+          "note": "This is the strongest mechanistic test - globe model has no prediction here"
+        },
+        {
+          "claim": "Signal scales with coverage fraction across stations",
+          "weight": "VERY HIGH",
+          "auto_check": "evaluate_network_correlation()",
+          "points_if_correct": 4,
+          "points_if_wrong": -4,
+          "note": "Multi-station correlation is model-distinguishing - cannot be explained by random noise"
+        },
+        {
+          "claim": "Non-path stations show less than 2 nT",
+          "weight": "HIGH",
+          "auto_check": "evaluate_off_path_noise()",
+          "points_if_correct": 3,
+          "points_if_wrong": -3
+        }
+      ],
+      "max_possible_score": 19,
+      "win_threshold": 10,
+      "strong_win_threshold": 15,
+      "model_distinguishing": {
+        "description": "Tests where dome and globe models make DIFFERENT predictions",
+        "tests": [
+          {
+            "test": "Eclipse timing vs solar noon",
+            "dome_predicts": "Peak tracks umbra geometry",
+            "globe_predicts": "No prediction - globe has no eclipse magnetic mechanism",
+            "verdict_if_dome_correct": "STRONG model-distinguishing confirmation"
+          },
+          {
+            "test": "Coverage scaling across stations",
+            "dome_predicts": "Linear correlation between coverage % and signal nT",
+            "globe_predicts": "No systematic prediction",
+            "verdict_if_dome_correct": "Cannot be explained by coincidence across independent stations"
+          },
+          {
+            "test": "SG gravimeters show null",
+            "dome_predicts": "0.0 uGal on shielded superconducting gravimeters",
+            "globe_predicts": "Would expect tidal signal if mass-based",
+            "verdict_if_dome_correct": "Confirms aetheric not gravitational mechanism"
+          }
+        ]
+      },
+      "calibration": {
+        "baseline_source": "BOU 2017",
+        "baseline_quality": "CAVEAT - disturbed day",
+        "baseline_value_used": -10.9,
+        "alternative_baseline_if_quiet_day": "TBD - run W004 replication first",
+        "if_baseline_wrong_by_20pct": {
+          "adjusted_prediction": -6.88,
+          "still_within_range": true
+        },
+        "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
+      }
     },
     {
       "id": "PRED-005",
@@ -76,20 +575,269 @@
         "coverage_fraction": 0.7,
         "latitude_factor": 0.75
       },
-      "sha256": "fd37416217d920b15386f4f7ac60d32c3b66aff34a0229ce01858e9734fb8d8f"
+      "sha256": "fd37416217d920b15386f4f7ac60d32c3b66aff34a0229ce01858e9734fb8d8f",
+      "point_prediction": {
+        "value": -5.8,
+        "uncertainty": 1.2,
+        "range": [
+          -7.0,
+          -4.6
+        ],
+        "confidence": "1-sigma"
+      },
+      "mechanism": {
+        "description": "Aetheric pressure trough caused by lunar/solar mass alignment blocking aetheric flow to surface",
+        "key_claims": [
+          "Signal will be NEGATIVE (pressure drop)",
+          "Signal will TRACK eclipse geometry not local solar noon",
+          "Signal magnitude scales with coverage fraction",
+          "Signal magnitude scales with geomagnetic latitude",
+          "Peak timing correlates with maximum obscuration not noon"
+        ],
+        "each_claim_is_independently_testable": true
+      },
+      "derivation": {
+        "formula": "delta_Z = B * C * L",
+        "variables": {
+          "B": "baseline_nT = -10.9 (BOU 2017)",
+          "C": "coverage_fraction (varies by station)",
+          "L": "latitude_factor (geomagnetic projection)"
+        },
+        "step_by_step": [
+          "1. BOU 2017 baseline = -10.9 nT at 99% coverage, lat 40.0N",
+          "2. Determine local station coverage fraction",
+          "3. Calculate relative latitude distortion factor",
+          "4. delta_Z = -10.9 * C * L"
+        ],
+        "caveat": "BOU 2017 baseline flagged as disturbed day. If quiet-day baseline differs, scale accordingly."
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal is negative",
+          "weight": "HIGH",
+          "auto_check": "observed.value < 0",
+          "points_if_correct": 3,
+          "points_if_wrong": -3
+        },
+        {
+          "claim": "Signal exceeds noise floor",
+          "weight": "HIGH",
+          "auto_check": "observed.snr >= 2.0",
+          "points_if_correct": 2,
+          "points_if_wrong": 0
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 2,
+          "points_if_wrong": -1
+        },
+        {
+          "claim": "Magnitude within 2-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 2.0",
+          "points_if_correct": 1,
+          "points_if_wrong": -1
+        },
+        {
+          "claim": "Peak timing tracks eclipse geometry not solar noon",
+          "weight": "VERY HIGH",
+          "auto_check": "evaluate_timing_correlation()",
+          "points_if_correct": 4,
+          "points_if_wrong": -4,
+          "note": "This is the strongest mechanistic test - globe model has no prediction here"
+        },
+        {
+          "claim": "Signal scales with coverage fraction across stations",
+          "weight": "VERY HIGH",
+          "auto_check": "evaluate_network_correlation()",
+          "points_if_correct": 4,
+          "points_if_wrong": -4,
+          "note": "Multi-station correlation is model-distinguishing - cannot be explained by random noise"
+        },
+        {
+          "claim": "Non-path stations show less than 2 nT",
+          "weight": "HIGH",
+          "auto_check": "evaluate_off_path_noise()",
+          "points_if_correct": 3,
+          "points_if_wrong": -3
+        }
+      ],
+      "max_possible_score": 19,
+      "win_threshold": 10,
+      "strong_win_threshold": 15,
+      "model_distinguishing": {
+        "description": "Tests where dome and globe models make DIFFERENT predictions",
+        "tests": [
+          {
+            "test": "Eclipse timing vs solar noon",
+            "dome_predicts": "Peak tracks umbra geometry",
+            "globe_predicts": "No prediction - globe has no eclipse magnetic mechanism",
+            "verdict_if_dome_correct": "STRONG model-distinguishing confirmation"
+          },
+          {
+            "test": "Coverage scaling across stations",
+            "dome_predicts": "Linear correlation between coverage % and signal nT",
+            "globe_predicts": "No systematic prediction",
+            "verdict_if_dome_correct": "Cannot be explained by coincidence across independent stations"
+          },
+          {
+            "test": "SG gravimeters show null",
+            "dome_predicts": "0.0 uGal on shielded superconducting gravimeters",
+            "globe_predicts": "Would expect tidal signal if mass-based",
+            "verdict_if_dome_correct": "Confirms aetheric not gravitational mechanism"
+          }
+        ]
+      },
+      "calibration": {
+        "baseline_source": "BOU 2017",
+        "baseline_quality": "CAVEAT - disturbed day",
+        "baseline_value_used": -10.9,
+        "alternative_baseline_if_quiet_day": "TBD - run W004 replication first",
+        "if_baseline_wrong_by_20pct": {
+          "adjusted_prediction": -4.64,
+          "still_within_range": true
+        },
+        "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
+      }
     },
     {
       "id": "PRED-006",
       "station": "All European SG",
       "prediction_uGal": 0.0,
       "uncertainty_uGal": 0.1,
-      "mechanism": "shielded null",
+      "mechanism": {
+        "description": "Aetheric pressure trough caused by lunar/solar mass alignment blocking aetheric flow to surface",
+        "key_claims": [
+          "Signal will be NEGATIVE (pressure drop)",
+          "Signal will TRACK eclipse geometry not local solar noon",
+          "Signal magnitude scales with coverage fraction",
+          "Signal magnitude scales with geomagnetic latitude",
+          "Peak timing correlates with maximum obscuration not noon"
+        ],
+        "each_claim_is_independently_testable": true
+      },
       "status": "pending",
       "formula": "delta_g = 0",
       "inputs": {
         "shielding": "Superconducting Gravimeter"
       },
-      "sha256": "6f8462daed2e755a20f57deac47bf6ff90e2ea071c618e3d6ac3a2d02d6fda78"
+      "sha256": "6f8462daed2e755a20f57deac47bf6ff90e2ea071c618e3d6ac3a2d02d6fda78",
+      "point_prediction": {
+        "value": null,
+        "uncertainty": null,
+        "range": [
+          0,
+          0
+        ],
+        "confidence": "1-sigma"
+      },
+      "derivation": {
+        "formula": "delta_Z = B * C * L",
+        "variables": {
+          "B": "baseline_nT = -10.9 (BOU 2017)",
+          "C": "coverage_fraction (varies by station)",
+          "L": "latitude_factor (geomagnetic projection)"
+        },
+        "step_by_step": [
+          "1. BOU 2017 baseline = -10.9 nT at 99% coverage, lat 40.0N",
+          "2. Determine local station coverage fraction",
+          "3. Calculate relative latitude distortion factor",
+          "4. delta_Z = -10.9 * C * L"
+        ],
+        "caveat": "BOU 2017 baseline flagged as disturbed day. If quiet-day baseline differs, scale accordingly."
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal is negative",
+          "weight": "HIGH",
+          "auto_check": "observed.value < 0",
+          "points_if_correct": 3,
+          "points_if_wrong": -3
+        },
+        {
+          "claim": "Signal exceeds noise floor",
+          "weight": "HIGH",
+          "auto_check": "observed.snr >= 2.0",
+          "points_if_correct": 2,
+          "points_if_wrong": 0
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 2,
+          "points_if_wrong": -1
+        },
+        {
+          "claim": "Magnitude within 2-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 2.0",
+          "points_if_correct": 1,
+          "points_if_wrong": -1
+        },
+        {
+          "claim": "Peak timing tracks eclipse geometry not solar noon",
+          "weight": "VERY HIGH",
+          "auto_check": "evaluate_timing_correlation()",
+          "points_if_correct": 4,
+          "points_if_wrong": -4,
+          "note": "This is the strongest mechanistic test - globe model has no prediction here"
+        },
+        {
+          "claim": "Signal scales with coverage fraction across stations",
+          "weight": "VERY HIGH",
+          "auto_check": "evaluate_network_correlation()",
+          "points_if_correct": 4,
+          "points_if_wrong": -4,
+          "note": "Multi-station correlation is model-distinguishing - cannot be explained by random noise"
+        },
+        {
+          "claim": "Non-path stations show less than 2 nT",
+          "weight": "HIGH",
+          "auto_check": "evaluate_off_path_noise()",
+          "points_if_correct": 3,
+          "points_if_wrong": -3
+        }
+      ],
+      "max_possible_score": 19,
+      "win_threshold": 10,
+      "strong_win_threshold": 15,
+      "model_distinguishing": {
+        "description": "Tests where dome and globe models make DIFFERENT predictions",
+        "tests": [
+          {
+            "test": "Eclipse timing vs solar noon",
+            "dome_predicts": "Peak tracks umbra geometry",
+            "globe_predicts": "No prediction - globe has no eclipse magnetic mechanism",
+            "verdict_if_dome_correct": "STRONG model-distinguishing confirmation"
+          },
+          {
+            "test": "Coverage scaling across stations",
+            "dome_predicts": "Linear correlation between coverage % and signal nT",
+            "globe_predicts": "No systematic prediction",
+            "verdict_if_dome_correct": "Cannot be explained by coincidence across independent stations"
+          },
+          {
+            "test": "SG gravimeters show null",
+            "dome_predicts": "0.0 uGal on shielded superconducting gravimeters",
+            "globe_predicts": "Would expect tidal signal if mass-based",
+            "verdict_if_dome_correct": "Confirms aetheric not gravitational mechanism"
+          }
+        ]
+      },
+      "calibration": {
+        "baseline_source": "BOU 2017",
+        "baseline_quality": "CAVEAT - disturbed day",
+        "baseline_value_used": -10.9,
+        "alternative_baseline_if_quiet_day": "TBD - run W004 replication first",
+        "if_baseline_wrong_by_20pct": {
+          "adjusted_prediction": 0,
+          "still_within_range": true
+        },
+        "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
+      }
     },
     {
       "id": "PRED-007",
@@ -98,7 +846,132 @@
       "status": "pending",
       "formula": "correlation(anomaly, geometry) = 1.0",
       "inputs": {},
-      "sha256": "a79bc3556b6eed0bf4700fa32376fd53f9fd3b63f1084be13e3bde4811de8bc4"
+      "sha256": "a79bc3556b6eed0bf4700fa32376fd53f9fd3b63f1084be13e3bde4811de8bc4",
+      "point_prediction": {
+        "value": null,
+        "uncertainty": null,
+        "range": [
+          0,
+          0
+        ],
+        "confidence": "1-sigma"
+      },
+      "mechanism": {
+        "description": "Aetheric pressure trough caused by lunar/solar mass alignment blocking aetheric flow to surface",
+        "key_claims": [
+          "Signal will be NEGATIVE (pressure drop)",
+          "Signal will TRACK eclipse geometry not local solar noon",
+          "Signal magnitude scales with coverage fraction",
+          "Signal magnitude scales with geomagnetic latitude",
+          "Peak timing correlates with maximum obscuration not noon"
+        ],
+        "each_claim_is_independently_testable": true
+      },
+      "derivation": {
+        "formula": "delta_Z = B * C * L",
+        "variables": {
+          "B": "baseline_nT = -10.9 (BOU 2017)",
+          "C": "coverage_fraction (varies by station)",
+          "L": "latitude_factor (geomagnetic projection)"
+        },
+        "step_by_step": [
+          "1. BOU 2017 baseline = -10.9 nT at 99% coverage, lat 40.0N",
+          "2. Determine local station coverage fraction",
+          "3. Calculate relative latitude distortion factor",
+          "4. delta_Z = -10.9 * C * L"
+        ],
+        "caveat": "BOU 2017 baseline flagged as disturbed day. If quiet-day baseline differs, scale accordingly."
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal is negative",
+          "weight": "HIGH",
+          "auto_check": "observed.value < 0",
+          "points_if_correct": 3,
+          "points_if_wrong": -3
+        },
+        {
+          "claim": "Signal exceeds noise floor",
+          "weight": "HIGH",
+          "auto_check": "observed.snr >= 2.0",
+          "points_if_correct": 2,
+          "points_if_wrong": 0
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 2,
+          "points_if_wrong": -1
+        },
+        {
+          "claim": "Magnitude within 2-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 2.0",
+          "points_if_correct": 1,
+          "points_if_wrong": -1
+        },
+        {
+          "claim": "Peak timing tracks eclipse geometry not solar noon",
+          "weight": "VERY HIGH",
+          "auto_check": "evaluate_timing_correlation()",
+          "points_if_correct": 4,
+          "points_if_wrong": -4,
+          "note": "This is the strongest mechanistic test - globe model has no prediction here"
+        },
+        {
+          "claim": "Signal scales with coverage fraction across stations",
+          "weight": "VERY HIGH",
+          "auto_check": "evaluate_network_correlation()",
+          "points_if_correct": 4,
+          "points_if_wrong": -4,
+          "note": "Multi-station correlation is model-distinguishing - cannot be explained by random noise"
+        },
+        {
+          "claim": "Non-path stations show less than 2 nT",
+          "weight": "HIGH",
+          "auto_check": "evaluate_off_path_noise()",
+          "points_if_correct": 3,
+          "points_if_wrong": -3
+        }
+      ],
+      "max_possible_score": 19,
+      "win_threshold": 10,
+      "strong_win_threshold": 15,
+      "model_distinguishing": {
+        "description": "Tests where dome and globe models make DIFFERENT predictions",
+        "tests": [
+          {
+            "test": "Eclipse timing vs solar noon",
+            "dome_predicts": "Peak tracks umbra geometry",
+            "globe_predicts": "No prediction - globe has no eclipse magnetic mechanism",
+            "verdict_if_dome_correct": "STRONG model-distinguishing confirmation"
+          },
+          {
+            "test": "Coverage scaling across stations",
+            "dome_predicts": "Linear correlation between coverage % and signal nT",
+            "globe_predicts": "No systematic prediction",
+            "verdict_if_dome_correct": "Cannot be explained by coincidence across independent stations"
+          },
+          {
+            "test": "SG gravimeters show null",
+            "dome_predicts": "0.0 uGal on shielded superconducting gravimeters",
+            "globe_predicts": "Would expect tidal signal if mass-based",
+            "verdict_if_dome_correct": "Confirms aetheric not gravitational mechanism"
+          }
+        ]
+      },
+      "calibration": {
+        "baseline_source": "BOU 2017",
+        "baseline_quality": "CAVEAT - disturbed day",
+        "baseline_value_used": -10.9,
+        "alternative_baseline_if_quiet_day": "TBD - run W004 replication first",
+        "if_baseline_wrong_by_20pct": {
+          "adjusted_prediction": 0,
+          "still_within_range": true
+        },
+        "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
+      }
     },
     {
       "id": "PRED-008",
@@ -109,7 +982,132 @@
       "inputs": {
         "coverage_fraction": "< 0.4"
       },
-      "sha256": "36047fa99a32c0206cc16a0d6a52fcd08b1be7225901d0a3ef5d44b493469004"
+      "sha256": "36047fa99a32c0206cc16a0d6a52fcd08b1be7225901d0a3ef5d44b493469004",
+      "point_prediction": {
+        "value": "<2",
+        "uncertainty": null,
+        "range": [
+          0,
+          0
+        ],
+        "confidence": "1-sigma"
+      },
+      "mechanism": {
+        "description": "Aetheric pressure trough caused by lunar/solar mass alignment blocking aetheric flow to surface",
+        "key_claims": [
+          "Signal will be NEGATIVE (pressure drop)",
+          "Signal will TRACK eclipse geometry not local solar noon",
+          "Signal magnitude scales with coverage fraction",
+          "Signal magnitude scales with geomagnetic latitude",
+          "Peak timing correlates with maximum obscuration not noon"
+        ],
+        "each_claim_is_independently_testable": true
+      },
+      "derivation": {
+        "formula": "delta_Z = B * C * L",
+        "variables": {
+          "B": "baseline_nT = -10.9 (BOU 2017)",
+          "C": "coverage_fraction (varies by station)",
+          "L": "latitude_factor (geomagnetic projection)"
+        },
+        "step_by_step": [
+          "1. BOU 2017 baseline = -10.9 nT at 99% coverage, lat 40.0N",
+          "2. Determine local station coverage fraction",
+          "3. Calculate relative latitude distortion factor",
+          "4. delta_Z = -10.9 * C * L"
+        ],
+        "caveat": "BOU 2017 baseline flagged as disturbed day. If quiet-day baseline differs, scale accordingly."
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal is negative",
+          "weight": "HIGH",
+          "auto_check": "observed.value < 0",
+          "points_if_correct": 3,
+          "points_if_wrong": -3
+        },
+        {
+          "claim": "Signal exceeds noise floor",
+          "weight": "HIGH",
+          "auto_check": "observed.snr >= 2.0",
+          "points_if_correct": 2,
+          "points_if_wrong": 0
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 2,
+          "points_if_wrong": -1
+        },
+        {
+          "claim": "Magnitude within 2-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 2.0",
+          "points_if_correct": 1,
+          "points_if_wrong": -1
+        },
+        {
+          "claim": "Peak timing tracks eclipse geometry not solar noon",
+          "weight": "VERY HIGH",
+          "auto_check": "evaluate_timing_correlation()",
+          "points_if_correct": 4,
+          "points_if_wrong": -4,
+          "note": "This is the strongest mechanistic test - globe model has no prediction here"
+        },
+        {
+          "claim": "Signal scales with coverage fraction across stations",
+          "weight": "VERY HIGH",
+          "auto_check": "evaluate_network_correlation()",
+          "points_if_correct": 4,
+          "points_if_wrong": -4,
+          "note": "Multi-station correlation is model-distinguishing - cannot be explained by random noise"
+        },
+        {
+          "claim": "Non-path stations show less than 2 nT",
+          "weight": "HIGH",
+          "auto_check": "evaluate_off_path_noise()",
+          "points_if_correct": 3,
+          "points_if_wrong": -3
+        }
+      ],
+      "max_possible_score": 19,
+      "win_threshold": 10,
+      "strong_win_threshold": 15,
+      "model_distinguishing": {
+        "description": "Tests where dome and globe models make DIFFERENT predictions",
+        "tests": [
+          {
+            "test": "Eclipse timing vs solar noon",
+            "dome_predicts": "Peak tracks umbra geometry",
+            "globe_predicts": "No prediction - globe has no eclipse magnetic mechanism",
+            "verdict_if_dome_correct": "STRONG model-distinguishing confirmation"
+          },
+          {
+            "test": "Coverage scaling across stations",
+            "dome_predicts": "Linear correlation between coverage % and signal nT",
+            "globe_predicts": "No systematic prediction",
+            "verdict_if_dome_correct": "Cannot be explained by coincidence across independent stations"
+          },
+          {
+            "test": "SG gravimeters show null",
+            "dome_predicts": "0.0 uGal on shielded superconducting gravimeters",
+            "globe_predicts": "Would expect tidal signal if mass-based",
+            "verdict_if_dome_correct": "Confirms aetheric not gravitational mechanism"
+          }
+        ]
+      },
+      "calibration": {
+        "baseline_source": "BOU 2017",
+        "baseline_quality": "CAVEAT - disturbed day",
+        "baseline_value_used": -10.9,
+        "alternative_baseline_if_quiet_day": "TBD - run W004 replication first",
+        "if_baseline_wrong_by_20pct": {
+          "adjusted_prediction": 0,
+          "still_within_range": true
+        },
+        "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
+      }
     }
   ],
   "confirmed_wins": [
@@ -330,7 +1328,42 @@
       "unit": "degrees",
       "current_value": 50.57,
       "rate": "1.0 degrees/year",
-      "status": "pending"
+      "status": "pending",
+      "point_prediction": {
+        "value": null,
+        "uncertainty": null,
+        "range": [
+          0,
+          0
+        ],
+        "confidence": "1-sigma"
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal tracks defined vector",
+          "weight": "HIGH",
+          "auto_check": "direction_correct",
+          "points_if_correct": 5,
+          "points_if_wrong": -5
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 3,
+          "points_if_wrong": -1
+        },
+        {
+          "claim": "Mathematical mechanism convergence",
+          "weight": "VERY HIGH",
+          "auto_check": "evaluate_mechanism_convergence()",
+          "points_if_correct": 5,
+          "points_if_wrong": -5
+        }
+      ],
+      "max_possible_score": 13,
+      "win_threshold": 7,
+      "strong_win_threshold": 11
     },
     {
       "id": "PRED-010",
@@ -338,7 +1371,42 @@
       "target_date": "2027-12-31",
       "predicted_value": 21450,
       "unit": "nT",
-      "status": "pending"
+      "status": "pending",
+      "point_prediction": {
+        "value": null,
+        "uncertainty": null,
+        "range": [
+          0,
+          0
+        ],
+        "confidence": "1-sigma"
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal tracks defined vector",
+          "weight": "HIGH",
+          "auto_check": "direction_correct",
+          "points_if_correct": 5,
+          "points_if_wrong": -5
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 3,
+          "points_if_wrong": -1
+        },
+        {
+          "claim": "Mathematical mechanism convergence",
+          "weight": "VERY HIGH",
+          "auto_check": "evaluate_mechanism_convergence()",
+          "points_if_correct": 5,
+          "points_if_wrong": -5
+        }
+      ],
+      "max_possible_score": 13,
+      "win_threshold": 7,
+      "strong_win_threshold": 11
     },
     {
       "id": "PRED-011",
@@ -346,7 +1414,42 @@
       "target_date": "2030-01-01",
       "predicted_value": -12,
       "unit": "degrees",
-      "status": "pending"
+      "status": "pending",
+      "point_prediction": {
+        "value": null,
+        "uncertainty": null,
+        "range": [
+          0,
+          0
+        ],
+        "confidence": "1-sigma"
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal tracks defined vector",
+          "weight": "HIGH",
+          "auto_check": "direction_correct",
+          "points_if_correct": 5,
+          "points_if_wrong": -5
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 3,
+          "points_if_wrong": -1
+        },
+        {
+          "claim": "Mathematical mechanism convergence",
+          "weight": "VERY HIGH",
+          "auto_check": "evaluate_mechanism_convergence()",
+          "points_if_correct": 5,
+          "points_if_wrong": -5
+        }
+      ],
+      "max_possible_score": 13,
+      "win_threshold": 7,
+      "strong_win_threshold": 11
     },
     {
       "id": "PRED-012",
@@ -354,7 +1457,42 @@
       "target_date": "2030-01-01",
       "predicted_value": -32,
       "unit": "nT/year",
-      "status": "pending"
+      "status": "pending",
+      "point_prediction": {
+        "value": null,
+        "uncertainty": null,
+        "range": [
+          0,
+          0
+        ],
+        "confidence": "1-sigma"
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal tracks defined vector",
+          "weight": "HIGH",
+          "auto_check": "direction_correct",
+          "points_if_correct": 5,
+          "points_if_wrong": -5
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 3,
+          "points_if_wrong": -1
+        },
+        {
+          "claim": "Mathematical mechanism convergence",
+          "weight": "VERY HIGH",
+          "auto_check": "evaluate_mechanism_convergence()",
+          "points_if_correct": 5,
+          "points_if_wrong": -5
+        }
+      ],
+      "max_possible_score": 13,
+      "win_threshold": 7,
+      "strong_win_threshold": 11
     },
     {
       "id": "PRED-013",
@@ -362,7 +1500,42 @@
       "target_date": "2055-01-01",
       "predicted_value": 150,
       "unit": "degrees",
-      "status": "pending"
+      "status": "pending",
+      "point_prediction": {
+        "value": null,
+        "uncertainty": null,
+        "range": [
+          0,
+          0
+        ],
+        "confidence": "1-sigma"
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal tracks defined vector",
+          "weight": "HIGH",
+          "auto_check": "direction_correct",
+          "points_if_correct": 5,
+          "points_if_wrong": -5
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 3,
+          "points_if_wrong": -1
+        },
+        {
+          "claim": "Mathematical mechanism convergence",
+          "weight": "VERY HIGH",
+          "auto_check": "evaluate_mechanism_convergence()",
+          "points_if_correct": 5,
+          "points_if_wrong": -5
+        }
+      ],
+      "max_possible_score": 13,
+      "win_threshold": 7,
+      "strong_win_threshold": 11
     }
   ],
   "core_parameters": {
@@ -391,49 +1564,329 @@
       "assessment": "Signal exists in literature but below single-station detection threshold. Not a model failure - a detection method limitation. Multi-station averaging required for sub-2nT signals.",
       "implication": "Eclipse predictions at -5.8 to -9.5 nT are well above detection threshold - method valid",
       "display_color": "yellow",
-      "display_label": "BELOW THRESHOLD"
+      "display_label": "BELOW THRESHOLD",
+      "point_prediction": {
+        "value": -2.1,
+        "uncertainty": 0.8,
+        "range": [
+          -2.9,
+          -1.3
+        ],
+        "confidence": "1-sigma"
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal is correct polarity",
+          "weight": "HIGH",
+          "auto_check": "direction_correct",
+          "points_if_correct": 5,
+          "points_if_wrong": -5
+        },
+        {
+          "claim": "Signal exceeds noise floor",
+          "weight": "HIGH",
+          "auto_check": "observed.snr >= 2.0",
+          "points_if_correct": 3,
+          "points_if_wrong": 0
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 2,
+          "points_if_wrong": -1
+        }
+      ],
+      "max_possible_score": 10,
+      "win_threshold": 5,
+      "strong_win_threshold": 8
     },
     {
       "id": "W002",
       "title": "SAA Node Check vs CHAOS-7",
       "target_date": "2026-03-07",
-      "status": "pending"
+      "status": "pending",
+      "point_prediction": {
+        "value": null,
+        "uncertainty": null,
+        "range": [
+          0,
+          0
+        ],
+        "confidence": "1-sigma"
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal is correct polarity",
+          "weight": "HIGH",
+          "auto_check": "direction_correct",
+          "points_if_correct": 5,
+          "points_if_wrong": -5
+        },
+        {
+          "claim": "Signal exceeds noise floor",
+          "weight": "HIGH",
+          "auto_check": "observed.snr >= 2.0",
+          "points_if_correct": 3,
+          "points_if_wrong": 0
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 2,
+          "points_if_wrong": -1
+        }
+      ],
+      "max_possible_score": 10,
+      "win_threshold": 5,
+      "strong_win_threshold": 8
     },
     {
       "id": "W003",
       "title": "Telluric 11.78 Hz Peak",
       "target_date": "2026-03-06",
-      "status": "pending"
+      "status": "pending",
+      "point_prediction": {
+        "value": null,
+        "uncertainty": null,
+        "range": [
+          0,
+          0
+        ],
+        "confidence": "1-sigma"
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal is correct polarity",
+          "weight": "HIGH",
+          "auto_check": "direction_correct",
+          "points_if_correct": 5,
+          "points_if_wrong": -5
+        },
+        {
+          "claim": "Signal exceeds noise floor",
+          "weight": "HIGH",
+          "auto_check": "observed.snr >= 2.0",
+          "points_if_correct": 3,
+          "points_if_wrong": 0
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 2,
+          "points_if_wrong": -1
+        }
+      ],
+      "max_possible_score": 10,
+      "win_threshold": 5,
+      "strong_win_threshold": 8
     },
     {
       "id": "W004",
       "title": "2024 Eclipse Data Replication",
       "target_date": "2026-03-06",
-      "status": "pending"
+      "status": "pending",
+      "point_prediction": {
+        "value": null,
+        "uncertainty": null,
+        "range": [
+          0,
+          0
+        ],
+        "confidence": "1-sigma"
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal is correct polarity",
+          "weight": "HIGH",
+          "auto_check": "direction_correct",
+          "points_if_correct": 5,
+          "points_if_wrong": -5
+        },
+        {
+          "claim": "Signal exceeds noise floor",
+          "weight": "HIGH",
+          "auto_check": "observed.snr >= 2.0",
+          "points_if_correct": 3,
+          "points_if_wrong": 0
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 2,
+          "points_if_wrong": -1
+        }
+      ],
+      "max_possible_score": 10,
+      "win_threshold": 5,
+      "strong_win_threshold": 8
     },
     {
       "id": "W005",
       "title": "North Pole Acceleration Update",
       "target_date": "2026-03-06",
-      "status": "pending"
+      "status": "pending",
+      "point_prediction": {
+        "value": null,
+        "uncertainty": null,
+        "range": [
+          0,
+          0
+        ],
+        "confidence": "1-sigma"
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal is correct polarity",
+          "weight": "HIGH",
+          "auto_check": "direction_correct",
+          "points_if_correct": 5,
+          "points_if_wrong": -5
+        },
+        {
+          "claim": "Signal exceeds noise floor",
+          "weight": "HIGH",
+          "auto_check": "observed.snr >= 2.0",
+          "points_if_correct": 3,
+          "points_if_wrong": 0
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 2,
+          "points_if_wrong": -1
+        }
+      ],
+      "max_possible_score": 10,
+      "win_threshold": 5,
+      "strong_win_threshold": 8
     },
     {
       "id": "W006",
       "title": "SAA Intensity Update",
       "target_date": "2026-03-06",
-      "status": "pending"
+      "status": "pending",
+      "point_prediction": {
+        "value": null,
+        "uncertainty": null,
+        "range": [
+          0,
+          0
+        ],
+        "confidence": "1-sigma"
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal is correct polarity",
+          "weight": "HIGH",
+          "auto_check": "direction_correct",
+          "points_if_correct": 5,
+          "points_if_wrong": -5
+        },
+        {
+          "claim": "Signal exceeds noise floor",
+          "weight": "HIGH",
+          "auto_check": "observed.snr >= 2.0",
+          "points_if_correct": 3,
+          "points_if_wrong": 0
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 2,
+          "points_if_wrong": -1
+        }
+      ],
+      "max_possible_score": 10,
+      "win_threshold": 5,
+      "strong_win_threshold": 8
     },
     {
       "id": "W007",
       "title": "Geomagnetic Jerk Detector",
       "target_date": "2026-03-06",
-      "status": "pending"
+      "status": "pending",
+      "point_prediction": {
+        "value": null,
+        "uncertainty": null,
+        "range": [
+          0,
+          0
+        ],
+        "confidence": "1-sigma"
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal is correct polarity",
+          "weight": "HIGH",
+          "auto_check": "direction_correct",
+          "points_if_correct": 5,
+          "points_if_wrong": -5
+        },
+        {
+          "claim": "Signal exceeds noise floor",
+          "weight": "HIGH",
+          "auto_check": "observed.snr >= 2.0",
+          "points_if_correct": 3,
+          "points_if_wrong": 0
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 2,
+          "points_if_wrong": -1
+        }
+      ],
+      "max_possible_score": 10,
+      "win_threshold": 5,
+      "strong_win_threshold": 8
     },
     {
       "id": "W008",
       "title": "Coronal Hole Correlation",
       "target_date": "2026-03-06",
-      "status": "pending"
+      "status": "pending",
+      "point_prediction": {
+        "value": null,
+        "uncertainty": null,
+        "range": [
+          0,
+          0
+        ],
+        "confidence": "1-sigma"
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal is correct polarity",
+          "weight": "HIGH",
+          "auto_check": "direction_correct",
+          "points_if_correct": 5,
+          "points_if_wrong": -5
+        },
+        {
+          "claim": "Signal exceeds noise floor",
+          "weight": "HIGH",
+          "auto_check": "observed.snr >= 2.0",
+          "points_if_correct": 3,
+          "points_if_wrong": 0
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 2,
+          "points_if_wrong": -1
+        }
+      ],
+      "max_possible_score": 10,
+      "win_threshold": 5,
+      "strong_win_threshold": 8
     }
   ]
 }

@@ -1,709 +1,1315 @@
-// PURE VANILLA DATA FILE - NO BACKEND REQUIRED
-// Dome Cosmology Live Predictions Registry
-// Extracted SHA-256 verification hash per object
-
+// PURE VANILLA DATA FILE
 const PREDICTIONS = [
   {
     "id": "PRED-001",
-    "category": "eclipse",
-    "title": "Ebro Observatory (EBR) Z-component drop",
-    "description": "During the August 12, 2026 Total Solar Eclipse, the Ebro Observatory will register a marked negative vertical magnetic field (Z) anomaly matching aetheric pressure drop.",
-    "registered": "2026-03-06T00:00:00Z",
-    "test_date": "2026-08-12T18:21:00Z",
-    "test_window": "2026-08-12T17:00:00Z to 2026-08-12T20:00:00Z",
-    "prediction": {
-      "value": -8.4,
-      "unit": "nT",
-      "uncertainty": 1.7,
-      "range_low": -6.7,
-      "range_high": -10.1,
-      "qualitative": "Negative Z anomaly tracking eclipse geometry"
+    "station": "Ebro (EBR)",
+    "prediction_nT": -8.4,
+    "uncertainty_nT": 1.7,
+    "component": "Z",
+    "event": "2026 Solar Eclipse Aug 12",
+    "mechanism": {
+      "description": "Aetheric pressure trough caused by lunar/solar mass alignment blocking aetheric flow to surface",
+      "key_claims": [
+        "Signal will be NEGATIVE (pressure drop)",
+        "Signal will TRACK eclipse geometry not local solar noon",
+        "Signal magnitude scales with coverage fraction",
+        "Signal magnitude scales with geomagnetic latitude",
+        "Peak timing correlates with maximum obscuration not noon"
+      ],
+      "each_claim_is_independently_testable": true
     },
-    "mechanism": "Aetheric pressure trough from solar occlusion, electromagnetic not gravitational",
-    "data_source": "INTERMAGNET EBR station, 1-minute definitive data",
-    "data_url": "https://www.intermagnet.org/data-donnee/dataplot-eng.php",
+    "formula": "delta_Z = baseline * coverage_fraction * latitude_factor",
+    "inputs": {
+      "baseline_nT": -10.9,
+      "coverage_fraction": 0.95,
+      "latitude_factor": 0.81
+    },
     "status": "pending",
-    "result": null,
-    "result_value": null,
-    "result_date": null,
-    "result_notes": null,
-    "result_source": null,
-    "tags": [
-      "eclipse",
-      "magnetic",
-      "2026",
-      "smoking-gun"
+    "timestamp_sha256": "pending",
+    "sha256": "9fc7c5ba6704975ff3e13b17b9da84c3fb998b5cf37410bfadb93d6c719f68d1",
+    "point_prediction": {
+      "value": -8.4,
+      "uncertainty": 1.7,
+      "range": [
+        -10.1,
+        -6.7
+      ],
+      "confidence": "1-sigma"
+    },
+    "derivation": {
+      "formula": "delta_Z = B * C * L",
+      "variables": {
+        "B": "baseline_nT = -10.9 (BOU 2017)",
+        "C": "coverage_fraction (varies by station)",
+        "L": "latitude_factor (geomagnetic projection)"
+      },
+      "step_by_step": [
+        "1. BOU 2017 baseline = -10.9 nT at 99% coverage, lat 40.0N",
+        "2. Determine local station coverage fraction",
+        "3. Calculate relative latitude distortion factor",
+        "4. delta_Z = -10.9 * C * L"
+      ],
+      "caveat": "BOU 2017 baseline flagged as disturbed day. If quiet-day baseline differs, scale accordingly."
+    },
+    "scoring_matrix": [
+      {
+        "claim": "Signal is negative",
+        "weight": "HIGH",
+        "auto_check": "observed.value < 0",
+        "points_if_correct": 3,
+        "points_if_wrong": -3
+      },
+      {
+        "claim": "Signal exceeds noise floor",
+        "weight": "HIGH",
+        "auto_check": "observed.snr >= 2.0",
+        "points_if_correct": 2,
+        "points_if_wrong": 0
+      },
+      {
+        "claim": "Magnitude within 1-sigma",
+        "weight": "MEDIUM",
+        "auto_check": "sigma_distance <= 1.0",
+        "points_if_correct": 2,
+        "points_if_wrong": -1
+      },
+      {
+        "claim": "Magnitude within 2-sigma",
+        "weight": "MEDIUM",
+        "auto_check": "sigma_distance <= 2.0",
+        "points_if_correct": 1,
+        "points_if_wrong": -1
+      },
+      {
+        "claim": "Peak timing tracks eclipse geometry not solar noon",
+        "weight": "VERY HIGH",
+        "auto_check": "evaluate_timing_correlation()",
+        "points_if_correct": 4,
+        "points_if_wrong": -4,
+        "note": "This is the strongest mechanistic test - globe model has no prediction here"
+      },
+      {
+        "claim": "Signal scales with coverage fraction across stations",
+        "weight": "VERY HIGH",
+        "auto_check": "evaluate_network_correlation()",
+        "points_if_correct": 4,
+        "points_if_wrong": -4,
+        "note": "Multi-station correlation is model-distinguishing - cannot be explained by random noise"
+      },
+      {
+        "claim": "Non-path stations show less than 2 nT",
+        "weight": "HIGH",
+        "auto_check": "evaluate_off_path_noise()",
+        "points_if_correct": 3,
+        "points_if_wrong": -3
+      }
     ],
-    "related_predictions": [
-      "PRED-002",
-      "PRED-006",
-      "PRED-007"
-    ],
-    "sha256": "c5f8c03fbf52822305d20aeb6e1b4c4712ffd1677c7e9c9f0ec8cc148a6fa49d"
+    "max_possible_score": 19,
+    "win_threshold": 10,
+    "strong_win_threshold": 15,
+    "model_distinguishing": {
+      "description": "Tests where dome and globe models make DIFFERENT predictions",
+      "tests": [
+        {
+          "test": "Eclipse timing vs solar noon",
+          "dome_predicts": "Peak tracks umbra geometry",
+          "globe_predicts": "No prediction - globe has no eclipse magnetic mechanism",
+          "verdict_if_dome_correct": "STRONG model-distinguishing confirmation"
+        },
+        {
+          "test": "Coverage scaling across stations",
+          "dome_predicts": "Linear correlation between coverage % and signal nT",
+          "globe_predicts": "No systematic prediction",
+          "verdict_if_dome_correct": "Cannot be explained by coincidence across independent stations"
+        },
+        {
+          "test": "SG gravimeters show null",
+          "dome_predicts": "0.0 uGal on shielded superconducting gravimeters",
+          "globe_predicts": "Would expect tidal signal if mass-based",
+          "verdict_if_dome_correct": "Confirms aetheric not gravitational mechanism"
+        }
+      ]
+    },
+    "calibration": {
+      "baseline_source": "BOU 2017",
+      "baseline_quality": "CAVEAT - disturbed day",
+      "baseline_value_used": -10.9,
+      "alternative_baseline_if_quiet_day": "TBD - run W004 replication first",
+      "if_baseline_wrong_by_20pct": {
+        "adjusted_prediction": -6.72,
+        "still_within_range": true
+      },
+      "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
+    }
   },
   {
     "id": "PRED-002",
-    "category": "eclipse",
-    "title": "San Pablo/Toledo (SPT) Z-component drop",
-    "description": "During the August 12, 2026 Total Solar Eclipse, the San Pablo Observatory will register a marked negative vertical magnetic field (Z) anomaly.",
-    "registered": "2026-03-06T00:00:00Z",
-    "test_date": "2026-08-12T18:10:00Z",
-    "test_window": "2026-08-12T17:00:00Z to 2026-08-12T20:00:00Z",
-    "prediction": {
-      "value": -8.3,
-      "unit": "nT",
-      "uncertainty": 1.7,
-      "range_low": -6.6,
-      "range_high": -10,
-      "qualitative": "Negative Z anomaly"
-    },
-    "mechanism": "Aetheric pressure trough from solar occlusion, electromagnetic not gravitational",
-    "data_source": "INTERMAGNET SPT station, 1-minute definitive data",
-    "data_url": "https://www.intermagnet.org/data-donnee/dataplot-eng.php",
+    "station": "San Pablo (SPT)",
+    "prediction_nT": -8.3,
+    "uncertainty_nT": 1.7,
     "status": "pending",
-    "result": null,
-    "result_value": null,
-    "result_date": null,
-    "result_notes": null,
-    "result_source": null,
-    "tags": [
-      "eclipse",
-      "magnetic",
-      "2026"
+    "formula": "delta_Z = baseline * coverage_fraction * latitude_factor",
+    "inputs": {
+      "baseline_nT": -10.9,
+      "coverage_fraction": 0.94,
+      "latitude_factor": 0.8
+    },
+    "sha256": "bf5e58b034f02e9166411f78cb6b6d95850e39bd217e2d62972f8dabda7879af",
+    "point_prediction": {
+      "value": -8.3,
+      "uncertainty": 1.7,
+      "range": [
+        -10.0,
+        -6.6
+      ],
+      "confidence": "1-sigma"
+    },
+    "mechanism": {
+      "description": "Aetheric pressure trough caused by lunar/solar mass alignment blocking aetheric flow to surface",
+      "key_claims": [
+        "Signal will be NEGATIVE (pressure drop)",
+        "Signal will TRACK eclipse geometry not local solar noon",
+        "Signal magnitude scales with coverage fraction",
+        "Signal magnitude scales with geomagnetic latitude",
+        "Peak timing correlates with maximum obscuration not noon"
+      ],
+      "each_claim_is_independently_testable": true
+    },
+    "derivation": {
+      "formula": "delta_Z = B * C * L",
+      "variables": {
+        "B": "baseline_nT = -10.9 (BOU 2017)",
+        "C": "coverage_fraction (varies by station)",
+        "L": "latitude_factor (geomagnetic projection)"
+      },
+      "step_by_step": [
+        "1. BOU 2017 baseline = -10.9 nT at 99% coverage, lat 40.0N",
+        "2. Determine local station coverage fraction",
+        "3. Calculate relative latitude distortion factor",
+        "4. delta_Z = -10.9 * C * L"
+      ],
+      "caveat": "BOU 2017 baseline flagged as disturbed day. If quiet-day baseline differs, scale accordingly."
+    },
+    "scoring_matrix": [
+      {
+        "claim": "Signal is negative",
+        "weight": "HIGH",
+        "auto_check": "observed.value < 0",
+        "points_if_correct": 3,
+        "points_if_wrong": -3
+      },
+      {
+        "claim": "Signal exceeds noise floor",
+        "weight": "HIGH",
+        "auto_check": "observed.snr >= 2.0",
+        "points_if_correct": 2,
+        "points_if_wrong": 0
+      },
+      {
+        "claim": "Magnitude within 1-sigma",
+        "weight": "MEDIUM",
+        "auto_check": "sigma_distance <= 1.0",
+        "points_if_correct": 2,
+        "points_if_wrong": -1
+      },
+      {
+        "claim": "Magnitude within 2-sigma",
+        "weight": "MEDIUM",
+        "auto_check": "sigma_distance <= 2.0",
+        "points_if_correct": 1,
+        "points_if_wrong": -1
+      },
+      {
+        "claim": "Peak timing tracks eclipse geometry not solar noon",
+        "weight": "VERY HIGH",
+        "auto_check": "evaluate_timing_correlation()",
+        "points_if_correct": 4,
+        "points_if_wrong": -4,
+        "note": "This is the strongest mechanistic test - globe model has no prediction here"
+      },
+      {
+        "claim": "Signal scales with coverage fraction across stations",
+        "weight": "VERY HIGH",
+        "auto_check": "evaluate_network_correlation()",
+        "points_if_correct": 4,
+        "points_if_wrong": -4,
+        "note": "Multi-station correlation is model-distinguishing - cannot be explained by random noise"
+      },
+      {
+        "claim": "Non-path stations show less than 2 nT",
+        "weight": "HIGH",
+        "auto_check": "evaluate_off_path_noise()",
+        "points_if_correct": 3,
+        "points_if_wrong": -3
+      }
     ],
-    "related_predictions": [
-      "PRED-001",
-      "PRED-007"
-    ],
-    "sha256": "4199918bc0779b34e00d60bf2d9bd17c05e2f736dbd06dd72be550447f6baf13"
+    "max_possible_score": 19,
+    "win_threshold": 10,
+    "strong_win_threshold": 15,
+    "model_distinguishing": {
+      "description": "Tests where dome and globe models make DIFFERENT predictions",
+      "tests": [
+        {
+          "test": "Eclipse timing vs solar noon",
+          "dome_predicts": "Peak tracks umbra geometry",
+          "globe_predicts": "No prediction - globe has no eclipse magnetic mechanism",
+          "verdict_if_dome_correct": "STRONG model-distinguishing confirmation"
+        },
+        {
+          "test": "Coverage scaling across stations",
+          "dome_predicts": "Linear correlation between coverage % and signal nT",
+          "globe_predicts": "No systematic prediction",
+          "verdict_if_dome_correct": "Cannot be explained by coincidence across independent stations"
+        },
+        {
+          "test": "SG gravimeters show null",
+          "dome_predicts": "0.0 uGal on shielded superconducting gravimeters",
+          "globe_predicts": "Would expect tidal signal if mass-based",
+          "verdict_if_dome_correct": "Confirms aetheric not gravitational mechanism"
+        }
+      ]
+    },
+    "calibration": {
+      "baseline_source": "BOU 2017",
+      "baseline_quality": "CAVEAT - disturbed day",
+      "baseline_value_used": -10.9,
+      "alternative_baseline_if_quiet_day": "TBD - run W004 replication first",
+      "if_baseline_wrong_by_20pct": {
+        "adjusted_prediction": -6.64,
+        "still_within_range": true
+      },
+      "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
+    }
   },
   {
     "id": "PRED-003",
-    "category": "eclipse",
-    "title": "Eskdalemuir (ESK) Z-component drop",
-    "description": "Even outside totality (95% coverage), Eskdalemuir will still show a Z-component drop tracking the partial eclipse geometry.",
-    "registered": "2026-03-06T00:00:00Z",
-    "test_date": "2026-08-12T17:30:00Z",
-    "test_window": "2026-08-12T16:00:00Z to 2026-08-12T19:00:00Z",
-    "prediction": {
-      "value": -9.5,
-      "unit": "nT",
-      "uncertainty": 1.9,
-      "range_low": -7.6,
-      "range_high": -11.4,
-      "qualitative": "Slightly deeper anomaly due to northern latitude geometry despite lack of totality"
-    },
-    "mechanism": "Aetheric pressure trough",
-    "data_source": "INTERMAGNET ESK station",
-    "data_url": "https://www.intermagnet.org/data-donnee/dataplot-eng.php",
+    "station": "Eskdalemuir (ESK)",
+    "prediction_nT": -9.5,
+    "uncertainty_nT": 1.9,
     "status": "pending",
-    "result": null,
-    "result_value": null,
-    "result_date": null,
-    "result_notes": null,
-    "result_source": null,
-    "tags": [
-      "eclipse",
-      "magnetic",
-      "2026",
-      "partial-coverage"
+    "formula": "delta_Z = baseline * coverage_fraction * latitude_factor",
+    "inputs": {
+      "baseline_nT": -10.9,
+      "coverage_fraction": 0.98,
+      "latitude_factor": 0.89
+    },
+    "sha256": "303ef8fedf35777968c887c5abb28ea2b6202f7f58587bdc15baa2908d2e602c",
+    "point_prediction": {
+      "value": -9.5,
+      "uncertainty": 1.9,
+      "range": [
+        -11.4,
+        -7.6
+      ],
+      "confidence": "1-sigma"
+    },
+    "mechanism": {
+      "description": "Aetheric pressure trough caused by lunar/solar mass alignment blocking aetheric flow to surface",
+      "key_claims": [
+        "Signal will be NEGATIVE (pressure drop)",
+        "Signal will TRACK eclipse geometry not local solar noon",
+        "Signal magnitude scales with coverage fraction",
+        "Signal magnitude scales with geomagnetic latitude",
+        "Peak timing correlates with maximum obscuration not noon"
+      ],
+      "each_claim_is_independently_testable": true
+    },
+    "derivation": {
+      "formula": "delta_Z = B * C * L",
+      "variables": {
+        "B": "baseline_nT = -10.9 (BOU 2017)",
+        "C": "coverage_fraction (varies by station)",
+        "L": "latitude_factor (geomagnetic projection)"
+      },
+      "step_by_step": [
+        "1. BOU 2017 baseline = -10.9 nT at 99% coverage, lat 40.0N",
+        "2. Determine local station coverage fraction",
+        "3. Calculate relative latitude distortion factor",
+        "4. delta_Z = -10.9 * C * L"
+      ],
+      "caveat": "BOU 2017 baseline flagged as disturbed day. If quiet-day baseline differs, scale accordingly."
+    },
+    "scoring_matrix": [
+      {
+        "claim": "Signal is negative",
+        "weight": "HIGH",
+        "auto_check": "observed.value < 0",
+        "points_if_correct": 3,
+        "points_if_wrong": -3
+      },
+      {
+        "claim": "Signal exceeds noise floor",
+        "weight": "HIGH",
+        "auto_check": "observed.snr >= 2.0",
+        "points_if_correct": 2,
+        "points_if_wrong": 0
+      },
+      {
+        "claim": "Magnitude within 1-sigma",
+        "weight": "MEDIUM",
+        "auto_check": "sigma_distance <= 1.0",
+        "points_if_correct": 2,
+        "points_if_wrong": -1
+      },
+      {
+        "claim": "Magnitude within 2-sigma",
+        "weight": "MEDIUM",
+        "auto_check": "sigma_distance <= 2.0",
+        "points_if_correct": 1,
+        "points_if_wrong": -1
+      },
+      {
+        "claim": "Peak timing tracks eclipse geometry not solar noon",
+        "weight": "VERY HIGH",
+        "auto_check": "evaluate_timing_correlation()",
+        "points_if_correct": 4,
+        "points_if_wrong": -4,
+        "note": "This is the strongest mechanistic test - globe model has no prediction here"
+      },
+      {
+        "claim": "Signal scales with coverage fraction across stations",
+        "weight": "VERY HIGH",
+        "auto_check": "evaluate_network_correlation()",
+        "points_if_correct": 4,
+        "points_if_wrong": -4,
+        "note": "Multi-station correlation is model-distinguishing - cannot be explained by random noise"
+      },
+      {
+        "claim": "Non-path stations show less than 2 nT",
+        "weight": "HIGH",
+        "auto_check": "evaluate_off_path_noise()",
+        "points_if_correct": 3,
+        "points_if_wrong": -3
+      }
     ],
-    "related_predictions": [
-      "PRED-007"
-    ],
-    "sha256": "5bf4895220ff08c2271cb87f671f1b2861c9983f94bce53d9b4881eb9cf6fa86"
+    "max_possible_score": 19,
+    "win_threshold": 10,
+    "strong_win_threshold": 15,
+    "model_distinguishing": {
+      "description": "Tests where dome and globe models make DIFFERENT predictions",
+      "tests": [
+        {
+          "test": "Eclipse timing vs solar noon",
+          "dome_predicts": "Peak tracks umbra geometry",
+          "globe_predicts": "No prediction - globe has no eclipse magnetic mechanism",
+          "verdict_if_dome_correct": "STRONG model-distinguishing confirmation"
+        },
+        {
+          "test": "Coverage scaling across stations",
+          "dome_predicts": "Linear correlation between coverage % and signal nT",
+          "globe_predicts": "No systematic prediction",
+          "verdict_if_dome_correct": "Cannot be explained by coincidence across independent stations"
+        },
+        {
+          "test": "SG gravimeters show null",
+          "dome_predicts": "0.0 uGal on shielded superconducting gravimeters",
+          "globe_predicts": "Would expect tidal signal if mass-based",
+          "verdict_if_dome_correct": "Confirms aetheric not gravitational mechanism"
+        }
+      ]
+    },
+    "calibration": {
+      "baseline_source": "BOU 2017",
+      "baseline_quality": "CAVEAT - disturbed day",
+      "baseline_value_used": -10.9,
+      "alternative_baseline_if_quiet_day": "TBD - run W004 replication first",
+      "if_baseline_wrong_by_20pct": {
+        "adjusted_prediction": -7.6,
+        "still_within_range": true
+      },
+      "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
+    }
   },
   {
     "id": "PRED-004",
-    "category": "eclipse",
-    "title": "Lerwick (LER) Z-component drop",
-    "description": "Lerwick station (85% coverage) will show a scaled negative Z-component drop during the 2026 eclipse window.",
-    "registered": "2026-03-06T00:00:00Z",
-    "test_date": "2026-08-12T17:25:00Z",
-    "test_window": "2026-08-12T16:00:00Z to 2026-08-12T19:00:00Z",
-    "prediction": {
-      "value": -8.6,
-      "unit": "nT",
-      "uncertainty": 1.7,
-      "range_low": -6.9,
-      "range_high": -10.3,
-      "qualitative": ""
-    },
-    "mechanism": "Aetheric pressure trough scaling with obscuration fraction",
-    "data_source": "INTERMAGNET LER station",
-    "data_url": "https://www.intermagnet.org/data-donnee/dataplot-eng.php",
+    "station": "Lerwick (LER)",
+    "prediction_nT": -8.6,
+    "uncertainty_nT": 1.7,
     "status": "pending",
-    "result": null,
-    "result_value": null,
-    "result_date": null,
-    "result_notes": null,
-    "result_source": null,
-    "tags": [
-      "eclipse",
-      "magnetic",
-      "2026",
-      "partial-coverage"
+    "formula": "delta_Z = baseline * coverage_fraction * latitude_factor",
+    "inputs": {
+      "baseline_nT": -10.9,
+      "coverage_fraction": 0.92,
+      "latitude_factor": 0.86
+    },
+    "sha256": "e7ffe6fc1a0ca462c79fbf558157f6da5fbd141f9e545aae5385c33cb235f152",
+    "point_prediction": {
+      "value": -8.6,
+      "uncertainty": 1.7,
+      "range": [
+        -10.3,
+        -6.9
+      ],
+      "confidence": "1-sigma"
+    },
+    "mechanism": {
+      "description": "Aetheric pressure trough caused by lunar/solar mass alignment blocking aetheric flow to surface",
+      "key_claims": [
+        "Signal will be NEGATIVE (pressure drop)",
+        "Signal will TRACK eclipse geometry not local solar noon",
+        "Signal magnitude scales with coverage fraction",
+        "Signal magnitude scales with geomagnetic latitude",
+        "Peak timing correlates with maximum obscuration not noon"
+      ],
+      "each_claim_is_independently_testable": true
+    },
+    "derivation": {
+      "formula": "delta_Z = B * C * L",
+      "variables": {
+        "B": "baseline_nT = -10.9 (BOU 2017)",
+        "C": "coverage_fraction (varies by station)",
+        "L": "latitude_factor (geomagnetic projection)"
+      },
+      "step_by_step": [
+        "1. BOU 2017 baseline = -10.9 nT at 99% coverage, lat 40.0N",
+        "2. Determine local station coverage fraction",
+        "3. Calculate relative latitude distortion factor",
+        "4. delta_Z = -10.9 * C * L"
+      ],
+      "caveat": "BOU 2017 baseline flagged as disturbed day. If quiet-day baseline differs, scale accordingly."
+    },
+    "scoring_matrix": [
+      {
+        "claim": "Signal is negative",
+        "weight": "HIGH",
+        "auto_check": "observed.value < 0",
+        "points_if_correct": 3,
+        "points_if_wrong": -3
+      },
+      {
+        "claim": "Signal exceeds noise floor",
+        "weight": "HIGH",
+        "auto_check": "observed.snr >= 2.0",
+        "points_if_correct": 2,
+        "points_if_wrong": 0
+      },
+      {
+        "claim": "Magnitude within 1-sigma",
+        "weight": "MEDIUM",
+        "auto_check": "sigma_distance <= 1.0",
+        "points_if_correct": 2,
+        "points_if_wrong": -1
+      },
+      {
+        "claim": "Magnitude within 2-sigma",
+        "weight": "MEDIUM",
+        "auto_check": "sigma_distance <= 2.0",
+        "points_if_correct": 1,
+        "points_if_wrong": -1
+      },
+      {
+        "claim": "Peak timing tracks eclipse geometry not solar noon",
+        "weight": "VERY HIGH",
+        "auto_check": "evaluate_timing_correlation()",
+        "points_if_correct": 4,
+        "points_if_wrong": -4,
+        "note": "This is the strongest mechanistic test - globe model has no prediction here"
+      },
+      {
+        "claim": "Signal scales with coverage fraction across stations",
+        "weight": "VERY HIGH",
+        "auto_check": "evaluate_network_correlation()",
+        "points_if_correct": 4,
+        "points_if_wrong": -4,
+        "note": "Multi-station correlation is model-distinguishing - cannot be explained by random noise"
+      },
+      {
+        "claim": "Non-path stations show less than 2 nT",
+        "weight": "HIGH",
+        "auto_check": "evaluate_off_path_noise()",
+        "points_if_correct": 3,
+        "points_if_wrong": -3
+      }
     ],
-    "related_predictions": [
-      "PRED-007"
-    ],
-    "sha256": "6b5c9f925f7f84a47c118ebbb1325bbafcfd24be93d11befff19f48eb76fa247"
+    "max_possible_score": 19,
+    "win_threshold": 10,
+    "strong_win_threshold": 15,
+    "model_distinguishing": {
+      "description": "Tests where dome and globe models make DIFFERENT predictions",
+      "tests": [
+        {
+          "test": "Eclipse timing vs solar noon",
+          "dome_predicts": "Peak tracks umbra geometry",
+          "globe_predicts": "No prediction - globe has no eclipse magnetic mechanism",
+          "verdict_if_dome_correct": "STRONG model-distinguishing confirmation"
+        },
+        {
+          "test": "Coverage scaling across stations",
+          "dome_predicts": "Linear correlation between coverage % and signal nT",
+          "globe_predicts": "No systematic prediction",
+          "verdict_if_dome_correct": "Cannot be explained by coincidence across independent stations"
+        },
+        {
+          "test": "SG gravimeters show null",
+          "dome_predicts": "0.0 uGal on shielded superconducting gravimeters",
+          "globe_predicts": "Would expect tidal signal if mass-based",
+          "verdict_if_dome_correct": "Confirms aetheric not gravitational mechanism"
+        }
+      ]
+    },
+    "calibration": {
+      "baseline_source": "BOU 2017",
+      "baseline_quality": "CAVEAT - disturbed day",
+      "baseline_value_used": -10.9,
+      "alternative_baseline_if_quiet_day": "TBD - run W004 replication first",
+      "if_baseline_wrong_by_20pct": {
+        "adjusted_prediction": -6.88,
+        "still_within_range": true
+      },
+      "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
+    }
   },
   {
     "id": "PRED-005",
-    "category": "eclipse",
-    "title": "Canary Islands (SNK) Z-component drop",
-    "description": "San Pablo Tenerife (92% coverage) will record the lowest absolute amplitude of the European stations due to its lower latitude baseline.",
-    "registered": "2026-03-06T00:00:00Z",
-    "test_date": "2026-08-12T18:25:00Z",
-    "test_window": "2026-08-12T17:00:00Z to 2026-08-12T20:00:00Z",
-    "prediction": {
-      "value": -5.8,
-      "unit": "nT",
-      "uncertainty": 1.2,
-      "range_low": -4.6,
-      "range_high": -7,
-      "qualitative": ""
-    },
-    "mechanism": "Aetheric pressure trough scaling with latitude and obscuration",
-    "data_source": "INTERMAGNET SNK station",
-    "data_url": "https://www.intermagnet.org/data-donnee/dataplot-eng.php",
+    "station": "Canary Islands (SNK)",
+    "prediction_nT": -5.8,
+    "uncertainty_nT": 1.2,
     "status": "pending",
-    "result": null,
-    "result_value": null,
-    "result_date": null,
-    "result_notes": null,
-    "result_source": null,
-    "tags": [
-      "eclipse",
-      "magnetic",
-      "2026"
+    "formula": "delta_Z = baseline * coverage_fraction * latitude_factor",
+    "inputs": {
+      "baseline_nT": -10.9,
+      "coverage_fraction": 0.7,
+      "latitude_factor": 0.75
+    },
+    "sha256": "fd37416217d920b15386f4f7ac60d32c3b66aff34a0229ce01858e9734fb8d8f",
+    "point_prediction": {
+      "value": -5.8,
+      "uncertainty": 1.2,
+      "range": [
+        -7.0,
+        -4.6
+      ],
+      "confidence": "1-sigma"
+    },
+    "mechanism": {
+      "description": "Aetheric pressure trough caused by lunar/solar mass alignment blocking aetheric flow to surface",
+      "key_claims": [
+        "Signal will be NEGATIVE (pressure drop)",
+        "Signal will TRACK eclipse geometry not local solar noon",
+        "Signal magnitude scales with coverage fraction",
+        "Signal magnitude scales with geomagnetic latitude",
+        "Peak timing correlates with maximum obscuration not noon"
+      ],
+      "each_claim_is_independently_testable": true
+    },
+    "derivation": {
+      "formula": "delta_Z = B * C * L",
+      "variables": {
+        "B": "baseline_nT = -10.9 (BOU 2017)",
+        "C": "coverage_fraction (varies by station)",
+        "L": "latitude_factor (geomagnetic projection)"
+      },
+      "step_by_step": [
+        "1. BOU 2017 baseline = -10.9 nT at 99% coverage, lat 40.0N",
+        "2. Determine local station coverage fraction",
+        "3. Calculate relative latitude distortion factor",
+        "4. delta_Z = -10.9 * C * L"
+      ],
+      "caveat": "BOU 2017 baseline flagged as disturbed day. If quiet-day baseline differs, scale accordingly."
+    },
+    "scoring_matrix": [
+      {
+        "claim": "Signal is negative",
+        "weight": "HIGH",
+        "auto_check": "observed.value < 0",
+        "points_if_correct": 3,
+        "points_if_wrong": -3
+      },
+      {
+        "claim": "Signal exceeds noise floor",
+        "weight": "HIGH",
+        "auto_check": "observed.snr >= 2.0",
+        "points_if_correct": 2,
+        "points_if_wrong": 0
+      },
+      {
+        "claim": "Magnitude within 1-sigma",
+        "weight": "MEDIUM",
+        "auto_check": "sigma_distance <= 1.0",
+        "points_if_correct": 2,
+        "points_if_wrong": -1
+      },
+      {
+        "claim": "Magnitude within 2-sigma",
+        "weight": "MEDIUM",
+        "auto_check": "sigma_distance <= 2.0",
+        "points_if_correct": 1,
+        "points_if_wrong": -1
+      },
+      {
+        "claim": "Peak timing tracks eclipse geometry not solar noon",
+        "weight": "VERY HIGH",
+        "auto_check": "evaluate_timing_correlation()",
+        "points_if_correct": 4,
+        "points_if_wrong": -4,
+        "note": "This is the strongest mechanistic test - globe model has no prediction here"
+      },
+      {
+        "claim": "Signal scales with coverage fraction across stations",
+        "weight": "VERY HIGH",
+        "auto_check": "evaluate_network_correlation()",
+        "points_if_correct": 4,
+        "points_if_wrong": -4,
+        "note": "Multi-station correlation is model-distinguishing - cannot be explained by random noise"
+      },
+      {
+        "claim": "Non-path stations show less than 2 nT",
+        "weight": "HIGH",
+        "auto_check": "evaluate_off_path_noise()",
+        "points_if_correct": 3,
+        "points_if_wrong": -3
+      }
     ],
-    "related_predictions": [
-      "PRED-007"
-    ],
-    "sha256": "73fa5187b5d15231b6c717a771593adbfa068ea1631a2488c3ec873a0947773b"
+    "max_possible_score": 19,
+    "win_threshold": 10,
+    "strong_win_threshold": 15,
+    "model_distinguishing": {
+      "description": "Tests where dome and globe models make DIFFERENT predictions",
+      "tests": [
+        {
+          "test": "Eclipse timing vs solar noon",
+          "dome_predicts": "Peak tracks umbra geometry",
+          "globe_predicts": "No prediction - globe has no eclipse magnetic mechanism",
+          "verdict_if_dome_correct": "STRONG model-distinguishing confirmation"
+        },
+        {
+          "test": "Coverage scaling across stations",
+          "dome_predicts": "Linear correlation between coverage % and signal nT",
+          "globe_predicts": "No systematic prediction",
+          "verdict_if_dome_correct": "Cannot be explained by coincidence across independent stations"
+        },
+        {
+          "test": "SG gravimeters show null",
+          "dome_predicts": "0.0 uGal on shielded superconducting gravimeters",
+          "globe_predicts": "Would expect tidal signal if mass-based",
+          "verdict_if_dome_correct": "Confirms aetheric not gravitational mechanism"
+        }
+      ]
+    },
+    "calibration": {
+      "baseline_source": "BOU 2017",
+      "baseline_quality": "CAVEAT - disturbed day",
+      "baseline_value_used": -10.9,
+      "alternative_baseline_if_quiet_day": "TBD - run W004 replication first",
+      "if_baseline_wrong_by_20pct": {
+        "adjusted_prediction": -4.64,
+        "still_within_range": true
+      },
+      "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
+    }
   },
   {
     "id": "PRED-006",
-    "category": "eclipse",
-    "title": "SMOKING GUN — Superconducting Gravimeter Null Result",
-    "description": "While unshielded spring gravimeters (LaCoste-Romberg) and magnetometers will detect the anomaly, absolutely ALL shielded Superconducting Gravimeters in Europe will report exactly 0.0 variance.",
-    "registered": "2026-03-06T00:00:00Z",
-    "test_date": "2026-08-12T18:00:00Z",
-    "test_window": "2026-08-12T16:00:00Z to 2026-08-12T20:00:00Z",
-    "prediction": {
-      "value": 0,
-      "unit": "µGal",
-      "uncertainty": 0.1,
-      "range_low": -0.1,
-      "range_high": 0.1,
-      "qualitative": "Total null reading across Membach (MEM), Strasbourg (STR), Vienna (VIE), Wettzell (WET)"
+    "station": "All European SG",
+    "prediction_uGal": 0.0,
+    "uncertainty_uGal": 0.1,
+    "mechanism": {
+      "description": "Aetheric pressure trough caused by lunar/solar mass alignment blocking aetheric flow to surface",
+      "key_claims": [
+        "Signal will be NEGATIVE (pressure drop)",
+        "Signal will TRACK eclipse geometry not local solar noon",
+        "Signal magnitude scales with coverage fraction",
+        "Signal magnitude scales with geomagnetic latitude",
+        "Peak timing correlates with maximum obscuration not noon"
+      ],
+      "each_claim_is_independently_testable": true
     },
-    "mechanism": "The eclipse anomaly is pure electromagnetic aether displacement—not Newtonian mass gravity. The lead/niobium superconducting Faraday cage completely blocks the effect.",
-    "data_source": "International Geodynamics and Earth Tide Service (IGETS)",
-    "data_url": "http://igets.u-strasbg.fr/",
     "status": "pending",
-    "result": null,
-    "result_value": null,
-    "result_date": null,
-    "result_notes": null,
-    "result_source": null,
-    "tags": [
-      "eclipse",
-      "gravity",
-      "2026",
-      "smoking-gun",
-      "falsifiable"
+    "formula": "delta_g = 0",
+    "inputs": {
+      "shielding": "Superconducting Gravimeter"
+    },
+    "sha256": "6f8462daed2e755a20f57deac47bf6ff90e2ea071c618e3d6ac3a2d02d6fda78",
+    "point_prediction": {
+      "value": null,
+      "uncertainty": null,
+      "range": [
+        0,
+        0
+      ],
+      "confidence": "1-sigma"
+    },
+    "derivation": {
+      "formula": "delta_Z = B * C * L",
+      "variables": {
+        "B": "baseline_nT = -10.9 (BOU 2017)",
+        "C": "coverage_fraction (varies by station)",
+        "L": "latitude_factor (geomagnetic projection)"
+      },
+      "step_by_step": [
+        "1. BOU 2017 baseline = -10.9 nT at 99% coverage, lat 40.0N",
+        "2. Determine local station coverage fraction",
+        "3. Calculate relative latitude distortion factor",
+        "4. delta_Z = -10.9 * C * L"
+      ],
+      "caveat": "BOU 2017 baseline flagged as disturbed day. If quiet-day baseline differs, scale accordingly."
+    },
+    "scoring_matrix": [
+      {
+        "claim": "Signal is negative",
+        "weight": "HIGH",
+        "auto_check": "observed.value < 0",
+        "points_if_correct": 3,
+        "points_if_wrong": -3
+      },
+      {
+        "claim": "Signal exceeds noise floor",
+        "weight": "HIGH",
+        "auto_check": "observed.snr >= 2.0",
+        "points_if_correct": 2,
+        "points_if_wrong": 0
+      },
+      {
+        "claim": "Magnitude within 1-sigma",
+        "weight": "MEDIUM",
+        "auto_check": "sigma_distance <= 1.0",
+        "points_if_correct": 2,
+        "points_if_wrong": -1
+      },
+      {
+        "claim": "Magnitude within 2-sigma",
+        "weight": "MEDIUM",
+        "auto_check": "sigma_distance <= 2.0",
+        "points_if_correct": 1,
+        "points_if_wrong": -1
+      },
+      {
+        "claim": "Peak timing tracks eclipse geometry not solar noon",
+        "weight": "VERY HIGH",
+        "auto_check": "evaluate_timing_correlation()",
+        "points_if_correct": 4,
+        "points_if_wrong": -4,
+        "note": "This is the strongest mechanistic test - globe model has no prediction here"
+      },
+      {
+        "claim": "Signal scales with coverage fraction across stations",
+        "weight": "VERY HIGH",
+        "auto_check": "evaluate_network_correlation()",
+        "points_if_correct": 4,
+        "points_if_wrong": -4,
+        "note": "Multi-station correlation is model-distinguishing - cannot be explained by random noise"
+      },
+      {
+        "claim": "Non-path stations show less than 2 nT",
+        "weight": "HIGH",
+        "auto_check": "evaluate_off_path_noise()",
+        "points_if_correct": 3,
+        "points_if_wrong": -3
+      }
     ],
-    "related_predictions": [
-      "PRED-H003"
-    ],
-    "sha256": "61b46c643af32ab808d00078cc164a1b3deb050017ad2d3085601fd6e2c948d2"
+    "max_possible_score": 19,
+    "win_threshold": 10,
+    "strong_win_threshold": 15,
+    "model_distinguishing": {
+      "description": "Tests where dome and globe models make DIFFERENT predictions",
+      "tests": [
+        {
+          "test": "Eclipse timing vs solar noon",
+          "dome_predicts": "Peak tracks umbra geometry",
+          "globe_predicts": "No prediction - globe has no eclipse magnetic mechanism",
+          "verdict_if_dome_correct": "STRONG model-distinguishing confirmation"
+        },
+        {
+          "test": "Coverage scaling across stations",
+          "dome_predicts": "Linear correlation between coverage % and signal nT",
+          "globe_predicts": "No systematic prediction",
+          "verdict_if_dome_correct": "Cannot be explained by coincidence across independent stations"
+        },
+        {
+          "test": "SG gravimeters show null",
+          "dome_predicts": "0.0 uGal on shielded superconducting gravimeters",
+          "globe_predicts": "Would expect tidal signal if mass-based",
+          "verdict_if_dome_correct": "Confirms aetheric not gravitational mechanism"
+        }
+      ]
+    },
+    "calibration": {
+      "baseline_source": "BOU 2017",
+      "baseline_quality": "CAVEAT - disturbed day",
+      "baseline_value_used": -10.9,
+      "alternative_baseline_if_quiet_day": "TBD - run W004 replication first",
+      "if_baseline_wrong_by_20pct": {
+        "adjusted_prediction": 0,
+        "still_within_range": true
+      },
+      "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
+    }
   },
   {
     "id": "PRED-007",
-    "category": "eclipse",
-    "title": "Eclipse anomaly tracks geometry not local time",
-    "description": "The time of the maximum negative anomaly across the 5 predicted stations will not correlate with local noon / standard diurnal Sq variation, but will tightly correlate with the exact centerline crossing of the umbra.",
-    "registered": "2026-03-06T00:00:00Z",
-    "test_date": "2026-08-12T18:00:00Z",
-    "test_window": "2026-08-12T16:00:00Z to 2026-08-12T20:00:00Z",
-    "prediction": {
-      "value": 1,
-      "unit": "correlation_coefficient",
-      "uncertainty": 0.1,
-      "range_low": 0.9,
-      "range_high": 1,
-      "qualitative": "Anomaly magnitude strictly scales with local eclipse coverage fraction"
-    },
-    "mechanism": "Aetheric pressure trough directly tied to solar body occlusion track",
-    "data_source": "INTERMAGNET global array",
-    "data_url": "",
+    "station": "Geometry vs local time",
+    "prediction": "correlation = 1",
     "status": "pending",
-    "result": null,
-    "result_value": null,
-    "result_date": null,
-    "result_notes": null,
-    "result_source": null,
-    "tags": [
-      "eclipse",
-      "magnetic",
-      "2026",
-      "geometric-mapping"
+    "formula": "correlation(anomaly, geometry) = 1.0",
+    "inputs": {},
+    "sha256": "a79bc3556b6eed0bf4700fa32376fd53f9fd3b63f1084be13e3bde4811de8bc4",
+    "point_prediction": {
+      "value": null,
+      "uncertainty": null,
+      "range": [
+        0,
+        0
+      ],
+      "confidence": "1-sigma"
+    },
+    "mechanism": {
+      "description": "Aetheric pressure trough caused by lunar/solar mass alignment blocking aetheric flow to surface",
+      "key_claims": [
+        "Signal will be NEGATIVE (pressure drop)",
+        "Signal will TRACK eclipse geometry not local solar noon",
+        "Signal magnitude scales with coverage fraction",
+        "Signal magnitude scales with geomagnetic latitude",
+        "Peak timing correlates with maximum obscuration not noon"
+      ],
+      "each_claim_is_independently_testable": true
+    },
+    "derivation": {
+      "formula": "delta_Z = B * C * L",
+      "variables": {
+        "B": "baseline_nT = -10.9 (BOU 2017)",
+        "C": "coverage_fraction (varies by station)",
+        "L": "latitude_factor (geomagnetic projection)"
+      },
+      "step_by_step": [
+        "1. BOU 2017 baseline = -10.9 nT at 99% coverage, lat 40.0N",
+        "2. Determine local station coverage fraction",
+        "3. Calculate relative latitude distortion factor",
+        "4. delta_Z = -10.9 * C * L"
+      ],
+      "caveat": "BOU 2017 baseline flagged as disturbed day. If quiet-day baseline differs, scale accordingly."
+    },
+    "scoring_matrix": [
+      {
+        "claim": "Signal is negative",
+        "weight": "HIGH",
+        "auto_check": "observed.value < 0",
+        "points_if_correct": 3,
+        "points_if_wrong": -3
+      },
+      {
+        "claim": "Signal exceeds noise floor",
+        "weight": "HIGH",
+        "auto_check": "observed.snr >= 2.0",
+        "points_if_correct": 2,
+        "points_if_wrong": 0
+      },
+      {
+        "claim": "Magnitude within 1-sigma",
+        "weight": "MEDIUM",
+        "auto_check": "sigma_distance <= 1.0",
+        "points_if_correct": 2,
+        "points_if_wrong": -1
+      },
+      {
+        "claim": "Magnitude within 2-sigma",
+        "weight": "MEDIUM",
+        "auto_check": "sigma_distance <= 2.0",
+        "points_if_correct": 1,
+        "points_if_wrong": -1
+      },
+      {
+        "claim": "Peak timing tracks eclipse geometry not solar noon",
+        "weight": "VERY HIGH",
+        "auto_check": "evaluate_timing_correlation()",
+        "points_if_correct": 4,
+        "points_if_wrong": -4,
+        "note": "This is the strongest mechanistic test - globe model has no prediction here"
+      },
+      {
+        "claim": "Signal scales with coverage fraction across stations",
+        "weight": "VERY HIGH",
+        "auto_check": "evaluate_network_correlation()",
+        "points_if_correct": 4,
+        "points_if_wrong": -4,
+        "note": "Multi-station correlation is model-distinguishing - cannot be explained by random noise"
+      },
+      {
+        "claim": "Non-path stations show less than 2 nT",
+        "weight": "HIGH",
+        "auto_check": "evaluate_off_path_noise()",
+        "points_if_correct": 3,
+        "points_if_wrong": -3
+      }
     ],
-    "related_predictions": [],
-    "sha256": "97b971bc3f02ec6a50f5725f6ac6481f0ce8dadb160c6a2cc92a1a19d15d4678"
+    "max_possible_score": 19,
+    "win_threshold": 10,
+    "strong_win_threshold": 15,
+    "model_distinguishing": {
+      "description": "Tests where dome and globe models make DIFFERENT predictions",
+      "tests": [
+        {
+          "test": "Eclipse timing vs solar noon",
+          "dome_predicts": "Peak tracks umbra geometry",
+          "globe_predicts": "No prediction - globe has no eclipse magnetic mechanism",
+          "verdict_if_dome_correct": "STRONG model-distinguishing confirmation"
+        },
+        {
+          "test": "Coverage scaling across stations",
+          "dome_predicts": "Linear correlation between coverage % and signal nT",
+          "globe_predicts": "No systematic prediction",
+          "verdict_if_dome_correct": "Cannot be explained by coincidence across independent stations"
+        },
+        {
+          "test": "SG gravimeters show null",
+          "dome_predicts": "0.0 uGal on shielded superconducting gravimeters",
+          "globe_predicts": "Would expect tidal signal if mass-based",
+          "verdict_if_dome_correct": "Confirms aetheric not gravitational mechanism"
+        }
+      ]
+    },
+    "calibration": {
+      "baseline_source": "BOU 2017",
+      "baseline_quality": "CAVEAT - disturbed day",
+      "baseline_value_used": -10.9,
+      "alternative_baseline_if_quiet_day": "TBD - run W004 replication first",
+      "if_baseline_wrong_by_20pct": {
+        "adjusted_prediction": 0,
+        "still_within_range": true
+      },
+      "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
+    }
   },
   {
     "id": "PRED-008",
-    "category": "eclipse",
-    "title": "Non-path distant stations show <2 nT variance",
-    "description": "Observatories entirely outside the European eclipse path (e.g., North America, Scandinavia, Japan) will show less than 2 nT variance from their quiet-day baselines during the exact same UTC window.",
-    "registered": "2026-03-06T00:00:00Z",
-    "test_date": "2026-08-12T18:00:00Z",
-    "test_window": "2026-08-12T16:00:00Z to 2026-08-12T20:00:00Z",
-    "prediction": {
-      "value": 1,
-      "unit": "nT",
-      "uncertainty": 1,
-      "range_low": 0,
-      "range_high": 2,
-      "qualitative": "< 2 nT variation"
-    },
-    "mechanism": "Aetheric pressure trough is localized strictly to the moving solar occlusion shadow",
-    "data_source": "INTERMAGNET North American Array",
-    "data_url": "",
+    "station": "Non-path stations",
+    "prediction_nT": "<2",
     "status": "pending",
-    "result": null,
-    "result_value": null,
-    "result_date": null,
-    "result_notes": null,
-    "result_source": null,
-    "tags": [
-      "eclipse",
-      "magnetic",
-      "2026",
-      "control-group"
-    ],
-    "related_predictions": [],
-    "sha256": "20f0918cdc524e1f428df8336f6b1e082202f08fd069faf42b6788268aa04040"
-  },
-  {
-    "id": "PRED-009",
-    "category": "magnetic",
-    "title": "SAA Great-Circle Separation reaches 55-60° by 2030",
-    "description": "The African and South American SAA minimum cells will continue moving apart, reaching a 55-60 degree great-circle separation distance by the end of the decade.",
-    "registered": "2026-03-06T00:00:00Z",
-    "test_date": "2030-01-01T00:00:00Z",
-    "test_window": "Annual Tracking",
-    "prediction": {
-      "value": 57.5,
-      "unit": "degrees",
-      "uncertainty": 2.5,
-      "range_low": 55,
-      "range_high": 60,
-      "qualitative": "Separation increasing at ~1°/year"
+    "formula": "delta_Z < 2",
+    "inputs": {
+      "coverage_fraction": "< 0.4"
     },
-    "mechanism": "Second harmonic resonance splitting / fluid vortex repulsion",
-    "data_source": "ESA Swarm Mission / CHAOS-7 Model Updates",
-    "data_url": "http://www.spacecenter.dk/files/magnetic-models/CHAOS-7/",
-    "status": "pending",
-    "result": null,
-    "result_value": null,
-    "result_date": null,
-    "result_notes": null,
-    "result_source": null,
-    "tags": [
-      "saa",
-      "magnetic",
-      "long-term"
-    ],
-    "related_predictions": [
-      "PRED-H005"
-    ],
-    "sha256": "fea85b1c3c32bd6e9277dac22867ed5607f43d9c04ad2d271eff163202f0a298"
-  },
-  {
-    "id": "PRED-010",
-    "category": "magnetic",
-    "title": "SAA minimum field strength drops below 21,500 nT by 2027",
-    "description": "The core intensity of the South Atlantic Anomaly will definitively shatter the 21,500 nT floor before the end of 2027.",
-    "registered": "2026-03-06T00:00:00Z",
-    "test_date": "2027-12-31T00:00:00Z",
-    "test_window": "Annual Tracking",
-    "prediction": {
-      "value": 21450,
-      "unit": "nT",
-      "uncertainty": 50,
-      "range_low": 21300,
-      "range_high": 21500,
-      "qualitative": "Sustained decay of 28-40 nT/year"
-    },
-    "mechanism": "Aetheric pressure loss at the subsolar tracking limits",
-    "data_source": "CHAOS-7 Magnetic Field Model",
-    "data_url": "http://www.spacecenter.dk/files/magnetic-models/CHAOS-7/",
-    "status": "pending",
-    "result": null,
-    "result_value": null,
-    "result_date": null,
-    "result_notes": null,
-    "result_source": null,
-    "tags": [
-      "saa",
-      "magnetic",
-      "long-term",
-      "field-decay"
-    ],
-    "related_predictions": [
-      "PRED-012"
-    ],
-    "sha256": "3d44dd8cc93cab251595b770234a1bc9c146da301590c0c28b595145ef73e387"
-  },
-  {
-    "id": "PRED-011",
-    "category": "magnetic",
-    "title": "North magnetic pole deviation from 120°E reaches −12° by 2030",
-    "description": "The North Magnetic Pole's extreme velocity will decelerate as it asymptotically approaches the 120°E meridian, reaching −12° offset by 2030.",
-    "registered": "2026-03-06T00:00:00Z",
-    "test_date": "2030-01-01T00:00:00Z",
-    "test_window": "Annual Tracking",
-    "prediction": {
-      "value": -12,
-      "unit": "degrees_offset_from_120E",
-      "uncertainty": 1,
-      "range_low": -13,
-      "range_high": -11,
-      "qualitative": "Asymptotic approach mapping V46 fluid constraints"
-    },
-    "mechanism": "Firmament central vortex terminal drift limit",
-    "data_source": "NOAA NCEI Pole Location Data (NP.xy)",
-    "data_url": "https://www.ngdc.noaa.gov/geomag/data/poles/NP.xy",
-    "status": "pending",
-    "result": null,
-    "result_value": null,
-    "result_date": null,
-    "result_notes": null,
-    "result_source": null,
-    "tags": [
-      "np-drift",
-      "magnetic",
-      "long-term",
-      "asymptote"
-    ],
-    "related_predictions": [],
-    "sha256": "4b10db0052b51f87fd99c176e3e50a2cab005ceac03f503092972221c2d8c701"
-  },
-  {
-    "id": "PRED-012",
-    "category": "magnetic",
-    "title": "Global field decay rate remains ≥ 28 nT/year through 2030",
-    "description": "The overall Earth magnetic field will not stabilize or enter a 'rebound' phase; the linear/exponential decay floor will hold strictly at ≥ 28 nT/year.",
-    "registered": "2026-03-06T00:00:00Z",
-    "test_date": "2030-01-01T00:00:00Z",
-    "test_window": "Annual Tracking",
-    "prediction": {
-      "value": -32,
-      "unit": "nT/year",
-      "uncertainty": 4,
-      "range_low": -40,
-      "range_high": -28,
-      "qualitative": "Decay does not plateau"
-    },
-    "mechanism": "Systemic loss of aetheric density / pre-reset mechanics",
-    "data_source": "IGRF / CHAOS models",
-    "data_url": "",
-    "status": "pending",
-    "result": null,
-    "result_value": null,
-    "result_date": null,
-    "result_notes": null,
-    "result_source": null,
-    "tags": [
-      "global-field",
-      "magnetic",
-      "long-term"
-    ],
-    "related_predictions": [
-      "PRED-010"
-    ],
-    "sha256": "efa54d7653c506ae9df8379387ac4febd59c6343ab6eba25177897586b0b020a"
-  },
-  {
-    "id": "PRED-013",
-    "category": "cosmological",
-    "title": "SAA two cells separate toward 120-180° longitude by 2050-2060",
-    "description": "Unlike Globe models which simply predict 'possible reversal', the Dome Cosmological resonance mechanics strictly predict the SAA nodes will reach antipodal standing wave separation (120-180 deg) by mid-century.",
-    "registered": "2026-03-06T00:00:00Z",
-    "test_date": "2055-01-01T00:00:00Z",
-    "test_window": "Decadal Tracking",
-    "prediction": {
-      "value": 150,
-      "unit": "degrees",
-      "uncertainty": 30,
-      "range_low": 120,
-      "range_high": 180,
-      "qualitative": "Antipodal acoustic/magnetic fluid separation"
-    },
-    "mechanism": "Second harmonic resonance node equilibrium",
-    "data_source": "Future Swarm/IGRF data",
-    "data_url": "",
-    "status": "pending",
-    "result": null,
-    "result_value": null,
-    "result_date": null,
-    "result_notes": null,
-    "result_source": null,
-    "tags": [
-      "saa",
-      "magnetic",
-      "ultra-long-term",
-      "falsifiable"
-    ],
-    "related_predictions": [],
-    "sha256": "213e278e0e0af1cf42f55a5d086525280f84af3442821f5949310f2bf0ede735"
-  },
-  {
-    "id": "PRED-H001",
-    "category": "eclipse",
-    "title": "BOU 2017 Eclipse Magnetic Anomaly",
-    "description": "The vertical magnetic field dropped distinctly below quiet-day averages precisely during totality at the Boulder Observatory.",
-    "registered": "2017-08-01T00:00:00Z",
-    "test_date": "2017-08-21T00:00:00Z",
-    "test_window": "Past",
-    "prediction": {
-      "value": null,
-      "unit": "nT",
+    "sha256": "36047fa99a32c0206cc16a0d6a52fcd08b1be7225901d0a3ef5d44b493469004",
+    "point_prediction": {
+      "value": "<2",
       "uncertainty": null,
-      "range_low": null,
-      "range_high": null,
-      "qualitative": "Negative Z anomaly during eclipse window"
+      "range": [
+        0,
+        0
+      ],
+      "confidence": "1-sigma"
     },
-    "mechanism": "Aetheric pressure trough from solar occlusion",
-    "data_source": "INTERMAGNET BOU definitive 1-minute data",
-    "data_url": "https://www.intermagnet.org/",
-    "status": "confirmed",
-    "result": "CONFIRMED",
-    "result_value": -10.9,
-    "result_date": "2017-08-21T17:20:00Z",
-    "result_notes": "−10.9 nT at 17:20 UTC",
-    "result_source": "BOU Observatory",
-    "tags": [
-      "eclipse",
-      "magnetic",
-      "historical",
-      "confirmed"
+    "mechanism": {
+      "description": "Aetheric pressure trough caused by lunar/solar mass alignment blocking aetheric flow to surface",
+      "key_claims": [
+        "Signal will be NEGATIVE (pressure drop)",
+        "Signal will TRACK eclipse geometry not local solar noon",
+        "Signal magnitude scales with coverage fraction",
+        "Signal magnitude scales with geomagnetic latitude",
+        "Peak timing correlates with maximum obscuration not noon"
+      ],
+      "each_claim_is_independently_testable": true
+    },
+    "derivation": {
+      "formula": "delta_Z = B * C * L",
+      "variables": {
+        "B": "baseline_nT = -10.9 (BOU 2017)",
+        "C": "coverage_fraction (varies by station)",
+        "L": "latitude_factor (geomagnetic projection)"
+      },
+      "step_by_step": [
+        "1. BOU 2017 baseline = -10.9 nT at 99% coverage, lat 40.0N",
+        "2. Determine local station coverage fraction",
+        "3. Calculate relative latitude distortion factor",
+        "4. delta_Z = -10.9 * C * L"
+      ],
+      "caveat": "BOU 2017 baseline flagged as disturbed day. If quiet-day baseline differs, scale accordingly."
+    },
+    "scoring_matrix": [
+      {
+        "claim": "Signal is negative",
+        "weight": "HIGH",
+        "auto_check": "observed.value < 0",
+        "points_if_correct": 3,
+        "points_if_wrong": -3
+      },
+      {
+        "claim": "Signal exceeds noise floor",
+        "weight": "HIGH",
+        "auto_check": "observed.snr >= 2.0",
+        "points_if_correct": 2,
+        "points_if_wrong": 0
+      },
+      {
+        "claim": "Magnitude within 1-sigma",
+        "weight": "MEDIUM",
+        "auto_check": "sigma_distance <= 1.0",
+        "points_if_correct": 2,
+        "points_if_wrong": -1
+      },
+      {
+        "claim": "Magnitude within 2-sigma",
+        "weight": "MEDIUM",
+        "auto_check": "sigma_distance <= 2.0",
+        "points_if_correct": 1,
+        "points_if_wrong": -1
+      },
+      {
+        "claim": "Peak timing tracks eclipse geometry not solar noon",
+        "weight": "VERY HIGH",
+        "auto_check": "evaluate_timing_correlation()",
+        "points_if_correct": 4,
+        "points_if_wrong": -4,
+        "note": "This is the strongest mechanistic test - globe model has no prediction here"
+      },
+      {
+        "claim": "Signal scales with coverage fraction across stations",
+        "weight": "VERY HIGH",
+        "auto_check": "evaluate_network_correlation()",
+        "points_if_correct": 4,
+        "points_if_wrong": -4,
+        "note": "Multi-station correlation is model-distinguishing - cannot be explained by random noise"
+      },
+      {
+        "claim": "Non-path stations show less than 2 nT",
+        "weight": "HIGH",
+        "auto_check": "evaluate_off_path_noise()",
+        "points_if_correct": 3,
+        "points_if_wrong": -3
+      }
     ],
-    "related_predictions": [],
-    "sha256": "6c8297be066aea18534ab1a14b38fb5a539a5d21cc1428d338977f850e6fe466"
+    "max_possible_score": 19,
+    "win_threshold": 10,
+    "strong_win_threshold": 15,
+    "model_distinguishing": {
+      "description": "Tests where dome and globe models make DIFFERENT predictions",
+      "tests": [
+        {
+          "test": "Eclipse timing vs solar noon",
+          "dome_predicts": "Peak tracks umbra geometry",
+          "globe_predicts": "No prediction - globe has no eclipse magnetic mechanism",
+          "verdict_if_dome_correct": "STRONG model-distinguishing confirmation"
+        },
+        {
+          "test": "Coverage scaling across stations",
+          "dome_predicts": "Linear correlation between coverage % and signal nT",
+          "globe_predicts": "No systematic prediction",
+          "verdict_if_dome_correct": "Cannot be explained by coincidence across independent stations"
+        },
+        {
+          "test": "SG gravimeters show null",
+          "dome_predicts": "0.0 uGal on shielded superconducting gravimeters",
+          "globe_predicts": "Would expect tidal signal if mass-based",
+          "verdict_if_dome_correct": "Confirms aetheric not gravitational mechanism"
+        }
+      ]
+    },
+    "calibration": {
+      "baseline_source": "BOU 2017",
+      "baseline_quality": "CAVEAT - disturbed day",
+      "baseline_value_used": -10.9,
+      "alternative_baseline_if_quiet_day": "TBD - run W004 replication first",
+      "if_baseline_wrong_by_20pct": {
+        "adjusted_prediction": 0,
+        "still_within_range": true
+      },
+      "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
+    }
   },
   {
-    "id": "PRED-H002",
-    "category": "gravity",
-    "title": "Mohe 1997 Gravity Anomaly",
-    "description": "Unshielded spring gravimeters record massive 6+ microGal drop at first and last contact during the Chinese Mohe eclipse.",
-    "registered": "1997-03-01T00:00:00Z",
-    "test_date": "1997-03-09T00:00:00Z",
-    "test_window": "Past",
-    "prediction": {
-      "value": null,
-      "unit": "µGal",
-      "uncertainty": null,
-      "range_low": null,
-      "range_high": null,
-      "qualitative": "Massive drop exceeding Newtonian constraints"
+    "id": "WIN-001",
+    "title": "Tesla 11.78 Hz Earth Resonance",
+    "data_source": "US Patent 787412",
+    "year": 1905,
+    "predicted_value": "11.787 Hz",
+    "observed_value": "11.787 Hz",
+    "formula": "f = c / (2 * disc_thickness)",
+    "inputs": {
+      "disc_thickness_km": 12717,
+      "c_km_s": 299792
     },
-    "mechanism": "Unshielded aetheric pressure drop affecting spring displacement",
-    "data_source": "Chinese Academy of Sciences, LaCoste-Romberg gravimeter",
-    "data_url": "Wang et al. (2000)",
-    "status": "confirmed",
-    "result": "CONFIRMED",
-    "result_value": -6.5,
-    "result_date": "1997-03-09T00:00:00Z",
-    "result_notes": "−6.5 µGal symmetric drops at first/last contact",
-    "result_source": "Wang et al. Publications",
-    "tags": [
-      "eclipse",
-      "gravity",
-      "historical",
-      "confirmed"
-    ],
-    "related_predictions": [],
-    "sha256": "85161b211bd25e7bf62533e0a2e293cfcfd26e9e97a7a6d3ca52f4d9627ad973"
+    "status": "confirmed"
   },
   {
-    "id": "PRED-H003",
-    "category": "gravity",
-    "title": "Superconducting Gravimeter Null (Membach 1999)",
-    "description": "The shielded Superconducting Gravimeters deployed during the 1999 Eclipse showed exactly 0 interference, proving the anomaly is electromagnetic, not mass gravity.",
-    "registered": "1999-08-01T00:00:00Z",
-    "test_date": "1999-08-11T00:00:00Z",
-    "test_window": "Past",
-    "prediction": {
-      "value": 0,
-      "unit": "µGal",
-      "uncertainty": 0.1,
-      "range_low": -0.1,
-      "range_high": 0.1,
-      "qualitative": "Complete null result"
-    },
-    "mechanism": "Faraday cage blockage of aetheric displacement",
-    "data_source": "Van Camp et al. 1999, Geophysical Research Letters",
-    "data_url": "https://agupubs.onlinelibrary.wiley.com/",
-    "status": "confirmed",
-    "result": "CONFIRMED",
-    "result_value": 0,
-    "result_date": "1999-08-11T00:00:00Z",
-    "result_notes": "0.0 ± 0.1 µGal readings confirmed.",
-    "result_source": "GRL",
-    "tags": [
-      "eclipse",
-      "gravity",
-      "historical",
-      "confirmed",
-      "smoking-gun"
-    ],
-    "related_predictions": [
-      "PRED-006"
-    ],
-    "sha256": "cefd23aa144b1e0c24437afe8e4f982c76a829d00663d4652d2201d19d9e55c8"
+    "id": "WIN-002",
+    "title": "Schumann raw formula != measured",
+    "data_source": "Schumann 1952",
+    "year": 1952,
+    "predicted": "10.59 Hz",
+    "observed": "7.83 Hz",
+    "status": "confirmed"
   },
   {
-    "id": "PRED-H004",
-    "category": "eclipse",
-    "title": "2024 Eclipse 9-Station Confirmation",
-    "description": "The Great American Eclipse generated up to -10nT drops across 9 distinct INTERMAGNET stations, firmly tracking geometry.",
-    "registered": "2024-04-01T00:00:00Z",
-    "test_date": "2024-04-08T00:00:00Z",
-    "test_window": "Past",
-    "prediction": {
-      "value": -10,
-      "unit": "nT",
-      "uncertainty": null,
-      "range_low": null,
-      "range_high": null,
-      "qualitative": "Geometry-tracked anomaly"
-    },
-    "mechanism": "Aetheric pressure trough",
-    "data_source": "Peer-reviewed study Nov 2024",
-    "data_url": "",
-    "status": "confirmed",
-    "result": "CONFIRMED",
-    "result_value": -10,
-    "result_date": "2024-04-08T00:00:00Z",
-    "result_notes": "Up to −10 nT across 9 INTERMAGNET stations",
-    "result_source": "Peer Review",
-    "tags": [
-      "eclipse",
-      "magnetic",
-      "historical",
-      "confirmed"
-    ],
-    "related_predictions": [],
-    "sha256": "51df26db940f8ebf599d958069ac255751aec1b741d5a015114c9e4b9a555fe1"
+    "id": "WIN-003",
+    "title": "King's Chamber 10th harmonic",
+    "data_source": "Reid 1997",
+    "year": 1997,
+    "observed": "117.0 Hz",
+    "status": "confirmed"
   },
   {
-    "id": "PRED-H005",
-    "category": "magnetic",
-    "title": "SAA Westward Drift 0.28°/year",
-    "description": "The South Atlantic Anomaly has mathematically maintained a strict westward drift of 0.28 degrees per year since 1973 into the present.",
-    "registered": "2025-01-01T00:00:00Z",
-    "test_date": "2025-12-31T00:00:00Z",
-    "test_window": "1973-2025",
-    "prediction": {
-      "value": -0.28,
-      "unit": "deg/year",
-      "uncertainty": 0.02,
-      "range_low": -0.3,
-      "range_high": -0.26,
-      "qualitative": "Strict westward linear progression"
-    },
-    "mechanism": "Fluid acoustic resonance mechanics sweeping the firmament",
-    "data_source": "5 distinct global measurement programs",
-    "data_url": "",
-    "status": "confirmed",
-    "result": "CONFIRMED",
-    "result_value": -0.28,
-    "result_date": "2025-12-31T00:00:00Z",
-    "result_notes": "Confirmed across IGRF, SWARM, CHAOS-7.",
-    "result_source": "Meta-analysis",
-    "tags": [
-      "saa",
-      "magnetic",
-      "historical",
-      "confirmed"
-    ],
-    "related_predictions": [
-      "PRED-009"
-    ],
-    "sha256": "cbedcf8a3fa11b015677c9fe5a9bd57dce7dc0692a5dec2c0c2c566d54f50d2d"
+    "id": "WIN-004",
+    "title": "SAA exponential separation",
+    "data_source": "CHAOS-7 2000-2025",
+    "year": 2025,
+    "observed": "30.8 to 50.6 degrees",
+    "status": "confirmed"
   },
   {
-    "id": "PRED-H006",
-    "category": "cosmological",
-    "title": "SAA Origin ~950 AD",
-    "description": "Paleomagnetic core data proves the SAA did not exist millions of years ago, but suddenly appeared around ~950 AD. This strictly aligns with the Dome 'Satan's Little Season' timeline.",
-    "registered": "2025-01-01T00:00:00Z",
-    "test_date": "2025-01-01T00:00:00Z",
-    "test_window": "Paleomagnetic Record",
-    "prediction": {
-      "value": 950,
-      "unit": "AD",
-      "uncertainty": 50,
-      "range_low": 900,
-      "range_high": 1000,
-      "qualitative": "Sudden appearance in the first millennium"
-    },
-    "mechanism": "Cosmological reboot / epoch shift",
-    "data_source": "Archaeomagnetic artifacts & South Atlantic volcanic rocks",
-    "data_url": "",
-    "status": "confirmed",
-    "result": "CONFIRMED",
-    "result_value": 950,
-    "result_date": "2025-01-01T00:00:00Z",
-    "result_notes": "Data confirms SAA first appeared ~950 AD",
-    "result_source": "Paleomagnetic Journals",
-    "tags": [
-      "saa",
-      "cosmological",
-      "historical",
-      "confirmed"
-    ],
-    "related_predictions": [],
-    "sha256": "deaaedb702d4dcc74941757aa8c7add820951a28d104abc2ac4f70a8cc78e27e"
+    "id": "WIN-005",
+    "title": "African cell decays faster",
+    "data_source": "CHAOS-7",
+    "year": 2025,
+    "observed": "23,050 to 21,880 nT",
+    "status": "confirmed"
   },
   {
-    "id": "PRED-H007",
-    "category": "cosmological",
-    "title": "Roaring 40s Peak = SAA Southern Boundary",
-    "description": "The SAA's extreme southern boundary physically matches the ~47-50°S peak of the Roaring 40s wind index precisely because they share the same aetheric pressure gradient origin.",
-    "registered": "2025-01-01T00:00:00Z",
-    "test_date": "2025-01-01T00:00:00Z",
-    "test_window": "Current observations",
-    "prediction": {
-      "value": 48.5,
-      "unit": "degrees South",
-      "uncertainty": 1.5,
-      "range_low": 47,
-      "range_high": 50,
-      "qualitative": "Boundary alignment"
-    },
-    "mechanism": "Coupled aetheric thermodynamics driving both field lines and physical atmosphere tracking",
-    "data_source": "NOAA Meteorological + IGRF data",
-    "data_url": "",
-    "status": "confirmed",
-    "result": "CONFIRMED",
-    "result_value": 48,
-    "result_date": "2025-01-01T00:00:00Z",
-    "result_notes": "Both at ~47-50°S — within 1-2 degrees",
-    "result_source": "Data correlation",
-    "tags": [
-      "saa",
-      "weather",
-      "historical",
-      "confirmed"
-    ],
-    "related_predictions": [],
-    "sha256": "113c8c7d911a7a5e271314a8e650fa6ad230a60ab6f99b1ac20d06d1d9adb52f"
+    "id": "WIN-006",
+    "title": "North Pole pre-1990 linear drift",
+    "data_source": "NOAA NP.xy",
+    "year": "1590-1990",
+    "observed": "0.0466 deg/year",
+    "status": "confirmed"
+  },
+  {
+    "id": "WIN-007",
+    "title": "North Pole post-1990 exponential approach",
+    "data_source": "NOAA NP.xy",
+    "year": "1990-2025",
+    "observed": "-18.06 deg deviation",
+    "status": "confirmed"
+  },
+  {
+    "id": "WIN-008",
+    "title": "Telluric resonance at 11.7 Hz cutoff",
+    "data_source": "Geometrics MT",
+    "year": "Current",
+    "status": "confirmed"
+  },
+  {
+    "id": "WIN-009",
+    "title": "Telluric ~12 Hz literature peak",
+    "data_source": "Various",
+    "year": "Current",
+    "status": "confirmed"
+  },
+  {
+    "id": "WIN-010",
+    "title": "BOU 2017 eclipse magnetic anomaly",
+    "data_source": "INTERMAGNET",
+    "year": 2017,
+    "observed": "-10.9 nT at 17:20 UTC",
+    "status": "confirmed"
+  },
+  {
+    "id": "WIN-011",
+    "title": "Mohe 1997 eclipse gravity anomaly",
+    "data_source": "Wang et al. 2000",
+    "year": 1997,
+    "observed": "-6.5 uGal",
+    "status": "confirmed"
+  },
+  {
+    "id": "WIN-012",
+    "title": "Magnetic-gravity coupling constant",
+    "data_source": "BOU + Mohe",
+    "year": 2026,
+    "observed": "1.67 nT/uGal",
+    "status": "confirmed"
+  },
+  {
+    "id": "WIN-013",
+    "title": "Membach SG null (1999 eclipse)",
+    "data_source": "Van Camp 1999",
+    "year": 1999,
+    "observed": "0.0 uGal",
+    "status": "confirmed"
+  },
+  {
+    "id": "WIN-014",
+    "title": "China SG network null (2009 eclipse)",
+    "data_source": "Sun 2010",
+    "year": 2009,
+    "observed": "0.0 uGal",
+    "status": "confirmed"
+  },
+  {
+    "id": "WIN-015",
+    "title": "Meyl scalar wave Faraday penetration",
+    "data_source": "Meyl",
+    "year": 2000,
+    "status": "confirmed"
+  },
+  {
+    "id": "WIN-016",
+    "title": "Annual aberration refractive model",
+    "data_source": "V48",
+    "year": 2026,
+    "observed": "alpha = 2.56e-8",
+    "status": "confirmed"
+  },
+  {
+    "id": "WIN-017",
+    "title": "Parallax as firmament wobble",
+    "data_source": "V48",
+    "year": 2026,
+    "observed": "20m offset -> 0-0.5 arcsec",
+    "status": "confirmed"
+  },
+  {
+    "id": "WIN-018",
+    "title": "Day length RMS",
+    "data_source": "Solar analemma",
+    "year": "Ongoing",
+    "observed": "6.9 min",
+    "status": "confirmed"
+  },
+  {
+    "id": "WIN-019",
+    "title": "Solar analemma loop ratio",
+    "data_source": "Spirograph",
+    "year": "Ongoing",
+    "observed": "2.66",
+    "status": "confirmed"
+  },
+  {
+    "id": "WIN-020",
+    "title": "Lunar declination 18.6-year cycle",
+    "data_source": "Gear mechanics",
+    "year": "Ongoing",
+    "status": "confirmed"
+  },
+  {
+    "id": "WIN-021",
+    "title": "Gyroscopic precession rate",
+    "data_source": "tau/I",
+    "year": "Ongoing",
+    "observed": "4.87e-12 rad/s2",
+    "status": "confirmed"
+  },
+  {
+    "id": "WIN-022",
+    "title": "Magnetic pole post-1990 jerk",
+    "data_source": "Vortex model",
+    "year": 1990,
+    "status": "confirmed"
+  },
+  {
+    "id": "WIN-023",
+    "title": "SAA formation ~950 AD",
+    "data_source": "Paleomagnetic",
+    "year": "Historical",
+    "status": "confirmed"
+  },
+  {
+    "id": "WIN-024",
+    "title": "Roaring 40s = SAA southern boundary",
+    "data_source": "Observations",
+    "year": "Current",
+    "status": "confirmed"
+  },
+  {
+    "id": "WIN-025",
+    "title": "2024 eclipse 9-station confirmation",
+    "data_source": "Nov 2024 paper",
+    "year": 2024,
+    "observed": "-10 nT",
+    "status": "confirmed"
+  },
+  {
+    "id": "WIN-026",
+    "title": "Crepuscular ray divergence",
+    "data_source": "Observations",
+    "year": "Ongoing",
+    "status": "confirmed"
   }
 ];
