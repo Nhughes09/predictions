@@ -82,7 +82,7 @@
   },
   {
     "id": "WIN-027",
-    "title": "Southern Hemisphere Distance Quadratic Latitude Law",
+    "title": "Southern Hemisphere Distance Directional Asymmetry",
     "test_date": "Historical",
     "prediction": {
       "value": null
