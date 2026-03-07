@@ -4,7 +4,7 @@
     "filename": "append_v47.py",
     "purpose": "Computational framework execution logic for append_v47.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -20,7 +20,7 @@
     "filename": "v17_pipeline.py",
     "purpose": "Computational framework execution logic for v17_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -36,7 +36,7 @@
     "filename": "v47_followup_analysis.py",
     "purpose": "Computational framework execution logic for v47_followup_analysis.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -52,7 +52,7 @@
     "filename": "v25_pipeline.py",
     "purpose": "Computational framework execution logic for v25_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -68,7 +68,7 @@
     "filename": "v34b_pipeline.py",
     "purpose": "Computational framework execution logic for v34b_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -84,7 +84,7 @@
     "filename": "build_unified_master.py",
     "purpose": "Computational framework execution logic for build_unified_master.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -100,7 +100,7 @@
     "filename": "v20_pipeline.py",
     "purpose": "Computational framework execution logic for v20_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -116,7 +116,7 @@
     "filename": "v45_pipeline.py",
     "purpose": "Computational framework execution logic for v45_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -132,7 +132,7 @@
     "filename": "v35_pipeline.py",
     "purpose": "Computational framework execution logic for v35_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -148,7 +148,7 @@
     "filename": "append_phase4.py",
     "purpose": "Computational framework execution logic for append_phase4.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -164,7 +164,7 @@
     "filename": "v18_pipeline.py",
     "purpose": "Computational framework execution logic for v18_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -180,7 +180,7 @@
     "filename": "v36_pipeline.py",
     "purpose": "Computational framework execution logic for v36_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -196,7 +196,7 @@
     "filename": "v23_pipeline.py",
     "purpose": "Computational framework execution logic for v23_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -212,7 +212,7 @@
     "filename": "task4_3_aic.py",
     "purpose": "Computational framework execution logic for task4_3_aic.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -228,7 +228,7 @@
     "filename": "analyze_resonance.py",
     "purpose": "Computational framework execution logic for analyze_resonance.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -244,7 +244,7 @@
     "filename": "v34c_phase_objections.py",
     "purpose": "Computational framework execution logic for v34c_phase_objections.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -260,7 +260,7 @@
     "filename": "firmament_v8.py",
     "purpose": "Computational framework execution logic for firmament_v8.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -276,7 +276,7 @@
     "filename": "v26_pipeline.py",
     "purpose": "Computational framework execution logic for v26_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -292,7 +292,7 @@
     "filename": "v14_pipeline.py",
     "purpose": "Computational framework execution logic for v14_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -308,7 +308,7 @@
     "filename": "dome_predictor_interactive.py",
     "purpose": "Computational framework execution logic for dome_predictor_interactive.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -324,7 +324,7 @@
     "filename": "v33_pipeline.py",
     "purpose": "Computational framework execution logic for v33_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -340,7 +340,7 @@
     "filename": "v43_pipeline.py",
     "purpose": "Computational framework execution logic for v43_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -356,7 +356,7 @@
     "filename": "phase6_analysis.py",
     "purpose": "Computational framework execution logic for phase6_analysis.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -372,7 +372,7 @@
     "filename": "v28_pipeline.py",
     "purpose": "Computational framework execution logic for v28_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -388,7 +388,7 @@
     "filename": "task4_1_eclipse.py",
     "purpose": "Computational framework execution logic for task4_1_eclipse.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -404,7 +404,7 @@
     "filename": "v34_pipeline.py",
     "purpose": "Computational framework execution logic for v34_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -420,7 +420,7 @@
     "filename": "v44_pipeline.py",
     "purpose": "Computational framework execution logic for v44_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -436,7 +436,7 @@
     "filename": "build_mega_prompt.py",
     "purpose": "Computational framework execution logic for build_mega_prompt.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -452,7 +452,7 @@
     "filename": "v21_pipeline.py",
     "purpose": "Computational framework execution logic for v21_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -468,7 +468,7 @@
     "filename": "astro_calc.py",
     "purpose": "Computational framework execution logic for astro_calc.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -484,7 +484,7 @@
     "filename": "v13_pipeline.py",
     "purpose": "Computational framework execution logic for v13_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -500,7 +500,7 @@
     "filename": "v46_corrected_dome_map.py",
     "purpose": "Computational framework execution logic for v46_corrected_dome_map.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -516,7 +516,7 @@
     "filename": "v24_pipeline.py",
     "purpose": "Computational framework execution logic for v24_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -532,7 +532,7 @@
     "filename": "v16_pipeline.py",
     "purpose": "Computational framework execution logic for v16_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -548,7 +548,7 @@
     "filename": "task3_2_pole.py",
     "purpose": "Computational framework execution logic for task3_2_pole.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -564,7 +564,7 @@
     "filename": "append_phase3.py",
     "purpose": "Computational framework execution logic for append_phase3.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -580,7 +580,7 @@
     "filename": "v31_pipeline.py",
     "purpose": "Computational framework execution logic for v31_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -596,7 +596,7 @@
     "filename": "v42_pipeline.py",
     "purpose": "Computational framework execution logic for v42_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -612,7 +612,7 @@
     "filename": "analyze_geomagnetic.py",
     "purpose": "Computational framework execution logic for analyze_geomagnetic.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -628,7 +628,7 @@
     "filename": "v32_pipeline.py",
     "purpose": "Computational framework execution logic for v32_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -644,7 +644,7 @@
     "filename": "firmament_model_FINAL.py",
     "purpose": "Computational framework execution logic for firmament_model_FINAL.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -660,7 +660,7 @@
     "filename": "task3_1_chaos.py",
     "purpose": "Computational framework execution logic for task3_1_chaos.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -676,7 +676,7 @@
     "filename": "v15_pipeline.py",
     "purpose": "Computational framework execution logic for v15_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -692,7 +692,7 @@
     "filename": "build_v48_master.py",
     "purpose": "Computational framework execution logic for build_v48_master.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -708,7 +708,7 @@
     "filename": "v27_pipeline.py",
     "purpose": "Computational framework execution logic for v27_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -724,7 +724,7 @@
     "filename": "v47_followup_analysis_clean.py",
     "purpose": "Computational framework execution logic for v47_followup_analysis_clean.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -740,7 +740,7 @@
     "filename": "independent_verification.py",
     "purpose": "Computational framework execution logic for independent_verification.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -756,7 +756,7 @@
     "filename": "v22_pipeline.py",
     "purpose": "Computational framework execution logic for v22_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -772,7 +772,7 @@
     "filename": "test_igrf.py",
     "purpose": "Computational framework execution logic for test_igrf.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -788,7 +788,7 @@
     "filename": "v19_pipeline.py",
     "purpose": "Computational framework execution logic for v19_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -804,7 +804,7 @@
     "filename": "v37_pipeline.py",
     "purpose": "Computational framework execution logic for v37_pipeline.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],
@@ -820,7 +820,7 @@
     "filename": "v47_residual_analysis.py",
     "purpose": "Computational framework execution logic for v47_residual_analysis.py",
     "status": "current",
-    "model_version": "49.3",
+    "model_version": "50.2",
     "inputs": [
       "Varies exactly per script bounds"
     ],

@@ -16,7 +16,7 @@ for d in [API_DIR, CURRENT_DIR, ARCHIVE_DIR]:
 # 1. api/index.json
 index = {
   "purpose": "AI onboarding endpoint - fetch this first",
-  "current_version": "49.3",
+  "current_version": "50.2",
   "last_updated": "2026-03-07",
   "fetch_sequence": [
     "/api/current/scorecard.json",
@@ -39,7 +39,7 @@ with open(f"{API_DIR}/index.json", "w") as f:
 
 # 2. api/current/scorecard.json
 scorecard = {
-  "version": "49.3",
+  "version": "50.2",
   "as_of": "2026-03-07",
   "categories": {
     "geomagnetic": {
@@ -466,7 +466,7 @@ for script_path in py_files:
       "filename": filename,
       "purpose": f"Computational framework execution logic for {filename}",
       "status": "current",
-      "model_version": "49.3",
+      "model_version": "50.2",
       "inputs": ["Varies exactly per script bounds"],
       "outputs": ["Terminal stdout prints, logs, and plots"],
       "full_source_code": script_col,
@@ -529,7 +529,7 @@ history = {
       "files": ["All current repository scripts and api structured blocks"]
     },
     {
-      "version": "49.3",
+      "version": "50.2",
       "date": "2026-03-07",
       "status": "CURRENT",
       "scorecard_at_time": "Dome 26, Globe 0, Falsified 0",

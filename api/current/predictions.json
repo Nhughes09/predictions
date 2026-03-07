@@ -30,7 +30,7 @@
       },
       "status": "pending",
       "timestamp_sha256": "pending",
-      "sha256": "eaf0855f87cc7b53fc81b23881cabfcc13e940c90d8253c6bc01403bf68f7308",
+      "sha256": "3fd1ccc15e739875a1b41d3f71b77fa47a92e8083e3eb8dd3937c4ff3be8106b",
       "point_prediction": {
         "value": -8.4,
         "uncertainty": 1.7,
@@ -170,7 +170,7 @@
         "coverage_fraction": 0.94,
         "latitude_factor": 0.8
       },
-      "sha256": "aafa90391ef5682e21e0d6853727c9a21f091ff4a940709ac1682ce078b1bf20",
+      "sha256": "e1c4b21f4cc3a711b19be66dda0bde3831f962fcbf73a276500b5f33cc3bfc32",
       "point_prediction": {
         "value": -8.3,
         "uncertainty": 1.7,
@@ -321,7 +321,7 @@
         "coverage_fraction": 0.98,
         "latitude_factor": 0.89
       },
-      "sha256": "d2221c15b9523e83e020289c4177b36f535d8b3b569bf407c0518bcbb27e854d",
+      "sha256": "14fddb156b73532065b664760a2ddc0a74e47ff80b9def08401f80a6d71a0ec5",
       "point_prediction": {
         "value": -9.5,
         "uncertainty": 1.9,
@@ -472,7 +472,7 @@
         "coverage_fraction": 0.92,
         "latitude_factor": 0.86
       },
-      "sha256": "2f1b8850fc34359afae774d82a91e1d6632fc5d49c9a00ec19d5449f77832b74",
+      "sha256": "412802b14d950e4967ab7ed9a697c8d7511d1df6913552ca79f3ed5532d5a478",
       "point_prediction": {
         "value": -8.6,
         "uncertainty": 1.7,
@@ -623,7 +623,7 @@
         "coverage_fraction": 0.7,
         "latitude_factor": 0.75
       },
-      "sha256": "33b0c97f507f1c225b41558c25164fcbad2a11c146521057cc4c0ae46720a13c",
+      "sha256": "74fb61c762e719f91b9ec8503efdadf6ff424ed273a98af130926f69c2d01344",
       "point_prediction": {
         "value": -5.8,
         "uncertainty": 1.2,
@@ -783,7 +783,7 @@
       "inputs": {
         "shielding": "Superconducting Gravimeter"
       },
-      "sha256": "6039f1c6012a5e203482562c56a2c903f1c758e549530bf3b52c5f12a7640ca8",
+      "sha256": "f0aca7cd4612fbe3d79b49cb77577ddb25df4fc07d02abd24d6962bfa5851a6f",
       "point_prediction": {
         "value": null,
         "uncertainty": null,
@@ -906,7 +906,7 @@
       "status": "pending",
       "formula": "correlation(anomaly, geometry) = 1.0",
       "inputs": {},
-      "sha256": "27719da2265e75f43659f3cbfe66e915119dd0c374dad102fa7e9f4f225d31de",
+      "sha256": "4c08d7cc0c8f82a0772fddb8df928859cfc303115b0d8ed2f2d2d6a2be0d395b",
       "point_prediction": {
         "value": null,
         "uncertainty": null,
@@ -1042,7 +1042,7 @@
       "inputs": {
         "coverage_fraction": "< 0.4"
       },
-      "sha256": "512c07c19d69dcb394980fa59ef7c68417900c6191e39f3f099e44acd15de701",
+      "sha256": "59e921999fed07c29f01e7dfb94c0f913a20e8f33d0d74d78ac11be041850f8a",
       "point_prediction": {
         "value": "<2",
         "uncertainty": null,
@@ -1884,6 +1884,20 @@
       "counts_against_model": false,
       "note": "This recalibration adjusts PRED-001 through PRED-005 downward ~30% for August eclipse",
       "sha256": "8e9f2a012645f08ad0da229be89dd47bc85ed8bc98cdd0ae6b60740ef75df7cf"
+    }
+  ],
+  "open_problems": [
+    {
+      "id": "OPEN-001",
+      "title": "Dome Coordinate System \u2014 No Validated Map Exists",
+      "status": "open",
+      "finding": "All southern hemisphere distance tests use WGS84 globe coordinates projected onto AE. This is circular \u2014 EW distances are measured as longitude arcs on a sphere then re-projected onto a disc. The 1.35x EW residual is a coordinate system mismatch, not a dome geometry failure.",
+      "what_is_confirmed": "NS distances work because NS=latitude degrees, consistent across both systems. EW fails because longitude arc on sphere != longitude arc on flat disc.",
+      "what_is_needed": "Dome coordinate system derived from physical measurements only: flight times, ship logs, sunrise/sunset azimuth timing. No globe-derived coordinates.",
+      "implications": "No public validated flat earth map exists. AE projection is a placeholder. True dome map requires independent physical measurement campaign.",
+      "globe_score": 0,
+      "dome_score": 0,
+      "note": "This is not a falsification. It is an underdetermination \u2014 the dome model cannot be fully tested until dome coordinates are independently measured."
     }
   ]
 }
