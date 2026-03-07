@@ -523,11 +523,11 @@ if os.path.exists(html_path):
         html = f.read()
 
     import re
-    safe_json_str = json.dumps(master, indent=2).replace("</script>", "<\\/script>")
-    replacement = f'<script id="dome-model-data" type="application/json">\n{safe_json_str}\n</script>'
+    safe_json_str = json.dumps(master, indent=2)
+    replacement = f'<div id="dome-model-data" style="display:none;">\n{safe_json_str}\n</div>'
     
-    pattern1 = r'<script[^>]*id="dome-predictions-data".*?</script>'
-    pattern2 = r'<script[^>]*id="dome-model-data".*?</script>'
+    pattern1 = r'<script[^>]*id="dome-(predictions|model)-data".*?</script>'
+    pattern2 = r'<div[^>]*id="dome-model-data".*?</div>'
     
     if re.search(pattern1, html, flags=re.DOTALL):
         html = re.sub(pattern1, lambda _: replacement, html, flags=re.DOTALL)
