@@ -26,7 +26,7 @@ const PREDICTIONS = [
     },
     "status": "pending",
     "timestamp_sha256": "pending",
-    "sha256": "c4edf85ff82cf6ae7bf74f95de3a303dbbb23a90d12c6b25040289eb2631283c",
+    "sha256": "2e9172e82c9f7129857085ad1e720c35e14414cbc2bedf4eecc35749bc250139",
     "point_prediction": {
       "value": -8.4,
       "uncertainty": 1.7,
@@ -166,7 +166,7 @@ const PREDICTIONS = [
       "coverage_fraction": 0.94,
       "latitude_factor": 0.8
     },
-    "sha256": "f5b680caa2e805514d0a1631f76086d2ba01acd8f2d1af3d16ad41d5a779ac76",
+    "sha256": "6d4dc553be74c8d2fc699812d90e3270a264f0e821af644c4c3f9adcdb629a9d",
     "point_prediction": {
       "value": -8.3,
       "uncertainty": 1.7,
@@ -317,7 +317,7 @@ const PREDICTIONS = [
       "coverage_fraction": 0.98,
       "latitude_factor": 0.89
     },
-    "sha256": "691b751e9bbdfc974bd7c0b00948b4ffc2e4c8a6ab06e190dc18fdbe8b87f963",
+    "sha256": "587362f28bef30d21ee642b6e2c96c9ec12291924d0cc41a549cbf72eec2e5e8",
     "point_prediction": {
       "value": -9.5,
       "uncertainty": 1.9,
@@ -468,7 +468,7 @@ const PREDICTIONS = [
       "coverage_fraction": 0.92,
       "latitude_factor": 0.86
     },
-    "sha256": "210d0cbafe07c02d873957c0f4fd8d5fa4e668444a03853f21996a9dfc3b7daf",
+    "sha256": "a0dd29c8c79de7a1307d0c6cc6433cb48071f2bf0af7c445281554756f838a0f",
     "point_prediction": {
       "value": -8.6,
       "uncertainty": 1.7,
@@ -619,7 +619,7 @@ const PREDICTIONS = [
       "coverage_fraction": 0.7,
       "latitude_factor": 0.75
     },
-    "sha256": "6d57a83695b3da7f943c0381258b7c745ca1f7fc3d8ddd8aa4df844e225bd8b4",
+    "sha256": "6a845894b7cacbf3f978dc6d9a5054f0d95f5e22ae152bb800d6a4682b0a0419",
     "point_prediction": {
       "value": -5.8,
       "uncertainty": 1.2,
@@ -779,7 +779,7 @@ const PREDICTIONS = [
     "inputs": {
       "shielding": "Superconducting Gravimeter"
     },
-    "sha256": "b951f953e5b4874e783d138589e11e98e9d22e2de7f79a7ff3fc1ba0c94f571e",
+    "sha256": "9e50d037f280250edc122d339f610538dda3715c3c0ff89d28cde303d6c16074",
     "point_prediction": {
       "value": null,
       "uncertainty": null,
@@ -902,7 +902,7 @@ const PREDICTIONS = [
     "status": "pending",
     "formula": "correlation(anomaly, geometry) = 1.0",
     "inputs": {},
-    "sha256": "3d24a5154a0169670946066f23eae1e96fca56a7825d41c1071892a904e264fa",
+    "sha256": "00f4e84e6efe97b05d8d38aceeb80742ad13a2574b7b16317b2f44db22807b92",
     "point_prediction": {
       "value": null,
       "uncertainty": null,
@@ -1038,7 +1038,7 @@ const PREDICTIONS = [
     "inputs": {
       "coverage_fraction": "< 0.4"
     },
-    "sha256": "cec005148b1060a702401fcd1b81989eb88e315c614d7989faa87ffaab12b78c",
+    "sha256": "be1e7b031c3168b5b63da6366c709e0566fc65814f803a43f36cde33417ba232",
     "point_prediction": {
       "value": "<2",
       "uncertainty": null,
