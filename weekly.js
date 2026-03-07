@@ -605,24 +605,23 @@ const WEEKLY_DATA = {
     {
       "id": "W009",
       "title": "SAA African Cell Intensity Check",
-      "description": "African cell minimum < 21,795 nT by 2026-03-13",
-      "week": "2026-03-06 to 2026-03-13",
-      "registered": "2026-03-07T11:35:00.000000",
-      "prediction": {
-        "value": 21795,
-        "unit": "nT",
-        "uncertainty": 30
-      },
-      "mechanism": "Aetheric rim degradation accelerating African lobe",
-      "data_source": "CHAOS-7",
+      "target_date": "2026-03-13",
+      "prediction": "African cell minimum < 21,795 nT",
+      "predicted_value": 21795,
+      "unit": "nT",
+      "uncertainty": 30,
+      "formula": "WIN-005 decay rate: 21,880 nT declining ~85 nT/year",
+      "mechanism": "Aetheric rim degradation accelerating African lobe decay",
+      "verification_source": "CHAOS-7",
       "status": "pending",
-      "sha256": "48ebb89f8ed7a1deb4d36c86fdd7fe2b157c341817c8835c542bc6d23333e8c4",
+      "counts_against_model": true,
+      "sha256": "120cdc8dc0f69e4a91d7c54f31ef5de30a2c298a32560930dc782c8132f29cb3",
       "point_prediction": {
-        "value": 21795,
-        "uncertainty": 30,
+        "value": null,
+        "uncertainty": null,
         "range": [
-          21765,
-          21825
+          0,
+          0
         ],
         "confidence": "1-sigma"
       },
@@ -656,24 +655,23 @@ const WEEKLY_DATA = {
     {
       "id": "W010",
       "title": "North Pole Position Check",
-      "description": "Current deviation from 120 E longitude > -18 (i.e. still accelerating)",
-      "week": "2026-03-06 to 2026-03-13",
-      "registered": "2026-03-07T11:35:00.000000",
-      "prediction": {
-        "value": -18.0,
-        "unit": "degrees",
-        "uncertainty": 0.5
-      },
-      "mechanism": "Precession vortex convergence",
-      "data_source": "NOAA NP.xy",
+      "target_date": "2026-03-13",
+      "prediction": "Deviation from 120E longitude > -18 degrees",
+      "predicted_value": -18,
+      "unit": "degrees",
+      "uncertainty": 0.5,
+      "formula": "WIN-007 exponential approach, deviation -18.06 at 2025 accelerating",
+      "mechanism": "Precession vortex convergence toward Polaris axis",
+      "verification_source": "NOAA NP.xy",
       "status": "pending",
-      "sha256": "efd5a9eb4fffdb96507c5dddbf87d0d60e3460db7b2b1509368efd9d9c4dd68f",
+      "counts_against_model": true,
+      "sha256": "2511b1093d6b519b236f23636472fb6684f2f25d3f940ec4b6e7575c8b6532d5",
       "point_prediction": {
-        "value": -18.0,
-        "uncertainty": 0.5,
+        "value": null,
+        "uncertainty": null,
         "range": [
-          -18.5,
-          -17.5
+          0,
+          0
         ],
         "confidence": "1-sigma"
       }
@@ -681,24 +679,23 @@ const WEEKLY_DATA = {
     {
       "id": "W011",
       "title": "Field Decay Rate Confirmation",
-      "description": "IGRF/CHAOS-7 global dipole moment decreased >=28 nT since March 2025",
-      "week": "2026-03-06 to 2026-03-13",
-      "registered": "2026-03-07T11:35:00.000000",
-      "prediction": {
-        "value": -28.0,
-        "unit": "nT/year",
-        "uncertainty": 3.0
-      },
-      "mechanism": "Aetheric medium degradation",
-      "data_source": "INTERMAGNET annual",
+      "target_date": "2026-03-13",
+      "prediction": "Global dipole decreased >= 28 nT since March 2025",
+      "predicted_value": -28,
+      "unit": "nT/year",
+      "uncertainty": 3,
+      "formula": "F7: decay >= 28 nT/year",
+      "mechanism": "Aetheric medium degradation post-2000 acceleration",
+      "verification_source": "INTERMAGNET annual",
       "status": "pending",
-      "sha256": "299cd65ec436a027997cdb4a6e761a51a3b5bf9479bf88ec4fc792b8cbc26b3b",
+      "counts_against_model": true,
+      "sha256": "18924b0a01a17dd696b8b13020c1dbbd18b0ca43d9109c03a9afa39488adc01d",
       "point_prediction": {
-        "value": -28.0,
-        "uncertainty": 3.0,
+        "value": null,
+        "uncertainty": null,
         "range": [
-          -31.0,
-          -25.0
+          0,
+          0
         ],
         "confidence": "1-sigma"
       }
@@ -706,24 +703,23 @@ const WEEKLY_DATA = {
     {
       "id": "W012",
       "title": "SAA Separation 2026 Check",
-      "description": "SAA cell longitude separation = 51.5 degrees as of March 2026",
-      "week": "2026-03-06 to 2026-03-13",
-      "registered": "2026-03-07T11:35:00.000000",
-      "prediction": {
-        "value": 51.5,
-        "unit": "degrees",
-        "uncertainty": 1.5
-      },
+      "target_date": "2026-03-13",
+      "prediction": "SAA cell longitude separation = 51.57 degrees",
+      "predicted_value": 51.57,
+      "unit": "degrees",
+      "uncertainty": 1.5,
+      "formula": "F4: separation(2026) = 49.956 + 3.539 * exp(0.03146 * 36) = 51.57",
       "mechanism": "Exponential aetheric field separation",
-      "data_source": "CHAOS-7",
+      "verification_source": "CHAOS-7",
       "status": "pending",
-      "sha256": "b50343fe0c88ce600926e9694bcae155a95e6e5815af6da6325bc3c590bfc511",
+      "counts_against_model": true,
+      "sha256": "851cc79d0598ab46e0cbeb51d97cfba4585b487897976931265a4379de232418",
       "point_prediction": {
-        "value": 51.5,
-        "uncertainty": 1.5,
+        "value": null,
+        "uncertainty": null,
         "range": [
-          50.0,
-          53.0
+          0,
+          0
         ],
         "confidence": "1-sigma"
       }
@@ -731,49 +727,47 @@ const WEEKLY_DATA = {
     {
       "id": "W013",
       "title": "Schumann 7.83 Hz Anomaly Persistence",
-      "description": "Measured Schumann fundamental remains 7.83 Hz this week",
-      "week": "2026-03-06 to 2026-03-13",
-      "registered": "2026-03-07T11:35:00.000000",
-      "prediction": {
-        "value": 7.83,
-        "unit": "Hz",
-        "uncertainty": 0.3
-      },
-      "mechanism": "Aetheric damping of resonant cavity",
-      "data_source": "Tomsk/HeartMath Schumann monitors",
+      "target_date": "2026-03-13",
+      "prediction": "Measured Schumann fundamental remains 7.83 Hz +/- 0.3 Hz",
+      "predicted_value": 7.83,
+      "unit": "Hz",
+      "uncertainty": 0.3,
+      "formula": "F3: theoretical 10.59 Hz vs measured 7.83 Hz, gap = 2.76 Hz from aetheric damping",
+      "mechanism": "Aetheric damping of enclosed resonant cavity",
+      "verification_source": "Tomsk/HeartMath Schumann monitors",
       "status": "pending",
-      "sha256": "ae70df0babca8289657768af9274cf4f455851e0efad7997f7f15d71ccc8a1fc",
+      "counts_against_model": true,
+      "sha256": "82d1c07c07ecec138b6666da74032670320e469f6eaa3e212fb680012d9f21cc",
       "point_prediction": {
-        "value": 7.83,
-        "uncertainty": 0.3,
+        "value": null,
+        "uncertainty": null,
         "range": [
-          7.53,
-          8.13
+          0,
+          0
         ],
         "confidence": "1-sigma"
       }
     },
     {
       "id": "W014",
-      "title": "Crepuscular Ray Divergence Angle",
-      "description": "Crepuscular rays photographed this week show divergence angles >0.5 degrees",
-      "week": "2026-03-06 to 2026-03-13",
-      "registered": "2026-03-07T11:35:00.000000",
-      "prediction": {
-        "value": 0.5,
-        "unit": "degrees",
-        "uncertainty": 0.1
-      },
-      "mechanism": "Local compact sun geometry",
-      "data_source": "Any clear sky photography",
+      "title": "Crepuscular Ray Divergence",
+      "target_date": "2026-03-13",
+      "prediction": "Crepuscular rays show divergence angles > 0.5 degrees",
+      "predicted_value": 0.5,
+      "unit": "degrees",
+      "uncertainty": 0.1,
+      "formula": "arctan(horizontal_distance / sun_altitude_5733km) \u2014 parallel rays impossible at 150M km",
+      "mechanism": "Local compact sun at 5,733 km altitude producing diverging rays",
+      "verification_source": "Clear sky photography any location",
       "status": "pending",
-      "sha256": "f0688bb58008728cdf4d253c228ea60fa832c005d6c120086353f9ac9ac810c1",
+      "counts_against_model": true,
+      "sha256": "2ab125229d969059956a0e70ceb32eef96c14846fc77f4d0da8b7061f31a92f6",
       "point_prediction": {
-        "value": 0.5,
-        "uncertainty": 0.1,
+        "value": null,
+        "uncertainty": null,
         "range": [
-          0.4,
-          0.6
+          0,
+          0
         ],
         "confidence": "1-sigma"
       }
@@ -781,49 +775,49 @@ const WEEKLY_DATA = {
     {
       "id": "W015",
       "title": "Lunar Phase Magnetic Correlation",
-      "description": "INTERMAGNET stations show Z component 0.5-2.0 nT shift correlated with full moon March 11 2026",
-      "week": "2026-03-06 to 2026-03-13",
-      "registered": "2026-03-07T11:35:00.000000",
-      "prediction": {
-        "value": 1.25,
-        "unit": "nT",
-        "uncertainty": 0.75
-      },
+      "target_date": "2026-03-11",
+      "prediction": "Z component shift 0.5-2.0 nT correlated with full moon March 11",
+      "predicted_value": -1.0,
+      "unit": "nT",
+      "uncertainty": 0.5,
+      "formula": "F1 scaled: full moon alignment produces measurable Z shift",
       "mechanism": "Lunar aetheric pressure modulation",
-      "data_source": "INTERMAGNET",
+      "verification_source": "INTERMAGNET",
       "status": "pending",
-      "sha256": "5ae53feed6017c4f4c3316052970eec4ef7973cabbd72417a919d7218acc4363",
+      "counts_against_model": false,
+      "note": "SNR likely marginal \u2014 log as below_detection_threshold if SNR < 2.0",
+      "sha256": "540fd3438c94ce453dc2c3aa2663ea96efce66201fc039bc3abd44364a35d871",
       "point_prediction": {
-        "value": 1.25,
-        "uncertainty": 0.75,
+        "value": null,
+        "uncertainty": null,
         "range": [
-          0.5,
-          2.0
+          0,
+          0
         ],
         "confidence": "1-sigma"
       }
     },
     {
       "id": "W016",
-      "title": "W004 Baseline Recalibration",
-      "description": "Recalibrated quiet-day baseline = -6.5 to -7.5 nT",
-      "week": "2026-03-06 to 2026-03-13",
-      "registered": "2026-03-07T11:35:00.000000",
-      "prediction": {
-        "value": -7.0,
-        "unit": "nT",
-        "uncertainty": 0.5
-      },
-      "mechanism": "Formula self-correction from empirical overshoot",
-      "data_source": "W004 observed data",
+      "title": "Baseline Recalibration from W004",
+      "target_date": "2026-03-13",
+      "prediction": "True quiet-day baseline = -6.5 to -7.5 nT (recalculated from W004 overshoot)",
+      "predicted_value": -7.0,
+      "unit": "nT",
+      "uncertainty": 0.5,
+      "formula": "true_baseline = observed_W004 / (coverage_2024 * lat_factor_2024) = -17.6 / (coverage * lat)",
+      "mechanism": "Formula self-correction \u2014 W004 overshoot indicates BOU 2017 disturbed-day baseline inflated by ~35-40%",
+      "verification_source": "W004 result + August 2026 eclipse",
       "status": "pending",
-      "sha256": "fe44b89e6310d8d827ca68d48a4bf9d49a2b90a7d4c532657c53b84986e648d2",
+      "counts_against_model": false,
+      "note": "This recalibration adjusts PRED-001 through PRED-005 downward ~30% for August eclipse",
+      "sha256": "8e9f2a012645f08ad0da229be89dd47bc85ed8bc98cdd0ae6b60740ef75df7cf",
       "point_prediction": {
-        "value": -7.0,
-        "uncertainty": 0.5,
+        "value": null,
+        "uncertainty": null,
         "range": [
-          -7.5,
-          -6.5
+          0,
+          0
         ],
         "confidence": "1-sigma"
       }
