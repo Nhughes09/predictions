@@ -501,4 +501,42 @@ history = {
 with open(f"{ARCHIVE_DIR}/model_history.json", "w") as f:
     json.dump(history, f, indent=2)
 
+# 9. api/master.json
+master = {
+  "index": index,
+  "scorecard": scorecard,
+  "predictions": old_preds,
+  "results": results,
+  "formulas": formulas,
+  "data": empirical_data,
+  "code": code_registry,
+  "history": history
+}
+
+with open(f"{API_DIR}/master.json", "w") as f:
+    json.dump(master, f, indent=2)
+
+# Inject into index.html
+html_path = "/Users/nicholashughes/.gemini/antigravity/scratch/astro_observations/predictions/index.html"
+if os.path.exists(html_path):
+    with open(html_path, "r", encoding="utf-8") as f:
+        html = f.read()
+
+    import re
+    safe_json_str = json.dumps(master, indent=2).replace("</script>", "<\\/script>")
+    replacement = f'<script id="dome-model-data" type="application/json">\n{safe_json_str}\n</script>'
+    
+    pattern1 = r'<script[^>]*id="dome-predictions-data".*?</script>'
+    pattern2 = r'<script[^>]*id="dome-model-data".*?</script>'
+    
+    if re.search(pattern1, html, flags=re.DOTALL):
+        html = re.sub(pattern1, lambda _: replacement, html, flags=re.DOTALL)
+    elif re.search(pattern2, html, flags=re.DOTALL):
+        html = re.sub(pattern2, lambda _: replacement, html, flags=re.DOTALL)
+    else:
+        html = html.replace('</body>', f'{replacement}\n</body>')
+
+    with open(html_path, "w", encoding="utf-8") as f:
+        f.write(html)
+
 print("COMPLETE EXHAUSTIVE API BUILD FINISHED.")
