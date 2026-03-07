@@ -516,6 +516,9 @@ master = {
 with open(f"{API_DIR}/master.json", "w") as f:
     json.dump(master, f, indent=2)
 
+with open(f"{API_DIR}/master.txt", "w") as f:
+    json.dump(master, f, indent=2)
+
 # Inject into index.html
 html_path = "/Users/nicholashughes/.gemini/antigravity/scratch/astro_observations/predictions/index.html"
 if os.path.exists(html_path):
