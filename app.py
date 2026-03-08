@@ -1,9 +1,24 @@
 import json
 import os
+import sys
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse, HTMLResponse, PlainTextResponse
 
+print("=== IMPORT OK ===", flush=True)
+
 app = FastAPI()
+
+print("=== APP CREATED ===", flush=True)
+
+# Test all files exist at startup
+for f in ["api/master.json", "index.html", "style.css", "app.js", 
+          "predictions.js", "scoring.js", "weekly.js"]:
+    exists = os.path.exists(f)
+    print(f"FILE CHECK: {f} = {exists}", flush=True)
+    if not exists:
+        print(f"MISSING FILE: {f}", flush=True)
+
+print("=== FILE CHECKS DONE ===", flush=True)
 
 @app.get("/api/master.json")
 def master():
@@ -52,3 +67,5 @@ def weeklyjs():
 def root():
     with open("index.html") as f:
         return HTMLResponse(f.read())
+
+print("=== ROUTES REGISTERED ===", flush=True)
