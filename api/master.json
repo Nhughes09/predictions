@@ -17,7 +17,8 @@
       "honest_record": "W001 logged as BELOW_DETECTION_THRESHOLD not falsified - user accepts null results",
       "strongest_test": "2026 eclipse Aug 12 - 5 station predictions timestamped March 6 2026",
       "caveats_on_file": "BOU 2017 disturbed-day condition flagged - see data.json WIN-010"
-    }
+    },
+    "cache_bust": "1772989177"
   },
   "scorecard": {
     "version": "50.3",
