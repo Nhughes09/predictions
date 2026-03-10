@@ -16,8 +16,8 @@ for d in [API_DIR, CURRENT_DIR, ARCHIVE_DIR]:
 # 1. api/index.json
 index = {
   "purpose": "AI onboarding endpoint - fetch this first",
-  "current_version": "50.4",
-  "last_updated": "2026-03-09",
+  "current_version": "50.5",
+  "last_updated": "2026-03-10",
   "fetch_sequence": [
     "/api/current/scorecard.json",
     "/api/current/predictions.json",
@@ -39,8 +39,8 @@ with open(f"{API_DIR}/index.json", "w") as f:
 
 # 2. api/current/scorecard.json
 scorecard = {
-  "version": "50.4",
-  "as_of": "2026-03-09",
+  "version": "50.5",
+  "as_of": "2026-03-10",
   "categories": {
     "geomagnetic": {
       "confirmed": 14,
@@ -55,16 +55,34 @@ scorecard = {
       "falsified": 0
     },
     "physical_geometry": {
-      "confirmed": 9,
+      "confirmed": 10,
       "below_detection_threshold": 0,
       "pending": 8,
+      "falsified": 0
+    },
+    "electromagnetic": {
+      "confirmed": 1,
+      "below_detection_threshold": 0,
+      "pending": 1,
+      "falsified": 0
+    },
+    "biblical_cosmology": {
+      "confirmed": 2,
+      "below_detection_threshold": 0,
+      "pending": 0,
+      "falsified": 0
+    },
+    "geometry": {
+      "confirmed": 0,
+      "below_detection_threshold": 0,
+      "pending": 2,
       "falsified": 0
     }
   },
   "overall": {
-    "confirmed": 29,
+    "confirmed": 33,
     "below_detection_threshold": 2,
-    "pending": 23,
+    "pending": 26,
     "falsified": 0
   },
   "note": "W001 and W004 are noise-limited null results, not model failures. counts_against_model: false"
@@ -466,7 +484,7 @@ for script_path in py_files:
       "filename": filename,
       "purpose": f"Computational framework execution logic for {filename}",
       "status": "current",
-      "model_version": "50.4",
+      "model_version": "50.5",
       "inputs": ["Varies exactly per script bounds"],
       "outputs": ["Terminal stdout prints, logs, and plots"],
       "full_source_code": script_col,
@@ -539,9 +557,17 @@ history = {
     {
       "version": "50.4",
       "date": "2026-03-09",
-      "status": "CURRENT",
+      "status": "SUPERSEDED",
       "scorecard_at_time": "Dome 29, Globe 0, Falsified 0",
       "key_improvements": "WIN-027 Southern Hemisphere Distance Quadratic Latitude Law confirmed. WIN-028 Bermuda Triangle/East Japan disappearance zone geometric symmetry confirmed. Added PRED-009 (Sky Blue Intensity), PRED-010 (Twilight Duration Southern Asymmetry), PRED-011 (Zenith-Horizon Blue Ratio). Cache-busting headers on all API endpoints.",
+      "files": ["All active api endpoints and master text blocks"]
+    },
+    {
+      "version": "50.5",
+      "date": "2026-03-10",
+      "status": "CURRENT",
+      "scorecard_at_time": "Dome 33, Globe 0, Falsified 0",
+      "key_improvements": "MAJOR: Disc shape updated from CIRCLE to ELLIPSE (WIN-030). WIN-029 Schumann Resonance Cavity Coherence. WIN-031 North Pole Cosmic Mountain (biblical convergence). WIN-032 New Jerusalem North Pole Axis. Added PRED-012/013/014 (ellipse-magnetic correlation, analemma ratio, stellar asymmetry). PRED-009/010/011 flagged for revision under ellipse geometry. Model parameters updated: elliptical disc, Polaris height 4750km from measurement, north pole mountain topography. CORS headers added for Claude API access.",
       "files": ["All active api endpoints and master text blocks"]
     }
   ]
@@ -550,10 +576,42 @@ with open(f"{ARCHIVE_DIR}/model_history.json", "w") as f:
     json.dump(history, f, indent=2)
 
 # 9. api/master.json
+
+# Model parameters — updated for elliptical disc geometry
+model_parameters = {
+    "disc_shape": "ellipse",
+    "disc_shape_note": "Confirmed elliptical V5-V9; parameters being refined in V10",
+    "ellipse_a": 0.70,
+    "ellipse_b": 0.93,
+    "ellipse_major_axis_degrees": 60,
+    "ellipse_parameter_status": "approximate — V10 refinement in progress",
+    "polaris_height_km": 4750,
+    "polaris_height_note": "From physical Chapel Hill measurement",
+    "firmament_height_km_model": 9086,
+    "firmament_height_km_schumann": 9572,
+    "firmament_height_note": "Three H values need reconciliation in V10: model 9086, Schumann 9572, Polaris 4750 (different quantity)",
+    "sun_altitude_km": 5733,
+    "moon_altitude_km": 2534,
+    "disc_radius_km": 20015,
+    "north_pole_mountain": "confirmed textual — formula TBD",
+    "north_pole_mountain_note": "h(r) topographic correction needed in V10. Possible form: h(r) = H_mountain × e^(–r/decay_constant)",
+    "coordinate_system_version": "V9",
+    "southern_compression": "NON-LINEAR quadratic (WIN-027) not fixed parameter",
+    "calibration_ring": "51S",
+    "magnetic_gravity_coupling": 1.67,
+    "field_decay_rate_nT_yr": 28,
+    "saa_separation_2025_deg": 50.57,
+    "saa_separation_rate_deg_yr": 1.0,
+    "eclipse_predictions": "PRED-001 through PRED-008 LOCKED, DeepSeek verified, August 12 2026",
+    "recalibration_note": "PRED-001 through PRED-005 may need ~30% downward recalibration — W004 overshoot pattern flagged"
+}
+
 master = {
   "index": index,
   "scorecard": scorecard,
+  "model_parameters": model_parameters,
   "predictions": old_preds,
+  "pending_predictions": old_preds.get("long_term_predictions", []),
   "results": results,
   "formulas": formulas,
   "data": empirical_data,

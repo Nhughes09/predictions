@@ -65,7 +65,7 @@ def safe_text_response(filepath: str, media_type: str):
 # Health check endpoint
 @app.get("/health")
 async def health():
-    return {"status": "ok", "version": "50.4"}
+    return {"status": "ok", "version": "50.5"}
 
 # API endpoints — all with no-cache headers
 @app.get("/api/master.json")

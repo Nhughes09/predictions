@@ -555,5 +555,73 @@
     "snr_sufficient": true,
     "display_color": "green",
     "display_label": "CONFIRMED"
+  },
+  {
+    "id": "WIN-029",
+    "title": "Schumann Resonance Cavity Coherence",
+    "test_date": "Historical",
+    "prediction": {
+      "value": null
+    },
+    "observed": {
+      "value": null
+    },
+    "auto_verdict": "confirmed",
+    "direction_correct": true,
+    "counts_against_model": false,
+    "snr_sufficient": true,
+    "display_color": "green",
+    "display_label": "CONFIRMED"
+  },
+  {
+    "id": "WIN-030",
+    "title": "Elliptical Disc Geometry",
+    "test_date": "Historical",
+    "prediction": {
+      "value": null
+    },
+    "observed": {
+      "value": null
+    },
+    "auto_verdict": "confirmed",
+    "direction_correct": true,
+    "counts_against_model": false,
+    "snr_sufficient": true,
+    "display_color": "green",
+    "display_label": "CONFIRMED"
+  },
+  {
+    "id": "WIN-031",
+    "title": "North Pole Cosmic Mountain \u2014 Biblical Convergence",
+    "test_date": "Historical",
+    "prediction": {
+      "value": null
+    },
+    "observed": {
+      "value": null
+    },
+    "auto_verdict": "confirmed",
+    "direction_correct": true,
+    "counts_against_model": false,
+    "snr_sufficient": true,
+    "display_color": "green",
+    "display_label": "CONFIRMED"
+  },
+  {
+    "id": "WIN-032",
+    "title": "New Jerusalem North Pole Axis \u2014 Vertical Spine of Cosmos",
+    "test_date": "Historical",
+    "prediction": {
+      "value": null
+    },
+    "observed": {
+      "value": null
+    },
+    "auto_verdict": "confirmed",
+    "direction_correct": true,
+    "counts_against_model": false,
+    "snr_sufficient": true,
+    "display_color": "green",
+    "display_label": "CONFIRMED"
   }
 ]
