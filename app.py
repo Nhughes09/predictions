@@ -3,6 +3,7 @@ import os
 import logging
 import sys
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, HTMLResponse, PlainTextResponse
 from fastapi.exceptions import HTTPException
 import traceback
@@ -16,6 +17,14 @@ logging.basicConfig(
 logger = logging.getLogger("dome_registry")
 
 app = FastAPI(title="Dome Cosmology Registry API")
+
+# CORS — allow any origin so Claude instances can fetch the API
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["GET"],
+    allow_headers=["*"],
+)
 
 # No-cache headers for all API responses
 NO_CACHE_HEADERS = {
