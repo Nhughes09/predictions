@@ -171,6 +171,16 @@
     const SUPABASE_URL = 'https://wxanombcqzsbecwg.supabase.co';
     let serviceRoleKey = '';
 
+    // Check for a token in the URL first (e.g., ?key=sb_secret_...)
+    document.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlKey = urlParams.get('key');
+        if (urlKey) {
+            document.getElementById('secret-key').value = urlKey;
+            authenticate();
+        }
+    });
+
     async function authenticate() {
         const input = document.getElementById('secret-key').value.trim();
         const errorDiv = document.getElementById('auth-error');
