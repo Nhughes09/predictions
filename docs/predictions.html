@@ -37,38 +37,49 @@
 </table>
 
 <!-- ===== ECLIPSE PREDICTIONS ===== -->
-<h2>Eclipse Predictions &mdash; August 12, 2026 (LOCKED)</h2>
+<h2>Eclipse Predictions &mdash; August 12, 2026 (V12 FULLY REVISED)</h2>
 
-<div class="proof-box">
-<p><strong>Registered:</strong> 2026-03-06 &nbsp;|&nbsp; <strong>Eclipse:</strong> 2026-08-12 &nbsp;|&nbsp; <strong>Advance:</strong> 159 days</p>
-<p><strong>Git proof:</strong> <a href="https://github.com/John09289/predictions/commits/main">github.com/John09289/predictions/commits/main</a></p>
-<p><strong>SHA256 manifest:</strong> <code>fb42b676fb9a5d71f6c97a40efebfb6ba028b3523a70c616e4b112e2b874e731</code></p>
-<p><strong>OpenTimestamps:</strong> Bitcoin blockchain anchor, 2026-03-06</p>
+<div class="proof-box" style="border-left: 4px solid var(--accent-red)">
+<h3>V9 PREDICTIONS RETIRED</h3>
+<p><strong>PRED-001 through PRED-008 are RETIRED.</strong> Critical error found in V9: Eskdalemuir (ESK) and Lerwick (LER) were assigned coverage fractions of 0.98 and 0.92 respectively. The August 2026 path crosses Spain and Iceland &mdash; not Scotland. Actual ESK/LER coverage is ~0.55 and ~0.42. This error artificially inflated the predicted signals at Scottish stations.</p>
+<p>The original <a href="https://github.com/John09289/predictions/commits/main">Bitcoin-anchored manifest</a> (SHA256: <code>fb42b676...</code>) is preserved in git history as an honest record of the error.</p>
 </div>
 
-<p><strong>Base formula:</strong> &Delta;Z = baseline &times; coverage_fraction &times; latitude_factor</p>
-<p><strong>Two baselines:</strong> BOU 2017 disturbed-day (&minus;10.9 nT) and W004 empirical recalibration (&minus;22.24 nT). Both reported.</p>
+<div class="proof-box">
+<p><strong>V12 Registered:</strong> 2026-03-12</p>
+<p><strong>V12 Improvements:</strong> Corrected coverage fractions, 4 new stations added, and applied H(r)/r field strength scaling (FSF).</p>
+<p><strong>Manifest Hash:</strong> <code>c10961cb6a0e29759e51984a629bdfa882526afb23976143e253b312f7e39a44</code></p>
+<p><a href="eclipse_v12_predictions.txt">View V12 Text Manifest</a></p>
+</div>
+
+<p><strong>V12 Formula:</strong> &Delta;Z = baseline &times; coverage_fraction &times; field_strength_factor<br>
+<strong>Field Strength Factor (FSF):</strong> Derived from V50.6 H(r) curve. FSF = (H(r_station)/r_station) / (H(r_BOU)/r_BOU).<br>
+<strong>Baselines:</strong> BOU 2017 observed (&minus;10.9 nT) and W004 empirical (&minus;22.24 nT).<br>
+Uncertainty: &plusmn;20%</p>
 
 <table>
-  <tr><th>ID</th><th>Station</th><th>Prediction</th><th>Uncertainty</th><th>Coverage</th><th>SHA256</th></tr>
-  <tr><td style="color:var(--accent-blue);font-weight:600">PRED-001</td><td>Ebro (EBR)</td><td>&minus;8.4 nT</td><td>&plusmn;1.7</td><td>0.95</td><td><code>49e4b10d...</code></td></tr>
-  <tr><td style="color:var(--accent-blue);font-weight:600">PRED-002</td><td>San Pablo (SPT)</td><td>&minus;8.3 nT</td><td>&plusmn;1.7</td><td>0.94</td><td><code>7efd7783...</code></td></tr>
-  <tr><td style="color:var(--accent-blue);font-weight:600">PRED-003</td><td>Eskdalemuir (ESK)</td><td>&minus;9.5 nT</td><td>&plusmn;1.9</td><td>0.98</td><td><code>fe27a689...</code></td></tr>
-  <tr><td style="color:var(--accent-blue);font-weight:600">PRED-004</td><td>Lerwick (LER)</td><td>&minus;8.6 nT</td><td>&plusmn;1.7</td><td>0.92</td><td><code>2f80be39...</code></td></tr>
-  <tr><td style="color:var(--accent-blue);font-weight:600">PRED-005</td><td>Canary Islands (SNK)</td><td>&minus;5.8 nT</td><td>&plusmn;1.2</td><td>0.70</td><td><code>34017438...</code></td></tr>
-  <tr><td style="color:var(--accent-blue);font-weight:600">PRED-006</td><td>All European SG gravimeters</td><td>0.0 &micro;Gal</td><td>&plusmn;0.1</td><td>&mdash;</td><td><code>55036342...</code></td></tr>
-  <tr><td style="color:var(--accent-blue);font-weight:600">PRED-007</td><td>Geometry vs time correlation</td><td>r = 1.0</td><td>&mdash;</td><td>&mdash;</td><td><code>b8bfb5fe...</code></td></tr>
-  <tr><td style="color:var(--accent-blue);font-weight:600">PRED-008</td><td>Non-path stations</td><td>&lt; 2 nT</td><td>&mdash;</td><td>&lt;0.4</td><td><code>2e712c27...</code></td></tr>
+  <tr><th>ID</th><th>Station</th><th>Lat</th><th>Coverage</th><th>FSF</th><th>BOU pred</th><th>W004 pred</th><th>&plusmn;</th></tr>
+  <tr><td style="color:var(--accent-blue);font-weight:600">E001</td><td>Ebro (EBR)</td><td>40.8&deg;</td><td>0.95</td><td>1.029</td><td>&minus;10.7 nT</td><td>&minus;21.7 nT</td><td>2.1</td></tr>
+  <tr><td style="color:var(--accent-blue);font-weight:600">E002</td><td>San Pablo (SPT)</td><td>40.0&deg;</td><td>0.90</td><td>1.001</td><td>&minus;9.8 nT</td><td>&minus;20.0 nT</td><td>2.0</td></tr>
+  <tr><td style="color:var(--accent-blue);font-weight:600">E003</td><td>Eskdalemuir (ESK)</td><td>55.3&deg;</td><td>0.55</td><td>1.722</td><td>&minus;10.3 nT</td><td>&minus;21.1 nT</td><td>2.1</td></tr>
+  <tr><td style="color:var(--accent-blue);font-weight:600">E004</td><td>Lerwick (LER)</td><td>60.1&deg;</td><td>0.42</td><td>2.075</td><td>&minus;9.5 nT</td><td>&minus;19.4 nT</td><td>1.9</td></tr>
+  <tr><td style="color:var(--accent-blue);font-weight:600">E005</td><td>Hartland (HAD)</td><td>51.0&deg;</td><td>0.80</td><td>1.471</td><td>&minus;12.8 nT</td><td>&minus;26.2 nT</td><td>2.6</td></tr>
+  <tr><td style="color:var(--accent-blue);font-weight:600">E006</td><td>Niemegk (NGK)</td><td>52.1&deg;</td><td>0.40</td><td>1.529</td><td>&minus;6.7 nT</td><td>&minus;13.6 nT</td><td>1.3</td></tr>
+  <tr><td style="color:var(--accent-blue);font-weight:600">E007</td><td>Canary Islands (SNK)</td><td>28.3&deg;</td><td>0.72</td><td>0.642</td><td>&minus;5.0 nT</td><td>&minus;10.3 nT</td><td>1.0</td></tr>
+  <tr><td style="color:var(--accent-blue);font-weight:600">E008</td><td>Chambon (CLF)</td><td>48.0&deg;</td><td>0.70</td><td>1.325</td><td>&minus;10.1 nT</td><td>&minus;20.6 nT</td><td>2.0</td></tr>
+  <tr><td style="color:var(--accent-blue);font-weight:600">E009</td><td>Coimbra (COI)</td><td>40.2&deg;</td><td>0.92</td><td>1.008</td><td>&minus;10.1 nT</td><td>&minus;20.6 nT</td><td>2.0</td></tr>
 </table>
 
-<h3>Why These Tests Are Model-Distinguishing</h3>
+<h3>V12 Model-Discriminating Predictions</h3>
 <div class="win">
-<p><strong>1. Peak tracks eclipse geometry, not solar noon (PRED-007)</strong><br>
-Signal peak follows umbra geometry across the continent. Globe has no eclipse magnetic mechanism. Dome aetheric field responds to the geometric shadow.</p>
-<p><strong>2. Signal scales with coverage fraction (PRED-001&ndash;005)</strong><br>
-Linear correlation between eclipse coverage % and magnetic signal nT. Cannot be explained by coincidence across independent stations.</p>
-<p><strong>3. SG gravimeters register 0.0 &micro;Gal (PRED-006)</strong><br>
-Confirms mechanism is electromagnetic-aetheric, not gravitational. Globe would expect tidal signal if mass-based.</p>
+<p><strong>E-PRED-A: Peak tracks eclipse geometry, not solar noon.</strong><br>
+Signal peak tracks local eclipse maximum. Globe has no magnetic mechanism for eclipses. Dome shadow blocks ionospheric current &rarr; aetheric disturbance.</p>
+<p><strong>E-PRED-B: Signal scales with coverage &times; field strength.</strong><br>
+Hartland (cov=0.80, FSF=1.47) explicitly predicted to show LARGER signal than Ebro (cov=0.95, FSF=1.03) despite lower coverage, because FSF dominates. HAD=&minus;12.8 nT vs EBR=&minus;10.7 nT.</p>
+<p><strong>E-PRED-C: SG gravimeters register 0.0 &micro;Gal.</strong><br>
+European superconducting gravimeters show NO gravitational signal. Mechanism is electromagnetic, not mass-based.</p>
+<p><strong>E-PRED-D: Non-path stations below noise floor.</strong><br>
+Stations with coverage &lt; 0.25 show signals below 2 nT noise floor.</p>
 </div>
 
 <!-- ===== LONG-TERM ===== -->

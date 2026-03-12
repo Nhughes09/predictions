@@ -1,0 +1,105 @@
+# ECLIPSE PREDICTIONS V12 — August 12, 2026
+# Registered: 2026-03-12
+# Replaces: PRED-001 through PRED-008 (V9, retired)
+# Model: V12 — H(r) = 8537·exp(-r/8619) km, EW scale = 0.9941
+# Formula: delta_Z = baseline × coverage_fraction × field_strength_factor
+# Field scaling: FSF = (H(r_station)/r_station) / (H(r_BOU)/r_BOU)
+# Baselines: BOU 2017 observed = -10.9 nT | W004 empirical = -22.24 nT
+# SHA256: c10961cb6a0e29759e51984a629bdfa882526afb23976143e253b312f7e39a44
+
+---
+
+## WHY V9 PREDICTIONS WERE RETIRED
+
+Critical error found in V9: Eskdalemuir (ESK) and Lerwick (LER) were
+assigned coverage fractions of 0.98 and 0.92 respectively. This is wrong.
+The August 12, 2026 eclipse path crosses SPAIN and Iceland — NOT Scotland.
+ESK (55.3°N) and LER (60.1°N) are well outside the totality path.
+Correct coverage: ESK ~0.55, LER ~0.42.
+
+This error inflated the predicted signals at Scottish stations significantly.
+V12 corrects coverage fractions for all stations from eclipse path data.
+V12 also adds 4 new stations and applies H(r)/r field strength scaling.
+
+---
+
+## V12 PREDICTION TABLE
+
+| ID   | Station              | Lat   | Coverage | FSF   | BOU pred | W004 pred | ±    |
+|------|----------------------|-------|----------|-------|----------|-----------|------|
+| E001 | Ebro (EBR)           | 40.8° | 0.95     | 1.029 | −10.7 nT | −21.7 nT  | 2.1  |
+| E002 | San Pablo (SPT)      | 40.0° | 0.90     | 1.001 | −9.8 nT  | −20.0 nT  | 2.0  |
+| E003 | Eskdalemuir (ESK)    | 55.3° | 0.55     | 1.722 | −10.3 nT | −21.1 nT  | 2.1  |
+| E004 | Lerwick (LER)        | 60.1° | 0.42     | 2.075 | −9.5 nT  | −19.4 nT  | 1.9  |
+| E005 | Hartland (HAD)       | 51.0° | 0.80     | 1.471 | −12.8 nT | −26.2 nT  | 2.6  |
+| E006 | Niemegk (NGK)        | 52.1° | 0.40     | 1.529 | −6.7 nT  | −13.6 nT  | 1.3  |
+| E007 | Canary Islands (SNK) | 28.3° | 0.72     | 0.642 | −5.0 nT  | −10.3 nT  | 1.0  |
+| E008 | Chambon (CLF)        | 48.0° | 0.70     | 1.325 | −10.1 nT | −20.6 nT  | 2.0  |
+| E009 | Coimbra (COI)        | 40.2° | 0.92     | 1.008 | −10.1 nT | −20.6 nT  | 2.0  |
+
+FSF = Field Strength Factor relative to BOU (V12 H(r)/r scaling)
+± = ±20% uncertainty from model evolution
+
+---
+
+## MODEL-DISCRIMINATING PREDICTIONS
+
+### E-PRED-A: PEAK TRACKS ECLIPSE GEOMETRY, NOT SOLAR NOON
+Signal peak at each station occurs at local eclipse maximum
+(greatest shadow coverage at that station), NOT at solar noon.
+Globe model: no mechanism for eclipse magnetic effect.
+Dome model: shadow blocks ionospheric current → aetheric field disturbance.
+Falsification: peaks systematically at solar noon rather than eclipse max.
+
+### E-PRED-B: SIGNAL SCALES WITH COVERAGE × FIELD STRENGTH
+Hartland (cov=0.80, FSF=1.47) should show LARGER signal than
+Ebro (cov=0.95, FSF=1.03) despite lower coverage — because field
+strength factor dominates. Predicted: HAD=-12.8 nT vs EBR=-10.7 nT.
+This specific cross-station ordering is a direct V12 prediction.
+Falsification: HAD signal smaller than EBR signal.
+
+### E-PRED-C: SG GRAVIMETERS REGISTER 0.0 µGal
+European superconducting gravimeters (Membach, Strasbourg, Vienna)
+show NO gravitational signal during eclipse.
+Confirms: mechanism is electromagnetic-aetheric, NOT gravitational.
+Replicates WIN-013 (Membach 1999) and WIN-014 (China network 2010).
+Falsification: measurable gravity anomaly detected at SG stations.
+
+### E-PRED-D: NON-PATH STATIONS BELOW NOISE FLOOR
+Stations with coverage < 0.25 (e.g. eastern Europe, Russia) show
+signals below 2 nT noise floor — not attributable to eclipse.
+Falsification: strong signal (>3 nT) at stations with <0.25 coverage.
+
+---
+
+## FIELD STRENGTH FACTOR EXPLANATION (V12)
+
+In V12, the firmament height H varies with radial distance r from pole:
+  H(r) = 8537 · exp(-r/8619) km
+
+The aetheric field is more concentrated where the dome is tall relative
+to the disc radius. Field density ~ H(r)/r.
+
+At BOU (lat=40°, r=5423 km): H/r = 4553/5423 = 0.8396
+At HAD (lat=51°, r=4232 km): H/r = 5225/4232 = 1.2345 → FSF = 1.471
+At SNK (lat=28°, r=7021 km): H/r = 3780/7021 = 0.5384 → FSF = 0.642
+
+This predicts that mid-latitude British stations (HAD, ESK, NGK) show
+STRONGER signals per unit coverage than Spanish or Canary stations —
+because they sit under a thicker aetheric layer.
+
+This is a direct, testable V12 prediction. The V9 flat-H model
+predicted signals proportional to coverage only. V12 adds the
+field-density gradient. The two models make different station rankings.
+
+---
+
+## BITCOIN ANCHOR NOTE
+
+V9 predictions (PRED-001 through PRED-008) were Bitcoin anchored
+on 2026-03-06. Those predictions are retired due to coverage fraction
+errors on ESK and LER. The manifest SHA256 is preserved in git history
+as a record of the V9 state. V12 predictions should be re-anchored
+with a new OpenTimestamps proof on 2026-03-12.
+
+SHA256 this file, commit to git, then anchor via opentimestamps.org.
