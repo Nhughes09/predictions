@@ -48,7 +48,16 @@
 <strong>FSF</strong> = field strength factor from V12 H(r)/r dome geometry<br>
 <strong>Baselines:</strong> BOU 2017 (&minus;10.9 nT, see correction below) | W004 empirical (&minus;22.24 nT)</p>
 <div class="prediction" style="border-left:3px solid var(--accent-orange,#f59e0b);margin-bottom:1em">
-<p><strong>BASELINE CORRECTION PENDING (2026-03-15 audit):</strong> 2026 eclipse predictions used BOU baseline of &minus;10.9 nT. Audit shows actual BOU 2017 anomaly = &minus;18.22 nT (vs Aug 20 quiet-day baseline). Eclipse predictions E001&ndash;E009 (BOU column) may be underestimated by ~67%. Recalculation required before August 12, 2026. W004 empirical baseline (&minus;22.24 nT) also needs independent audit.</p>
+<p><strong>OPEN-009 &mdash; Eclipse Baseline Audit Results (2026-03-15, direct HAPI pulls):</strong></p>
+<table>
+  <tr><th>Station / Eclipse</th><th>Quiet-day baseline</th><th>Eclipse min</th><th>Anomaly</th><th>SNR / Notes</th></tr>
+  <tr><td>BOU 2017-08-21</td><td>47,731.12 nT (Aug 20)</td><td>47,712.90 nT</td><td>&minus;18.22 nT</td><td>Corrected from &minus;10.9 nT</td></tr>
+  <tr><td>BOU 2024-04-08</td><td>46,951.74 nT (Apr 5)</td><td>46,941.50 nT</td><td>&minus;10.24 nT</td><td>SNR 3.72, clean</td></tr>
+  <tr><td>BSL 2024-04-08</td><td>40,093.23 nT (Apr 5)</td><td>40,077.80 nT</td><td>&minus;15.43 nT</td><td>SNR 4.45, clean, strongest verified</td></tr>
+  <tr><td>W004 source (&minus;22.24 nT)</td><td>&mdash;</td><td>&mdash;</td><td>NOT FOUND</td><td>Not in HAPI data &mdash; unverified</td></tr>
+</table>
+<p>2026 eclipse predictions currently use &minus;10.9 nT BOU baseline. Recommended recalibration: use BSL &minus;15.43 nT as upper bound, BOU &minus;10.24 nT as lower bound (2024 eclipse comparison). 2017 vs 2024 BOU difference (&minus;18.22 vs &minus;10.24 nT) likely reflects different eclipse coverage percentage at BOU. Recalculation required before August 12, 2026.</p>
+<p><strong>Additional audit note (2026-03-15):</strong> April 8 2024 was geomagnetically disturbed (Kp ~5&ndash;6). All BOU components show SNR ~1.05&ndash;1.13 when using same-day baseline &mdash; signal buried in storm noise. BSL remains strongest verified clean signal at &minus;15.43 nT using quiet-day (Apr 5) baseline method. W004 source (&minus;22.24 nT) remains unverified. Recommendation: use only quiet-day eclipse dates for baseline calibration. Aug 21 2017 and Apr 8 2024 both had storm contamination requiring careful baseline selection.</p>
 </div>
 
 <table>
