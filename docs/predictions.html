@@ -127,7 +127,7 @@ Stations with coverage &lt; 0.25 show &lt; 2 nT signal. Falsification: &gt; 3 nT
   <tr><td>W018</td><td>hmF2 descent after &gt;6 nPa spike</td><td>&ge;10 km within 2hr</td><td>lgdc.uml.edu</td><td><span class="badge pending">PENDING</span></td></tr>
   <tr><td>W019</td><td>NMP drift direction this week</td><td>Poleward dominates lateral</td><td>NOAA</td><td><span class="badge falsified">FALSIFIED</span></td></tr>
   <tr><td>W020</td><td>Roaring 40s 500hPa anomaly</td><td>&ge;3% above climatology</td><td>psl.noaa.gov</td><td><span class="badge pending">PENDING</span></td></tr>
-  <tr><td>W021</td><td>Moon angular diameter variation</td><td>&gt;2% moonrise vs transit</td><td>Photography</td><td><span class="badge pending">UNDER REVISION</span></td></tr>
+  <tr><td>W021</td><td>Moon angular diameter variation</td><td>&gt;2% moonrise vs transit</td><td>Photography</td><td><span class="badge pending">SUSPENDED</span></td></tr>
   <tr><td>W022</td><td>SAA western cell position</td><td>West of 45&deg;W, cells separated</td><td>ESA Swarm</td><td><span class="badge confirmed">CONFIRMED</span></td></tr>
 </table>
 
@@ -140,23 +140,19 @@ Stations with coverage &lt; 0.25 show &lt; 2 nT signal. Falsification: &gt; 3 nT
 <p><strong>Note:</strong> Long-term poleward trend (WIN-007/WIN-036) unaffected. Weekly direction prediction incorrect. First honest falsification.</p>
 </div>
 
-<h2>W021 &mdash; REVISED: Moon Monthly Angular Diameter Variation <span class="badge pending">PENDING</span></h2>
+<h2>W021 &mdash; SUSPENDED <span class="badge pending">SUSPENDED</span></h2>
 <div class="prediction" style="border-left:3px solid var(--accent-orange,#f59e0b)">
-<p><strong>Revision note (2026-03-15):</strong> Original W021 used JPL Horizons 1.27% daily figure. JPL Horizons is globe-model-derived (heliocentric geometry) &mdash; not a model-neutral observation. Test withdrawn.</p>
-<p><strong>Revised test:</strong> 29.5-day photographic angular diameter survey. Measure moon apparent size at perigee and apogee using fixed focal length. No model assumptions required.</p>
-<p><strong>Globe predicts:</strong> 11&ndash;14% monthly variation (elliptical orbit, 356,500&ndash;406,700 km).</p>
-<p><strong>Dome prediction:</strong> TBD &mdash; requires moon physical size derived from dome geometry (see OPEN-007). Variable orbit model pending.</p>
-<p><strong>Falsification criteria:</strong> Only falsified if dome and globe predict identical monthly variation AND observation matches globe exactly. If dome predicts a distinct value, observation distinguishes the models.</p>
-<p><strong>Independent data path (2026-03-15):</strong> JPL Horizons angular diameter values are COMPUTED (CV &lt;&lt; 0.001%) &mdash; not independently measured. Globe model is self-referential on this measurement.</p>
-<p>Three model-neutral data sources identified:</p>
-<ol>
-  <li><strong>IOTA occultation timings</strong> &mdash; star disappearance/reappearance timing gives angular diameter without orbital model</li>
-  <li><strong>Lunar laser ranging</strong> &mdash; actual distance measurement (Apollo)</li>
-  <li><strong>Astrophotography plate solving</strong> &mdash; size vs star separations</li>
+<p><strong>Moon angular diameter / rising-setting mechanism</strong></p>
+<p><strong>Suspended (2026-03-15):</strong> V12 moon mechanics are structurally incompatible with observation &mdash; moon never sets at any orbital radius in V12 geometry. Monthly angular variation always 26&ndash;160% (observed: 11&ndash;14%). Moon disappearance mechanism must be resolved before any variation prediction can be registered.</p>
+<p><strong>Root cause:</strong> Sun analogy fails for moon. Sun analemma = seasonal latitude shift. Moon rising/setting = different phenomenon. New framework required.</p>
+<p><strong>Candidate mechanisms under investigation (OPEN-007):</strong></p>
+<ol type="A">
+  <li>Moon orbits beyond disc boundary &mdash; disappears behind rim/ice wall</li>
+  <li>Firmament occlusion at disc edges</li>
+  <li>Aetheric visibility horizon (scattering/absorption below critical angle)</li>
 </ol>
-<p><strong>Next step:</strong> Pull IOTA occultation database for monthly size variation. If occultation-derived angular diameter shows 11&ndash;14% monthly variation independent of orbital model, globe scores a point here. If variation differs &mdash; dome model has an opening.</p>
-<p><strong>Test upgraded:</strong> IOTA occultation data &gt; JPL Horizons data.</p>
-<p><strong>Status:</strong> PENDING &mdash; dome monthly prediction not yet derived. Registered as OPEN-007.</p>
+<p><strong>Model-neutral data sources identified:</strong> IOTA occultation timings, lunar laser ranging, astrophotography plate solving. JPL Horizons data withdrawn (globe-model-derived).</p>
+<p><strong>Status:</strong> SUSPENDED &mdash; do not register monthly variation prediction until moon disappearance mechanism resolved. See OPEN-007.</p>
 </div>
 
 <hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
