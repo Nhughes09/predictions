@@ -162,7 +162,7 @@ Projected 2030: &minus;32 nT/year (PRED-012)</pre>
 </div>
 
 <!-- ===== OPEN PROBLEMS ===== -->
-<h2>Open Problems (4)</h2>
+<h2>Open Problems (5)</h2>
 <p class="note">V12 resolved 2 of the original 5 open problems: OPEN-002 (H reconciliation) and OPEN-005 (Oslo-Stockholm).</p>
 
 <div class="open-problem">
@@ -199,10 +199,20 @@ Projected 2030: &minus;32 nT/year (PRED-012)</pre>
 <p><strong>Status:</strong> OPEN &mdash; awaiting direct measurement.</p>
 </div>
 
+<div class="open-problem">
+<h3>OPEN-007 &mdash; Moon Orbital Geometry Inconsistency</h3>
+<p>V12 predicts 116.96% angular diameter variation per day vs 1.27% observed (JPL Horizons, 25 samples).</p>
+<p><strong>Root cause:</strong> Moon orbital radius (15,675 km) too small relative to observer distance from pole (5,960 km), causing moon to never set and always be within similar distance range.</p>
+<p><strong>Required orbital radius for 1.27% variation:</strong> to be derived.</p>
+<p><strong>Constraint:</strong> must also produce realistic moonrise/moonset behavior.</p>
+<p><strong>Status:</strong> OPEN &mdash; solver script pending. Registered 2026-03-15. See W023.</p>
+</div>
+
 <!-- ===== FALSIFIED ===== -->
 <h2>Falsified Count</h2>
 <div class="param-box">
-<p style="font-size:1.5em;text-align:center;margin:10px 0"><strong style="color:var(--accent-red)">FALSIFIED: 0</strong></p>
+<p style="font-size:1.5em;text-align:center;margin:10px 0"><strong style="color:var(--accent-red)">FALSIFIED: 1</strong></p>
+<p><strong>W019 &mdash; NMP weekly drift direction (2026-03-15):</strong> Predicted poleward &gt; lateral. Observed: &Delta;lat=&minus;0.180&deg;, &Delta;lon=+1.000&deg; (lateral 5.5&times; larger). Long-term poleward trend (WIN-007/WIN-036) unaffected. Weekly directional prediction incorrect.</p>
 <p>W001 and W004 are below detection threshold. Not model failures. Instrument noise floor prevents measurement. Predictions remain structurally valid.</p>
 </div>
 

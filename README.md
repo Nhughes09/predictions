@@ -1,7 +1,7 @@
 # Dome Cosmological Model — Falsifiable Prediction Registry
 
 **Live site:** https://john09289.github.io/predictions  
-**Wins:** 39 confirmed | 0 falsified  
+**Wins:** 40 confirmed | 1 falsified
 **Version:** V50.6 / Coordinate System V12  
 **Last updated:** 2026-03-12
 
@@ -13,7 +13,7 @@ A falsifiable, cryptographically timestamped registry of predictions derived fro
 
 Every prediction is registered before the confirming data comes in. Git timestamps and Bitcoin blockchain anchors (OpenTimestamps) prove predictions predate confirmations.
 
-**39 wins. 0 falsified. August 12 2026 eclipse predictions locked.**
+**40 wins. 1 falsified. August 12 2026 eclipse predictions locked.**
 
 ---
 
@@ -40,7 +40,7 @@ The conductive dome creates a resonant EM cavity. Schumann resonance at 7.83 Hz 
 | Geomagnetic       | 17        | 2               | 7       | 0         |
 | Positional        | 6         | 0               | 5       | 0         |
 | Physical Geometry | 16        | 0               | 7       | 0         |
-| **TOTAL**         | **39**    | **2**           | **19**  | **0**     |
+| **TOTAL**         | **40**    | **2**           | **19**  | **1**     |
 
 ---
 

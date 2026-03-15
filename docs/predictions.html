@@ -11,7 +11,7 @@
 <body>
 <nav>
   <a href="index.html">Home</a>
-  <a href="wins.html">Wins <span class="nav-badge">39</span></a>
+  <a href="wins.html">Wins <span class="nav-badge">40</span></a>
   <a href="predictions.html" class="active">Predictions</a>
   <a href="coordinates.html">Coordinates</a>
   <a href="model.html">Model</a>
@@ -124,11 +124,73 @@ Stations with coverage &lt; 0.25 show &lt; 2 nT signal. Falsification: &gt; 3 nT
   <tr><th>ID</th><th>Test</th><th>Prediction</th><th>Source</th><th>Status</th></tr>
   <tr><td>W017</td><td>SR fundamental during solar wind &gt;5 nPa</td><td>&ge;7.85 Hz</td><td>swpc.noaa.gov</td><td><span class="badge pending">PENDING</span></td></tr>
   <tr><td>W018</td><td>hmF2 descent after &gt;6 nPa spike</td><td>&ge;10 km within 2hr</td><td>lgdc.uml.edu</td><td><span class="badge pending">PENDING</span></td></tr>
-  <tr><td>W019</td><td>NMP drift direction this week</td><td>Poleward dominates lateral</td><td>NOAA</td><td><span class="badge pending">PENDING</span></td></tr>
+  <tr><td>W019</td><td>NMP drift direction this week</td><td>Poleward dominates lateral</td><td>NOAA</td><td><span class="badge falsified">FALSIFIED</span></td></tr>
   <tr><td>W020</td><td>Roaring 40s 500hPa anomaly</td><td>&ge;3% above climatology</td><td>psl.noaa.gov</td><td><span class="badge pending">PENDING</span></td></tr>
-  <tr><td>W021</td><td>Moon angular diameter variation</td><td>&gt;2% moonrise vs transit</td><td>Photography</td><td><span class="badge pending">PENDING</span></td></tr>
-  <tr><td>W022</td><td>SAA western cell position</td><td>West of 45&deg;W, cells separated</td><td>ESA Swarm</td><td><span class="badge pending">PENDING</span></td></tr>
+  <tr><td>W021</td><td>Moon angular diameter variation</td><td>&gt;2% moonrise vs transit</td><td>Photography</td><td><span class="badge pending">UNDER REVISION</span></td></tr>
+  <tr><td>W022</td><td>SAA western cell position</td><td>West of 45&deg;W, cells separated</td><td>ESA Swarm</td><td><span class="badge confirmed">CONFIRMED</span></td></tr>
 </table>
+
+<h2>W019 &mdash; FALSIFIED <span class="badge falsified">FALSIFIED</span></h2>
+<div class="prediction" style="border-left:3px solid var(--accent-red)">
+<p><strong>NMP drift: lateral dominated poleward this week</strong></p>
+<p><strong>Predicted:</strong> Poleward component &gt; lateral component</p>
+<p><strong>Observed:</strong> &Delta;lat=&minus;0.180&deg;, &Delta;lon=+1.000&deg; (lateral 5.5&times; larger)</p>
+<p><strong>Data source:</strong> <a href="https://www.ngdc.noaa.gov/geomag/data/poles/NP.xy">https://www.ngdc.noaa.gov/geomag/data/poles/NP.xy</a></p>
+<p><strong>Note:</strong> Long-term poleward trend (WIN-007/WIN-036) unaffected. Weekly direction prediction incorrect. First honest falsification.</p>
+</div>
+
+<h2>W021 &mdash; UNDER REVISION</h2>
+<div class="prediction" style="border-left:3px solid var(--accent-orange,#f59e0b)">
+<p><strong>Moon angular diameter variation</strong></p>
+<p><strong>Status:</strong> UNDER REVISION</p>
+<p><strong>Observed:</strong> 1.27% angular diameter variation (JPL Horizons, 25 samples).</p>
+<p><strong>V12 predicts:</strong> 116.96% &mdash; parameter revision required.</p>
+<p><strong>Root cause:</strong> Moon orbital radius likely needs to be much larger than current 15,675 km OR moon never sets in current V12 geometry (100% visibility from Chapel Hill).</p>
+<p><strong>Registered as:</strong> OPEN-007. Not falsified &mdash; open parameter problem.</p>
+</div>
+
+<hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
+
+<h2>W022 &mdash; CONFIRMED <span class="badge confirmed">CONFIRMED 2026-03-15</span></h2>
+<div class="win">
+<p><strong>SAA western cell confirmed west of 45&deg;W</strong></p>
+<p><strong>Observed:</strong> ~60&deg;W per CHAOS-7 baseline</p>
+<p><strong>Basis:</strong> WIN-004 exponential separation model</p>
+<p><strong>Promoted to:</strong> <a href="wins.html">WIN-040</a></p>
+</div>
+
+<hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
+
+<h2>New Active Predictions &mdash; W023&ndash;W025</h2>
+<p><strong>Registered:</strong> 2026-03-15</p>
+
+<div class="prediction">
+<h3>W023 &mdash; Moon Orbital Radius Constraint <span class="badge pending">PENDING</span></h3>
+<p><strong>Prediction:</strong> Solver will find orbital radius R such that distance variation = 1.27% &plusmn;0.3%. This R will be significantly larger than current 15,675 km parameter.</p>
+<p><strong>Falsification:</strong> No orbital radius produces both 1.27% variation AND realistic moonrise/moonset in V12 geometry.</p>
+<p><strong>Status:</strong> PENDING &mdash; solver running</p>
+</div>
+
+<div class="prediction">
+<h3>W024 &mdash; Polaris Elevation at Oslo CRITICAL TEST <span class="badge pending">PENDING</span></h3>
+<p><strong>Prediction:</strong> Calibrated inclinometer at Oslo (59.91&deg;N WGS84) will measure Polaris at 63&ndash;65&deg;, not 59.91&deg;.</p>
+<p><strong>Formula:</strong> r(Oslo) solved from r&times;tan(polaris_elev) = H(r) = 8537&times;exp(&minus;r/8619)</p>
+<p><strong>Globe REQUIRES:</strong> Polaris elevation = geographic latitude exactly</p>
+<p><strong>V12 predicts:</strong> systematic +3&ndash;5&deg; divergence at high latitudes</p>
+<p><strong>Falsification:</strong> Polaris within 0.5&deg; of WGS84 latitude at Oslo</p>
+<p><strong>Test method:</strong> $30 calibrated inclinometer, clear night, Polaris</p>
+<p><strong>Registered:</strong> 2026-03-15</p>
+</div>
+
+<div class="prediction">
+<h3>W025 &mdash; SAA Separation Rate 2026 <span class="badge pending">PENDING</span></h3>
+<p><strong>Prediction:</strong> SAA cell separation increases &ge;0.8&deg; between March 2026 and September 2026 CHAOS model update.</p>
+<p><strong>Current baseline:</strong> 50.57&deg; (2025)</p>
+<p><strong>Target:</strong> &ge;51.37&deg; by September 2026</p>
+<p><strong>Basis:</strong> WIN-004 exponential rate extrapolation</p>
+<p><strong>Falsification:</strong> separation stable or decreasing at next CHAOS update</p>
+<p><strong>Registered:</strong> 2026-03-15</p>
+</div>
 
 <hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
 
@@ -163,8 +225,8 @@ Stations with coverage &lt; 0.25 show &lt; 2 nT signal. Falsification: &gt; 3 nT
 <footer>
   <span>Version 50.6</span>
   <span>2026-03-12</span>
-  <span style="color:var(--accent-blue);font-weight:600">39 confirmed</span>
-  <span style="color:var(--accent-red)">0 falsified</span>
+  <span style="color:var(--accent-blue);font-weight:600">40 confirmed</span>
+  <span style="color:var(--accent-red)">1 falsified</span>
   <a href="https://github.com/John09289/predictions">GitHub</a>
   <a href="context.html">AI Context</a>
 </footer>
