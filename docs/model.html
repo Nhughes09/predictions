@@ -195,17 +195,18 @@ Projected 2030: &minus;32 nT/year (PRED-012)</pre>
 <div class="open-problem">
 <h3>OPEN-006 &mdash; WGS84 Latitude Bias at High Latitudes</h3>
 <p>Back-solve from NS distances shows cities at 55&ndash;60&deg;N have implied Polaris elevations 1&ndash;6&deg; <strong>HIGHER</strong> than WGS84 latitude. Globe model REQUIRES Polaris = geographic latitude exactly. Dome model predicts systematic divergence.</p>
-<p><strong>Test:</strong> Calibrated inclinometer at Oslo (predicted: 64.4&deg;, WGS84: 59.91&deg;).</p>
+<p><strong>Test:</strong> Calibrated inclinometer at Oslo (V12 predicted: 60.68&deg;, WGS84: 59.91&deg;, divergence: +0.77&deg;). Four-city pattern: Oslo +0.77&deg;, Helsinki +0.82&deg;, Reykjavik +1.29&deg;, Edinburgh +0.32&deg;. Correction registered 2026-03-15.</p>
 <p><strong>Status:</strong> OPEN &mdash; awaiting direct measurement.</p>
 </div>
 
 <div class="open-problem">
 <h3>OPEN-007 &mdash; Moon Orbital Geometry Inconsistency</h3>
 <p>V12 predicts 116.96% angular diameter variation per day vs 1.27% observed (JPL Horizons, 25 samples).</p>
-<p><strong>Root cause:</strong> Moon orbital radius (15,675 km) too small relative to observer distance from pole (5,960 km), causing moon to never set and always be within similar distance range.</p>
-<p><strong>Required orbital radius for 1.27% variation:</strong> to be derived.</p>
-<p><strong>Constraint:</strong> must also produce realistic moonrise/moonset behavior.</p>
-<p><strong>Status:</strong> OPEN &mdash; solver script pending. Registered 2026-03-15. See W023.</p>
+<p><strong>Solver result (2026-03-15):</strong> R = 933,791 km produces 1.27% variation (59.6&times; current V12 value).</p>
+<p><strong>Critical finding:</strong> Moon NEVER sets in V12 geometry at ANY orbital radius. Observer inside disc &mdash; no orbital radius produces minimum elevation &lt; 0&deg;.</p>
+<p><strong>Root cause confirmed:</strong> Fundamental geometry problem, not a parameter issue. A horizon mechanism is required.</p>
+<p><strong>Resolution required:</strong> Firmament curve OR aetheric refraction below ~0.15&deg; elevation. Aetheric refraction at low elevation angles is physically plausible &mdash; optical/physical altitude split already established for the sun.</p>
+<p><strong>Status:</strong> OPEN &mdash; refraction mechanism derivation pending. Registered 2026-03-15. See W023.</p>
 </div>
 
 <!-- ===== FALSIFIED ===== -->

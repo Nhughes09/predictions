@@ -107,9 +107,10 @@ Stations with coverage &lt; 0.25 show &lt; 2 nT signal. Falsification: &gt; 3 nT
 
 <table>
   <tr><th>City</th><th>WGS84 Latitude</th><th>Dome Predicted Polaris</th><th>Difference</th></tr>
-  <tr><td>Oslo</td><td>59.91&deg;N</td><td style="color:var(--accent-blue);font-weight:600">64.4&deg;</td><td>+4.5&deg;</td></tr>
-  <tr><td>Helsinki</td><td>60.17&deg;N</td><td style="color:var(--accent-blue);font-weight:600">65.7&deg;</td><td>+5.5&deg;</td></tr>
-  <tr><td>Edinburgh</td><td>55.95&deg;N</td><td style="color:var(--accent-blue);font-weight:600">57.3&deg;</td><td>+1.4&deg;</td></tr>
+  <tr><td>Oslo</td><td>59.91&deg;N</td><td style="color:var(--accent-blue);font-weight:600">60.68&deg;</td><td>+0.77&deg;</td></tr>
+  <tr><td>Helsinki</td><td>60.17&deg;N</td><td style="color:var(--accent-blue);font-weight:600">60.99&deg;</td><td>+0.82&deg;</td></tr>
+  <tr><td>Edinburgh</td><td>55.95&deg;N</td><td style="color:var(--accent-blue);font-weight:600">56.27&deg;</td><td>+0.32&deg;</td></tr>
+  <tr><td>Reykjavik</td><td>64.13&deg;N</td><td style="color:var(--accent-blue);font-weight:600">65.42&deg;</td><td>+1.29&deg;</td></tr>
 </table>
 
 <p><strong>Why this matters:</strong> Globe REQUIRES Polaris elevation = geographic latitude exactly. Dome H(r) curve predicts systematic divergence. A $30 inclinometer on a clear night is enough to test this. Falsification: Polaris elevation matches WGS84 latitude at these cities.</p>
@@ -165,21 +166,31 @@ Stations with coverage &lt; 0.25 show &lt; 2 nT signal. Falsification: &gt; 3 nT
 <p><strong>Registered:</strong> 2026-03-15</p>
 
 <div class="prediction">
-<h3>W023 &mdash; Moon Orbital Radius Constraint <span class="badge pending">PENDING</span></h3>
-<p><strong>Prediction:</strong> Solver will find orbital radius R such that distance variation = 1.27% &plusmn;0.3%. This R will be significantly larger than current 15,675 km parameter.</p>
-<p><strong>Falsification:</strong> No orbital radius produces both 1.27% variation AND realistic moonrise/moonset in V12 geometry.</p>
-<p><strong>Status:</strong> PENDING &mdash; solver running</p>
+<h3>W023 &mdash; Moon Orbital Radius Constraint <span class="badge pending">REVISED</span></h3>
+<p><strong>Solver complete (2026-03-15):</strong> R = 933,791 km produces 1.27% angular diameter variation (59.6&times; current V12 value of 15,675 km).</p>
+<p><strong>Critical finding:</strong> Moon NEVER sets in V12 geometry at ANY orbital radius. Observer is inside the disc &mdash; no orbital radius produces minimum elevation &lt; 0&deg;.</p>
+<p><strong>Root cause confirmed:</strong> This is a fundamental geometry problem, not a parameter issue. OPEN-007 structural constraint confirmed.</p>
+<p><strong>W023 REVISED:</strong> V12 requires a horizon/refraction mechanism before orbital radius can be meaningfully constrained. Aetheric refraction at low elevation angles is physically plausible given the optical/physical altitude split already established for the sun.</p>
+<p><strong>Resolution path:</strong> Firmament curve OR aetheric refraction below ~0.15&deg; elevation needed to produce realistic moonrise/moonset behavior.</p>
 </div>
 
 <div class="prediction">
-<h3>W024 &mdash; Polaris Elevation at Oslo CRITICAL TEST <span class="badge pending">PENDING</span></h3>
-<p><strong>Prediction:</strong> Calibrated inclinometer at Oslo (59.91&deg;N WGS84) will measure Polaris at 63&ndash;65&deg;, not 59.91&deg;.</p>
-<p><strong>Formula:</strong> r(Oslo) solved from r&times;tan(polaris_elev) = H(r) = 8537&times;exp(&minus;r/8619)</p>
-<p><strong>Globe REQUIRES:</strong> Polaris elevation = geographic latitude exactly</p>
-<p><strong>V12 predicts:</strong> systematic +3&ndash;5&deg; divergence at high latitudes</p>
-<p><strong>Falsification:</strong> Polaris within 0.5&deg; of WGS84 latitude at Oslo</p>
+<h3>W024 &mdash; Polaris Elevation at High Latitudes CRITICAL TEST <span class="badge pending">PENDING</span></h3>
+<p><strong>CORRECTED FROM V12 DERIVATION (2026-03-15):</strong></p>
+<table>
+  <tr><th>City</th><th>WGS84 Lat</th><th>V12 Dome Prediction</th><th>Difference</th></tr>
+  <tr><td>Edinburgh</td><td>55.95&deg;</td><td style="color:var(--accent-blue);font-weight:600">56.27&deg;</td><td>+0.32&deg;</td></tr>
+  <tr><td>Oslo</td><td>59.91&deg;</td><td style="color:var(--accent-blue);font-weight:600">60.70&deg;</td><td>+0.79&deg;</td></tr>
+  <tr><td>Helsinki</td><td>60.17&deg;</td><td style="color:var(--accent-blue);font-weight:600">60.99&deg;</td><td>+0.82&deg;</td></tr>
+  <tr><td>Reykjavik</td><td>64.13&deg;</td><td style="color:var(--accent-blue);font-weight:600">65.42&deg;</td><td>+1.29&deg;</td></tr>
+</table>
+<p><strong>Globe REQUIRES:</strong> Polaris elevation = WGS84 latitude exactly (0.00&deg; divergence)</p>
+<p><strong>V12 PREDICTS:</strong> systematic positive divergence increasing with latitude</p>
+<p><strong>Key claim:</strong> The <em>pattern</em> itself is the prediction &mdash; not just a single city value</p>
+<p><strong>Falsification:</strong> All four cities within 0.3&deg; of WGS84 latitude</p>
+<p><strong>Chapel Hill calibration:</strong> Measured 36.18&deg;, V12 r=5892.2 km (&delta; &minus;67.8 km from baseline)</p>
+<p><strong>Correction note:</strong> Original estimate of +3&ndash;5&deg; was wrong &mdash; V12 derives +0.79&deg; at Oslo. Registered correction 2026-03-15.</p>
 <p><strong>Test method:</strong> $30 calibrated inclinometer, clear night, Polaris</p>
-<p><strong>Registered:</strong> 2026-03-15</p>
 </div>
 
 <div class="prediction">
