@@ -185,14 +185,47 @@ Registered: 2026-03-15</p>
 
 <table>
   <tr><th>ID</th><th>Test</th><th>Prediction</th><th>Source</th><th>Status</th></tr>
-  <tr><td>W017</td><td>SR fundamental during solar wind &gt;5 nPa</td><td>&ge;7.85 Hz</td><td>swpc.noaa.gov</td><td><span class="badge pending">UNDER REVIEW</span></td></tr>
-  <tr><td>W018</td><td>hmF2 descent after &gt;6 nPa spike</td><td>&ge;10 km within 2hr</td><td>lgdc.uml.edu</td><td><span class="badge pending">UNDER REVIEW</span></td></tr>
+  <tr><td>W017</td><td>SR fundamental during solar wind &gt;5 nPa</td><td>&ge;7.85 Hz</td><td>swpc.noaa.gov</td><td><span class="badge pending">UNRESOLVED</span></td></tr>
+  <tr><td>W018</td><td>hmF2 descent after &gt;6 nPa spike</td><td>&ge;10 km within 2hr</td><td>lgdc.uml.edu</td><td><span class="badge pending">UNRESOLVED</span></td></tr>
   <tr><td>W019</td><td>NMP drift direction this week</td><td>Poleward dominates lateral</td><td>NOAA</td><td><span class="badge falsified">FALSIFIED</span></td></tr>
-  <tr><td>W020</td><td>Roaring 40s 500hPa anomaly</td><td>&ge;3% above climatology</td><td>psl.noaa.gov</td><td><span class="badge pending">UNDER REVIEW</span></td></tr>
+  <tr><td>W020</td><td>Roaring 40s 500hPa anomaly</td><td>&ge;3% above climatology</td><td>CPC/NOAA AAO</td><td><span class="badge falsified">FALSIFIED</span></td></tr>
   <tr><td>W021</td><td>Moon angular diameter variation</td><td>&gt;2% moonrise vs transit</td><td>Photography</td><td><span class="badge pending">SUSPENDED</span></td></tr>
   <tr><td>W022</td><td>SAA western cell position</td><td>West of 45&deg;W, cells separated</td><td>ESA Swarm</td><td><span class="badge confirmed">CONFIRMED &rarr; WIN-040</span></td></tr>
 </table>
-<p class="note">Note: Test window passed 2026-03-19. W019 falsified (lateral 5.5&times; poleward — honest result, long-term trend unaffected). W022 structurally confirmed by CHAOS-7 data, promoted to WIN-040. W017/W018/W020 data being verified before posting outcomes.</p>
+<p class="note">Compiled 2026-03-21 via direct data pulls. W017/W018: pre-condition likely met (G2 storm, Kp=6.0, DST=&minus;43 on 2026-03-14) but SR frequency and ionosonde data not accessible via public API &mdash; marked UNRESOLVED. W020: AAO index (CPC/NOAA) mean +0.78&sigma; during test window &mdash; below &ge;3% (&asymp;+1.5&sigma;) threshold &mdash; FALSIFIED. W019: falsified (lateral 5.5&times; poleward). W022: confirmed &rarr; WIN-040.</p>
+
+<h2>W017 &mdash; UNRESOLVED <span class="badge pending">UNRESOLVED</span></h2>
+<div class="prediction" style="border-left:3px solid var(--accent-orange,#f59e0b)">
+<p><strong>SR fundamental &ge;7.85 Hz during solar wind &gt;5 nPa</strong></p>
+<p><strong>Context (2026-03-21):</strong> G2 storm occurred 2026-03-13&ndash;14 during test window. Kp peaked at 6.0, DST reached &minus;43 nT &mdash; strongly indicates solar wind pressure exceeded 5 nPa. OMNI2 ACE solar wind pressure data is all fill values for this period (instrument/pipeline gap). HeartMath GCI Schumann monitoring not accessible via public API. Pre-condition almost certainly met. SR outcome cannot be confirmed or falsified without data.</p>
+<p><strong>Status: UNRESOLVED</strong> &mdash; Not a falsification. Pre-condition evidence is circumstantial. Awaiting manual verification of HeartMath archive for 2026-03-13&ndash;14.</p>
+</div>
+
+<h2>W018 &mdash; UNRESOLVED <span class="badge pending">UNRESOLVED</span></h2>
+<div class="prediction" style="border-left:3px solid var(--accent-orange,#f59e0b)">
+<p><strong>hmF2 descent &ge;10 km after &gt;6 nPa spike</strong></p>
+<p><strong>Context (2026-03-21):</strong> Kp peaked at 6.0 on 2026-03-14 (G2 storm), which implies solar wind pressure &gt;6 nPa. Boulder ionosonde (BC840) returned "No data found for requested period" at lgdc.uml.edu. Data gap in the archive for this period. Pre-condition almost certainly met.</p>
+<p><strong>Status: UNRESOLVED</strong> &mdash; Data source has a gap. Not a falsification.</p>
+</div>
+
+<h2>W020 &mdash; FALSIFIED <span class="badge falsified">FALSIFIED</span></h2>
+<div class="prediction" style="border-left:3px solid var(--accent-red)">
+<p><strong>Roaring 40s 500hPa anomaly &ge;3% above climatology</strong></p>
+<p><strong>Data (2026-03-21, CPC/NOAA AAO index):</strong></p>
+<table>
+  <tr><th>Date</th><th>AAO Index (&sigma;)</th><th>&ge;+1.5&sigma; threshold?</th></tr>
+  <tr><td>2026-03-12</td><td>+1.244</td><td>No</td></tr>
+  <tr><td>2026-03-13</td><td>+1.497</td><td>Borderline</td></tr>
+  <tr><td>2026-03-14</td><td>+1.169</td><td>No</td></tr>
+  <tr><td>2026-03-15</td><td>+0.620</td><td>No</td></tr>
+  <tr><td>2026-03-16</td><td>+0.519</td><td>No</td></tr>
+  <tr><td>2026-03-17</td><td>+0.430</td><td>No</td></tr>
+  <tr><td>2026-03-18</td><td>+0.317</td><td>No</td></tr>
+  <tr><td>2026-03-19</td><td>+0.464</td><td>No</td></tr>
+</table>
+<p><strong>Mean AAO: +0.78&sigma;</strong> &mdash; Roaring 40s were above normal but well below the &ge;3% (&asymp;+1.5&sigma;) threshold for the test window. Only one day (March 13) approached the threshold. Dome model predicted consistently elevated 500hPa heights; observed a brief early spike followed by decay to near-normal.</p>
+<p><strong>FALSIFIED.</strong> Second honest falsification in this registry. Weekly tests are high-risk, short-window predictions &mdash; some will fail. Long-term Roaring 40s correlation with SAA boundary (WIN-024) unaffected.</p>
+</div>
 
 <h2>W019 &mdash; FALSIFIED <span class="badge falsified">FALSIFIED</span></h2>
 <div class="prediction" style="border-left:3px solid var(--accent-red)">
@@ -337,7 +370,7 @@ WGS84 latitudes map to dome radial positions at high latitudes.</p>
   <span>Version 50.7</span>
   <span>2026-03-21</span>
   <span style="color:var(--accent-blue);font-weight:600">42 confirmed</span>
-  <span style="color:var(--accent-red)">2 falsified</span>
+  <span style="color:var(--accent-red)">3 falsified</span>
   <a href="https://github.com/John09289/predictions">GitHub</a>
   <a href="context.html">AI Context</a>
 </footer>
