@@ -84,6 +84,10 @@ Registered: 2026-03-15</p>
   <tr><td>LER</td><td>Lerwick, Shetland</td><td>42%</td><td>2023 data only</td></tr>
 </table>
 <p><strong>Pre-condition monitoring:</strong> Eclipse predictions valid only if Kp &lt; 2 on August 12, 2026. Monitor NOAA Kp from Aug 9. Check Kp index on eclipse day before evaluating any station result.</p>
+
+<p><strong>FSF Formula &mdash; LOCKED 2026-03-22 (WIN-044):</strong> The Field Strength Factor for all 9 stations is now independently derived from V12 geometry:</p>
+<pre style="background:rgba(0,0,0,0.2);padding:8px;border-radius:4px;font-size:0.88em">FSF(lat) = 0.19550 / sin(lat)<sup>0.1640</sup> &times; 32.974<sup>(lat/90)</sup>   [RMSE = 0.0071 across all 9 stations]</pre>
+<p><strong>E-PRED-B LOCKED:</strong> HAD signal = 0.80 &times; 1.471 = <strong>1.177</strong> &gt; EBR signal = 0.95 &times; 1.029 = <strong>0.978</strong>. Hartland beats Ebro despite lower coverage. See WIN-044.</p>
 </div>
 
 <hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
@@ -343,12 +347,16 @@ WGS84 latitudes map to dome radial positions at high latitudes.</p>
 
 <div class="prediction pending">
 <h3>W027 &mdash; G3 Storm Schumann Frequency Elevation <span class="badge pending">PENDING</span></h3>
-<p><strong>Registered:</strong> 2026-03-22 | <strong>Test window:</strong> March 20&ndash;21 2026 data (exists now)</p>
-<p><strong>Globe/mainstream prediction:</strong> ~0.000 Hz shift during G3 storm. Mechanism: storm disturbs magnetosphere, not Schumann cavity. Fundamental stays 7.828&ndash;7.835 Hz.</p>
+<p><strong>Registered:</strong> 2026-03-22 | <strong>Test window:</strong> Two active events (see below)</p>
+<p style="background:rgba(245,158,11,0.15);padding:8px;border-left:3px solid #f59e0b;border-radius:2px"><strong>&#9888; ACTIVE TEST &mdash; G2/G3 storm right now (2026-03-22):</strong> Kp sustained at 6&ndash;7 for &gt;30 minutes (17:23&ndash;17:46 UTC). Kp=7 crosses into G3. Check <a href="http://sosrff.tsu.ru/">sosrff.tsu.ru</a> spectrogram for today immediately. 3-day forecast: Ap=36 today, subsiding Mar 23&ndash;24.</p>
+<p><strong>Globe/mainstream prediction:</strong> ~0.000 Hz shift during G2/G3 storm. Mechanism: storm disturbs magnetosphere, not Schumann cavity. Fundamental stays 7.828&ndash;7.835 Hz.</p>
 <p><strong>Dome prediction:</strong> +0.010 to +0.020 Hz rise during G3 peak (7.843&ndash;7.853 Hz). Mechanism: aetheric compression &rarr; firmament cavity height decreases &rarr; SR fundamental rises. Basis: PRED-R006.</p>
-<p><strong>Data source:</strong> Tomsk SR monitoring <a href="http://sosrff.tsu.ru/">http://sosrff.tsu.ru/</a> &mdash; G3 storm confirmed March 20&ndash;21 2026.</p>
-<p><strong>Falsification of dome:</strong> SR stays 7.828&ndash;7.835 Hz throughout G3 storm peak.</p>
+<p><strong>Test event 1:</strong> G3 storm March 20&ndash;21 2026 &mdash; check Tomsk archive (historical).</p>
+<p><strong>Test event 2:</strong> G2/G3 storm March 22 2026 &mdash; check Tomsk spectrogram today (live).</p>
+<p><strong>Data source:</strong> <a href="http://sosrff.tsu.ru/">http://sosrff.tsu.ru/</a> (Tomsk University SR monitoring)</p>
+<p><strong>Falsification of dome:</strong> SR stays 7.828&ndash;7.835 Hz throughout G3 storm peak in both events.</p>
 <p><strong>Falsification of globe mechanism:</strong> SR fundamental rises above 7.840 Hz during G3 compression phase.</p>
+<p><strong>If confirmed on either event:</strong> Promotes to WIN-045.</p>
 </div>
 
 <div class="prediction pending">
