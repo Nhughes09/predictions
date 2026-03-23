@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ECM Tracking Logs — Daily &amp; Weekly Data</title>
-<meta name="description" content="Continuous data collection logs for real-time ECM model testing. Kp/SR, NMP drift, AAO, SAA decay, storm-SR tally.">
-<link rel="stylesheet" href="style.css">
-<script src="analytics.js"></script>
-<style>
-.tracking-section { margin: 2rem 0; border: 1px solid rgba(148,163,184,0.15); border-radius: 8px; overflow: hidden; }
-.tracking-header { background: rgba(15,52,96,0.4); padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
-.tracking-header h3 { margin: 0; font-size: 1.1rem; }
-.cadence-label { font-size: 0.75rem; background: rgba(15,52,96,0.8); padding: 3px 10px; border-radius: 12px; color: #94a3b8; }
-.log-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-.log-table th { padding: 0.5rem 0.75rem; text-align: left; color: #64748b; font-weight: 500; border-bottom: 1px solid rgba(148,163,184,0.15); }
-.log-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid rgba(148,163,184,0.08); }
-.log-table tr:hover td { background: rgba(255,255,255,0.02); }
-.suppressed { color: #ef4444; font-weight: 600; }
-.normal { color: #22c55e; }
-.pending-entry { color: #64748b; font-style: italic; }
-.add-entry-note { padding: 0.6rem 1.5rem; font-size: 0.78rem; color: #475569; background: rgba(0,0,0,0.2); }
-.stat-row { display: flex; gap: 2rem; padding: 0.75rem 1.5rem; background: rgba(0,0,0,0.15); font-size: 0.85rem; flex-wrap: wrap; }
-.stat { display: flex; flex-direction: column; gap: 2px; }
-.stat-label { color: #64748b; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
-.stat-value { font-weight: 600; color: #e2e8f0; }
-.immediate-banner { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); border-radius: 6px; padding: 0.75rem 1rem; margin: 1rem 0; font-size: 0.9rem; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ECM Tracking Logs — Daily &amp; Weekly Data</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="analytics.js"></script>
+  <style>
+    .tracking-section { margin: 2rem 0; border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; }
+    .tracking-header { background: #1a1a2e; padding: 0.9rem 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+    .tracking-header h3 { margin: 0; font-size: 1.05rem; }
+    .cadence-label { font-size: 0.72rem; background: #0f3460; padding: 3px 9px; border-radius: 12px; white-space: nowrap; }
+    .stat-row { display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 0.7rem 1.5rem; background: #111; border-bottom: 1px solid #1a1a1a; font-size: 0.82rem; }
+    .stat { display: flex; flex-direction: column; gap: 2px; }
+    .stat-label { color: #555; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .stat-value { font-weight: 600; color: #ddd; }
+    .log-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; overflow-x: auto; display: block; }
+    .log-table th { background: #0d0d0d; padding: 0.45rem 0.7rem; text-align: left; color: #666; font-weight: 500; border-bottom: 1px solid #222; white-space: nowrap; }
+    .log-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #181818; vertical-align: top; }
+    .log-table tr:last-child td { border-bottom: none; }
+    .log-table tbody tr:hover td { background: #0f0f0f; }
+    .suppressed { color: #e74c3c; font-weight: 600; }
+    .normal { color: #2ecc71; }
+    .pending-cell { color: #888; font-style: italic; }
+    .unknown-cell { color: #555; }
+    .add-footer { background: #080810; padding: 0.6rem 1.5rem; font-size: 0.75rem; color: #444; border-top: 1px solid #1a1a1a; }
+    .immediate-banner { background: #1a0a00; border-left: 3px solid #e67e22; padding: 0.7rem 1.5rem; font-size: 0.85rem; color: #e67e22; }
+    .section-intro { color: #888; font-size: 0.85rem; margin: 0; padding: 0.75rem 1.5rem; border-bottom: 1px solid #1a1a1a; }
+    .win-tag { color: #2ecc71; font-size: 0.7rem; font-weight: 700; }
+    .pending-tag { color: #e67e22; font-size: 0.7rem; }
+    .note-row td { background: #0a0a12; color: #556; font-size: 0.75rem; font-style: italic; }
+  </style>
 </head>
 <body>
 
@@ -41,40 +46,136 @@
 </nav>
 
 <h1>ECM Daily &amp; Weekly Tracking Logs</h1>
-<p class="subtitle">Continuous data collection for real-time model testing</p>
+<p style="color:#888;margin-bottom:1.5rem;">Continuous data collection for real-time model testing. Each entry is a data point &mdash; patterns emerge within weeks. All predictions pre-registered in <a href="predictions.html">predictions.html</a>. Tracking started 2026-03-23.</p>
 
-<p>Each entry is a data point. Patterns emerge within weeks. All predictions referenced here are pre-registered in <a href="predictions.html">predictions.html</a>. Tracking started 2026-03-23.</p>
-
-<p><strong>Model:</strong> V50.9 &nbsp;|&nbsp; <strong>Confirmed:</strong> 53 &nbsp;|&nbsp; <strong>Falsified:</strong> 4 &nbsp;|&nbsp; <strong>Last updated:</strong> 2026-03-23</p>
-
-<div class="immediate-banner">
-  <strong>IMMEDIATE ACTION:</strong> Check HeartMath spectrogram for March 22 (G3 storm 0900&ndash;1200 UTC). Does amplitude drop during that window? Update DW-006 row below. &rarr; <a href="https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/">HeartMath GCI</a>
+<div style="display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:1.5rem;font-size:0.85rem;padding:0.75rem 1rem;background:#111;border-radius:6px;">
+  <span><strong>Model:</strong> V50.9</span>
+  <span><strong>Confirmed:</strong> 53</span>
+  <span><strong>Falsified:</strong> 4</span>
+  <span><strong>Last updated:</strong> 2026-03-23</span>
+  <span><strong>Tracking entries:</strong> 5</span>
 </div>
 
-<!-- ===== DW-001 ===== -->
+<div class="immediate-banner">
+  &#9889; <strong>IMMEDIATE ACTION:</strong> Check HeartMath spectrogram for March 22 (G3 storm 0900&ndash;1200 UTC).
+  SR suppressed = PRED-SR-SUPPRESS confirmed (2nd event). Not suppressed = update DW-006 and revise model.
+  &rarr; <a href="https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/" style="color:#e67e22;">HeartMath GCI March 22</a>
+  &nbsp;|&nbsp; Also check March 23 today (G1 isolated, Kp 3&ndash;5).
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- DW-001: MASTER DAILY LOG -->
+<!-- ═══════════════════════════════════════════════════════════ -->
 <section class="tracking-section" id="dw001-log">
   <div class="tracking-header">
-    <h3>DW-001 &mdash; Daily Kp vs SR Amplitude</h3>
+    <h3>DW-001 &mdash; Master Daily Geomagnetic + SR Log</h3>
     <span class="cadence-label">Daily</span>
   </div>
+  <p class="section-intro">One row per day. Captures all storm-relevant data in one place. SR columns need HeartMath or Tomsk check each morning. Kp and Dst from NOAA. Solar wind from OMNI2/DSCOVR.</p>
   <div class="stat-row">
-    <div class="stat"><span class="stat-label">Total entries</span><span class="stat-value">0</span></div>
-    <div class="stat"><span class="stat-label">Suppression events</span><span class="stat-value">0</span></div>
-    <div class="stat"><span class="stat-label">Suppression rate</span><span class="stat-value">&mdash;</span></div>
-    <div class="stat"><span class="stat-label">Dome predicts</span><span class="stat-value">&gt;75% on G1+</span></div>
+    <div class="stat"><span class="stat-label">Total entries</span><span class="stat-value">5</span></div>
+    <div class="stat"><span class="stat-label">Storm days (G1+)</span><span class="stat-value">4</span></div>
+    <div class="stat"><span class="stat-label">SR suppression confirmed</span><span class="stat-value">1 (Mar 20)</span></div>
+    <div class="stat"><span class="stat-label">SR pending check</span><span class="stat-value">2 (Mar 22&ndash;23)</span></div>
+    <div class="stat"><span class="stat-label">Dome predicts</span><span class="stat-value">&gt;75% G1+ &rarr; suppress</span></div>
   </div>
   <table class="log-table">
     <thead>
-      <tr><th>Date</th><th>Kp Peak</th><th>SR Amp Ratio</th><th>Storm Class</th><th>Suppressed?</th><th>Notes</th></tr>
+      <tr>
+        <th>Date</th>
+        <th>Kp Peak</th>
+        <th>Storm Class</th>
+        <th>Storm Phase</th>
+        <th>Dst (nT)</th>
+        <th>SW Speed (km/s)</th>
+        <th>SR Freq (Hz)</th>
+        <th>SR Amp vs Baseline</th>
+        <th>Tomsk Status</th>
+        <th>Suppressed?</th>
+        <th>Notes / Source</th>
+      </tr>
     </thead>
     <tbody>
-      <tr><td colspan="6" class="pending-entry" style="padding:1rem;text-align:center;">No entries yet &mdash; start logging daily. Check HeartMath spectrogram each morning.</td></tr>
+      <tr>
+        <td>2026-03-19</td>
+        <td>0&ndash;3</td>
+        <td class="normal">G0 (quiet)</td>
+        <td>&mdash;</td>
+        <td>&minus;8 to &minus;15</td>
+        <td>~700</td>
+        <td>7.83</td>
+        <td class="normal">1.00 (baseline)</td>
+        <td class="normal">Normal</td>
+        <td class="normal">N/A</td>
+        <td>Pre-storm quiet day. Coronal hole approaching geoeffective position.</td>
+      </tr>
+      <tr>
+        <td>2026-03-20</td>
+        <td>7&ndash;8</td>
+        <td class="suppressed">G3/G4</td>
+        <td>Main phase</td>
+        <td>&lt;&minus;100</td>
+        <td>~700</td>
+        <td class="unknown-cell">&mdash;</td>
+        <td class="suppressed">&lt;0.70 (suppressed)</td>
+        <td class="unknown-cell">Saturated/unknown</td>
+        <td class="suppressed">&#10003; YES</td>
+        <td><strong>W027 event.</strong> G4 confirmed. SR total calm during storm peak. Source: disclosurenews.it</td>
+      </tr>
+      <tr>
+        <td>2026-03-21</td>
+        <td>3&ndash;7</td>
+        <td>G1&ndash;G3</td>
+        <td>Recovery</td>
+        <td>&minus;50 to &minus;80</td>
+        <td>~600</td>
+        <td class="pending-cell">PENDING</td>
+        <td class="pending-cell">PENDING</td>
+        <td class="pending-cell">Unknown</td>
+        <td class="pending-cell">&#10067; Check HeartMath</td>
+        <td>Multiple CME + coronal hole stream. Aurora visible Yellowknife 10:32 UTC. Source: EarthSky</td>
+      </tr>
+      <tr>
+        <td>2026-03-22</td>
+        <td>~7</td>
+        <td class="suppressed">G3</td>
+        <td>Main&rarr;recovery</td>
+        <td class="pending-cell">PENDING</td>
+        <td>~600</td>
+        <td class="pending-cell">PENDING</td>
+        <td class="pending-cell">PENDING</td>
+        <td class="pending-cell">Unknown</td>
+        <td class="pending-cell">&#10067; PRIORITY CHECK</td>
+        <td><strong>G3 confirmed 0900&ndash;1200 UTC per NOAA.</strong> First post-revision PRED-SR-SUPPRESS test. &rarr; <a href="https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/">HeartMath</a></td>
+      </tr>
+      <tr>
+        <td>2026-03-23</td>
+        <td>3&ndash;5</td>
+        <td>G1 isolated</td>
+        <td>Recovery</td>
+        <td class="pending-cell">PENDING</td>
+        <td>~600</td>
+        <td class="pending-cell">PENDING</td>
+        <td class="pending-cell">PENDING</td>
+        <td class="pending-cell">Unknown</td>
+        <td class="pending-cell">&#10067; Check today</td>
+        <td>HSS effects continuing. Isolated G1 expected. Kp 3&ndash;5 forecast. Source: EarthSky/NOAA</td>
+      </tr>
+      <tr class="note-row">
+        <td colspan="11">Add row daily: date | kp_peak | storm_class | phase (initial/main/recovery/quiet) | Dst | SW_speed | SR_freq | SR_amp_ratio (1.0=baseline) | Tomsk_status | suppressed (Y/N/N/A) | notes + source</td>
+      </tr>
     </tbody>
   </table>
-  <div class="add-entry-note">Add entry: date | kp_peak | sr_amplitude_ratio (0.0&ndash;1.0 vs quiet baseline) | storm_class (G0&ndash;G5) | suppressed (Y/N) | notes</div>
+  <div class="add-footer">
+    Sources: Kp/Dst &rarr; <a href="https://www.swpc.noaa.gov">NOAA SWPC</a> |
+    Solar wind &rarr; <a href="https://omniweb.gsfc.nasa.gov/ow_min.html">OMNI2</a> |
+    SR freq/amp &rarr; <a href="https://sos70.ru/provider.php?file=srf.jpg">Tomsk srf.jpg</a> + <a href="https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/">HeartMath GCI</a> (use HeartMath when Tomsk saturates on G3+)
+  </div>
 </section>
 
-<!-- ===== DW-002 ===== -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- DW-002: NMP Drift Ratio -->
+<!-- ═══════════════════════════════════════════════════════════ -->
 <section class="tracking-section" id="dw002-log">
   <div class="tracking-header">
     <h3>DW-002 &mdash; NMP Longitudinal:Latitudinal Drift Ratio</h3>
@@ -84,11 +185,11 @@
     <div class="stat"><span class="stat-label">Baseline NMP (2026-02)</span><span class="stat-value">85.778&deg;N, 138.057&deg;E</span></div>
     <div class="stat"><span class="stat-label">WIN-043 ratio</span><span class="stat-value">2.26&times;</span></div>
     <div class="stat"><span class="stat-label">Dome predicts</span><span class="stat-value">&ge;2.0&times; rolling</span></div>
-    <div class="stat"><span class="stat-label">Globe predicts</span><span class="stat-value">random walk</span></div>
+    <div class="stat"><span class="stat-label">Globe predicts</span><span class="stat-value">random walk (no ratio)</span></div>
   </div>
   <table class="log-table">
     <thead>
-      <tr><th>Date</th><th>Lat</th><th>Lon</th><th>&Delta;lat (&deg;)</th><th>&Delta;lon (&deg;)</th><th>Ratio</th><th>4wk Rolling</th></tr>
+      <tr><th>Date</th><th>Lat</th><th>Lon</th><th>&Delta;lat (&deg;)</th><th>&Delta;lon (&deg;)</th><th>Monthly Ratio</th><th>4-Month Rolling</th><th>vs PRED-R003</th></tr>
     </thead>
     <tbody>
       <tr>
@@ -99,14 +200,18 @@
         <td>&mdash;</td>
         <td>&mdash;</td>
         <td>2.26&times; (historical)</td>
+        <td>On track</td>
       </tr>
-      <tr><td colspan="7" class="pending-entry" style="padding:0.5rem 0.75rem;">Pull NP.xy monthly and add row. Compute delta from prior month. Source: <a href="https://www.ngdc.noaa.gov/geomag/data/poles/NP.xy">NOAA NP.xy</a></td></tr>
+      <tr class="note-row">
+        <td colspan="8">Pull monthly from <a href="https://www.ngdc.noaa.gov/geomag/data/poles/NP.xy">NOAA NP.xy</a>. Add row each month. PRED-R003 target: 141&ndash;146&deg;E by 2031.</td>
+      </tr>
     </tbody>
   </table>
-  <div class="add-entry-note">Prediction: PRED-NEW-001 &mdash; 2026 NMP at 85.756&deg;N, 136.557&deg;E (&plusmn;0.5&deg; lat, &plusmn;2&deg; lon)</div>
 </section>
 
-<!-- ===== DW-003 ===== -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- DW-003: AAO Index -->
+<!-- ═══════════════════════════════════════════════════════════ -->
 <section class="tracking-section" id="dw003-log">
   <div class="tracking-header">
     <h3>DW-003 &mdash; Weekly AAO Index (Roaring 40s Long-Term Bias)</h3>
@@ -116,11 +221,11 @@
     <div class="stat"><span class="stat-label">Entries</span><span class="stat-value">1</span></div>
     <div class="stat"><span class="stat-label">12wk mean</span><span class="stat-value">&mdash; (insufficient data)</span></div>
     <div class="stat"><span class="stat-label">Dome predicts</span><span class="stat-value">&gt;+0.3&sigma; 12wk mean</span></div>
-    <div class="stat"><span class="stat-label">Globe predicts</span><span class="stat-value">neutral (&asymp;0)</span></div>
+    <div class="stat"><span class="stat-label">Globe predicts</span><span class="stat-value">&asymp;0 (random)</span></div>
   </div>
   <table class="log-table">
     <thead>
-      <tr><th>Week End</th><th>Weekly Mean AAO (&sigma;)</th><th>Days Positive</th><th>Days &gt;1&sigma;</th><th>12wk Mean</th><th>Notes</th></tr>
+      <tr><th>Week End</th><th>Weekly Mean (&sigma;)</th><th>Days Positive</th><th>Days &gt;1&sigma;</th><th>Running 12wk Mean</th><th>Notes</th></tr>
     </thead>
     <tbody>
       <tr>
@@ -128,115 +233,201 @@
         <td>+0.78&sigma;</td>
         <td>8/8</td>
         <td>1</td>
-        <td>&mdash;</td>
-        <td>W020 test window &mdash; below &ge;3% threshold (falsified W020 weekly test)</td>
+        <td>&mdash; (1 entry)</td>
+        <td>W020 test window. Below &ge;3% falsification threshold but positive bias noted.</td>
       </tr>
-      <tr><td colspan="6" class="pending-entry" style="padding:0.5rem 0.75rem;">Continue weekly. Source: <a href="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/aao/daily_aao.shtml">CPC/NOAA AAO daily index</a></td></tr>
+      <tr class="note-row">
+        <td colspan="6">Continue weekly. Source: <a href="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/aao/daily_aao.shtml">CPC/NOAA AAO</a>. Dome calls: 12wk mean &gt;+0.3&sigma;. Globe calls: &asymp;0.</td>
+      </tr>
     </tbody>
   </table>
-  <div class="add-entry-note">Note: W020 falsified single-week &ge;3% threshold. DW-003 tests long-term 12-week rolling mean &mdash; different prediction.</div>
 </section>
 
-<!-- ===== DW-004 ===== -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- DW-004: Solar Wind vs SR Frequency -->
+<!-- ═══════════════════════════════════════════════════════════ -->
 <section class="tracking-section" id="dw004-log">
   <div class="tracking-header">
     <h3>DW-004 &mdash; Solar Wind Pressure vs SR Frequency (Quiet Days Kp&lt;1)</h3>
-    <span class="cadence-label">Log on quiet days (Kp&lt;1, SW&gt;8 nPa)</span>
+    <span class="cadence-label">Log on Kp&lt;1 + SW&gt;8 nPa days only</span>
   </div>
+  <p class="section-intro">Separate from storm tracking. Tests whether dome firmament responds to solar wind pressure on calm days. Globe has no mechanism. Log only when Kp&lt;1 AND SW pressure &gt;8 nPa simultaneously.</p>
   <div class="stat-row">
-    <div class="stat"><span class="stat-label">Entries</span><span class="stat-value">0</span></div>
-    <div class="stat"><span class="stat-label">Baseline SR</span><span class="stat-value">7.83 Hz</span></div>
-    <div class="stat"><span class="stat-label">Dome predicts</span><span class="stat-value">r&sup2;&gt;0.3 at 50+ entries</span></div>
+    <div class="stat"><span class="stat-label">Quiet-day entries</span><span class="stat-value">0</span></div>
+    <div class="stat"><span class="stat-label">SR baseline</span><span class="stat-value">7.83 Hz</span></div>
+    <div class="stat"><span class="stat-label">Dome predicts</span><span class="stat-value">r&sup2;&gt;0.3 at 50 entries</span></div>
   </div>
   <table class="log-table">
     <thead>
-      <tr><th>Date</th><th>SW (nPa)</th><th>Kp</th><th>SR Freq (Hz)</th><th>Deviation from 7.83</th><th>Notes</th></tr>
+      <tr><th>Date</th><th>SW Pressure (nPa)</th><th>Kp</th><th>SR Freq (Hz)</th><th>&Delta; from 7.83 Hz</th><th>Direction</th><th>Notes</th></tr>
     </thead>
     <tbody>
-      <tr><td colspan="6" class="pending-entry" style="padding:1rem;text-align:center;">Log on any Kp&lt;1 day with SW&gt;8 nPa. Pull SR freq from Tomsk (<a href="https://sos70.ru/provider.php?file=srf.jpg">sos70.ru srf.jpg</a>) and OMNI2 solar wind.</td></tr>
+      <tr class="note-row">
+        <td colspan="7">Log ONLY on Kp&lt;1 days with SW&gt;8 nPa. Sources: <a href="https://omniweb.gsfc.nasa.gov/ow_min.html">OMNI2</a> (SW pressure) + <a href="https://sos70.ru/provider.php?file=srf.jpg">Tomsk SR freq</a>.</td>
+      </tr>
     </tbody>
   </table>
 </section>
 
-<!-- ===== DW-005 ===== -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- DW-005: Monthly Decay -->
+<!-- ═══════════════════════════════════════════════════════════ -->
 <section class="tracking-section" id="dw005-log">
   <div class="tracking-header">
     <h3>DW-005 &mdash; Monthly SAA Station Decay (TTB / TDC / HER)</h3>
-    <span class="cadence-label">Monthly</span>
+    <span class="cadence-label">Monthly (INTERMAGNET)</span>
   </div>
   <div class="stat-row">
-    <div class="stat"><span class="stat-label">TTB (WIN-042)</span><span class="stat-value">77 nT/yr</span></div>
-    <div class="stat"><span class="stat-label">TDC (WIN-041)</span><span class="stat-value">79.7 nT/yr</span></div>
-    <div class="stat"><span class="stat-label">HER (WIN-041)</span><span class="stat-value">51.4 nT/yr</span></div>
-    <div class="stat"><span class="stat-label">Dome predicts</span><span class="stat-value">&ge;50 nT/yr both through 2028</span></div>
+    <div class="stat"><span class="stat-label">TTB current rate</span><span class="stat-value">77 nT/yr (WIN-042)</span></div>
+    <div class="stat"><span class="stat-label">TDC current rate</span><span class="stat-value">79.7 nT/yr (WIN-041)</span></div>
+    <div class="stat"><span class="stat-label">HER current rate</span><span class="stat-value">51.4 nT/yr (WIN-041)</span></div>
+    <div class="stat"><span class="stat-label">Dome predicts</span><span class="stat-value">TTB+TDC &ge;50 nT/yr through 2028</span></div>
   </div>
   <table class="log-table">
     <thead>
-      <tr><th>Month</th><th>TTB (nT)</th><th>TDC (nT)</th><th>HER (nT)</th><th>TTB Annual Rate</th><th>vs Prediction</th></tr>
+      <tr><th>Month</th><th>TTB F (nT)</th><th>TDC F (nT)</th><th>HER F (nT)</th><th>TTB Monthly &Delta;</th><th>Annualized Rate</th><th>vs PRED-DECAY-TTB</th></tr>
     </thead>
     <tbody>
       <tr>
-        <td>2025 annual (baseline)</td>
-        <td>&mdash;</td>
-        <td>&mdash;</td>
+        <td>2025 baseline</td>
+        <td>~21,730</td>
+        <td>~23,100</td>
+        <td>~25,400</td>
         <td>&mdash;</td>
         <td>~77 nT/yr</td>
         <td class="normal">&#10003; (WIN-042)</td>
       </tr>
-      <tr><td colspan="6" class="pending-entry" style="padding:0.5rem 0.75rem;">Pull INTERMAGNET monthly means. Source: <a href="https://www.intermagnet.org/data-donnee/download-eng.php">intermagnet.org</a></td></tr>
+      <tr class="note-row">
+        <td colspan="7">Pull monthly from <a href="https://www.intermagnet.org/data-donnee/download-eng.php">INTERMAGNET</a>. TTB = Tsumeb Namibia. TDC = Trindade Island. HER = Hermanus S. Africa.</td>
+      </tr>
     </tbody>
   </table>
 </section>
 
-<!-- ===== DW-006 ===== -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- DW-006: Storm Suppression Tally -->
+<!-- ═══════════════════════════════════════════════════════════ -->
 <section class="tracking-section" id="dw006-log">
   <div class="tracking-header">
     <h3>DW-006 &mdash; Running Storm-SR Suppression Tally</h3>
     <span class="cadence-label">Per G1+ storm event</span>
   </div>
   <div class="stat-row">
-    <div class="stat"><span class="stat-label">Storms logged</span><span class="stat-value">1</span></div>
-    <div class="stat"><span class="stat-label">Suppression confirmed</span><span class="stat-value">1 (W027 falsified elevation)</span></div>
-    <div class="stat"><span class="stat-label">Current rate</span><span class="stat-value">100%</span></div>
-    <div class="stat"><span class="stat-label">Dome predicts</span><span class="stat-value">&ge;75% of G1+ storms</span></div>
+    <div class="stat"><span class="stat-label">Storms logged</span><span class="stat-value">3</span></div>
+    <div class="stat"><span class="stat-label">Suppression confirmed</span><span class="stat-value">1</span></div>
+    <div class="stat"><span class="stat-label">Pending check</span><span class="stat-value">2</span></div>
+    <div class="stat"><span class="stat-label">Confirmed rate</span><span class="stat-value">100% (of checked)</span></div>
+    <div class="stat"><span class="stat-label">Dome predicts</span><span class="stat-value">&ge;75% suppression</span></div>
+    <div class="stat"><span class="stat-label">Falsification threshold</span><span class="stat-value">5 consecutive NO</span></div>
   </div>
-  <div class="immediate-banner">
-    <strong>IMMEDIATE:</strong> March 22 G3 (0900&ndash;1200 UTC) needs to be checked. Navigate to HeartMath March 22 spectrogram. Does amplitude drop during that window? Update the pending row.
+  <div class="immediate-banner" style="border-radius:0;">
+    &#9889; <strong>March 22 PENDING:</strong> G3 confirmed 0900&ndash;1200 UTC. Check HeartMath March 22 amplitude.
+    Suppression = PRED-SR-SUPPRESS confirmed (event 2). No suppression = update model.
   </div>
   <table class="log-table">
     <thead>
-      <tr><th>Date</th><th>Storm Class</th><th>Kp Peak</th><th>SR Suppression %</th><th>Confirmed?</th><th>Source</th></tr>
+      <tr><th>Date</th><th>Storm Class</th><th>Kp Peak</th><th>Storm Phase Checked</th><th>SR Suppression %</th><th>Confirmed?</th><th>HeartMath / Source</th></tr>
     </thead>
     <tbody>
       <tr>
         <td>2026-03-20</td>
-        <td>G4</td>
+        <td class="suppressed">G4</td>
         <td>8.0</td>
-        <td>&gt;30%</td>
-        <td class="suppressed">&#10003; YES (W027 falsification of elevation)</td>
+        <td>Main phase</td>
+        <td class="suppressed">&gt;30%</td>
+        <td class="suppressed">&#10003; YES &mdash; <span class="win-tag">W027</span></td>
         <td>disclosurenews.it Schumann monitoring</td>
       </tr>
       <tr>
+        <td>2026-03-21</td>
+        <td>G1&ndash;G3</td>
+        <td>7</td>
+        <td>Recovery</td>
+        <td class="pending-cell">PENDING</td>
+        <td class="pending-cell">&#10067; Check HeartMath Mar 21</td>
+        <td><a href="https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/">HeartMath GCI</a></td>
+      </tr>
+      <tr>
         <td>2026-03-22</td>
-        <td>G3</td>
+        <td class="suppressed">G3</td>
         <td>~7</td>
-        <td class="pending-entry">PENDING</td>
-        <td class="pending-entry">&#10067; Check HeartMath</td>
-        <td>NOAA confirmed G3 0900&ndash;1200 UTC</td>
+        <td>Main phase (0900&ndash;1200 UTC)</td>
+        <td class="pending-cell">PENDING</td>
+        <td class="pending-cell">&#10067; <strong>PRIORITY CHECK</strong></td>
+        <td>NOAA confirmed. <a href="https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/">HeartMath GCI</a></td>
+      </tr>
+      <tr class="note-row">
+        <td colspan="7">Add row per G1+ event: date | class | kp_peak | phase_checked | suppression_pct | confirmed (Y/N) | source</td>
       </tr>
     </tbody>
   </table>
-  <div class="add-entry-note">Add entry: date | storm_class | kp_peak | sr_suppression_pct | confirmed (Y/N/PENDING) | source</div>
 </section>
 
-<hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- DW-007: Dst Index Tracking (NEW) -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="tracking-section" id="dw007-log">
+  <div class="tracking-header">
+    <h3>DW-007 &mdash; Dst Index Tracking (Ring Current / Aetheric Compression)</h3>
+    <span class="cadence-label">Per storm event</span>
+  </div>
+  <p class="section-intro">
+    Dst measures the strength of Earth&rsquo;s ring current during geomagnetic storms. In ECM, this is the aetheric equatorial compression signature &mdash; the dome&rsquo;s equatorial aether being displaced inward during field stress events. Predicts: deeper Dst events correlate with faster SAA decay in subsequent months (&kappa; coupling). Category 1 data: ground magnetometer network, no model assumptions.
+  </p>
+  <div class="stat-row">
+    <div class="stat"><span class="stat-label">Storm events logged</span><span class="stat-value">1</span></div>
+    <div class="stat"><span class="stat-label">Deepest Dst this period</span><span class="stat-value">&lt;&minus;100 nT (Mar 20)</span></div>
+    <div class="stat"><span class="stat-label">ECM predicts</span><span class="stat-value">Dst recovery rate correlates with SAA decay acceleration</span></div>
+    <div class="stat"><span class="stat-label">Globe predicts</span><span class="stat-value">Dst and SAA decay independent</span></div>
+  </div>
+  <table class="log-table">
+    <thead>
+      <tr><th>Storm Date</th><th>Dst Min (nT)</th><th>Recovery Time (hrs)</th><th>Storm Class</th><th>SAA Month After</th><th>ECM Coupling?</th><th>Source</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2026-03-20</td>
+        <td>&lt;&minus;100 (est.)</td>
+        <td class="pending-cell">PENDING</td>
+        <td>G4</td>
+        <td class="pending-cell">Check April INTERMAGNET</td>
+        <td class="pending-cell">&mdash;</td>
+        <td>NOAA/EarthSky confirmed G4. Exact Dst: <a href="http://wdc.kugi.kyoto-u.ac.jp/dst_realtime/presentmonth/index.html">Kyoto WDC</a></td>
+      </tr>
+      <tr>
+        <td>2026-03-22</td>
+        <td class="pending-cell">PENDING</td>
+        <td class="pending-cell">PENDING</td>
+        <td>G3</td>
+        <td class="pending-cell">Check April INTERMAGNET</td>
+        <td class="pending-cell">&mdash;</td>
+        <td><a href="http://wdc.kugi.kyoto-u.ac.jp/dst_realtime/presentmonth/index.html">Kyoto WDC</a></td>
+      </tr>
+      <tr class="note-row">
+        <td colspan="7">Pull Dst from Kyoto WDC after each storm. Log min Dst + recovery time. Compare SAA monthly delta the following month. Tests &kappa;=1.67 nT/&micro;Gal coupling (WIN-012) at storm timescales.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="add-footer">
+    Dst source: <a href="http://wdc.kugi.kyoto-u.ac.jp/dst_realtime/presentmonth/index.html">Kyoto WDC real-time Dst</a> |
+    Long-term archive: <a href="http://wdc.kugi.kyoto-u.ac.jp/dstdir/index.html">Kyoto Dst archive</a>
+  </div>
+</section>
 
-<h2>How to Use These Logs</h2>
-<p>1. <strong>Daily:</strong> Check HeartMath GCI spectrogram for prior day. Check NOAA Kp. Add one row to DW-001.</p>
-<p>2. <strong>Weekly:</strong> Pull CPC/NOAA AAO index for the week. Add row to DW-003. Pull NOAA NP.xy if updated &mdash; add row to DW-002.</p>
-<p>3. <strong>Per storm:</strong> Every G1+ storm (Kp&ge;5) gets a DW-006 row immediately. Check HeartMath spectrogram within 24h of storm peak.</p>
-<p>4. <strong>Monthly:</strong> Pull INTERMAGNET monthly means for TTB, TDC, HER. Add DW-005 row.</p>
-<p><strong>All logs build the statistical case for or against ECM predictions. Every entry counts.</strong></p>
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- HOW TO USE -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section style="margin-top:2.5rem;padding:1.5rem;background:#0d0d1a;border-radius:8px;border:1px solid #1a1a2e;">
+  <h2 style="margin-top:0;font-size:1.1rem;">How to Use These Logs</h2>
+  <ol style="color:#aaa;font-size:0.85rem;line-height:1.8;">
+    <li><strong>Daily (5 min):</strong> Check <a href="https://sos70.ru/provider.php?file=sra.jpg">Tomsk SR amplitude</a> + <a href="https://www.swpc.noaa.gov">NOAA Kp</a>. Add one row to DW-001. If Kp&lt;1 and SW&gt;8 nPa, also add to DW-004.</li>
+    <li><strong>Per storm (immediate):</strong> Every G1+ event (Kp&ge;5) gets a DW-006 row within 24h. Check HeartMath. Log to DW-007 with Dst from Kyoto WDC.</li>
+    <li><strong>Weekly:</strong> Pull <a href="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/aao/daily_aao.shtml">CPC AAO index</a> for the week. Add DW-003 row.</li>
+    <li><strong>Monthly:</strong> Pull <a href="https://www.ngdc.noaa.gov/geomag/data/poles/NP.xy">NOAA NP.xy</a> &mdash; add DW-002 row. Pull <a href="https://www.intermagnet.org">INTERMAGNET</a> TTB/TDC/HER &mdash; add DW-005 row.</li>
+    <li><strong>After each session with Claude:</strong> Paste new registry HTML into Claude Code and commit. Keeps timestamps honest.</li>
+  </ol>
+  <p style="color:#666;font-size:0.78rem;margin-bottom:0;">All logs build the statistical case for or against ECM predictions. Every entry is a data point. Falsifications are as valuable as confirmations &mdash; they tell the model where it&rsquo;s wrong.</p>
+</section>
 
 <footer>
   <span>Version 50.9</span>
@@ -246,5 +437,6 @@
   <a href="https://github.com/John09289/predictions">GitHub</a>
   <a href="context.html">AI Context</a>
 </footer>
+
 </body>
 </html>
