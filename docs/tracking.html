@@ -53,20 +53,20 @@
   <span><strong>Model:</strong> V50.9</span>
   <span><strong>Confirmed:</strong> 53</span>
   <span><strong>Falsified:</strong> 4</span>
-  <span><strong>Last updated:</strong> 2026-03-23</span>
-  <span><strong>Tracking entries:</strong> 5</span>
+  <span><strong>Last updated:</strong> 2026-03-24</span>
+  <span><strong>Tracking entries:</strong> 6</span>
 </div>
 
 <div id="live-status" style="display:flex;flex-wrap:wrap;gap:1rem;padding:0.75rem 1rem;background:var(--bg-code);border:1px solid var(--border-light);border-radius:var(--radius-sm);margin-bottom:1.5rem;font-size:0.82rem;">
-  <span style="color:var(--text-tertiary);align-self:center;">&#x1F504; Auto-updated 2026-03-23 22:14 UTC</span>
-  <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">Kp: <strong style="color:var(--accent-orange, #e67e22);">6.33 (G2)</strong></span>
+  <span style="color:var(--text-tertiary);align-self:center;">&#x1F504; Auto-updated 2026-03-24 01:03 UTC</span>
+  <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">Kp: <strong style="color:var(--accent-orange, #e67e22);">5.0 (G1)</strong></span>
   <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">NMP: <strong>85.778&deg;N, 138.057&deg;E</strong>&nbsp;ratio: <strong style="color:var(--accent-green);">21.6&times;</strong></span>
-  <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">AAO: <strong style="color:var(--text-secondary);">unavailable (7d)</strong></span>
-  <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">Tomsk: <strong style="color:var(--accent-green);">Live</strong>&nbsp;Amp: 0.077</span>
+  <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">AAO: <strong style="color:var(--accent-red);">-0.387&sigma; (7d)</strong></span>
+  <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">Tomsk: <strong style="color:var(--accent-green);">Live</strong>&nbsp;Amp: 0.09</span>
   <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">Alerts 48h: <strong style="color:var(--accent-red);">11</strong></span>
 </div>
 <div style="background:#fff5f5;border-left:4px solid var(--accent-red);padding:0.75rem 1.5rem;margin-bottom:1rem;font-size:0.85rem;color:var(--accent-red);border-radius:0 var(--radius-sm) var(--radius-sm) 0;">
-  &#9889; <strong>ACTIVE STORM: G2 (Kp 6.33)</strong> &mdash; Check HeartMath for SR suppression. Log to DW-001 and DW-006. This is a PRED-SR-SUPPRESS test event.
+  &#9889; <strong>ACTIVE STORM: G1 (Kp 5.0)</strong> &mdash; Check HeartMath for SR suppression. Log to DW-001 and DW-006. This is a PRED-SR-SUPPRESS test event.
   &rarr; <a href="https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/" style="color:var(--accent-red);">HeartMath GCI</a>
 </div>
 <div class="immediate-banner">
@@ -84,9 +84,9 @@
   </div>
   <p class="section-intro">One row per day. Captures all storm-relevant data in one place. SR columns need HeartMath or Tomsk check each morning. Kp and Dst from NOAA. Solar wind from OMNI2/DSCOVR.</p>
   <div class="stat-row">
-    <div class="stat"><span class="stat-label">Total entries</span><span class="stat-value">5</span></div>
-    <div class="stat"><span class="stat-label">Storm days (G1+)</span><span class="stat-value">4</span></div>
-    <div class="stat"><span class="stat-label">SR suppression confirmed</span><span class="stat-value">1 (2026-03-20)</span></div>
+    <div class="stat"><span class="stat-label">Total entries</span><span class="stat-value">6</span></div>
+    <div class="stat"><span class="stat-label">Storm days (G1+)</span><span class="stat-value">5</span></div>
+    <div class="stat"><span class="stat-label">SR suppression confirmed</span><span class="stat-value">2 (2026-03-20, 2026-03-24)</span></div>
     <div class="stat"><span class="stat-label">SR pending check</span><span class="stat-value">2 days</span></div>
     <div class="stat"><span class="stat-label">Dome predicts</span><span class="stat-value">&gt;75% G1+ &rarr; suppress</span></div>
   </div>
@@ -164,6 +164,19 @@
         <td class="pending-tag" style="font-style:italic;">&#9888; CANDIDATE &mdash; verify HeartMath</td>
         <td>Kp 6.33 peak per NOAA. Tomsk amplitude_index=0.077 auto-flagged as suppressed by pipeline. Check HeartMath to confirm. Source: NOAA SWPC + Tomsk pixel analysis.</td>
       </tr>
+      <tr>
+        <td>2026-03-24</td>
+        <td>5.0</td>
+        <td class="">G1</td>
+        <td>auto-logged</td>
+        <td>—</td>
+        <td>—</td>
+        <td class="unknown-cell">&mdash;</td>
+        <td>0.09</td>
+        <td class="normal">Suppressed (auto-flagged — needs human confirm)</td>
+        <td class="suppressed">&#10003; YES</td>
+        <td>Auto-logged by pipeline. Amp index: 0.09. SR status: Suppressed (auto-flagged — needs human confirm). Manual review required.</td>
+      </tr>
       <tr class="note-row">
         <td colspan="11">Add row daily: date | kp_peak | storm_class | phase (initial/main/recovery/quiet) | Dst | SW_speed | SR_freq | SR_amp_ratio (1.0=baseline) | Tomsk_status | suppressed (Y/N/N/A) | notes + source</td>
       </tr>
@@ -203,6 +216,16 @@
         <td>2.26× (WIN-043)</td>
         <td class="normal">On track</td>
       </tr>
+      <tr>
+        <td>2026-03</td>
+        <td>85.778&deg;N</td>
+        <td>138.057&deg;E</td>
+        <td>-0.18</td>
+        <td>-3.888</td>
+        <td style="color:var(--accent-green);font-weight:600;">21.6&times;</td>
+        <td>—</td>
+        <td class="normal">On track</td>
+      </tr>
       <tr class="note-row">
         <td colspan="8">Pull monthly from <a href="https://www.ngdc.noaa.gov/geomag/data/poles/NP.xy">NOAA NP.xy</a>. Add row each month. PRED-R003 target: 141&ndash;146&deg;E by 2031.</td>
       </tr>
@@ -217,7 +240,7 @@
     <span class="cadence-label">Weekly</span>
   </div>
   <div class="stat-row">
-    <div class="stat"><span class="stat-label">Entries</span><span class="stat-value">1</span></div>
+    <div class="stat"><span class="stat-label">Entries</span><span class="stat-value">2</span></div>
     <div class="stat"><span class="stat-label">12wk mean</span><span class="stat-value">&mdash; (insufficient data)</span></div>
     <div class="stat"><span class="stat-label">Dome predicts</span><span class="stat-value">&gt;+0.3&sigma; 12wk mean</span></div>
     <div class="stat"><span class="stat-label">Globe predicts</span><span class="stat-value">&asymp;0 (random)</span></div>
@@ -234,6 +257,14 @@
         <td>&mdash;</td>
         <td>&mdash; (insufficient)</td>
         <td>W020 test window. Below ≥3% falsification threshold but positive bias noted.</td>
+      </tr>
+      <tr>
+        <td>2026-03-24</td>
+        <td class="suppressed">-0.387&sigma;</td>
+        <td>3/7</td>
+        <td>&mdash;</td>
+        <td>&mdash; (insufficient)</td>
+        <td></td>
       </tr>
       <tr class="note-row">
         <td colspan="6">Continue weekly. Source: <a href="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/aao/daily_aao.shtml">CPC/NOAA AAO</a>. Dome calls: 12wk mean &gt;+0.3&sigma;. Globe calls: &asymp;0.</td>
@@ -429,7 +460,7 @@
 
 <footer>
   <span>Version 50.9</span>
-  <span>2026-03-23</span>
+  <span>2026-03-24</span>
   <span style="color:var(--accent-blue);font-weight:600">53 confirmed</span>
   <span style="color:var(--accent-red)">4 falsified</span>
   <a href="https://github.com/John09289/predictions">GitHub</a>
