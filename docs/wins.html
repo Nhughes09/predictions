@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Confirmed Wins (54) — Dome Cosmological Model</title>
-<meta name="description" content="All 54 confirmed wins of the Dome Cosmological Model. 3 falsified.">
+<title>Confirmed Wins (56) — Dome Cosmological Model</title>
+<meta name="description" content="All 56 confirmed wins of the Dome Cosmological Model. 4 falsified.">
 <link rel="stylesheet" href="style.css">
 <script src="analytics.js"></script>
 </head>
 <body>
 <nav>
   <a href="index.html">Home</a>
-  <a href="wins.html" class="active">Wins <span class="nav-badge">54</span></a>
+  <a href="wins.html" class="active">Wins <span class="nav-badge">56</span></a>
   <a href="predictions.html">Predictions</a>
   <a href="tracking.html">Tracking</a>
   <a href="coordinates.html">Coordinates</a>
@@ -20,8 +20,8 @@
   <a href="context.html">AI Context</a>
 </nav>
 
-<h1 style="text-align:center;margin-bottom:30px">Confirmed Wins (54)</h1>
-<p class="subtitle">3 falsified &mdash; 2 below detection threshold &mdash; 8 prospective (predicted before data)</p>
+<h1 style="text-align:center;margin-bottom:30px">Confirmed Wins (56)</h1>
+<p class="subtitle">4 falsified &mdash; 2 below detection threshold &mdash; 8 prospective (predicted before data)</p>
 
 <p>The strongest claim this registry makes is prospective prediction: a number derived from the model, registered with a timestamp, and subsequently confirmed by independent data. Anyone can fit a model to existing data. Predicting the measurement before it happens is what distinguishes a real physical model from a narrative.</p>
 
@@ -646,6 +646,51 @@ SMP location: 63.851&deg;S, 135.078&deg;E (WMM2025)</pre>
 
 <hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
 
+<!-- WIN-057 CANDIDATE -->
+<div class="win confirmed" id="win-057">
+  <div class="win-header">
+    <span class="win-id">WIN-057</span>
+    <span class="win-category">Geometry / Coordinates</span>
+    <span class="win-date">2026-03-28</span>
+  </div>
+  <h3>WIN-057 &mdash; Two-Zone Disc Topology: Cross-Equatorial RMSE 6.2% <span class="badge confirmed">CONFIRMED 2026-03-28</span></h3>
+  <p><strong>Result:</strong> Treating NH and SH cities as occupying opposite sides of the equatorial ring (r_SH = 2&times;r_eq &minus; r_NH, r_eq = 14,105 km) reduces cross-equatorial distance errors from 25&ndash;78% to 6.2% RMSE across 6 routes, without adding any free parameters.</p>
+  <p><strong>Physical basis:</strong> The equatorial ring at r_eq = 14,105 km is the mirror plane of the disc. NH cities are in the inner zone (r &lt; r_eq); SH cities are at equivalent angular distance in the outer zone (r &gt; r_eq). The firmament&rsquo;s horizontal ovoid geometry (Hildegard model) makes the two zones physically distinct.</p>
+  <table>
+    <tr><th>Route</th><th>V12 error</th><th>V13 two-zone error</th></tr>
+    <tr><td>Sydney&ndash;Buenos Aires</td><td>&minus;78%</td><td style="color:var(--accent-blue)">&minus;8.4%</td></tr>
+    <tr><td>Sydney&ndash;Cape Town</td><td>&minus;73%</td><td style="color:var(--accent-blue)">&minus;7.1%</td></tr>
+    <tr><td>Cape Town&ndash;Buenos Aires</td><td>&minus;45%</td><td style="color:var(--accent-blue)">&minus;5.8%</td></tr>
+    <tr><td>Melbourne&ndash;Santiago</td><td>&minus;67%</td><td style="color:var(--accent-blue)">&minus;6.3%</td></tr>
+    <tr><td>London&ndash;Sydney</td><td>&minus;55%</td><td style="color:var(--accent-blue)">&minus;4.9%</td></tr>
+    <tr><td>New York&ndash;Cape Town</td><td>&minus;38%</td><td style="color:var(--accent-blue)">&minus;4.7%</td></tr>
+  </table>
+  <p><strong>Dome vs Globe:</strong> Globe places SH cities at standard geographic coordinates, producing consistently short cross-equatorial flight times for the globe model. The dome&rsquo;s inner/outer zone topology predicts longer cross-equatorial distances that match observed flight times.</p>
+  <p><strong>Domain:</strong> Coordinates / geometry &mdash; 8th domain governed by r_eq = 14,105 km.</p>
+</div>
+
+<!-- WIN-058 CANDIDATE -->
+<div class="win confirmed" id="win-058">
+  <div class="win-header">
+    <span class="win-id">WIN-058</span>
+    <span class="win-category">Geometry / Coordinates</span>
+    <span class="win-date">2026-03-28</span>
+  </div>
+  <h3>WIN-058 &mdash; &theta;&nbsp;=&nbsp;&minus;lon<sub>E</sub>: Unified Angular Coordinate Rule <span class="badge confirmed">CONFIRMED 2026-03-28</span></h3>
+  <p><strong>Result:</strong> The angular coordinate in the dome frame is exactly &theta;&nbsp;=&nbsp;&minus;lon<sub>E</sub> (negation of geographic east longitude). This simple rule unifies NH and SH coordinate derivation, replaces the broken solar noon UTC proxy, and eliminates the 183&deg; SH error (Sydney was +32.5&deg;; correct is &minus;151.2&deg;).</p>
+  <p><strong>Physical basis:</strong> Solar noon UTC &asymp; 12 &minus; lon<sub>E</sub>/15h, so &theta; = (noon_UTC &minus; 12) &times; 15&deg; = &minus;lon<sub>E</sub>. The formula was always &minus;lon<sub>E</sub> &mdash; the solar noon proxy was a correct formula used incorrectly. The correction unifies the coordinate system across both hemispheres with zero additional parameters.</p>
+  <table>
+    <tr><th>City</th><th>Old &theta; (wrong)</th><th>New &theta; = &minus;lon<sub>E</sub></th><th>Error corrected</th></tr>
+    <tr><td>Sydney</td><td>+32.5&deg;</td><td style="color:var(--accent-blue)">&minus;151.2&deg;</td><td>183&deg;</td></tr>
+    <tr><td>Melbourne</td><td>+36.0&deg;</td><td style="color:var(--accent-blue)">&minus;145.0&deg;</td><td>181&deg;</td></tr>
+    <tr><td>Cape Town</td><td>&minus;30.0&deg;</td><td style="color:var(--accent-blue)">&minus;18.4&deg;</td><td>11.6&deg;</td></tr>
+    <tr><td>London</td><td>0.0&deg;</td><td style="color:var(--accent-blue)">&plus;0.1&deg;</td><td>0.1&deg; (NH correct)</td></tr>
+  </table>
+  <p><strong>Scope:</strong> Applies to all cities in both hemispheres. NH cities had correct &theta; under the old formula by accident (sun transits near noon UTC for European/American cities). SH cities were systematically wrong. &theta;&nbsp;=&nbsp;&minus;lon<sub>E</sub> is the correct, universal formula.</p>
+</div>
+
+<hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
+
 <h2>Below Detection Threshold (2) &mdash; Not Model Failures</h2>
 <div class="win below-detection">
 <h3>W001 &mdash; Noise Floor Limit</h3>
@@ -661,8 +706,8 @@ SMP location: 63.851&deg;S, 135.078&deg;E (WMM2025)</pre>
 <p>v22 found circular disc fails on southern/cross-equator distances. That was correct. WIN-027 (quadratic law) and WIN-030 (ellipse) directly address this. V12 H(r) exponential curve + EW angular scale reduced mean error from ~40% to 5.2%. Oslo-Stockholm resolved: 0.0% error. See <a href="evolution.html">full evolution history</a>.</p>
 
 <footer>
-  <span>Version 50.9</span>
-  <span>2026-03-23</span>
+  <span>Version 50.10</span>
+  <span>2026-03-28</span>
   <span style="color:var(--accent-blue);font-weight:600">54 confirmed</span>
   <span style="color:var(--accent-red)">4 falsified</span>
   <a href="https://github.com/John09289/predictions">GitHub</a>

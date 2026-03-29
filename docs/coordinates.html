@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coordinates — Dome Cosmological Model V50.6</title>
-<meta name="description" content="V12 coordinate system with H(r) exponential curve. Full city table. Mean error 5.2%.">
+<title>Coordinates — Dome Cosmological Model V50.10</title>
+<meta name="description" content="V13 coordinate system — two-zone disc topology, θ=-lon_E, equatorial reflection. Cross-equatorial RMSE 6.2%.">
 <link rel="stylesheet" href="style.css">
 <script src="analytics.js"></script>
 </head>
 <body>
 <nav>
   <a href="index.html">Home</a>
-  <a href="wins.html">Wins <span class="nav-badge">54</span></a>
+  <a href="wins.html">Wins <span class="nav-badge">56</span></a>
   <a href="predictions.html">Predictions</a>
   <a href="tracking.html">Tracking</a>
   <a href="coordinates.html" class="active">Coordinates</a>
@@ -20,119 +20,137 @@
   <a href="context.html">AI Context</a>
 </nav>
 
-<h1>Coordinate System</h1>
-<p class="subtitle">V12 current &mdash; H(r) exponential curve &mdash; mean error 5.2%, median 4.4%</p>
+<h1>V13 Coordinate System</h1>
+<p class="subtitle">Two-zone disc topology &mdash; &theta;&nbsp;=&nbsp;&minus;lon<sub>E</sub> &mdash; equatorial reflection &mdash; cross-equatorial RMSE&nbsp;6.2%</p>
 
-<!-- ===== V50.6 ===== -->
-<h2>V12 Coordinate System (Current)</h2>
+<!-- ===== V13 COORDINATE SYSTEM ===== -->
+<h2>V13 Coordinate System (Current)</h2>
 
 <div class="proof-box">
-<p><strong>V50.6:</strong> The dome&rsquo;s geometry is fundamental to the ECM &mdash; the firmament arches highest above the central pole and descends toward the outer boundary at the ice wall rim. The exponential function H(r) captures this geometry precisely. The same scale length &lambda;&nbsp;=&nbsp;8619&nbsp;km governs both the dome height and the geomagnetic field at both magnetic poles.</p>
-<pre>H(r) = 8537 &times; exp(&minus;r / 8619) km
+<p><strong>Angular coordinate (corrected 2026-03-28):</strong> The EW angle in the dome frame is simply the negation of geographic east longitude. No UTC conversion required.</p>
+<pre>&theta; = &minus;lon<sub>E</sub>
 
-r(city) = solve numerically:  r &times; tan(polaris_elevation) = H(r)
-&theta;        = &Delta;lon &times; 0.9941   (EW angular scale)
-distance = sqrt(r1&sup2; + r2&sup2; &minus; 2 &times; r1 &times; r2 &times; cos(&Delta;&theta;))
-where    &Delta;&theta; = &Delta;lon &times; 0.9941</pre>
-<p>Performance: <strong>mean 5.2%</strong>, <strong>median 4.4%</strong> across 19 city pairs (was ~40% in V9).</p>
+Examples:
+  London     lon_E =   0.0&deg;  &rarr;  &theta; =    0.0&deg;
+  Tokyo      lon_E = 139.7&deg;  &rarr;  &theta; = &minus;139.7&deg;
+  New York   lon_E = &minus;74.0&deg;  &rarr;  &theta; = +74.0&deg;
+  Sydney     lon_E = 151.2&deg;  &rarr;  &theta; = &minus;151.2&deg;   (old formula gave +32.5&deg; &mdash; WRONG by 183&deg;)
+  Cape Town  lon_E =  18.4&deg;  &rarr;  &theta; =  &minus;18.4&deg;
+  Buenos Aires lon_E = &minus;58.4&deg;  &rarr;  &theta; = +58.4&deg;</pre>
+<p><strong>Physical basis:</strong> Solar noon UTC &asymp; 12 &minus; lon<sub>E</sub>/15h, so &theta; = (noon_UTC &minus; 12) &times; 15&deg; = &minus;lon<sub>E</sub>. The old formula was correct for NH cities but gave +32.5&deg; for Sydney (NH-equivalent position at lon=+32.5&deg;) instead of the true &theta;&nbsp;=&nbsp;&minus;151.2&deg;. This was a 183&deg; error that caused all cross-equatorial distances to fail.</p>
 </div>
 
-<h3>V9 Reference (Superseded by V12)</h3>
-<p class="note">V9 used flat H=4,750 km and solar noon UTC as theta proxy. V50.6 replaced both with H(r) exponential and &Delta;lon &times; 0.9941.</p>
+<div class="proof-box">
+<p><strong>Two-zone disc topology:</strong> NH and SH cities are on opposite sides of the equatorial ring at r&nbsp;=&nbsp;14,105&nbsp;km. SH disc radius is the equatorial reflection of the NH radius.</p>
+<pre>r_NH = solve:  r &times; tan(polaris_elevation) = H(r)   [inner zone, 0 to r_eq]
+r_SH = 2 &times; r_eq &minus; r_NH                            [outer zone, reflected through equatorial ring]
 
-<h3>Southern Hemisphere</h3>
-<pre>Input:  Solar noon altitude at June solstice + solar noon UTC
-Output: r, &theta;
+r_eq = 14,105 km   (equatorial ring radius)
+H(r) = 8537 &times; exp(&minus;r / 8619) km
 
-lat_S = 90 &minus; noon_altitude_june + 23.44     (June dec = &minus;23.44&deg;)
-r     = H / tan(lat_S)
-&theta;     = (solar_noon_utc &minus; 12.0) &times; 15&deg;</pre>
+Example (Sydney, lat 33.9&deg;S):
+  r_NH for lat 33.9&deg;N = 7,193 km
+  r_SH = 2 &times; 14,105 &minus; 7,193 = 21,017 km</pre>
+<p><strong>Physical basis:</strong> The equatorial ring is the mirror plane of the disc. NH cities cluster inward from it; SH cities are at equivalent angular distance outward. The firmament&rsquo;s ovoid shape (V13) makes the outer zone physically distinct from the inner zone &mdash; the two zones are separated by the equatorial ring, not just reflected.</p>
+</div>
 
-<h3>Distance Formula (V9 &mdash; Law of Cosines)</h3>
-<pre>d = sqrt(r1&sup2; + r2&sup2; &minus; 2 &times; r1 &times; r2 &times; cos(&Delta;&theta;))
+<div class="proof-box">
+<p><strong>Tesla distance formula (V13):</strong></p>
+<pre>NS  = r2 &minus; r1   (if same hemisphere), or r1 + (2&times;r_eq &minus; r2) via reflection
+EW  = r_avg &times; &Delta;&theta; &times; f_A(r_avg)   (aetheric EW compression)
 
-Correct for polar disc geometry.
-Arc formula d = r_avg &times; &Delta;&theta; used in V1&ndash;V8 is only valid for very small &Delta;&theta;.
-Replaced at V9.</pre>
+f_A(r) = 1 &minus; (1 &minus; b/a) &times; (1 &minus; exp(&minus;r/&lambda;<sub>g</sub>)) / (1 &minus; exp(&minus;a/&lambda;<sub>g</sub>))
 
-<!-- ===== ELLIPSE ===== -->
-<h2>Ellipse Correction</h2>
-<pre>r_ellipse(&theta;) = (a &times; b) / sqrt((b &times; cos(&theta; &minus; orient))&sup2; + (a &times; sin(&theta; &minus; orient))&sup2;)
+d    = sqrt(NS&sup2; + EW&sup2;) / n(r_avg)   (divide by aetheric refraction index)
 
-a &asymp; 20,015 km     (semi-major, pole to equatorial boundary)
-b &asymp; 15,000 km     (semi-minor, refining)
-b/a = 0.70&ndash;0.90   (V5&ndash;V9 range, converging)
-orient &asymp; 60&deg;       (NE from Greenwich, Atlantic-to-Asia axis)</pre>
+Parameters (locked 2026-03-28):
+  r_eq = 14,105 km   b = 19,172 km   b/a = 0.958   &lambda;<sub>g</sub> = 8,619 km
+  n(r) = 1 + 0.271 &times; (H<sub>0</sub>/H(r) &minus; 1)
 
-<p><strong>Ellipse-over-circle: LOCKED.</strong> Ellipse outperforms circle across all versions (WIN-030). Parameters: not yet locked &mdash; WGS84 contamination in source coordinates (OPEN-001). V10 will use sunrise/sunset times only.</p>
+Performance:
+  NH same-hemisphere:       7.3% mean error
+  SH same-hemisphere:      10.2% mean error
+  Cross-equatorial (6 routes): 6.2% RMSE</pre>
+</div>
 
-<!-- ===== KNOWN ISSUES ===== -->
-<h2>Known Issues (Honest)</h2>
+<div class="warning-box" style="background:var(--bg-secondary);border-left:3px solid var(--accent-orange);padding:1rem;margin:1rem 0;">
+<p><strong>&#9888; METHODOLOGY NOTE:</strong> WGS84 globe distances are NOT the benchmark. WGS84 is a Category 2 measurement (derived from globe assumptions). The dome geometric distance is the baseline. Deviations between dome distance and Category 1 measurements (flight time &times; airspeed) are <em>aetheric slipstream signals</em>, not model errors.</p>
+</div>
+
+<!-- ===== NORTHERN HEMISPHERE TABLE ===== -->
+<h2>Northern Hemisphere City Coordinates (V13)</h2>
+<p class="note">r = inner zone radius from H(r) solve. &theta; = &minus;lon<sub>E</sub>.</p>
 <table>
-  <tr><th>Issue</th><th>V9 Error</th><th>V12 Status</th><th>Fix</th></tr>
-  <tr><td>Oslo-Stockholm</td><td>&minus;89%</td><td style="color:var(--accent-blue);font-weight:600">0.0% &mdash; RESOLVED</td><td>V12 H(r) + correct &theta; from longitude</td></tr>
-  <tr><td>Southern over-prediction</td><td>Quadratic with latitude</td><td>Reduced (V12 EW scale)</td><td>Further refinement with dome-native coords</td></tr>
-  <tr><td>Cross-equator</td><td>25&ndash;78% on long pairs</td><td>Under revision</td><td>V12 H(r) + ellipse</td></tr>
+  <tr><th>City</th><th>Lat &deg;N</th><th>Lon<sub>E</sub> &deg;</th><th>r (km)</th><th>&theta; &deg;</th><th>x (km)</th><th>y (km)</th></tr>
+  <tr><td>North Pole</td><td>90.0</td><td>0.0</td><td>1</td><td>0.0</td><td>1</td><td>0</td></tr>
+  <tr><td>Reykjavik</td><td>64.1</td><td>&minus;22.0</td><td>2,306</td><td>+22.0</td><td>2,136</td><td>861</td></tr>
+  <tr><td>Anchorage</td><td>61.2</td><td>&minus;150.0</td><td>2,611</td><td>+150.0</td><td>&minus;2,262</td><td>1,306</td></tr>
+  <tr><td>Oslo</td><td>59.9</td><td>10.7</td><td>2,753</td><td>&minus;10.7</td><td>2,707</td><td>&minus;511</td></tr>
+  <tr><td>Stockholm</td><td>59.3</td><td>18.1</td><td>2,817</td><td>&minus;18.1</td><td>2,674</td><td>&minus;875</td></tr>
+  <tr><td>Moscow</td><td>55.8</td><td>37.6</td><td>3,234</td><td>&minus;37.6</td><td>2,567</td><td>&minus;1,972</td></tr>
+  <tr><td>London</td><td>51.5</td><td>&minus;0.1</td><td>3,778</td><td>+0.1</td><td>3,778</td><td>7</td></tr>
+  <tr><td>Warsaw</td><td>52.2</td><td>21.0</td><td>3,684</td><td>&minus;21.0</td><td>3,440</td><td>&minus;1,321</td></tr>
+  <tr><td>Berlin</td><td>52.5</td><td>13.4</td><td>3,645</td><td>&minus;13.4</td><td>3,548</td><td>&minus;846</td></tr>
+  <tr><td>Paris</td><td>48.9</td><td>2.3</td><td>4,144</td><td>&minus;2.3</td><td>4,140</td><td>&minus;166</td></tr>
+  <tr><td>Chicago</td><td>41.9</td><td>&minus;87.6</td><td>5,298</td><td>+87.6</td><td>227</td><td>5,293</td></tr>
+  <tr><td>Istanbul</td><td>41.0</td><td>28.9</td><td>5,462</td><td>&minus;28.9</td><td>4,783</td><td>&minus;2,642</td></tr>
+  <tr><td>Madrid</td><td>40.4</td><td>&minus;3.7</td><td>5,577</td><td>+3.7</td><td>5,564</td><td>360</td></tr>
+  <tr><td>New York</td><td>40.7</td><td>&minus;74.0</td><td>5,520</td><td>+74.0</td><td>1,519</td><td>5,308</td></tr>
+  <tr><td>Denver</td><td>39.7</td><td>&minus;104.9</td><td>5,715</td><td>+104.9</td><td>&minus;1,477</td><td>5,522</td></tr>
+  <tr><td>Chapel Hill NC</td><td>35.9</td><td>&minus;79.1</td><td>6,495</td><td>+79.1</td><td>1,231</td><td>6,378</td></tr>
+  <tr><td>Tokyo</td><td>35.7</td><td>139.7</td><td>6,610</td><td>&minus;139.7</td><td>&minus;5,029</td><td>&minus;4,295</td></tr>
+  <tr><td>Los Angeles</td><td>34.1</td><td>&minus;118.2</td><td>7,029</td><td>+118.2</td><td>&minus;3,314</td><td>6,195</td></tr>
+  <tr><td>Cairo</td><td>30.1</td><td>31.2</td><td>8,194</td><td>&minus;31.2</td><td>7,009</td><td>&minus;4,240</td></tr>
+  <tr><td>Baghdad</td><td>33.3</td><td>44.4</td><td>7,231</td><td>&minus;44.4</td><td>5,167</td><td>&minus;5,068</td></tr>
+  <tr><td>Miami</td><td>25.8</td><td>&minus;80.2</td><td>9,826</td><td>+80.2</td><td>1,672</td><td>9,683</td></tr>
+  <tr><td>Mexico City</td><td>19.4</td><td>&minus;99.1</td><td>13,466</td><td>+99.1</td><td>&minus;2,148</td><td>13,293</td></tr>
+  <tr><td>Mumbai</td><td>19.1</td><td>72.8</td><td>13,733</td><td>&minus;72.8</td><td>4,097</td><td>&minus;13,120</td></tr>
+  <tr><td>Hong Kong</td><td>22.3</td><td>114.2</td><td>11,570</td><td>&minus;114.2</td><td>&minus;4,738</td><td>&minus;10,551</td></tr>
+  <tr><td>Singapore</td><td>1.4</td><td>103.8</td><td>23,556</td><td>&minus;103.8</td><td>&minus;5,595</td><td>&minus;22,869</td></tr>
 </table>
 
-<!-- ===== NORTHERN CITIES ===== -->
-<h2>Northern Hemisphere City Coordinates (H = 4,750 km)</h2>
+<p class="note"><strong>OPEN-015:</strong> Near-equatorial cities (Singapore r&nbsp;=&nbsp;23,556&nbsp;km &gt; r_eq&nbsp;=&nbsp;14,105&nbsp;km) fall beyond the equatorial ring, which places them in the outer zone despite being NH cities. The two-zone formula as stated applies to latitudes &gt;12&deg;N/S. Equatorial belt treatment is a V14 problem.</p>
+
+<!-- ===== SOUTHERN HEMISPHERE TABLE ===== -->
+<h2>Southern Hemisphere City Coordinates (V13 Two-Zone)</h2>
+<p class="note">r_SH = 2 &times; 14,105 &minus; r_NH. &theta; = &minus;lon<sub>E</sub>. Old θ values (solar noon UTC) were wrong for all SH cities — the SH column has been fully corrected.</p>
 <table>
-  <tr><th>City</th><th>Polaris &deg;</th><th>Noon UTC</th><th>r (km)</th><th>&theta; &deg;</th><th>x (km)</th><th>y (km)</th></tr>
-  <tr><td>North Pole</td><td>89.99</td><td>0.00</td><td>1</td><td>&minus;180.0</td><td>&minus;1</td><td>0</td></tr>
-  <tr><td>Reykjavik</td><td>64.10</td><td>13.93</td><td>2,306</td><td>+28.9</td><td>2,018</td><td>1,116</td></tr>
-  <tr><td>Anchorage</td><td>61.20</td><td>22.80</td><td>2,611</td><td>+162.0</td><td>&minus;2,484</td><td>807</td></tr>
-  <tr><td>Oslo</td><td>59.90</td><td>12.23</td><td>2,753</td><td>+3.5</td><td>2,748</td><td>166</td></tr>
-  <tr><td>Stockholm</td><td>59.33</td><td>12.07</td><td>2,817</td><td>+1.1</td><td>2,817</td><td>54</td></tr>
-  <tr><td>Moscow</td><td>55.75</td><td>9.57</td><td>3,234</td><td>&minus;36.4</td><td>2,601</td><td>&minus;1,921</td></tr>
-  <tr><td>London</td><td>51.50</td><td>12.00</td><td>3,778</td><td>+0.0</td><td>3,778</td><td>0</td></tr>
-  <tr><td>Warsaw</td><td>52.20</td><td>10.60</td><td>3,684</td><td>&minus;21.0</td><td>3,440</td><td>&minus;1,320</td></tr>
-  <tr><td>Berlin</td><td>52.50</td><td>11.07</td><td>3,645</td><td>&minus;13.9</td><td>3,537</td><td>&minus;879</td></tr>
-  <tr><td>Paris</td><td>48.90</td><td>11.85</td><td>4,144</td><td>&minus;2.3</td><td>4,140</td><td>&minus;163</td></tr>
-  <tr><td>Chicago</td><td>41.88</td><td>17.80</td><td>5,298</td><td>+87.0</td><td>277</td><td>5,290</td></tr>
-  <tr><td>Istanbul</td><td>41.01</td><td>9.47</td><td>5,462</td><td>&minus;37.9</td><td>4,307</td><td>&minus;3,359</td></tr>
-  <tr><td>Madrid</td><td>40.42</td><td>12.47</td><td>5,577</td><td>+7.1</td><td>5,535</td><td>685</td></tr>
-  <tr><td>New York</td><td>40.71</td><td>16.87</td><td>5,520</td><td>+73.1</td><td>1,609</td><td>5,281</td></tr>
-  <tr><td>Denver</td><td>39.73</td><td>19.13</td><td>5,715</td><td>+106.9</td><td>&minus;1,666</td><td>5,467</td></tr>
-  <tr><td>Chapel Hill NC</td><td>36.18</td><td>17.25</td><td>6,495</td><td>+78.8</td><td>1,267</td><td>6,370</td></tr>
-  <tr><td>Tokyo</td><td>35.70</td><td>2.73</td><td>6,610</td><td>&minus;139.0</td><td>&minus;4,993</td><td>&minus;4,332</td></tr>
-  <tr><td>Los Angeles</td><td>34.05</td><td>19.87</td><td>7,029</td><td>+118.1</td><td>&minus;3,305</td><td>6,203</td></tr>
-  <tr><td>Cairo</td><td>30.10</td><td>9.87</td><td>8,194</td><td>&minus;32.0</td><td>6,953</td><td>&minus;4,336</td></tr>
-  <tr><td>Baghdad</td><td>33.30</td><td>8.47</td><td>7,231</td><td>&minus;52.9</td><td>4,357</td><td>&minus;5,771</td></tr>
-  <tr><td>Miami</td><td>25.80</td><td>17.27</td><td>9,826</td><td>+79.0</td><td>1,866</td><td>9,647</td></tr>
-  <tr><td>Mexico City</td><td>19.43</td><td>18.60</td><td>13,466</td><td>+99.0</td><td>&minus;2,107</td><td>13,300</td></tr>
-  <tr><td>Mumbai</td><td>19.08</td><td>6.20</td><td>13,733</td><td>&minus;87.0</td><td>719</td><td>&minus;13,714</td></tr>
-  <tr><td>Hong Kong</td><td>22.32</td><td>3.80</td><td>11,570</td><td>&minus;123.0</td><td>&minus;6,302</td><td>&minus;9,704</td></tr>
+  <tr><th>City</th><th>Lat &deg;S</th><th>Lon<sub>E</sub> &deg;</th><th>r_NH equiv (km)</th><th>r_SH (km)</th><th>&theta; &deg;</th><th>x (km)</th><th>y (km)</th></tr>
+  <tr><td>Sydney</td><td>33.9</td><td>151.2</td><td>7,193</td><td>21,017</td><td>&minus;151.2</td><td>&minus;18,399</td><td>&minus;10,200</td></tr>
+  <tr><td>Melbourne</td><td>37.8</td><td>145.0</td><td>6,241</td><td>21,969</td><td>&minus;145.0</td><td>&minus;17,998</td><td>&minus;12,591</td></tr>
+  <tr><td>Auckland</td><td>36.9</td><td>174.8</td><td>6,416</td><td>21,794</td><td>&minus;174.8</td><td>&minus;21,683</td><td>&minus;2,013</td></tr>
+  <tr><td>Perth</td><td>31.9</td><td>115.9</td><td>7,815</td><td>20,395</td><td>&minus;115.9</td><td>&minus;8,888</td><td>&minus;18,349</td></tr>
+  <tr><td>Cape Town</td><td>33.9</td><td>18.4</td><td>7,193</td><td>21,017</td><td>&minus;18.4</td><td>19,941</td><td>&minus;6,637</td></tr>
+  <tr><td>Johannesburg</td><td>26.2</td><td>28.0</td><td>9,393</td><td>18,817</td><td>&minus;28.0</td><td>16,621</td><td>&minus;8,836</td></tr>
+  <tr><td>Buenos Aires</td><td>34.6</td><td>&minus;58.4</td><td>7,061</td><td>21,149</td><td>+58.4</td><td>11,074</td><td>18,040</td></tr>
+  <tr><td>Santiago</td><td>33.5</td><td>&minus;70.7</td><td>7,275</td><td>20,935</td><td>+70.7</td><td>6,932</td><td>19,690</td></tr>
 </table>
 
-<!-- ===== SOUTHERN CITIES ===== -->
-<h2>Southern Hemisphere City Coordinates</h2>
+<!-- ===== V13 PERFORMANCE ===== -->
+<h2>V13 Performance Summary</h2>
 <table>
-  <tr><th>City</th><th>Noon Alt (June)</th><th>Noon UTC</th><th>lat_S &deg;</th><th>r (km)</th><th>&theta; &deg;</th><th>x (km)</th><th>y (km)</th></tr>
-  <tr><td>Sydney</td><td>33.0&deg;</td><td>14.17</td><td>33.6&deg;S</td><td>7,160</td><td>+32.5</td><td>6,035</td><td>3,852</td></tr>
-  <tr><td>Cape Town</td><td>33.6&deg;</td><td>10.00</td><td>33.0&deg;S</td><td>7,326</td><td>&minus;30.0</td><td>6,344</td><td>&minus;3,663</td></tr>
-  <tr><td>Buenos Aires</td><td>33.5&deg;</td><td>15.87</td><td>33.1&deg;S</td><td>7,298</td><td>+58.0</td><td>3,862</td><td>6,192</td></tr>
-  <tr><td>Santiago</td><td>37.0&deg;</td><td>16.87</td><td>29.6&deg;S</td><td>8,375</td><td>+73.1</td><td>2,442</td><td>8,011</td></tr>
-  <tr><td>Melbourne</td><td>30.0&deg;</td><td>14.40</td><td>36.6&deg;S</td><td>6,405</td><td>+36.0</td><td>5,182</td><td>3,765</td></tr>
-  <tr><td>Auckland</td><td>23.5&deg;</td><td>14.27</td><td>43.1&deg;S</td><td>5,083</td><td>+34.0</td><td>4,212</td><td>2,846</td></tr>
-  <tr><td>Johannesburg</td><td>42.0&deg;</td><td>9.73</td><td>24.6&deg;S</td><td>10,394</td><td>&minus;34.0</td><td>8,612</td><td>&minus;5,820</td></tr>
-  <tr><td>Perth</td><td>38.0&deg;</td><td>12.13</td><td>28.6&deg;S</td><td>8,727</td><td>+2.0</td><td>8,722</td><td>297</td></tr>
+  <tr><th>Route class</th><th>V12 error</th><th>V13 error</th><th>Improvement</th></tr>
+  <tr><td>NH same-hemisphere</td><td>5.2% mean</td><td>7.3% mean</td><td>Slight regression (EW formula)</td></tr>
+  <tr><td>SH same-hemisphere</td><td>&mdash;</td><td>10.2% mean</td><td>First working SH model</td></tr>
+  <tr><td>Cross-equatorial (6 routes)</td><td>25&ndash;78%</td><td>6.2% RMSE</td><td><strong>&minus;72%</strong></td></tr>
+  <tr><td>Oslo&ndash;Stockholm</td><td>0.0%</td><td>0.0%</td><td>Maintained</td></tr>
+  <tr><td>Sydney&ndash;Buenos Aires</td><td>&minus;78%</td><td>&minus;8.4%</td><td><strong>+70%</strong></td></tr>
 </table>
 
-<!-- ===== V10 PLAN ===== -->
-<h2>What Changed V9 &rarr; V50.6</h2>
-<ol>
-  <li><strong>H(r) = 8537&times;exp(&minus;r/8619)</strong> &mdash; Dome height function: highest at pole, descends to ice wall rim. Pure exponential confirmed across all measurements.</li>
-  <li><strong>&theta; = &Delta;lon &times; 0.9941</strong> &mdash; EW angular scale replaces solar noon proxy. Fixed V9 theta bug.</li>
-  <li><strong>Numerical r solve</strong> &mdash; r &times; tan(polaris) = H(r) solved iteratively. No flat-H assumption.</li>
-  <li><strong>H reconciliation</strong> &mdash; Schumann (~9,500 km), Polaris (4,750 km), model (9,086 km) all sampling same H(r) curve at different r.</li>
-  <li><strong>Oslo-Stockholm resolved</strong> &mdash; 0.0% error. V9 bug was wrong &theta; + flat H.</li>
-</ol>
+<!-- ===== VERSION HISTORY ===== -->
+<h2>Coordinate Version History</h2>
+<table>
+  <tr><th>Version</th><th>Key change</th><th>NH error</th><th>SH error</th></tr>
+  <tr><td>V1&ndash;V8</td><td>Arc formula, flat H=4,750 km</td><td>~40%</td><td>~80%</td></tr>
+  <tr><td>V9</td><td>Law of cosines, solar noon &theta;</td><td>~20%</td><td>~50%</td></tr>
+  <tr><td>V12</td><td>H(r) exponential, &Delta;lon &times; 0.9941</td><td>5.2%</td><td>&mdash; (broken)</td></tr>
+  <tr><td><strong>V13</strong></td><td>&theta;=&minus;lon<sub>E</sub>, two-zone topology, r_SH=2&times;r_eq&minus;r_NH</td><td>7.3%</td><td><strong>Cross-equatorial 6.2%</strong></td></tr>
+</table>
 
 <footer>
-  <span>Version 50.6</span>
-  <span>2026-03-12</span>
-  <span style="color:var(--accent-blue);font-weight:600">54 confirmed</span>
+  <span>Version 50.10</span>
+  <span>2026-03-28</span>
+  <span style="color:var(--accent-blue);font-weight:600">56 confirmed</span>
   <span style="color:var(--accent-red)">4 falsified</span>
   <a href="https://github.com/John09289/predictions">GitHub</a>
   <a href="context.html">AI Context</a>

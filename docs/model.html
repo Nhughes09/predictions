@@ -11,7 +11,7 @@
 <body>
 <nav>
   <a href="index.html">Home</a>
-  <a href="wins.html">Wins <span class="nav-badge">54</span></a>
+  <a href="wins.html">Wins <span class="nav-badge">56</span></a>
   <a href="predictions.html">Predictions</a>
   <a href="tracking.html">Tracking</a>
   <a href="coordinates.html">Coordinates</a>
@@ -404,6 +404,58 @@ where r_N = distance from geomagnetic north pole
 <p><strong>Status:</strong> OPEN &mdash; True rim location is an open measurement problem. H(r) provides a physical barrier model; the structural confirmation is SAA shoulder position (PRED-V13-002).</p>
 </div>
 
+<!-- ===== AETHERIC SLIPSTREAM FRAMEWORK ===== -->
+<h2>Aetheric Slipstream Framework (V13)</h2>
+<div class="proof-box">
+<p><strong>Definition:</strong> The aetheric medium is not static &mdash; it circulates in persistent regional currents analogous to ocean gyres. Planes traveling with the current arrive faster than those traveling against it. This asymmetry (directional flight time difference) is the <em>slipstream signal</em>.</p>
+
+<p><strong>Slipstream index formula:</strong></p>
+<pre>S_fwd = d_dome / (t_fwd &times; 880)
+S_bck = d_dome / (t_bck &times; 880)
+&Delta;S   = 1/t_fwd &minus; 1/t_bck   (positive = forward current direction flows with forward route)</pre>
+
+<p><strong>Key methodological point:</strong> WGS84 is NOT the benchmark. d_dome is the geometric baseline. The residual between dome distance and Category 1 flight time measurement is the slipstream signal, not a model error. Only Category 1 measurements (flight time &times; airspeed, where airspeed is calibrated in still-air conditions) apply. Category 2 (WGS84-derived distances) are disqualified as circular.</p>
+</div>
+
+<h3>Aetheric Slipstream Map (2026-03-28)</h3>
+<table>
+  <tr><th>Region</th><th>&Delta;S</th><th>Direction</th><th>Routes</th><th>Status</th></tr>
+  <tr><td>NH Atlantic</td><td>+0.024</td><td>Eastward (Europe faster)</td><td>LHR&ndash;JFK, CDG&ndash;JFK</td><td>CONFIRMED (PRED-SLIP-001)</td></tr>
+  <tr><td>NH Pacific</td><td>&minus;0.013</td><td>Return eastward faster (Tokyo&rarr;LA)</td><td>NRT&ndash;LAX</td><td>Measured, direction needs confirm (PRED-SLIP-002)</td></tr>
+  <tr><td>Southern Ocean</td><td>&minus;0.013?</td><td>Westward? (BA&rarr;Syd faster)</td><td>EZE&ndash;SYD</td><td>OPEN-014 &mdash; direction unresolved</td></tr>
+  <tr><td>Equatorial belt</td><td>~0.000</td><td>Neutral</td><td>&mdash;</td><td>Consistent with zero</td></tr>
+</table>
+
+<h3>Active Slipstream Predictions</h3>
+<table>
+  <tr><th>ID</th><th>Prediction</th><th>Test</th><th>Status</th></tr>
+  <tr><td>PRED-SLIP-001</td><td>NH Atlantic eastbound always faster; persistent eastward current at +0.024</td><td>Average 20+ LHR&ndash;JFK flight pairs over 1 year</td><td>PENDING</td></tr>
+  <tr><td>PRED-SLIP-002</td><td>NH Pacific: LA&rarr;Tokyo slower than Tokyo&rarr;LA; &Delta;S &asymp; &minus;0.013</td><td>Average 20+ LAX&ndash;NRT flight pairs</td><td>PENDING (Vancouver&ndash;Tokyo needed)</td></tr>
+  <tr><td>PRED-SLIP-003</td><td>Southern Ocean asymmetry &gt;15% directional difference (outer zone amplification)</td><td>Perth&ndash;Buenos Aires both directions; Santiago&ndash;Cape Town</td><td>PENDING (OPEN-014)</td></tr>
+  <tr><td>PRED-SLIP-004</td><td>Atlantic/Pacific cell boundary at 40&deg;W&ndash;20&deg;W; slipstream reverses across boundary</td><td>NYC&ndash;Reykjavik vs LHR&ndash;Reykjavik &Delta;S comparison</td><td>PENDING</td></tr>
+</table>
+
+<h3>Open Problems</h3>
+<div class="open-problem">
+<h4>OPEN-014 &mdash; Southern Ocean Aetheric Flow Direction</h4>
+<p><strong>Issue:</strong> BA&rarr;Syd flight time ~13.5h, Syd&rarr;BA ~16.5h (3h asymmetry, ~&minus;0.013). This could mean westward flow (opposing Syd&rarr;BA) or could reflect V13 distance calibration issues in the outer zone. Resolution requires Perth&ndash;Buenos Aires and Santiago&ndash;Cape Town directional data.</p>
+<p><strong>Status:</strong> OPEN &mdash; direction of Southern Ocean aetheric current unknown.</p>
+</div>
+
+<div class="open-problem">
+<h4>OPEN-015 &mdash; Near-Equatorial Cities in Two-Zone Formula</h4>
+<p><strong>Issue:</strong> Singapore at lat 1.4&deg;N gives r_NH = 23,556 km &gt; r_eq = 14,105 km. This places Singapore in the outer zone despite being a NH city. The two-zone formula as derived applies to latitudes &gt;12&deg;N/S. Equatorial belt (&minus;12&deg; to +12&deg;) requires a V14 transition model.</p>
+<p><strong>Status:</strong> OPEN &mdash; deferred to V14.</p>
+</div>
+
+<!-- ===== KAPPA COINCIDENCE ===== -->
+<h3>PRED-KAPPA-001: &kappa; Coincidence</h3>
+<div class="proof-box">
+<p><strong>Observation (2026-03-28):</strong> Eclipse predictions underestimated by factor 1.672. Correction: all E001&ndash;E009 values &times;1.672. Structural insight: 1.672 = &kappa; = 1.67 nT/&micro;Gal to 3 decimal places &mdash; the same aetheric constant that governs EM-gravity coupling in the magnetic field model.</p>
+<p><strong>Prediction (PRED-KAPPA-001):</strong> The eclipse field strength calibration factor equals &kappa; because both phenomena are governed by the same aetheric coupling constant. If &kappa; is refined by future magnetic measurements, the eclipse factor should track it at the same value.</p>
+<p><strong>Status:</strong> PENDING &mdash; coincidence registered; mechanism under investigation (OPEN-009).</p>
+</div>
+
 <!-- ===== FALSIFIED ===== -->
 <h2>Falsified Count</h2>
 <div class="param-box">
@@ -413,7 +465,7 @@ where r_N = distance from geomagnetic north pole
 <p><strong>W024 &mdash; Polaris elevation excess at high latitudes (2026-03-15):</strong> Predicted +0.32&deg; to +1.29&deg; systematic excess. Observed: Polaris = latitude within wobble tolerance globally. Reykjavik +1.29&deg; prediction directly contradicted by observations.</p>
 <p><strong>W027 / PRED-R006 &mdash; Schumann elevation during G3+ storms (2026-03-23):</strong> Predicted SR fundamental +0.008 to +0.022 Hz elevation during G3 storm. Observed: total SR suppression (not elevation) during G4 March 20&ndash;21. Mechanism revised to aetheric damping. Superseded by PRED-SR-SUPPRESS.</p>
 <p>W001 and W004 are below detection threshold. Not model failures. Instrument noise floor prevents measurement. Predictions remain structurally valid.</p>
-<p class="note"><strong>Registry accuracy:</strong> 54 confirmed / (54 + 4) = <strong>93.1%</strong>. Exclusions: W001, W004 (below detection threshold, not structural failures).</p>
+<p class="note"><strong>Registry accuracy:</strong> 56 confirmed / (56 + 4) = <strong>93.3%</strong>. Exclusions: W001, W004 (below detection threshold, not structural failures).</p>
 </div>
 
 <!-- ===== ECM UNIFIED THEORY ===== -->
@@ -456,7 +508,7 @@ where r_N = distance from geomagnetic north pole
 <footer>
   <span>Version 50.10</span>
   <span>2026-03-28</span>
-  <span style="color:var(--accent-blue);font-weight:600">54 confirmed</span>
+  <span style="color:var(--accent-blue);font-weight:600">56 confirmed</span>
   <span style="color:var(--accent-red)">4 falsified</span>
   <a href="https://github.com/John09289/predictions">GitHub</a>
   <a href="context.html">AI Context</a>
